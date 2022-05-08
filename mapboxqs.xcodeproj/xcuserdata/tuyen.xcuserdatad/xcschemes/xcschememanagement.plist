@@ -4,10 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>mapboxqs.xcscheme_^#shared#^_</key>
+		<key>MapboxMapObjC-xcframework.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>MapboxMapObjC.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>mapboxobjc.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>mapboxqs.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>236010892824796B00DAC76A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>236010BE282487FF00DAC76A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23F7987D28273E3900A4B28F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
