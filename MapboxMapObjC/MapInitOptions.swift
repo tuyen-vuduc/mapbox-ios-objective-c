@@ -1,12 +1,13 @@
 import Foundation
 import MapboxMaps
 
-extension MapInitOptions {
-    @objc public convenience init(
+@objc
+open class MapInitOptionsFactory : NSObject {
+    @objc public static func create(
         resourceOptions: MapboxCoreMaps.ResourceOptions? = nil,
         mapOptions: MapOptions? = nil,
         cameraOptions: MapboxCoreMaps.CameraOptions? = nil,
-        stylePath: String?) {
+        stylePath: String?) -> MapInitOptions {
     
         let swiftResourceOptions = resourceOptions != nil
             ? MapboxMaps.ResourceOptions(resourceOptions!)
@@ -18,18 +19,18 @@ extension MapInitOptions {
             ? StyleURI(rawValue: stylePath!)
             : nil
         
-        self.init(
+        return MapInitOptions(
             resourceOptions: swiftResourceOptions,
             mapOptions: mapOptions ?? MapOptions(),
             cameraOptions: swiftCameraOptions,
             styleURI: swiftStyleUri ?? .streets)
     }
     
-    @objc public convenience init(
+    @objc public static func create(
         resourceOptions: MapboxCoreMaps.ResourceOptions? = nil,
         mapOptions: MapOptions? = nil,
         cameraOptions: MapboxCoreMaps.CameraOptions? = nil,
-        styleURI: URL?) {
+        styleURI: URL?) -> MapInitOptions {
     
         let swiftResourceOptions = resourceOptions != nil
             ? MapboxMaps.ResourceOptions(resourceOptions!)
@@ -41,7 +42,7 @@ extension MapInitOptions {
             ? StyleURI(url: styleURI!)
             : nil
         
-        self.init(
+        return MapInitOptions(
             resourceOptions: swiftResourceOptions,
             mapOptions: mapOptions ?? MapOptions(),
             cameraOptions: swiftCameraOptions,

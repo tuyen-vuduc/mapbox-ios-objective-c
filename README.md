@@ -10,20 +10,21 @@ It provides convenient methods to intialize Mapview instance.
 ```objective-c
 MBMResourceOptions* myResourceOptions = [[MBMResourceOptions alloc]
                                             initWithAccessToken: @"your_public_access_token"
-                                            baseURL:nil
-                                            dataPath:nil
-                                            assetPath:nil
-                                            tileStore:nil];
+                                                        baseURL: nil
+                                                       dataPath: nil
+                                                      assetPath: nil
+                                                      tileStore: nil];
+    
+    
+MapInitOptions* mapInitOptions = [MapInitOptionsFactory 
+                                    createWithResourceOptions: myResourceOptions 
+                                                   mapOptions: nil 
+                                                cameraOptions: nil 
+                                                     styleURI: nil];
 
-MapInitOptions* mapInitOptions = [[MapInitOptions alloc] 
-                                    initWithResourceOptions:myResourceOptions 
-                                    mapOptions:nil 
-                                    cameraOptions:nil 
-                                    styleURI:nil];
-
-self.mapView = [[MapView alloc] 
-                    initWithFrame:self.view.bounds 
-                    options:mapInitOptions];
+self.mapView = [MapViewFactory 
+                    createWithFrame: self.view.bounds 
+                            options: mapInitOptions];
 
 self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                     UIViewAutoresizingFlexibleHeight);

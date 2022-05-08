@@ -32,9 +32,9 @@
                                                 tileStore:nil];
     
     
-    MapInitOptions* mapInitOptions = [[MapInitOptions alloc] initWithResourceOptions:myResourceOptions mapOptions:nil cameraOptions:nil styleURI:nil];
+    MapInitOptions* mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:myResourceOptions mapOptions:nil cameraOptions:nil styleURI:nil];
     
-    self.mapView = [[MapView alloc] initWithFrame:self.view.bounds options:mapInitOptions];
+    self.mapView = [MapViewFactory createWithFrame:self.view.bounds options:mapInitOptions];
     
     self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                      UIViewAutoresizingFlexibleHeight);
