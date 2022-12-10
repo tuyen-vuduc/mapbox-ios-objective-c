@@ -3,6 +3,13 @@ import MapboxMaps
 
 @objc
 open class MapInitOptionsFactory : NSObject {
+    /// :nodoc:
+    /// See https://developer.apple.com/forums/thread/650054 for context
+    @available(*, unavailable)
+    internal override init() {
+        fatalError("This initializer should not be called.")
+    }
+    
     @objc public static func create(
         resourceOptions: MapboxCoreMaps.ResourceOptions? = nil,
         mapOptions: MapOptions? = nil,
@@ -47,5 +54,16 @@ open class MapInitOptionsFactory : NSObject {
             mapOptions: mapOptions ?? MapOptions(),
             cameraOptions: swiftCameraOptions,
             styleURI: swiftStyleUri ?? .streets)
+    }
+}
+
+extension MapInitOptions {
+    @objc public func options() -> NSArray {
+        return [
+            MapboxCoreMaps.ResourceOptions(self.resourceOptions),
+            self.mapOptions,
+            self.cameraOptions,
+            self.styleURI?.rawValue,
+        ]
     }
 }

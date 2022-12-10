@@ -15,3 +15,13 @@ extension MapboxMaps.ResourceOptions {
                   tileStoreUsageMode: objcValue.tileStoreUsageMode)
     }
 }
+extension MapboxCoreMaps.ResourceOptions {
+    internal convenience init(_ swiftValue: MapboxMaps.ResourceOptions) {
+        self.init(accessToken: swiftValue.accessToken,
+                  baseURL: swiftValue.baseURL?.path,
+                  dataPath: swiftValue.dataPathURL?.path,
+                  assetPath: swiftValue.assetPathURL?.path,
+                  tileStore: swiftValue.tileStore,
+                  tileStoreUsageMode: swiftValue.tileStoreUsageMode)
+    }
+}

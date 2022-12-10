@@ -16,12 +16,22 @@
 		236010A02824796C00DAC76A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360109F2824796C00DAC76A /* main.m */; };
 		236010C2282487FF00DAC76A /* MapboxMapObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 236010C1282487FF00DAC76A /* MapboxMapObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
-		23BA6DD52826CA3400D2D03A /* MapInitOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD42826CA3400D2D03A /* MapInitOptions.swift */; };
+		23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */; };
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
-		23F7987C282737C700A4B28F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapView.swift */; };
+		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2355ECD72945491A00942A8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 236010822824796B00DAC76A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 236010BE282487FF00DAC76A;
+			remoteInfo = MapboxMapObjC;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		236010B32824839900DAC76A /* Embed Frameworks */ = {
@@ -54,9 +64,9 @@
 		236010BF282487FF00DAC76A /* MapboxMapObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapboxMapObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		236010C1282487FF00DAC76A /* MapboxMapObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapboxMapObjC.h; sourceTree = "<group>"; };
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
-		23BA6DD42826CA3400D2D03A /* MapInitOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptions.swift; sourceTree = "<group>"; };
+		23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsFactory.swift; sourceTree = "<group>"; };
 		23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOptions.swift; sourceTree = "<group>"; };
-		23F7987B282737C700A4B28F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
 		8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapboxqs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,9 +136,9 @@
 			children = (
 				236010C1282487FF00DAC76A /* MapboxMapObjC.h */,
 				23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */,
-				23BA6DD42826CA3400D2D03A /* MapInitOptions.swift */,
+				23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */,
 				23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */,
-				23F7987B282737C700A4B28F /* MapView.swift */,
+				23F7987B282737C700A4B28F /* MapViewFactory.swift */,
 			);
 			path = MapboxMapObjC;
 			sourceTree = "<group>";
@@ -181,6 +191,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2355ECD82945491A00942A8D /* PBXTargetDependency */,
 			);
 			name = mapboxqs;
 			productName = mapboxqs;
@@ -344,14 +355,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23BA6DD52826CA3400D2D03A /* MapInitOptions.swift in Sources */,
+				23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */,
 				23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */,
-				23F7987C282737C700A4B28F /* MapView.swift in Sources */,
+				23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */,
 				23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2355ECD82945491A00942A8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 236010BE282487FF00DAC76A /* MapboxMapObjC */;
+			targetProxy = 2355ECD72945491A00942A8D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		236010962824796B00DAC76A /* Main.storyboard */ = {
@@ -493,6 +512,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YP5SN2SP3V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mapboxqs/Info.plist;
@@ -526,6 +546,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YP5SN2SP3V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = mapboxqs/Info.plist;

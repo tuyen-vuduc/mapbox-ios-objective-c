@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "780ED534625483851B26E616EA6AE3D9"
+               BlueprintIdentifier = "236010BE282487FF00DAC76A"
                BuildableName = "MapboxMapObjC.framework"
                BlueprintName = "MapboxMapObjC"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+               ReferencedContainer = "container:mapboxqs.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,6 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "236010BE282487FF00DAC76A"
+            BuildableName = "MapboxMapObjC.framework"
+            BlueprintName = "MapboxMapObjC"
+            ReferencedContainer = "container:mapboxqs.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

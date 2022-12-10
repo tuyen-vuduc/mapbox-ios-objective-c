@@ -1,6 +1,6 @@
 use_frameworks!
 def shared_pods
-    pod 'MapboxMapObjC', :path => './'
+    pod 'MapboxMaps', '10.10.0'
 end
 
 target 'mapboxqs' do

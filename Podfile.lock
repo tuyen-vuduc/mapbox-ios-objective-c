@@ -1,19 +1,17 @@
 PODS:
-  - MapboxCommon (21.3.0)
-  - MapboxCoreMaps (10.5.1):
-    - MapboxCommon (~> 21.3)
-  - MapboxMapObjC (10.5.0):
-    - MapboxMaps (= 10.5.0)
-  - MapboxMaps (10.5.0):
-    - MapboxCommon (= 21.3.0)
-    - MapboxCoreMaps (= 10.5.1)
-    - MapboxMobileEvents (= 1.0.7)
+  - MapboxCommon (23.2.1)
+  - MapboxCoreMaps (10.10.0):
+    - MapboxCommon (~> 23.2)
+  - MapboxMaps (10.10.0):
+    - MapboxCommon (= 23.2.1)
+    - MapboxCoreMaps (= 10.10.0)
+    - MapboxMobileEvents (= 1.0.10)
     - Turf (~> 2.0)
-  - MapboxMobileEvents (1.0.7)
-  - Turf (2.4.0)
+  - MapboxMobileEvents (1.0.10)
+  - Turf (2.6.1)
 
 DEPENDENCIES:
-  - MapboxMapObjC (from `./`)
+  - MapboxMaps (= 10.10.0)
 
 SPEC REPOS:
   trunk:
@@ -23,18 +21,13 @@ SPEC REPOS:
     - MapboxMobileEvents
     - Turf
 
-EXTERNAL SOURCES:
-  MapboxMapObjC:
-    :path: "./"
-
 SPEC CHECKSUMS:
-  MapboxCommon: a336e40b53e3fda5c419fe093c9c40aff4f4dd2b
-  MapboxCoreMaps: f0c995b043323571ec46d7d9e496390982f6509d
-  MapboxMapObjC: 89fa4fdd2d51f92bd75239800612de950c9b4600
-  MapboxMaps: e85375aa3d6bea94bf9c0221aa59f35ee0b29f29
-  MapboxMobileEvents: f7f3e8daeb4b83688ae62a4172dce79169a97233
-  Turf: 60b93cfdc62758526bc7bf1ef191a829aeb9694d
+  MapboxCommon: 235bb9c27a8985d982e17f216795b1f7ab526782
+  MapboxCoreMaps: 4075a9e415b9b3ab6229d09623fef5f791826a5b
+  MapboxMaps: a5ad1977764731f97ba04bb7815b6b367e56039c
+  MapboxMobileEvents: de50b3a4de180dd129c326e09cd12c8adaaa46d6
+  Turf: 469ce2c3d22e5e8e4818d5a3b254699a5c89efa4
 
-PODFILE CHECKSUM: db05ce1098e2958054a9cd7c1db44bd61415d326
+PODFILE CHECKSUM: a4c567f535a42fcc2fb1c738202c611b03ee74d9
 
 COCOAPODS: 1.11.3

@@ -25,14 +25,16 @@
     // Do any additional setup after loading the view.
     
     MBMResourceOptions* myResourceOptions = [[MBMResourceOptions alloc]
-                                                initWithAccessToken: @"your_public_access_token"
+                                                initWithAccessToken: @"pk.eyJ1IjoidHV5ZW52IiwiYSI6ImNsMnpzNzh4NjBnNG0zZHBzYTFmYmxhOWUifQ.Az2oICdp9k0Hb5tu_M8b-g"
                                                 baseURL:nil
                                                 dataPath:nil
                                                 assetPath:nil
                                                 tileStore:nil];
     
     
-    MapInitOptions* mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:myResourceOptions mapOptions:nil cameraOptions:nil styleURI:nil];
+    MapInitOptions* mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:myResourceOptions mapOptions:nil cameraOptions:nil stylePath:nil];
+    
+    NSArray* data = [mapInitOptions options];
     
     self.mapView = [MapViewFactory createWithFrame:self.view.bounds options:mapInitOptions];
     
