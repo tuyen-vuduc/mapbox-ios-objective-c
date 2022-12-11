@@ -6,7 +6,6 @@
 //
 
 #import "ViewController.h"
-#import "MapboxMaps-Swift.h"
 #import <MapboxCommon/MapboxCommon.h>
 #import <MapboxCoreMaps/MapboxCoreMaps.h>
 
@@ -19,6 +18,12 @@
 @end
 
 @implementation ViewController
+
+- (void) locationManager:(LocationManager *)locationManager didChangeAccuracyAuthorization:(CLAccuracyAuthorization)accuracyAuthorization {
+    if(accuracyAuthorization == CLAccuracyAuthorizationFullAccuracy) {
+         // Perform an action in response to the new change in accuracy
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,6 +45,10 @@
     
     self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                      UIViewAutoresizingFlexibleHeight);
+    
+    [self.mapView setLocationDelegate:self];
+    
+    [self.mapView puck2D];
     
     [self.view addSubview:self.mapView];
 }

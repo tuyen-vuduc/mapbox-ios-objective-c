@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapboxMaps-Swift.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<LocationPermissionsDelegate>
 
 
 @end

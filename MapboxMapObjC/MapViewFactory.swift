@@ -21,3 +21,25 @@ open class MapViewFactory : NSObject {
         return MapView(frame: frame, mapInitOptions: options ?? MapInitOptions())
     }
 }
+
+extension MapView {
+    @objc public func setLocationDelegate(_ delegate: LocationPermissionsDelegate) {
+        self.location.delegate = delegate
+    }
+    
+    @objc public func requestTemporaryFullAccuracyPermissions(_ customKey: String) {
+        self.location.requestTemporaryFullAccuracyPermissions(withPurposeKey: customKey)
+    }
+    
+    @objc public func puck2D() {
+        self.location.options.puckType = .puck2D();
+        
+        self.gestures.delegate = self;
+    }
+    
+//    @objc public func puck3D() {
+////        self.location.options.puckType = .puck3D();
+//    }
+}
+
+
