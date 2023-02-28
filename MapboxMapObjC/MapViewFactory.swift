@@ -44,6 +44,10 @@ extension MapView {
     @objc public func puckBearingSource(_ source: MBXPuckBearingSource) {
         self.location.options.puckBearingSource = source == .heading ? .heading : .course
     }
+    
+    @objc public func viewPort() {
+        let x: OverviewViewportStateOptions;
+    }
 }
 
 @objc public enum MBXPuckBearingSource : Int {
