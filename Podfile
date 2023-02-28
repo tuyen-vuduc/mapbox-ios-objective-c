@@ -1,6 +1,6 @@
 use_frameworks!
 def shared_pods
-    pod 'MapboxMaps', '10.10.0'
+    pod 'MapboxMaps', '10.11.1'
 end
 
 target 'mapboxqs' do

@@ -48,7 +48,11 @@
     
     [self.mapView setLocationDelegate:self];
     
-    [self.mapView puck2D];
+    [self.mapView puck2D: ^(Puck2DConfigurationBuilder* builder) {
+        [[builder setAccuracyRingColor:UIColor.redColor] setShowsAccuracyRing:true];
+    }];
+    
+    [self.mapView puckBearingSource: MBXPuckBearingSourceCourse];
     
     [self.view addSubview:self.mapView];
 }

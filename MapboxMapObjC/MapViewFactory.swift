@@ -31,15 +31,22 @@ extension MapView {
         self.location.requestTemporaryFullAccuracyPermissions(withPurposeKey: customKey)
     }
     
-    @objc public func puck2D() {
-        self.location.options.puckType = .puck2D();
-        
-        self.gestures.delegate = self;
+    @objc public func puck2D(_ build: ((_ builder: Puck2DConfigurationBuilder) -> Void)?) {
+        if let build {
+            let builder = Puck2DConfigurationBuilder()
+            build(builder)
+            self.location.options.puckType = .puck2D(builder.build())
+        } else {
+            self.location.options.puckType = .puck2D()
+        }
     }
     
-//    @objc public func puck3D() {
-////        self.location.options.puckType = .puck3D();
-//    }
+    @objc public func puckBearingSource(_ source: MBXPuckBearingSource) {
+        self.location.options.puckBearingSource = source == .heading ? .heading : .course
+    }
 }
 
-
+@objc public enum MBXPuckBearingSource : Int {
+    case heading
+    case course
+}
