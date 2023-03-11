@@ -64,6 +64,23 @@
 		23BB8EA929BCD9E500E7C218 /* OfflineRegionManagerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EA829BCD9E500E7C218 /* OfflineRegionManagerExample.m */; };
 		23BB8EAC29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */; };
 		23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */; };
+		23BB8EB229BCDB9700E7C218 /* DataDrivenSymbolsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EB129BCDB9700E7C218 /* DataDrivenSymbolsExample.m */; };
+		23BB8EB529BCDBA300E7C218 /* LayerPositionExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EB429BCDBA300E7C218 /* LayerPositionExample.m */; };
+		23BB8EB829BCDBAF00E7C218 /* PointClusteringExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EB729BCDBAF00E7C218 /* PointClusteringExample.m */; };
+		23BB8EBB29BCDBBB00E7C218 /* AnimateGeoJSONLineExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EBA29BCDBBB00E7C218 /* AnimateGeoJSONLineExample.m */; };
+		23BB8EBE29BCDBC800E7C218 /* AnimateLayerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EBD29BCDBC800E7C218 /* AnimateLayerExample.m */; };
+		23BB8EC129BCDBD400E7C218 /* ExternalVectorSourceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EC029BCDBD400E7C218 /* ExternalVectorSourceExample.m */; };
+		23BB8EC429BCDBDF00E7C218 /* ColorExpressionExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EC329BCDBDF00E7C218 /* ColorExpressionExample.m */; };
+		23BB8EC729BCDBEC00E7C218 /* CustomLayerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EC629BCDBEC00E7C218 /* CustomLayerExample.m */; };
+		23BB8ECA29BCDBFA00E7C218 /* LineGradientExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EC929BCDBFA00E7C218 /* LineGradientExample.m */; };
+		23BB8ECD29BCDC0800E7C218 /* SwitchStylesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8ECC29BCDC0800E7C218 /* SwitchStylesExample.m */; };
+		23BB8ED029BCDC1900E7C218 /* LocalizationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8ECF29BCDC1900E7C218 /* LocalizationExample.m */; };
+		23BB8ED329BCDC2600E7C218 /* AnimateImageLayerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8ED229BCDC2600E7C218 /* AnimateImageLayerExample.m */; };
+		23BB8ED629BCDC3200E7C218 /* RasterTileSourceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8ED529BCDC3200E7C218 /* RasterTileSourceExample.m */; };
+		23BB8ED929BCDC3F00E7C218 /* ShowHideLayerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8ED829BCDC3F00E7C218 /* ShowHideLayerExample.m */; };
+		23BB8EDC29BCDC4A00E7C218 /* LiveDataExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EDB29BCDC4A00E7C218 /* LiveDataExample.m */; };
+		23BB8EDF29BCDC5500E7C218 /* DataJoinExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EDE29BCDC5500E7C218 /* DataJoinExample.m */; };
+		23BB8EE229BCDC6200E7C218 /* DistanceExpressionExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EE129BCDC6200E7C218 /* DistanceExpressionExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -203,6 +220,40 @@
 		23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapshotterCoreGraphicsExample.m; sourceTree = "<group>"; };
 		23BB8EAD29BCDA5A00E7C218 /* SnapshotterExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapshotterExample.h; sourceTree = "<group>"; };
 		23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapshotterExample.m; sourceTree = "<group>"; };
+		23BB8EB029BCDB9700E7C218 /* DataDrivenSymbolsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataDrivenSymbolsExample.h; sourceTree = "<group>"; };
+		23BB8EB129BCDB9700E7C218 /* DataDrivenSymbolsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataDrivenSymbolsExample.m; sourceTree = "<group>"; };
+		23BB8EB329BCDBA300E7C218 /* LayerPositionExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayerPositionExample.h; sourceTree = "<group>"; };
+		23BB8EB429BCDBA300E7C218 /* LayerPositionExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayerPositionExample.m; sourceTree = "<group>"; };
+		23BB8EB629BCDBAF00E7C218 /* PointClusteringExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointClusteringExample.h; sourceTree = "<group>"; };
+		23BB8EB729BCDBAF00E7C218 /* PointClusteringExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointClusteringExample.m; sourceTree = "<group>"; };
+		23BB8EB929BCDBBB00E7C218 /* AnimateGeoJSONLineExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimateGeoJSONLineExample.h; sourceTree = "<group>"; };
+		23BB8EBA29BCDBBB00E7C218 /* AnimateGeoJSONLineExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimateGeoJSONLineExample.m; sourceTree = "<group>"; };
+		23BB8EBC29BCDBC800E7C218 /* AnimateLayerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimateLayerExample.h; sourceTree = "<group>"; };
+		23BB8EBD29BCDBC800E7C218 /* AnimateLayerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimateLayerExample.m; sourceTree = "<group>"; };
+		23BB8EBF29BCDBD400E7C218 /* ExternalVectorSourceExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalVectorSourceExample.h; sourceTree = "<group>"; };
+		23BB8EC029BCDBD400E7C218 /* ExternalVectorSourceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalVectorSourceExample.m; sourceTree = "<group>"; };
+		23BB8EC229BCDBDF00E7C218 /* ColorExpressionExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorExpressionExample.h; sourceTree = "<group>"; };
+		23BB8EC329BCDBDF00E7C218 /* ColorExpressionExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorExpressionExample.m; sourceTree = "<group>"; };
+		23BB8EC529BCDBEC00E7C218 /* CustomLayerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLayerExample.h; sourceTree = "<group>"; };
+		23BB8EC629BCDBEC00E7C218 /* CustomLayerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLayerExample.m; sourceTree = "<group>"; };
+		23BB8EC829BCDBFA00E7C218 /* LineGradientExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineGradientExample.h; sourceTree = "<group>"; };
+		23BB8EC929BCDBFA00E7C218 /* LineGradientExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineGradientExample.m; sourceTree = "<group>"; };
+		23BB8ECB29BCDC0800E7C218 /* SwitchStylesExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchStylesExample.h; sourceTree = "<group>"; };
+		23BB8ECC29BCDC0800E7C218 /* SwitchStylesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwitchStylesExample.m; sourceTree = "<group>"; };
+		23BB8ECE29BCDC1900E7C218 /* LocalizationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationExample.h; sourceTree = "<group>"; };
+		23BB8ECF29BCDC1900E7C218 /* LocalizationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizationExample.m; sourceTree = "<group>"; };
+		23BB8ED129BCDC2600E7C218 /* AnimateImageLayerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimateImageLayerExample.h; sourceTree = "<group>"; };
+		23BB8ED229BCDC2600E7C218 /* AnimateImageLayerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimateImageLayerExample.m; sourceTree = "<group>"; };
+		23BB8ED429BCDC3200E7C218 /* RasterTileSourceExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RasterTileSourceExample.h; sourceTree = "<group>"; };
+		23BB8ED529BCDC3200E7C218 /* RasterTileSourceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RasterTileSourceExample.m; sourceTree = "<group>"; };
+		23BB8ED729BCDC3F00E7C218 /* ShowHideLayerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowHideLayerExample.h; sourceTree = "<group>"; };
+		23BB8ED829BCDC3F00E7C218 /* ShowHideLayerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowHideLayerExample.m; sourceTree = "<group>"; };
+		23BB8EDA29BCDC4A00E7C218 /* LiveDataExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveDataExample.h; sourceTree = "<group>"; };
+		23BB8EDB29BCDC4A00E7C218 /* LiveDataExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveDataExample.m; sourceTree = "<group>"; };
+		23BB8EDD29BCDC5500E7C218 /* DataJoinExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataJoinExample.h; sourceTree = "<group>"; };
+		23BB8EDE29BCDC5500E7C218 /* DataJoinExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataJoinExample.m; sourceTree = "<group>"; };
+		23BB8EE029BCDC6200E7C218 /* DistanceExpressionExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DistanceExpressionExample.h; sourceTree = "<group>"; };
+		23BB8EE129BCDC6200E7C218 /* DistanceExpressionExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DistanceExpressionExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +405,40 @@
 				23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */,
 				23BB8EAD29BCDA5A00E7C218 /* SnapshotterExample.h */,
 				23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */,
+				23BB8EB029BCDB9700E7C218 /* DataDrivenSymbolsExample.h */,
+				23BB8EB129BCDB9700E7C218 /* DataDrivenSymbolsExample.m */,
+				23BB8EB329BCDBA300E7C218 /* LayerPositionExample.h */,
+				23BB8EB429BCDBA300E7C218 /* LayerPositionExample.m */,
+				23BB8EB629BCDBAF00E7C218 /* PointClusteringExample.h */,
+				23BB8EB729BCDBAF00E7C218 /* PointClusteringExample.m */,
+				23BB8EB929BCDBBB00E7C218 /* AnimateGeoJSONLineExample.h */,
+				23BB8EBA29BCDBBB00E7C218 /* AnimateGeoJSONLineExample.m */,
+				23BB8EBC29BCDBC800E7C218 /* AnimateLayerExample.h */,
+				23BB8EBD29BCDBC800E7C218 /* AnimateLayerExample.m */,
+				23BB8EBF29BCDBD400E7C218 /* ExternalVectorSourceExample.h */,
+				23BB8EC029BCDBD400E7C218 /* ExternalVectorSourceExample.m */,
+				23BB8EC229BCDBDF00E7C218 /* ColorExpressionExample.h */,
+				23BB8EC329BCDBDF00E7C218 /* ColorExpressionExample.m */,
+				23BB8EC529BCDBEC00E7C218 /* CustomLayerExample.h */,
+				23BB8EC629BCDBEC00E7C218 /* CustomLayerExample.m */,
+				23BB8EC829BCDBFA00E7C218 /* LineGradientExample.h */,
+				23BB8EC929BCDBFA00E7C218 /* LineGradientExample.m */,
+				23BB8ECB29BCDC0800E7C218 /* SwitchStylesExample.h */,
+				23BB8ECC29BCDC0800E7C218 /* SwitchStylesExample.m */,
+				23BB8ECE29BCDC1900E7C218 /* LocalizationExample.h */,
+				23BB8ECF29BCDC1900E7C218 /* LocalizationExample.m */,
+				23BB8ED129BCDC2600E7C218 /* AnimateImageLayerExample.h */,
+				23BB8ED229BCDC2600E7C218 /* AnimateImageLayerExample.m */,
+				23BB8ED429BCDC3200E7C218 /* RasterTileSourceExample.h */,
+				23BB8ED529BCDC3200E7C218 /* RasterTileSourceExample.m */,
+				23BB8ED729BCDC3F00E7C218 /* ShowHideLayerExample.h */,
+				23BB8ED829BCDC3F00E7C218 /* ShowHideLayerExample.m */,
+				23BB8EDA29BCDC4A00E7C218 /* LiveDataExample.h */,
+				23BB8EDB29BCDC4A00E7C218 /* LiveDataExample.m */,
+				23BB8EDD29BCDC5500E7C218 /* DataJoinExample.h */,
+				23BB8EDE29BCDC5500E7C218 /* DataJoinExample.m */,
+				23BB8EE029BCDC6200E7C218 /* DistanceExpressionExample.h */,
+				23BB8EE129BCDC6200E7C218 /* DistanceExpressionExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -574,25 +659,35 @@
 			files = (
 				23BB8EA629BCD9D900E7C218 /* OfflineManagerExample.m in Sources */,
 				23BB8E6829BCD4D600E7C218 /* IconSizeChangeExample.m in Sources */,
+				23BB8EDC29BCDC4A00E7C218 /* LiveDataExample.m in Sources */,
 				23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */,
 				23BB8E8229BCD7BF00E7C218 /* CameraAnimationExample.m in Sources */,
 				23BB8E5029BCD42F00E7C218 /* AddOneMarkerSymbolExample.m in Sources */,
+				23BB8ED029BCDC1900E7C218 /* LocalizationExample.m in Sources */,
+				23BB8ED329BCDC2600E7C218 /* AnimateImageLayerExample.m in Sources */,
+				23BB8EBB29BCDBBB00E7C218 /* AnimateGeoJSONLineExample.m in Sources */,
 				23BB8E7F29BCD74200E7C218 /* CameraAnimatorsExample.m in Sources */,
 				23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */,
 				23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */,
 				236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */,
 				23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */,
 				23BB8E9729BCD90C00E7C218 /* BasicLocationPulsingExample.m in Sources */,
+				23BB8EE229BCDC6200E7C218 /* DistanceExpressionExample.m in Sources */,
 				23BB8E9D29BCD92400E7C218 /* Custom3DPuckExample.m in Sources */,
+				23BB8ED929BCDC3F00E7C218 /* ShowHideLayerExample.m in Sources */,
+				23BB8EB529BCDBA300E7C218 /* LayerPositionExample.m in Sources */,
 				23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */,
 				23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */,
 				23BB8E5929BCD45E00E7C218 /* PointAnnotationClusteringExample.m in Sources */,
 				23BB8E8829BCD7D800E7C218 /* AdvancedViewportGesturesExample.m in Sources */,
 				23BB8E5629BCD45200E7C218 /* SymbolClusteringExample.m in Sources */,
 				23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */,
+				23BB8EB229BCDB9700E7C218 /* DataDrivenSymbolsExample.m in Sources */,
 				236010952824796B00DAC76A /* ViewController.m in Sources */,
+				23BB8EB829BCDBAF00E7C218 /* PointClusteringExample.m in Sources */,
 				23BB8E6B29BCD4E400E7C218 /* MultipleGeometriesExample.m in Sources */,
 				23BB8E5C29BCD46B00E7C218 /* AddMarkersSymbolExample.m in Sources */,
+				23BB8EC129BCDBD400E7C218 /* ExternalVectorSourceExample.m in Sources */,
 				23BB8E7C29BCD55600E7C218 /* ViewAnnotationAnimationExample.m in Sources */,
 				236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */,
 				23BB8E4D29BCD42300E7C218 /* PolygonAnnotationExample.m in Sources */,
@@ -600,6 +695,7 @@
 				23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */,
 				23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */,
 				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
+				23BB8EDF29BCDC5500E7C218 /* DataJoinExample.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
 				23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */,
@@ -616,11 +712,17 @@
 				23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */,
 				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
+				23BB8EBE29BCDBC800E7C218 /* AnimateLayerExample.m in Sources */,
 				23BB8E9429BCD90100E7C218 /* TrackingModeExample.m in Sources */,
 				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,
 				23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */,
+				23BB8ECD29BCDC0800E7C218 /* SwitchStylesExample.m in Sources */,
 				23BB8E9A29BCD91800E7C218 /* Custom2DPuckExample.m in Sources */,
+				23BB8ECA29BCDBFA00E7C218 /* LineGradientExample.m in Sources */,
+				23BB8ED629BCDC3200E7C218 /* RasterTileSourceExample.m in Sources */,
+				23BB8EC429BCDBDF00E7C218 /* ColorExpressionExample.m in Sources */,
 				23BB8E3829BCD21100E7C218 /* CustomStyleURLExample.m in Sources */,
+				23BB8EC729BCDBEC00E7C218 /* CustomLayerExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,24 @@
 #import "SnapshotterExample.h"
 #import "SnapshotterCoreGraphicsExample.h"
 
+#import "DataDrivenSymbolsExample.h"
+#import "LayerPositionExample.h"
+#import "PointClusteringExample.h"
+#import "AnimateGeoJSONLineExample.h"
+#import "AnimateLayerExample.h"
+#import "ExternalVectorSourceExample.h"
+#import "ColorExpressionExample.h"
+#import "CustomLayerExample.h"
+#import "LineGradientExample.h"
+#import "SwitchStylesExample.h"
+#import "LocalizationExample.h"
+#import "AnimateImageLayerExample.h"
+#import "RasterTileSourceExample.h"
+#import "ShowHideLayerExample.h"
+#import "LiveDataExample.h"
+#import "DataJoinExample.h"
+#import "DistanceExpressionExample.h"
+
 @implementation Examples
 
 + (NSArray *)all {
@@ -266,7 +284,59 @@
     ];
 }
 + (NSArray<ExampleModel *> *) styleExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Display multiple icon images in a symbol layer"
+                                   subtitle: @"Add point data and several images to a style and use the switchCase and get expressions to choose which image to display at each point in a SymbolLayer based on a data property."
+                                       type: DataDrivenSymbolsExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Change the position of a layer"
+                                   subtitle: @"Insert a specific layer above or below other layers."
+                                       type: LayerPositionExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Cluster points within a layer"
+                                   subtitle: @"Create a circle layer from a geoJSON source and cluster the points from that source. The clusters will update as the map's camera changes."
+                                       type: PointClusteringExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Animate a line layer"
+                                   subtitle: @"Animate updates to a line layer from a geoJSON source."
+                                       type: AnimateGeoJSONLineExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Animate a style layer"
+                                   subtitle: @"Animate the position of a style layer by updating its source data."
+                                       type: AnimateLayerExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add external vector tiles"
+                                   subtitle: @"Add vector map tiles from an external source, using the {z}/{x}/{y} URL scheme."
+                                       type: ExternalVectorSourceExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use interpolate colors between zoom level"
+                                   subtitle: @"Use an interpolate expression to style the background layer color depending on zoom level."
+                                       type: ColorExpressionExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add a custom rendered layer"
+                                   subtitle: @"Add a custom rendered Metal layer."
+                                       type: CustomLayerExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add a line with a color gradient"
+                                   subtitle: @"Load a polyline to a style using GeoJSONSource, display it on a map using LineLayer, and style it with a rainbow color gradient."
+                                       type: LineGradientExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Change the map's style"
+                                   subtitle: @"Switch between local and default Mapbox styles for the same map view."
+                                       type: SwitchStylesExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Change the map's language"
+                                   subtitle: @"Switch between supported languages for Symbol Layers"
+                                       type: LocalizationExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add animated weather data"
+                                   subtitle: @"Load a raster image to a style using ImageSource and display it on a map as animated weather data using RasterLayer."
+                                       type: AnimateImageLayerExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add a raster tile source"
+                                   subtitle: @"Add third-party raster tiles to a map."
+                                       type: RasterTileSourceExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Show and hide layers"
+                                   subtitle: @"Allow the user to toggle the visibility of a CircleLayer and LineLayer on a map."
+                                       type: ShowHideLayerExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add live data"
+                                   subtitle: @"Update feature coordinates from a geoJSON source in real time."
+                                       type: LiveDataExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Join data to vector geometry"
+                                   subtitle: @"Join local JSON data with vector tile geometries."
+                                       type: DataJoinExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use a distance expression"
+                                   subtitle: @"Use a distance style expression to show features within a specific radius."
+                                       type: DistanceExpressionExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) userInteractionExamples {
     return @[];
