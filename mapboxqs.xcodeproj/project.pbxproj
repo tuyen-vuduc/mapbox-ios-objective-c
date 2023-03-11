@@ -52,6 +52,8 @@
 		23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8429BCD7CC00E7C218 /* ViewportExample.m */; };
 		23BB8E8829BCD7D800E7C218 /* AdvancedViewportGesturesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */; };
 		23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */; };
+		23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */; };
+		23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -167,6 +169,10 @@
 		23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewportGesturesExample.m; sourceTree = "<group>"; };
 		23BB8E8929BCD7E500E7C218 /* PitchAndDistanceExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PitchAndDistanceExample.h; sourceTree = "<group>"; };
 		23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PitchAndDistanceExample.m; sourceTree = "<group>"; };
+		23BB8E8C29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LargeGeoJSONPerformanceExample.h; sourceTree = "<group>"; };
+		23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LargeGeoJSONPerformanceExample.m; sourceTree = "<group>"; };
+		23BB8E8F29BCD86400E7C218 /* ResizableImageExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResizableImageExample.h; sourceTree = "<group>"; };
+		23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResizableImageExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -294,6 +300,10 @@
 				23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */,
 				23BB8E8929BCD7E500E7C218 /* PitchAndDistanceExample.h */,
 				23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */,
+				23BB8E8C29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.h */,
+				23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */,
+				23BB8E8F29BCD86400E7C218 /* ResizableImageExample.h */,
+				23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -544,6 +554,8 @@
 				23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */,
 				23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */,
 				23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */,
+				23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */,
+				23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */,
 				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
 				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,

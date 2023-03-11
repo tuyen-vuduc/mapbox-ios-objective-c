@@ -32,12 +32,13 @@
 #import "ViewAnnotationMarkerExample.h"
 #import "FrameViewAnnotationsExample.h"
 #import "ViewAnnotationAnimationExample.h"
-
 #import "CameraAnimatorsExample.h"
 #import "CameraAnimationExample.h"
 #import "ViewportExample.h"
 #import "AdvancedViewportGesturesExample.h"
 #import "PitchAndDistanceExample.h"
+#import "ResizableImageExample.h"
+#import "LargeGeoJSONPerformanceExample.h"
 
 @implementation Examples
 
@@ -202,7 +203,14 @@
 ];
 }
 + (NSArray<ExampleModel *> *) labExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Resizable image"
+                                   subtitle: @"Add a resizable image with cap insets to a style."
+                                       type: ResizableImageExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Geojson performance"
+                                   subtitle: @"Display long route as large geojson"
+                                       type: LargeGeoJSONPerformanceExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) locationExamples {
     return @[];
