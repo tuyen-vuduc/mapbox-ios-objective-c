@@ -12,9 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ExampleModel : NSObject
 
-@property NSString* title;
+@property (readonly) NSString* title;
+@property (readonly) NSString* subtitle;
 @property double testTimeout;
-@property Class* _Nonnull viewControllerClass;
+@property (readonly) Class _Nonnull viewControllerClass;
+
+- (instancetype) initWithTitle: (NSString*) title subtitle: (NSString*) subtitle type: (Class) type;
 
 - (UIViewController*) makeViewController;
 

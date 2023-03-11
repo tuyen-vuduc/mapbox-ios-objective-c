@@ -9,6 +9,16 @@
 
 @implementation ExampleModel
 
+- (instancetype)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle type:(Class)type {
+    self = [self init];
+    
+    _title = title;
+    _subtitle = subtitle;
+    _viewControllerClass = type;
+    
+    return self;
+}
+
 + (NSString*) finishNotificationName {
     return @"com.mapbox.Examples.finish";
 }
@@ -21,21 +31,20 @@
     UIViewController* exampleViewController;
     
     // Look for a storyboard
-    NSString* storyboardName = [self.viewControllerClass description];
-    if Bundle.main.path(forResource: storyboardName, ofType: "storyboardc") != nil {
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        exampleViewController = storyboard.instantiateInitialViewController()!
-
-        // Check controller is what we expect
-        assert(Swift.type(of: exampleViewController) == exampleClass)
+    NSString* storyboardName = NSStringFromClass(self.viewControllerClass);
+    
+    if ([NSBundle.mainBundle pathForResource:storyboardName ofType:@"storyboardc"]) {
+        UIStoryboard* storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        
+        exampleViewController = [storyboard instantiateInitialViewController];
     } else {
-        exampleViewController = exampleClass.init()
+        exampleViewController = [[self.viewControllerClass alloc] init];
     }
 
-    exampleViewController.title = title
-    exampleViewController.navigationItem.largeTitleDisplayMode = .never
+    exampleViewController.title = self.title;
+    exampleViewController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
 
-    return exampleViewController
+    return exampleViewController;
 }
 
 @end

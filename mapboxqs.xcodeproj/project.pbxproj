@@ -21,6 +21,32 @@
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
 		23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */; };
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
+		23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */; };
+		23BB8E3229BC988F00E7C218 /* Examples.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3129BC988F00E7C218 /* Examples.m */; };
+		23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */; };
+		23BB8E3829BCD21100E7C218 /* CustomStyleURLExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */; };
+		23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3A29BCD22F00E7C218 /* StoryboardMapViewExample.m */; };
+		23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3D29BCD24300E7C218 /* DebugMapExample.m */; };
+		23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4029BCD35100E7C218 /* TerrainExample.m */; };
+		23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4329BCD36600E7C218 /* SceneKitExample.m */; };
+		23BB8E4729BCD37400E7C218 /* BuildingExtrusionsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4629BCD37400E7C218 /* BuildingExtrusionsExample.m */; };
+		23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4929BCD38200E7C218 /* SkyLayerExample.m */; };
+		23BB8E4D29BCD42300E7C218 /* PolygonAnnotationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4C29BCD42300E7C218 /* PolygonAnnotationExample.m */; };
+		23BB8E5029BCD42F00E7C218 /* AddOneMarkerSymbolExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E4F29BCD42F00E7C218 /* AddOneMarkerSymbolExample.m */; };
+		23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E5229BCD44500E7C218 /* CircleAnnotationExample.m */; };
+		23BB8E5629BCD45200E7C218 /* SymbolClusteringExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E5529BCD45200E7C218 /* SymbolClusteringExample.m */; };
+		23BB8E5929BCD45E00E7C218 /* PointAnnotationClusteringExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E5829BCD45E00E7C218 /* PointAnnotationClusteringExample.m */; };
+		23BB8E5C29BCD46B00E7C218 /* AddMarkersSymbolExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E5B29BCD46B00E7C218 /* AddMarkersSymbolExample.m */; };
+		23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E5E29BCD4AA00E7C218 /* CustomPointAnnotationExample.m */; };
+		23BB8E6229BCD4BA00E7C218 /* LineAnnotationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E6129BCD4BA00E7C218 /* LineAnnotationExample.m */; };
+		23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E6429BCD4C900E7C218 /* AnimatedMarkerExample.m */; };
+		23BB8E6829BCD4D600E7C218 /* IconSizeChangeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E6729BCD4D600E7C218 /* IconSizeChangeExample.m */; };
+		23BB8E6B29BCD4E400E7C218 /* MultipleGeometriesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E6A29BCD4E400E7C218 /* MultipleGeometriesExample.m */; };
+		23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E6F29BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m */; };
+		23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7229BCD52E00E7C218 /* ViewAnnotationBasicExample.m */; };
+		23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7529BCD53B00E7C218 /* ViewAnnotationMarkerExample.m */; };
+		23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */; };
+		23BB8E7C29BCD55600E7C218 /* ViewAnnotationAnimationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -74,6 +100,58 @@
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
 		23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsFactory.swift; sourceTree = "<group>"; };
 		23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOptions.swift; sourceTree = "<group>"; };
+		23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewController.h; sourceTree = "<group>"; };
+		23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTableViewController.m; sourceTree = "<group>"; };
+		23BB8E3029BC988F00E7C218 /* Examples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Examples.h; sourceTree = "<group>"; };
+		23BB8E3129BC988F00E7C218 /* Examples.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Examples.m; sourceTree = "<group>"; };
+		23BB8E3329BC9E7200E7C218 /* BasicMapExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicMapExampleViewController.h; sourceTree = "<group>"; };
+		23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicMapExampleViewController.m; sourceTree = "<group>"; };
+		23BB8E3629BCD21100E7C218 /* CustomStyleURLExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStyleURLExample.h; sourceTree = "<group>"; };
+		23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStyleURLExample.m; sourceTree = "<group>"; };
+		23BB8E3929BCD22F00E7C218 /* StoryboardMapViewExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryboardMapViewExample.h; sourceTree = "<group>"; };
+		23BB8E3A29BCD22F00E7C218 /* StoryboardMapViewExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryboardMapViewExample.m; sourceTree = "<group>"; };
+		23BB8E3C29BCD24300E7C218 /* DebugMapExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugMapExample.h; sourceTree = "<group>"; };
+		23BB8E3D29BCD24300E7C218 /* DebugMapExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugMapExample.m; sourceTree = "<group>"; };
+		23BB8E3F29BCD35100E7C218 /* TerrainExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerrainExample.h; sourceTree = "<group>"; };
+		23BB8E4029BCD35100E7C218 /* TerrainExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TerrainExample.m; sourceTree = "<group>"; };
+		23BB8E4229BCD36600E7C218 /* SceneKitExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneKitExample.h; sourceTree = "<group>"; };
+		23BB8E4329BCD36600E7C218 /* SceneKitExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneKitExample.m; sourceTree = "<group>"; };
+		23BB8E4529BCD37400E7C218 /* BuildingExtrusionsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuildingExtrusionsExample.h; sourceTree = "<group>"; };
+		23BB8E4629BCD37400E7C218 /* BuildingExtrusionsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuildingExtrusionsExample.m; sourceTree = "<group>"; };
+		23BB8E4829BCD38200E7C218 /* SkyLayerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyLayerExample.h; sourceTree = "<group>"; };
+		23BB8E4929BCD38200E7C218 /* SkyLayerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkyLayerExample.m; sourceTree = "<group>"; };
+		23BB8E4B29BCD42300E7C218 /* PolygonAnnotationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolygonAnnotationExample.h; sourceTree = "<group>"; };
+		23BB8E4C29BCD42300E7C218 /* PolygonAnnotationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolygonAnnotationExample.m; sourceTree = "<group>"; };
+		23BB8E4E29BCD42F00E7C218 /* AddOneMarkerSymbolExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddOneMarkerSymbolExample.h; sourceTree = "<group>"; };
+		23BB8E4F29BCD42F00E7C218 /* AddOneMarkerSymbolExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddOneMarkerSymbolExample.m; sourceTree = "<group>"; };
+		23BB8E5129BCD44500E7C218 /* CircleAnnotationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleAnnotationExample.h; sourceTree = "<group>"; };
+		23BB8E5229BCD44500E7C218 /* CircleAnnotationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleAnnotationExample.m; sourceTree = "<group>"; };
+		23BB8E5429BCD45200E7C218 /* SymbolClusteringExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SymbolClusteringExample.h; sourceTree = "<group>"; };
+		23BB8E5529BCD45200E7C218 /* SymbolClusteringExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SymbolClusteringExample.m; sourceTree = "<group>"; };
+		23BB8E5729BCD45E00E7C218 /* PointAnnotationClusteringExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointAnnotationClusteringExample.h; sourceTree = "<group>"; };
+		23BB8E5829BCD45E00E7C218 /* PointAnnotationClusteringExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointAnnotationClusteringExample.m; sourceTree = "<group>"; };
+		23BB8E5A29BCD46B00E7C218 /* AddMarkersSymbolExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMarkersSymbolExample.h; sourceTree = "<group>"; };
+		23BB8E5B29BCD46B00E7C218 /* AddMarkersSymbolExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMarkersSymbolExample.m; sourceTree = "<group>"; };
+		23BB8E5D29BCD4AA00E7C218 /* CustomPointAnnotationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPointAnnotationExample.h; sourceTree = "<group>"; };
+		23BB8E5E29BCD4AA00E7C218 /* CustomPointAnnotationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPointAnnotationExample.m; sourceTree = "<group>"; };
+		23BB8E6029BCD4BA00E7C218 /* LineAnnotationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineAnnotationExample.h; sourceTree = "<group>"; };
+		23BB8E6129BCD4BA00E7C218 /* LineAnnotationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineAnnotationExample.m; sourceTree = "<group>"; };
+		23BB8E6329BCD4C900E7C218 /* AnimatedMarkerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedMarkerExample.h; sourceTree = "<group>"; };
+		23BB8E6429BCD4C900E7C218 /* AnimatedMarkerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnimatedMarkerExample.m; sourceTree = "<group>"; };
+		23BB8E6629BCD4D600E7C218 /* IconSizeChangeExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IconSizeChangeExample.h; sourceTree = "<group>"; };
+		23BB8E6729BCD4D600E7C218 /* IconSizeChangeExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IconSizeChangeExample.m; sourceTree = "<group>"; };
+		23BB8E6929BCD4E400E7C218 /* MultipleGeometriesExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleGeometriesExample.h; sourceTree = "<group>"; };
+		23BB8E6A29BCD4E400E7C218 /* MultipleGeometriesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleGeometriesExample.m; sourceTree = "<group>"; };
+		23BB8E6E29BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAnnotationWithPointAnnotationExample.h; sourceTree = "<group>"; };
+		23BB8E6F29BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewAnnotationWithPointAnnotationExample.m; sourceTree = "<group>"; };
+		23BB8E7129BCD52E00E7C218 /* ViewAnnotationBasicExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAnnotationBasicExample.h; sourceTree = "<group>"; };
+		23BB8E7229BCD52E00E7C218 /* ViewAnnotationBasicExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewAnnotationBasicExample.m; sourceTree = "<group>"; };
+		23BB8E7429BCD53B00E7C218 /* ViewAnnotationMarkerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAnnotationMarkerExample.h; sourceTree = "<group>"; };
+		23BB8E7529BCD53B00E7C218 /* ViewAnnotationMarkerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewAnnotationMarkerExample.m; sourceTree = "<group>"; };
+		23BB8E7729BCD54800E7C218 /* FrameViewAnnotationsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrameViewAnnotationsExample.h; sourceTree = "<group>"; };
+		23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrameViewAnnotationsExample.m; sourceTree = "<group>"; };
+		23BB8E7A29BCD55600E7C218 /* ViewAnnotationAnimationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAnnotationAnimationExample.h; sourceTree = "<group>"; };
+		23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewAnnotationAnimationExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +217,58 @@
 				236F6CA029AEB3BA002D1CED /* ExamplesViewController.m */,
 				236F6CA329AEB46D002D1CED /* ExampleModel.h */,
 				236F6CA429AEB46D002D1CED /* ExampleModel.m */,
+				23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */,
+				23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */,
+				23BB8E3029BC988F00E7C218 /* Examples.h */,
+				23BB8E3129BC988F00E7C218 /* Examples.m */,
+				23BB8E3329BC9E7200E7C218 /* BasicMapExampleViewController.h */,
+				23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */,
+				23BB8E3629BCD21100E7C218 /* CustomStyleURLExample.h */,
+				23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */,
+				23BB8E3929BCD22F00E7C218 /* StoryboardMapViewExample.h */,
+				23BB8E3A29BCD22F00E7C218 /* StoryboardMapViewExample.m */,
+				23BB8E3C29BCD24300E7C218 /* DebugMapExample.h */,
+				23BB8E3D29BCD24300E7C218 /* DebugMapExample.m */,
+				23BB8E3F29BCD35100E7C218 /* TerrainExample.h */,
+				23BB8E4029BCD35100E7C218 /* TerrainExample.m */,
+				23BB8E4229BCD36600E7C218 /* SceneKitExample.h */,
+				23BB8E4329BCD36600E7C218 /* SceneKitExample.m */,
+				23BB8E4529BCD37400E7C218 /* BuildingExtrusionsExample.h */,
+				23BB8E4629BCD37400E7C218 /* BuildingExtrusionsExample.m */,
+				23BB8E4829BCD38200E7C218 /* SkyLayerExample.h */,
+				23BB8E4929BCD38200E7C218 /* SkyLayerExample.m */,
+				23BB8E4B29BCD42300E7C218 /* PolygonAnnotationExample.h */,
+				23BB8E4C29BCD42300E7C218 /* PolygonAnnotationExample.m */,
+				23BB8E4E29BCD42F00E7C218 /* AddOneMarkerSymbolExample.h */,
+				23BB8E4F29BCD42F00E7C218 /* AddOneMarkerSymbolExample.m */,
+				23BB8E5129BCD44500E7C218 /* CircleAnnotationExample.h */,
+				23BB8E5229BCD44500E7C218 /* CircleAnnotationExample.m */,
+				23BB8E5429BCD45200E7C218 /* SymbolClusteringExample.h */,
+				23BB8E5529BCD45200E7C218 /* SymbolClusteringExample.m */,
+				23BB8E5729BCD45E00E7C218 /* PointAnnotationClusteringExample.h */,
+				23BB8E5829BCD45E00E7C218 /* PointAnnotationClusteringExample.m */,
+				23BB8E5A29BCD46B00E7C218 /* AddMarkersSymbolExample.h */,
+				23BB8E5B29BCD46B00E7C218 /* AddMarkersSymbolExample.m */,
+				23BB8E5D29BCD4AA00E7C218 /* CustomPointAnnotationExample.h */,
+				23BB8E5E29BCD4AA00E7C218 /* CustomPointAnnotationExample.m */,
+				23BB8E6029BCD4BA00E7C218 /* LineAnnotationExample.h */,
+				23BB8E6129BCD4BA00E7C218 /* LineAnnotationExample.m */,
+				23BB8E6329BCD4C900E7C218 /* AnimatedMarkerExample.h */,
+				23BB8E6429BCD4C900E7C218 /* AnimatedMarkerExample.m */,
+				23BB8E6629BCD4D600E7C218 /* IconSizeChangeExample.h */,
+				23BB8E6729BCD4D600E7C218 /* IconSizeChangeExample.m */,
+				23BB8E6929BCD4E400E7C218 /* MultipleGeometriesExample.h */,
+				23BB8E6A29BCD4E400E7C218 /* MultipleGeometriesExample.m */,
+				23BB8E6E29BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.h */,
+				23BB8E6F29BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m */,
+				23BB8E7129BCD52E00E7C218 /* ViewAnnotationBasicExample.h */,
+				23BB8E7229BCD52E00E7C218 /* ViewAnnotationBasicExample.m */,
+				23BB8E7429BCD53B00E7C218 /* ViewAnnotationMarkerExample.h */,
+				23BB8E7529BCD53B00E7C218 /* ViewAnnotationMarkerExample.m */,
+				23BB8E7729BCD54800E7C218 /* FrameViewAnnotationsExample.h */,
+				23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */,
+				23BB8E7A29BCD55600E7C218 /* ViewAnnotationAnimationExample.h */,
+				23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -357,12 +487,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BB8E6829BCD4D600E7C218 /* IconSizeChangeExample.m in Sources */,
+				23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */,
+				23BB8E5029BCD42F00E7C218 /* AddOneMarkerSymbolExample.m in Sources */,
+				23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */,
+				23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */,
 				236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */,
+				23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */,
+				23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */,
+				23BB8E5929BCD45E00E7C218 /* PointAnnotationClusteringExample.m in Sources */,
+				23BB8E5629BCD45200E7C218 /* SymbolClusteringExample.m in Sources */,
+				23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */,
 				236010952824796B00DAC76A /* ViewController.m in Sources */,
+				23BB8E6B29BCD4E400E7C218 /* MultipleGeometriesExample.m in Sources */,
+				23BB8E5C29BCD46B00E7C218 /* AddMarkersSymbolExample.m in Sources */,
+				23BB8E7C29BCD55600E7C218 /* ViewAnnotationAnimationExample.m in Sources */,
 				236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */,
+				23BB8E4D29BCD42300E7C218 /* PolygonAnnotationExample.m in Sources */,
+				23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */,
+				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
+				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
 				236010A02824796C00DAC76A /* main.m in Sources */,
+				23BB8E6229BCD4BA00E7C218 /* LineAnnotationExample.m in Sources */,
+				23BB8E4729BCD37400E7C218 /* BuildingExtrusionsExample.m in Sources */,
+				23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */,
+				23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */,
+				23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */,
+				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
+				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,
+				23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */,
+				23BB8E3829BCD21100E7C218 /* CustomStyleURLExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
