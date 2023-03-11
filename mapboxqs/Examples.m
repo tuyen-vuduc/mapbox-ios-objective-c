@@ -40,6 +40,13 @@
 #import "ResizableImageExample.h"
 #import "LargeGeoJSONPerformanceExample.h"
 
+#import "TrackingModeExample.h"
+#import "BasicLocationPulsingExample.h"
+#import "Custom2DPuckExample.h"
+#import "Custom3DPuckExample.h"
+#import "CustomLocationProviderExample.h"
+#import "NavigationSimulatorExample.h"
+
 @implementation Examples
 
 + (NSArray *)all {
@@ -213,10 +220,37 @@
     ];
 }
 + (NSArray<ExampleModel *> *) locationExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Display the user's location"
+                                   subtitle: @"Display the user's location on a map with the default user location puck."
+                                       type: TrackingModeExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Basic pulsing circle"
+                                   subtitle: @"Display sonar-like animation radiating from the location puck."
+                                       type: BasicLocationPulsingExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Customize the location puck"
+                                   subtitle: @"Customized the location puck on the map"
+                                       type: Custom2DPuckExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use a 3D model to show the user's location"
+                                   subtitle: @"A 3D model is used to represent the user's location."
+                                       type: Custom3DPuckExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add a custom location provider"
+                                   subtitle: @"Display the location puck at a custom location."
+                                       type: CustomLocationProviderExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Simulate navigation"
+                                   subtitle: @"Simulate a driving trip from LA to San Francisco along a pre-defined route"
+                                       type: NavigationSimulatorExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) offlineExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Use OfflineManager and TileStore to download a region"
+                                   subtitle: @"Shows how to use OfflineManager and TileStore to download regions for offline use. By default, users may download up to 750 tile packs for offline use across all regions. If the limit is hit, any loadRegion call will fail until excess regions are deleted. This limit is subject to change. Please contact Mapbox if you require a higher limit. Additional charges may apply."
+                                       type: OfflineManagerExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use OfflineRegionManager to download a region"
+                                   subtitle: @"Use the deprecated OfflineRegionManager to download regions for offline use."
+// TODO                testTimeout: 120,
+                                       type: OfflineRegionManagerExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) snapshotExamples {
     return @[];

@@ -54,6 +54,12 @@
 		23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */; };
 		23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */; };
 		23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */; };
+		23BB8E9429BCD90100E7C218 /* TrackingModeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9329BCD90100E7C218 /* TrackingModeExample.m */; };
+		23BB8E9729BCD90C00E7C218 /* BasicLocationPulsingExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9629BCD90C00E7C218 /* BasicLocationPulsingExample.m */; };
+		23BB8E9A29BCD91800E7C218 /* Custom2DPuckExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9929BCD91800E7C218 /* Custom2DPuckExample.m */; };
+		23BB8E9D29BCD92400E7C218 /* Custom3DPuckExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9C29BCD92400E7C218 /* Custom3DPuckExample.m */; };
+		23BB8EA029BCD93000E7C218 /* CustomLocationProviderExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */; };
+		23BB8EA329BCD93C00E7C218 /* NavigationSimulatorExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -173,6 +179,18 @@
 		23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LargeGeoJSONPerformanceExample.m; sourceTree = "<group>"; };
 		23BB8E8F29BCD86400E7C218 /* ResizableImageExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResizableImageExample.h; sourceTree = "<group>"; };
 		23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResizableImageExample.m; sourceTree = "<group>"; };
+		23BB8E9229BCD90100E7C218 /* TrackingModeExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackingModeExample.h; sourceTree = "<group>"; };
+		23BB8E9329BCD90100E7C218 /* TrackingModeExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackingModeExample.m; sourceTree = "<group>"; };
+		23BB8E9529BCD90C00E7C218 /* BasicLocationPulsingExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicLocationPulsingExample.h; sourceTree = "<group>"; };
+		23BB8E9629BCD90C00E7C218 /* BasicLocationPulsingExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicLocationPulsingExample.m; sourceTree = "<group>"; };
+		23BB8E9829BCD91800E7C218 /* Custom2DPuckExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Custom2DPuckExample.h; sourceTree = "<group>"; };
+		23BB8E9929BCD91800E7C218 /* Custom2DPuckExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Custom2DPuckExample.m; sourceTree = "<group>"; };
+		23BB8E9B29BCD92400E7C218 /* Custom3DPuckExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Custom3DPuckExample.h; sourceTree = "<group>"; };
+		23BB8E9C29BCD92400E7C218 /* Custom3DPuckExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Custom3DPuckExample.m; sourceTree = "<group>"; };
+		23BB8E9E29BCD93000E7C218 /* CustomLocationProviderExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLocationProviderExample.h; sourceTree = "<group>"; };
+		23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLocationProviderExample.m; sourceTree = "<group>"; };
+		23BB8EA129BCD93C00E7C218 /* NavigationSimulatorExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationSimulatorExample.h; sourceTree = "<group>"; };
+		23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationSimulatorExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +322,18 @@
 				23BB8E8D29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m */,
 				23BB8E8F29BCD86400E7C218 /* ResizableImageExample.h */,
 				23BB8E9029BCD86400E7C218 /* ResizableImageExample.m */,
+				23BB8E9229BCD90100E7C218 /* TrackingModeExample.h */,
+				23BB8E9329BCD90100E7C218 /* TrackingModeExample.m */,
+				23BB8E9529BCD90C00E7C218 /* BasicLocationPulsingExample.h */,
+				23BB8E9629BCD90C00E7C218 /* BasicLocationPulsingExample.m */,
+				23BB8E9829BCD91800E7C218 /* Custom2DPuckExample.h */,
+				23BB8E9929BCD91800E7C218 /* Custom2DPuckExample.m */,
+				23BB8E9B29BCD92400E7C218 /* Custom3DPuckExample.h */,
+				23BB8E9C29BCD92400E7C218 /* Custom3DPuckExample.m */,
+				23BB8E9E29BCD93000E7C218 /* CustomLocationProviderExample.h */,
+				23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */,
+				23BB8EA129BCD93C00E7C218 /* NavigationSimulatorExample.h */,
+				23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -531,6 +561,8 @@
 				23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */,
 				236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */,
 				23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */,
+				23BB8E9729BCD90C00E7C218 /* BasicLocationPulsingExample.m in Sources */,
+				23BB8E9D29BCD92400E7C218 /* Custom3DPuckExample.m in Sources */,
 				23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */,
 				23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */,
 				23BB8E5929BCD45E00E7C218 /* PointAnnotationClusteringExample.m in Sources */,
@@ -549,17 +581,21 @@
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
 				236010A02824796C00DAC76A /* main.m in Sources */,
+				23BB8EA329BCD93C00E7C218 /* NavigationSimulatorExample.m in Sources */,
 				23BB8E6229BCD4BA00E7C218 /* LineAnnotationExample.m in Sources */,
 				23BB8E4729BCD37400E7C218 /* BuildingExtrusionsExample.m in Sources */,
 				23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */,
 				23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */,
+				23BB8EA029BCD93000E7C218 /* CustomLocationProviderExample.m in Sources */,
 				23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */,
 				23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */,
 				23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */,
 				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
+				23BB8E9429BCD90100E7C218 /* TrackingModeExample.m in Sources */,
 				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,
 				23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */,
+				23BB8E9A29BCD91800E7C218 /* Custom2DPuckExample.m in Sources */,
 				23BB8E3829BCD21100E7C218 /* CustomStyleURLExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
