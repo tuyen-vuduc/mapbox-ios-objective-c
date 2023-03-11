@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExampleTableViewController.h"
 
-@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+@interface SceneDelegate : NSObject<UISceneDelegate>
 
-@property (strong, nonatomic) UIWindow * window;
+@property NSMutableArray* windows;
 
 @end
 

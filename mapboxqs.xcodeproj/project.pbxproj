@@ -16,7 +16,6 @@
 		236010A02824796C00DAC76A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360109F2824796C00DAC76A /* main.m */; };
 		236010C2282487FF00DAC76A /* MapboxMapObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 236010C1282487FF00DAC76A /* MapboxMapObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */; };
-		236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA029AEB3BA002D1CED /* ExamplesViewController.m */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
 		23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */; };
@@ -135,8 +134,6 @@
 		236010BF282487FF00DAC76A /* MapboxMapObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapboxMapObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		236010C1282487FF00DAC76A /* MapboxMapObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapboxMapObjC.h; sourceTree = "<group>"; };
 		236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puck2DConfigurationBuilder.swift; sourceTree = "<group>"; };
-		236F6C9F29AEB3BA002D1CED /* ExamplesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamplesViewController.h; sourceTree = "<group>"; };
-		236F6CA029AEB3BA002D1CED /* ExamplesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamplesViewController.m; sourceTree = "<group>"; };
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
@@ -339,8 +336,6 @@
 				2360109B2824796C00DAC76A /* LaunchScreen.storyboard */,
 				2360109E2824796C00DAC76A /* Info.plist */,
 				2360109F2824796C00DAC76A /* main.m */,
-				236F6C9F29AEB3BA002D1CED /* ExamplesViewController.h */,
-				236F6CA029AEB3BA002D1CED /* ExamplesViewController.m */,
 				236F6CA329AEB46D002D1CED /* ExampleModel.h */,
 				236F6CA429AEB46D002D1CED /* ExampleModel.m */,
 				23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */,
@@ -710,7 +705,6 @@
 				23BB8E7F29BCD74200E7C218 /* CameraAnimatorsExample.m in Sources */,
 				23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */,
 				23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */,
-				236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */,
 				23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */,
 				23BB8E9729BCD90C00E7C218 /* BasicLocationPulsingExample.m in Sources */,
 				23BB8EE229BCDC6200E7C218 /* DistanceExpressionExample.m in Sources */,
