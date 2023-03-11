@@ -84,6 +84,11 @@
 		23BB8EE529BCDCF400E7C218 /* FeaturesAtPointExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EE429BCDCF400E7C218 /* FeaturesAtPointExample.m */; };
 		23BB8EE829BCDD0200E7C218 /* FeatureStateExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EE729BCDD0200E7C218 /* FeatureStateExample.m */; };
 		23BB8EEB29BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EEA29BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.m */; };
+		23BB8EEE29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EED29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m */; };
+		23BB8EF129BCDDDB00E7C218 /* HeatmapLayerGlobeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EF029BCDDDB00E7C218 /* HeatmapLayerGlobeExample.m */; };
+		23BB8EF429BCDDE800E7C218 /* SpinningGlobeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EF329BCDDE800E7C218 /* SpinningGlobeExample.m */; };
+		23BB8EF729BCDDF600E7C218 /* GlobeFlyToExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EF629BCDDF600E7C218 /* GlobeFlyToExample.m */; };
+		23BB8EFA29BCDE0300E7C218 /* GlobeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EF929BCDE0300E7C218 /* GlobeExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -263,6 +268,16 @@
 		23BB8EE729BCDD0200E7C218 /* FeatureStateExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeatureStateExample.m; sourceTree = "<group>"; };
 		23BB8EE929BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestrictCoordinateBoundsExample.h; sourceTree = "<group>"; };
 		23BB8EEA29BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestrictCoordinateBoundsExample.m; sourceTree = "<group>"; };
+		23BB8EEC29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceOverAccessibilityExample.h; sourceTree = "<group>"; };
+		23BB8EED29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceOverAccessibilityExample.m; sourceTree = "<group>"; };
+		23BB8EEF29BCDDDB00E7C218 /* HeatmapLayerGlobeExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeatmapLayerGlobeExample.h; sourceTree = "<group>"; };
+		23BB8EF029BCDDDB00E7C218 /* HeatmapLayerGlobeExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeatmapLayerGlobeExample.m; sourceTree = "<group>"; };
+		23BB8EF229BCDDE800E7C218 /* SpinningGlobeExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpinningGlobeExample.h; sourceTree = "<group>"; };
+		23BB8EF329BCDDE800E7C218 /* SpinningGlobeExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpinningGlobeExample.m; sourceTree = "<group>"; };
+		23BB8EF529BCDDF600E7C218 /* GlobeFlyToExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobeFlyToExample.h; sourceTree = "<group>"; };
+		23BB8EF629BCDDF600E7C218 /* GlobeFlyToExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobeFlyToExample.m; sourceTree = "<group>"; };
+		23BB8EF829BCDE0300E7C218 /* GlobeExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobeExample.h; sourceTree = "<group>"; };
+		23BB8EF929BCDE0300E7C218 /* GlobeExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlobeExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -454,6 +469,16 @@
 				23BB8EE729BCDD0200E7C218 /* FeatureStateExample.m */,
 				23BB8EE929BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.h */,
 				23BB8EEA29BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.m */,
+				23BB8EEC29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.h */,
+				23BB8EED29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m */,
+				23BB8EEF29BCDDDB00E7C218 /* HeatmapLayerGlobeExample.h */,
+				23BB8EF029BCDDDB00E7C218 /* HeatmapLayerGlobeExample.m */,
+				23BB8EF229BCDDE800E7C218 /* SpinningGlobeExample.h */,
+				23BB8EF329BCDDE800E7C218 /* SpinningGlobeExample.m */,
+				23BB8EF529BCDDF600E7C218 /* GlobeFlyToExample.h */,
+				23BB8EF629BCDDF600E7C218 /* GlobeFlyToExample.m */,
+				23BB8EF829BCDE0300E7C218 /* GlobeExample.h */,
+				23BB8EF929BCDE0300E7C218 /* GlobeExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -692,6 +717,8 @@
 				23BB8E9D29BCD92400E7C218 /* Custom3DPuckExample.m in Sources */,
 				23BB8ED929BCDC3F00E7C218 /* ShowHideLayerExample.m in Sources */,
 				23BB8EB529BCDBA300E7C218 /* LayerPositionExample.m in Sources */,
+				23BB8EF129BCDDDB00E7C218 /* HeatmapLayerGlobeExample.m in Sources */,
+				23BB8EF729BCDDF600E7C218 /* GlobeFlyToExample.m in Sources */,
 				23BB8EEB29BCDD0F00E7C218 /* RestrictCoordinateBoundsExample.m in Sources */,
 				23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */,
 				23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */,
@@ -714,6 +741,7 @@
 				23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */,
 				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
 				23BB8EDF29BCDC5500E7C218 /* DataJoinExample.m in Sources */,
+				23BB8EFA29BCDE0300E7C218 /* GlobeExample.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
 				23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */,
@@ -723,6 +751,7 @@
 				23BB8E4729BCD37400E7C218 /* BuildingExtrusionsExample.m in Sources */,
 				23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */,
 				23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */,
+				23BB8EF429BCDDE800E7C218 /* SpinningGlobeExample.m in Sources */,
 				23BB8EA929BCD9E500E7C218 /* OfflineRegionManagerExample.m in Sources */,
 				23BB8EA029BCD93000E7C218 /* CustomLocationProviderExample.m in Sources */,
 				23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */,
@@ -730,6 +759,7 @@
 				23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */,
 				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
+				23BB8EEE29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m in Sources */,
 				23BB8EBE29BCDBC800E7C218 /* AnimateLayerExample.m in Sources */,
 				23BB8E9429BCD90100E7C218 /* TrackingModeExample.m in Sources */,
 				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,

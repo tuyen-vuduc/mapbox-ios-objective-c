@@ -49,7 +49,6 @@
 #import "OfflineRegionManagerExample.h"
 #import "SnapshotterExample.h"
 #import "SnapshotterCoreGraphicsExample.h"
-
 #import "DataDrivenSymbolsExample.h"
 #import "LayerPositionExample.h"
 #import "PointClusteringExample.h"
@@ -67,11 +66,15 @@
 #import "LiveDataExample.h"
 #import "DataJoinExample.h"
 #import "DistanceExpressionExample.h"
-
 #import "FeaturesAtPointExample.h"
 #import "FeatureStateExample.h"
 #import "RestrictCoordinateBoundsExample.h"
-//#import "SymbolClusteringExample.h"
+#import "VoiceOverAccessibilityExample.h"
+
+#import "GlobeExample.h"
+#import "GlobeFlyToExample.h"
+#import "SpinningGlobeExample.h"
+#import "HeatmapLayerGlobeExample.h"
 
 @implementation Examples
 
@@ -360,9 +363,26 @@
     ];
 }
 + (NSArray<ExampleModel *> *) accessibilityExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Access map features using VoiceOver"
+                                   subtitle: @"Use VoiceOver to highlight annotations and hear their associated features."
+                                       type: VoiceOverAccessibilityExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) globeAndAtmosphere {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Display a globe"
+                                   subtitle: @"Create a map using the globe projection."
+                                       type: GlobeExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Fly-to camera animation"
+                                   subtitle: @"Smoothly interpolate between locations with the fly-to animation."
+                                       type: GlobeFlyToExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Create a rotating globe"
+                                   subtitle: @"Display your map as an interactive, rotating globe."
+                                       type: SpinningGlobeExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Visualize data as a heatmap"
+                                   subtitle: @"Display your heatmap using the globe projection."
+                                       type: HeatmapLayerGlobeExample.class]
+    ];
 }
 @end
