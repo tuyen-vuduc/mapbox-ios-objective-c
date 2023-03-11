@@ -33,6 +33,12 @@
 #import "FrameViewAnnotationsExample.h"
 #import "ViewAnnotationAnimationExample.h"
 
+#import "CameraAnimatorsExample.h"
+#import "CameraAnimationExample.h"
+#import "ViewportExample.h"
+#import "AdvancedViewportGesturesExample.h"
+#import "PitchAndDistanceExample.h"
+
 @implementation Examples
 
 + (NSArray *)all {
@@ -177,7 +183,23 @@
     ];
 }
 + (NSArray<ExampleModel *> *) cameraExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Use custom camera animations"
+                                   subtitle: @"Animate the map camera to a new position using camera animators. Individual camera properties such as zoom, bearing, and center coordinate can be animated independently."
+                                       type: CameraAnimatorsExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use camera animations"
+                                   subtitle: @"Use ease(to:) to animate updates to the camera's position."
+                                       type: CameraAnimationExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Viewport"
+                                   subtitle: @"Viewport camera showcase"
+                                       type: ViewportExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Advanced Viewport Gestures"
+                                   subtitle: @"Viewport configured to allow gestures"
+                                       type: AdvancedViewportGesturesExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Filter symbols based on pitch and distance"
+                                   subtitle: @"Use pitch and distance-from-center expressions in the filter field of a symbol layer to remove large size POI labels in the far distance at high pitch"
+                                       type: PitchAndDistanceExample.class]
+];
 }
 + (NSArray<ExampleModel *> *) labExamples {
     return @[];

@@ -47,6 +47,11 @@
 		23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7529BCD53B00E7C218 /* ViewAnnotationMarkerExample.m */; };
 		23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */; };
 		23BB8E7C29BCD55600E7C218 /* ViewAnnotationAnimationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */; };
+		23BB8E7F29BCD74200E7C218 /* CameraAnimatorsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E7E29BCD74200E7C218 /* CameraAnimatorsExample.m */; };
+		23BB8E8229BCD7BF00E7C218 /* CameraAnimationExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8129BCD7BF00E7C218 /* CameraAnimationExample.m */; };
+		23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8429BCD7CC00E7C218 /* ViewportExample.m */; };
+		23BB8E8829BCD7D800E7C218 /* AdvancedViewportGesturesExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */; };
+		23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -152,6 +157,16 @@
 		23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrameViewAnnotationsExample.m; sourceTree = "<group>"; };
 		23BB8E7A29BCD55600E7C218 /* ViewAnnotationAnimationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewAnnotationAnimationExample.h; sourceTree = "<group>"; };
 		23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewAnnotationAnimationExample.m; sourceTree = "<group>"; };
+		23BB8E7D29BCD74100E7C218 /* CameraAnimatorsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraAnimatorsExample.h; sourceTree = "<group>"; };
+		23BB8E7E29BCD74200E7C218 /* CameraAnimatorsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraAnimatorsExample.m; sourceTree = "<group>"; };
+		23BB8E8029BCD7BF00E7C218 /* CameraAnimationExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraAnimationExample.h; sourceTree = "<group>"; };
+		23BB8E8129BCD7BF00E7C218 /* CameraAnimationExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraAnimationExample.m; sourceTree = "<group>"; };
+		23BB8E8329BCD7CC00E7C218 /* ViewportExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewportExample.h; sourceTree = "<group>"; };
+		23BB8E8429BCD7CC00E7C218 /* ViewportExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewportExample.m; sourceTree = "<group>"; };
+		23BB8E8629BCD7D800E7C218 /* AdvancedViewportGesturesExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedViewportGesturesExample.h; sourceTree = "<group>"; };
+		23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedViewportGesturesExample.m; sourceTree = "<group>"; };
+		23BB8E8929BCD7E500E7C218 /* PitchAndDistanceExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PitchAndDistanceExample.h; sourceTree = "<group>"; };
+		23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PitchAndDistanceExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +284,16 @@
 				23BB8E7829BCD54800E7C218 /* FrameViewAnnotationsExample.m */,
 				23BB8E7A29BCD55600E7C218 /* ViewAnnotationAnimationExample.h */,
 				23BB8E7B29BCD55600E7C218 /* ViewAnnotationAnimationExample.m */,
+				23BB8E7D29BCD74100E7C218 /* CameraAnimatorsExample.h */,
+				23BB8E7E29BCD74200E7C218 /* CameraAnimatorsExample.m */,
+				23BB8E8029BCD7BF00E7C218 /* CameraAnimationExample.h */,
+				23BB8E8129BCD7BF00E7C218 /* CameraAnimationExample.m */,
+				23BB8E8329BCD7CC00E7C218 /* ViewportExample.h */,
+				23BB8E8429BCD7CC00E7C218 /* ViewportExample.m */,
+				23BB8E8629BCD7D800E7C218 /* AdvancedViewportGesturesExample.h */,
+				23BB8E8729BCD7D800E7C218 /* AdvancedViewportGesturesExample.m */,
+				23BB8E8929BCD7E500E7C218 /* PitchAndDistanceExample.h */,
+				23BB8E8A29BCD7E500E7C218 /* PitchAndDistanceExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -489,13 +514,17 @@
 			files = (
 				23BB8E6829BCD4D600E7C218 /* IconSizeChangeExample.m in Sources */,
 				23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */,
+				23BB8E8229BCD7BF00E7C218 /* CameraAnimationExample.m in Sources */,
 				23BB8E5029BCD42F00E7C218 /* AddOneMarkerSymbolExample.m in Sources */,
+				23BB8E7F29BCD74200E7C218 /* CameraAnimatorsExample.m in Sources */,
 				23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */,
 				23BB8E5F29BCD4AA00E7C218 /* CustomPointAnnotationExample.m in Sources */,
 				236F6CA129AEB3BA002D1CED /* ExamplesViewController.m in Sources */,
 				23BB8E4129BCD35100E7C218 /* TerrainExample.m in Sources */,
+				23BB8E8529BCD7CC00E7C218 /* ViewportExample.m in Sources */,
 				23BB8E5329BCD44500E7C218 /* CircleAnnotationExample.m in Sources */,
 				23BB8E5929BCD45E00E7C218 /* PointAnnotationClusteringExample.m in Sources */,
+				23BB8E8829BCD7D800E7C218 /* AdvancedViewportGesturesExample.m in Sources */,
 				23BB8E5629BCD45200E7C218 /* SymbolClusteringExample.m in Sources */,
 				23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */,
 				236010952824796B00DAC76A /* ViewController.m in Sources */,
@@ -505,6 +534,7 @@
 				236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */,
 				23BB8E4D29BCD42300E7C218 /* PolygonAnnotationExample.m in Sources */,
 				23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */,
+				23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */,
 				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
