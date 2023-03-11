@@ -68,6 +68,11 @@
 #import "DataJoinExample.h"
 #import "DistanceExpressionExample.h"
 
+#import "FeaturesAtPointExample.h"
+#import "FeatureStateExample.h"
+#import "RestrictCoordinateBoundsExample.h"
+//#import "SymbolClusteringExample.h"
+
 @implementation Examples
 
 + (NSArray *)all {
@@ -339,7 +344,20 @@
     ];
 }
 + (NSArray<ExampleModel *> *) userInteractionExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Find features at a point"
+                                   subtitle: @"Query the map for rendered features belonging to a specific layer."
+                                       type: FeaturesAtPointExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Use Feature State"
+                                   subtitle: @"Manipulate map styling with feature states and expressions."
+                                       type: FeatureStateExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Restrict the map's coordinate bounds"
+                                   subtitle: @"Prevent the map from panning outside the specified coordinate bounds."
+                                       type: RestrictCoordinateBoundsExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Add an interactive clustered layer"
+                                   subtitle: @"Display an alert controller after selecting a feature."
+                                       type: SymbolClusteringExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) accessibilityExamples {
     return @[];
