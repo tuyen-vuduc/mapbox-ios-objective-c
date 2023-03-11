@@ -60,6 +60,10 @@
 		23BB8E9D29BCD92400E7C218 /* Custom3DPuckExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9C29BCD92400E7C218 /* Custom3DPuckExample.m */; };
 		23BB8EA029BCD93000E7C218 /* CustomLocationProviderExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */; };
 		23BB8EA329BCD93C00E7C218 /* NavigationSimulatorExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */; };
+		23BB8EA629BCD9D900E7C218 /* OfflineManagerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EA529BCD9D900E7C218 /* OfflineManagerExample.m */; };
+		23BB8EA929BCD9E500E7C218 /* OfflineRegionManagerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EA829BCD9E500E7C218 /* OfflineRegionManagerExample.m */; };
+		23BB8EAC29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */; };
+		23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -191,6 +195,14 @@
 		23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLocationProviderExample.m; sourceTree = "<group>"; };
 		23BB8EA129BCD93C00E7C218 /* NavigationSimulatorExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationSimulatorExample.h; sourceTree = "<group>"; };
 		23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationSimulatorExample.m; sourceTree = "<group>"; };
+		23BB8EA429BCD9D900E7C218 /* OfflineManagerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineManagerExample.h; sourceTree = "<group>"; };
+		23BB8EA529BCD9D900E7C218 /* OfflineManagerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflineManagerExample.m; sourceTree = "<group>"; };
+		23BB8EA729BCD9E500E7C218 /* OfflineRegionManagerExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfflineRegionManagerExample.h; sourceTree = "<group>"; };
+		23BB8EA829BCD9E500E7C218 /* OfflineRegionManagerExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfflineRegionManagerExample.m; sourceTree = "<group>"; };
+		23BB8EAA29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapshotterCoreGraphicsExample.h; sourceTree = "<group>"; };
+		23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapshotterCoreGraphicsExample.m; sourceTree = "<group>"; };
+		23BB8EAD29BCDA5A00E7C218 /* SnapshotterExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapshotterExample.h; sourceTree = "<group>"; };
+		23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapshotterExample.m; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -334,6 +346,14 @@
 				23BB8E9F29BCD93000E7C218 /* CustomLocationProviderExample.m */,
 				23BB8EA129BCD93C00E7C218 /* NavigationSimulatorExample.h */,
 				23BB8EA229BCD93C00E7C218 /* NavigationSimulatorExample.m */,
+				23BB8EA429BCD9D900E7C218 /* OfflineManagerExample.h */,
+				23BB8EA529BCD9D900E7C218 /* OfflineManagerExample.m */,
+				23BB8EA729BCD9E500E7C218 /* OfflineRegionManagerExample.h */,
+				23BB8EA829BCD9E500E7C218 /* OfflineRegionManagerExample.m */,
+				23BB8EAA29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.h */,
+				23BB8EAB29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m */,
+				23BB8EAD29BCDA5A00E7C218 /* SnapshotterExample.h */,
+				23BB8EAE29BCDA5A00E7C218 /* SnapshotterExample.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -552,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BB8EA629BCD9D900E7C218 /* OfflineManagerExample.m in Sources */,
 				23BB8E6829BCD4D600E7C218 /* IconSizeChangeExample.m in Sources */,
 				23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */,
 				23BB8E8229BCD7BF00E7C218 /* CameraAnimationExample.m in Sources */,
@@ -575,17 +596,20 @@
 				23BB8E7C29BCD55600E7C218 /* ViewAnnotationAnimationExample.m in Sources */,
 				236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */,
 				23BB8E4D29BCD42300E7C218 /* PolygonAnnotationExample.m in Sources */,
+				23BB8EAC29BCDA4B00E7C218 /* SnapshotterCoreGraphicsExample.m in Sources */,
 				23BB8E7629BCD53B00E7C218 /* ViewAnnotationMarkerExample.m in Sources */,
 				23BB8E8B29BCD7E500E7C218 /* PitchAndDistanceExample.m in Sources */,
 				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
+				23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */,
 				236010A02824796C00DAC76A /* main.m in Sources */,
 				23BB8EA329BCD93C00E7C218 /* NavigationSimulatorExample.m in Sources */,
 				23BB8E6229BCD4BA00E7C218 /* LineAnnotationExample.m in Sources */,
 				23BB8E4729BCD37400E7C218 /* BuildingExtrusionsExample.m in Sources */,
 				23BB8E7929BCD54800E7C218 /* FrameViewAnnotationsExample.m in Sources */,
 				23BB8E6529BCD4C900E7C218 /* AnimatedMarkerExample.m in Sources */,
+				23BB8EA929BCD9E500E7C218 /* OfflineRegionManagerExample.m in Sources */,
 				23BB8EA029BCD93000E7C218 /* CustomLocationProviderExample.m in Sources */,
 				23BB8E4429BCD36600E7C218 /* SceneKitExample.m in Sources */,
 				23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */,

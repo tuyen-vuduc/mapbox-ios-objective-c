@@ -39,13 +39,16 @@
 #import "PitchAndDistanceExample.h"
 #import "ResizableImageExample.h"
 #import "LargeGeoJSONPerformanceExample.h"
-
 #import "TrackingModeExample.h"
 #import "BasicLocationPulsingExample.h"
 #import "Custom2DPuckExample.h"
 #import "Custom3DPuckExample.h"
 #import "CustomLocationProviderExample.h"
 #import "NavigationSimulatorExample.h"
+#import "OfflineManagerExample.h"
+#import "OfflineRegionManagerExample.h"
+#import "SnapshotterExample.h"
+#import "SnapshotterCoreGraphicsExample.h"
 
 @implementation Examples
 
@@ -253,7 +256,14 @@
     ];
 }
 + (NSArray<ExampleModel *> *) snapshotExamples {
-    return @[];
+    return @[
+        [[ExampleModel alloc] initWithTitle: @"Create a static map snapshot"
+                                   subtitle: @"Create a static, non-interactive image of a map style with specified camera position. The resulting snapshot is provided as a `UIImage`. The map on top is interactive. The bottom one is a static snapshot."
+                                       type: SnapshotterExample.class],
+        [[ExampleModel alloc] initWithTitle: @"Draw on a static snapshot with Core Graphics"
+                                   subtitle: @"Use the overlayHandler parameter to draw on top of a snapshot using Core Graphhics APIs."
+                                       type: SnapshotterCoreGraphicsExample.class]
+    ];
 }
 + (NSArray<ExampleModel *> *) styleExamples {
     return @[];
