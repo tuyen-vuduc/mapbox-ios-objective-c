@@ -19,7 +19,6 @@
 		236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
-		23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */; };
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
 		23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */; };
 		23BB8E3229BC988F00E7C218 /* Examples.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3129BC988F00E7C218 /* Examples.m */; };
@@ -141,7 +140,6 @@
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
-		23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsFactory.swift; sourceTree = "<group>"; };
 		23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOptions.swift; sourceTree = "<group>"; };
 		23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewController.h; sourceTree = "<group>"; };
 		23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTableViewController.m; sourceTree = "<group>"; };
@@ -492,7 +490,6 @@
 				23BB8F0029BD651400E7C218 /* enums */,
 				236010C1282487FF00DAC76A /* MapboxMapObjC.h */,
 				23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */,
-				23BA6DD42826CA3400D2D03A /* MapInitOptionsFactory.swift */,
 				23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */,
 				23F7987B282737C700A4B28F /* MapViewFactory.swift */,
 				236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */,
@@ -814,7 +811,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23BA6DD52826CA3400D2D03A /* MapInitOptionsFactory.swift in Sources */,
 				23BB8EFD29BD647400E7C218 /* OrnamentVisibility.swift in Sources */,
 				23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */,
 				23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */,
