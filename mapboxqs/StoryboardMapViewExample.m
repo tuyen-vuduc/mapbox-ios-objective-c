@@ -7,7 +7,13 @@
 
 #import "StoryboardMapViewExample.h"
 
-@interface StoryboardMapViewExample ()
+#import <MapboxMaps/MapboxMaps.h>
+#import <MapboxCoreMaps/MapboxCoreMaps.h>
+#import <MapboxMapObjC/MapboxMapObjC.h>
+#import "MapboxMaps-Swift.h"
+#import "ExampleProtocol.h"
+
+@interface StoryboardMapViewExample () <MapInitOptionsProvider, ExampleProtocol>
 
 @end
 
@@ -27,5 +33,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (MapInitOptions * _Nonnull)mapInitOptions {
+    NSString* defaultAccessToken = MapboxInitOptionsBuilder.defaultResourceOptions.accessToken;
+    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:40.728 longitude:-74.0060];
+    
+    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
+                                                                 padding:nil
+                                                                  anchor:nil
+                                                                    zoom:@10
+                                                                 bearing:nil
+                                                                pitch:nil];
+    
+    MapboxInitOptionsBuilder* builder = [MapboxInitOptionsBuilder create];
+    
+    return [[[[builder accessToken:defaultAccessToken] cameraOptions:cameraOptions] styleLight] build];
+}
 
 @end

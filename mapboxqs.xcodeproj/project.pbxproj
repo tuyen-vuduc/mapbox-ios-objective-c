@@ -14,6 +14,8 @@
 		2360109D2824796C00DAC76A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2360109B2824796C00DAC76A /* LaunchScreen.storyboard */; };
 		236010A02824796C00DAC76A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360109F2824796C00DAC76A /* main.m */; };
 		236010C2282487FF00DAC76A /* MapboxMapObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 236010C1282487FF00DAC76A /* MapboxMapObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2365B7F729BE82E400A013E1 /* StoryboardMapViewExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */; };
+		2365B7F929BE844A00A013E1 /* MapInitOptionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365B7F829BE844A00A013E1 /* MapInitOptionsBuilder.swift */; };
 		236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
@@ -133,6 +135,8 @@
 		2360109F2824796C00DAC76A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		236010BF282487FF00DAC76A /* MapboxMapObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapboxMapObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		236010C1282487FF00DAC76A /* MapboxMapObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapboxMapObjC.h; sourceTree = "<group>"; };
+		2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardMapViewExample.storyboard; sourceTree = "<group>"; };
+		2365B7F829BE844A00A013E1 /* MapInitOptionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsBuilder.swift; sourceTree = "<group>"; };
 		236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puck2DConfigurationBuilder.swift; sourceTree = "<group>"; };
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 		2360108C2824796B00DAC76A /* mapboxqs */ = {
 			isa = PBXGroup;
 			children = (
+				2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */,
 				2360108D2824796B00DAC76A /* AppDelegate.h */,
 				2360108E2824796B00DAC76A /* AppDelegate.m */,
 				236010902824796B00DAC76A /* SceneDelegate.h */,
@@ -492,6 +497,7 @@
 				23F7987B282737C700A4B28F /* MapViewFactory.swift */,
 				236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */,
 				23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */,
+				2365B7F829BE844A00A013E1 /* MapInitOptionsBuilder.swift */,
 			);
 			path = MapboxMapObjC;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2365B7F729BE82E400A013E1 /* StoryboardMapViewExample.storyboard in Resources */,
 				2360109D2824796C00DAC76A /* LaunchScreen.storyboard in Resources */,
 				2360109A2824796C00DAC76A /* Assets.xcassets in Resources */,
 				236010982824796B00DAC76A /* Main.storyboard in Resources */,
@@ -814,6 +821,7 @@
 				23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */,
 				23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */,
 				23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */,
+				2365B7F929BE844A00A013E1 /* MapInitOptionsBuilder.swift in Sources */,
 				236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
