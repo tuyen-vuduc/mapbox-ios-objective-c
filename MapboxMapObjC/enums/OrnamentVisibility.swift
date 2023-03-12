@@ -8,7 +8,7 @@ public enum MBXOrnamentVisibility : Int {
 }
 
 extension MBXOrnamentVisibility {
-    func SwiftOnly() -> OrnamentVisibility {
+    func swiftOnly() -> OrnamentVisibility {
         switch (self) {
         case .adaptive:
             return .adaptive

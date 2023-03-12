@@ -21,36 +21,3 @@ open class MapViewFactory : NSObject {
         return MapView(frame: frame, mapInitOptions: options ?? MapInitOptions())
     }
 }
-
-extension MapView {
-    @objc public func setLocationDelegate(_ delegate: LocationPermissionsDelegate) {
-        self.location.delegate = delegate
-    }
-    
-    @objc public func requestTemporaryFullAccuracyPermissions(_ customKey: String) {
-        self.location.requestTemporaryFullAccuracyPermissions(withPurposeKey: customKey)
-    }
-    
-    @objc public func puck2D(_ build: ((_ builder: Puck2DConfigurationBuilder) -> Void)?) {
-        if let build {
-            let builder = Puck2DConfigurationBuilder()
-            build(builder)
-            self.location.options.puckType = .puck2D(builder.build())
-        } else {
-            self.location.options.puckType = .puck2D()
-        }
-    }
-    
-    @objc public func puckBearingSource(_ source: MBXPuckBearingSource) {
-        self.location.options.puckBearingSource = source == .heading ? .heading : .course
-    }
-    
-    @objc public func viewPort() {
-        let x: OverviewViewportStateOptions;
-    }
-}
-
-@objc public enum MBXPuckBearingSource : Int {
-    case heading
-    case course
-}

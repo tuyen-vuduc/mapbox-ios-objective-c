@@ -1,8 +1,15 @@
-//
-//  PuckBearingSource.swift
-//  MapboxMapObjC
-//
-//  Created by Tuyen Vu on 12/03/2023.
-//
+import MapboxMaps
 
-import Foundation
+@objc public enum MBXPuckBearingSource : Int {
+    case heading
+    case course
+}
+
+extension MBXPuckBearingSource {
+    func swiftOnly() -> PuckBearingSource {
+        switch(self) {
+        case .heading: return .heading
+        case .course: return .course
+        }
+    }
+}
