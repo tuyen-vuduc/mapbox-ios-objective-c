@@ -278,6 +278,7 @@
 		23BB8EFC29BD647400E7C218 /* OrnamentVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentVisibility.swift; sourceTree = "<group>"; };
 		23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
 		23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuckBearingSource.swift; sourceTree = "<group>"; };
+		23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleProtocol.h; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -475,6 +476,7 @@
 				23BB8EF629BCDDF600E7C218 /* GlobeFlyToExample.m */,
 				23BB8EF829BCDE0300E7C218 /* GlobeExample.h */,
 				23BB8EF929BCDE0300E7C218 /* GlobeExample.m */,
+				23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -661,12 +663,14 @@
 		};
 		23BB8EFB29BD5CD500E7C218 /* Insert Mapbox access token */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Insert Mapbox access token";
 			outputFileListPaths = (
@@ -675,7 +679,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/scripts/insert_access_token.sh\n";
+			shellScript = "echo \"SRCROOT >> $SRCROOT\"\n\n$SRCROOT/scripts/insert_access_token.sh\n";
+			showEnvVarsInLog = 0;
 		};
 		3E96499224816E4359BFE0C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -972,6 +977,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1006,6 +1012,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

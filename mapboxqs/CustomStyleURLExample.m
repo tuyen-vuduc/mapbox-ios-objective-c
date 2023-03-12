@@ -7,7 +7,14 @@
 
 #import "CustomStyleURLExample.h"
 
-@interface CustomStyleURLExample ()
+#import <MapboxMaps/MapboxMaps.h>
+#import "MapboxMaps-Swift.h"
+#import <MapboxMapObjC/MapboxMapObjC.h>
+#import "ExampleProtocol.h"
+
+@interface CustomStyleURLExample () <ExampleProtocol>
+
+@property (strong) MapView* mapView;
 
 @end
 
@@ -16,6 +23,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    MapInitOptions* mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:nil
+                                                                           mapOptions:nil
+                                                                        cameraOptions:nil stylePath:@"mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j"];
+    MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
+                                               options:mapInitOptions];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [mapView ornamentsOptionsScaleBarVisibility: MBXOrnamentVisibilityVisible];
+    
+    __weak CustomStyleURLExample *weakSelf = self;
+    [mapView onStyleLoaded:^(id _Nonnull) {
+        if ([weakSelf respondsToSelector:@selector(finish)]) {
+            [weakSelf finish];
+        }
+    }];
+    
+    self.mapView = mapView;
+    [self.view addSubview:mapView];
+    
 }
 
 /*
