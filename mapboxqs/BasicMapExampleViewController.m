@@ -6,8 +6,13 @@
 //
 
 #import "BasicMapExampleViewController.h"
+#import "MapboxMaps-Swift.h"
+#import <MapboxMaps/MapboxMaps.h>
+#import <MapboxMapObjC/MapboxMapObjC.h>
 
 @interface BasicMapExample ()
+
+@property (strong) MapView* mapView;
 
 @end
 
@@ -15,7 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds options:nil];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [mapView ornamentsOptionsScaleBarVisibility: MBXOrnamentVisibilityVisible];
+    
+    self.mapView = mapView;
+    [self.view addSubview:mapView];
 }
 
 /*
