@@ -244,3 +244,23 @@ extension MapView {
         self.location.options.puckBearingSource = source.swiftOnly()
     }
 }
+
+
+// MapView.misc
+extension MapView {
+    @objc public func preferredFrameRateRange(_ value: CAFrameRateRange) {
+        self.preferredFrameRateRange = value
+    }
+    @objc public func mapboxMapDebugOptions() -> [NSNumber] {
+        return self.mapboxMap.debugOptions.map{
+            return NSNumber(value: $0.rawValue)
+        }
+    }
+    @objc public func mapboxMapDebugOptions(_ value: [NSNumber]) {
+        let debugOptions = value.map {
+            return MapDebugOptions(rawValue: $0.intValue)!
+        }
+        
+        self.mapboxMap.debugOptions = debugOptions;
+    }
+}

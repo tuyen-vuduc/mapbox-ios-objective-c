@@ -16,6 +16,8 @@
 		236010C2282487FF00DAC76A /* MapboxMapObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 236010C1282487FF00DAC76A /* MapboxMapObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2365B7F729BE82E400A013E1 /* StoryboardMapViewExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */; };
 		2365B7F929BE844A00A013E1 /* MapInitOptionsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2365B7F829BE844A00A013E1 /* MapInitOptionsBuilder.swift */; };
+		2365B7FF29BE934D00A013E1 /* UIColor+AdditionalColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365B7FE29BE934D00A013E1 /* UIColor+AdditionalColors.m */; };
+		2365B80329BE9E9700A013E1 /* NSArray+HoF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365B80229BE9E9700A013E1 /* NSArray+HoF.m */; };
 		236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
@@ -136,6 +138,10 @@
 		236010C1282487FF00DAC76A /* MapboxMapObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapboxMapObjC.h; sourceTree = "<group>"; };
 		2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardMapViewExample.storyboard; sourceTree = "<group>"; };
 		2365B7F829BE844A00A013E1 /* MapInitOptionsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsBuilder.swift; sourceTree = "<group>"; };
+		2365B7FE29BE934D00A013E1 /* UIColor+AdditionalColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AdditionalColors.m"; sourceTree = "<group>"; };
+		2365B80029BE944900A013E1 /* UIColor+AdditionalColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AdditionalColors.h"; sourceTree = "<group>"; };
+		2365B80129BE9E9700A013E1 /* NSArray+HoF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+HoF.h"; sourceTree = "<group>"; };
+		2365B80229BE9E9700A013E1 /* NSArray+HoF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HoF.m"; sourceTree = "<group>"; };
 		236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puck2DConfigurationBuilder.swift; sourceTree = "<group>"; };
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
@@ -480,6 +486,10 @@
 				23BB8EF829BCDE0300E7C218 /* GlobeExample.h */,
 				23BB8EF929BCDE0300E7C218 /* GlobeExample.m */,
 				23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */,
+				2365B7FE29BE934D00A013E1 /* UIColor+AdditionalColors.m */,
+				2365B80029BE944900A013E1 /* UIColor+AdditionalColors.h */,
+				2365B80129BE9E9700A013E1 /* NSArray+HoF.h */,
+				2365B80229BE9E9700A013E1 /* NSArray+HoF.m */,
 			);
 			path = mapboxqs;
 			sourceTree = "<group>";
@@ -775,6 +785,7 @@
 				23BB8E3229BC988F00E7C218 /* Examples.m in Sources */,
 				23BB8EDF29BCDC5500E7C218 /* DataJoinExample.m in Sources */,
 				23BB8EFA29BCDE0300E7C218 /* GlobeExample.m in Sources */,
+				2365B7FF29BE934D00A013E1 /* UIColor+AdditionalColors.m in Sources */,
 				2360108F2824796B00DAC76A /* AppDelegate.m in Sources */,
 				23BB8E7329BCD52E00E7C218 /* ViewAnnotationBasicExample.m in Sources */,
 				23BB8EAF29BCDA5A00E7C218 /* SnapshotterExample.m in Sources */,
@@ -791,6 +802,7 @@
 				23BB8E9129BCD86400E7C218 /* ResizableImageExample.m in Sources */,
 				23BB8E8E29BCD85600E7C218 /* LargeGeoJSONPerformanceExample.m in Sources */,
 				23BB8E4A29BCD38200E7C218 /* SkyLayerExample.m in Sources */,
+				2365B80329BE9E9700A013E1 /* NSArray+HoF.m in Sources */,
 				236010922824796B00DAC76A /* SceneDelegate.m in Sources */,
 				23BB8EEE29BCDD7C00E7C218 /* VoiceOverAccessibilityExample.m in Sources */,
 				23BB8EBE29BCDBC800E7C218 /* AnimateLayerExample.m in Sources */,

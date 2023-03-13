@@ -6,9 +6,9 @@
 //
 
 #import "BasicMapExampleViewController.h"
-#import "MapboxMaps-Swift.h"
 #import <MapboxMaps/MapboxMaps.h>
 #import <MapboxMapObjC/MapboxMapObjC.h>
+#import "MapboxMaps-Swift.h"
 
 @interface BasicMapExample ()
 
