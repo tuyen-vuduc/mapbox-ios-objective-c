@@ -35,7 +35,7 @@
 */
 
 - (MapInitOptions * _Nonnull)mapInitOptions {
-    NSString* defaultAccessToken = MapboxInitOptionsBuilder.defaultResourceOptions.accessToken;
+    NSString* defaultAccessToken = MapInitOptionsBuilder.defaultResourceOptions.accessToken;
     CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:40.728 longitude:-74.0060];
     
     MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
@@ -45,7 +45,7 @@
                                                                  bearing:nil
                                                                 pitch:nil];
     
-    MapboxInitOptionsBuilder* builder = [MapboxInitOptionsBuilder create];
+    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
     return [[[[builder accessToken:defaultAccessToken] cameraOptions:cameraOptions] styleLight] build];
 }

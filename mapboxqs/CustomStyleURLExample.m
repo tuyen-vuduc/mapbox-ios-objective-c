@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    MapboxInitOptionsBuilder* builder = [MapboxInitOptionsBuilder create];
+    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     MapInitOptions* mapInitOptions = [[builder styleUriString: @"mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j"] build];
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:mapInitOptions];
