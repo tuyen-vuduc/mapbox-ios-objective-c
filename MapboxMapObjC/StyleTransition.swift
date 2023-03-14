@@ -1,3 +1,4 @@
+import MapboxMaps
 
 @objc open class MBXStyleTransition: NSObject {
     /// Time allotted for transitions to complete in seconds.
@@ -9,5 +10,11 @@
     @objc public init(duration: Double, delay: Double) {
         self.duration = duration
         self.delay = delay
+    }
+}
+
+extension MBXStyleTransition {
+    func swiftOnly() -> StyleTransition {
+        return StyleTransition(duration: duration, delay: delay)
     }
 }

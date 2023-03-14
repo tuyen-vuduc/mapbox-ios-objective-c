@@ -1,3 +1,5 @@
+import MapboxMaps
+
 @objc
 open class MBXValue : NSObject {
     let constant: NSObject?
@@ -19,5 +21,17 @@ open class MBXValue : NSObject {
     
     @objc class public func expression(_ expression: NSObject) -> MBXValue {
         return MBXValue(expression: expression)
+    }
+}
+
+
+extension MBXValue {
+    func swiftOnly<T>() -> Value<T> {
+        if let constant = self.constant as? T {
+            return Value.constant(constant)
+        }
+        
+        // TODO To be completed
+        return Value.expression(Expression(.id))
     }
 }
