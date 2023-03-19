@@ -1,6 +1,36 @@
 import MapboxMaps
 import MapboxMobileEvents
 
+// MapView.layer
+
+@objc
+extension MapView {
+    @objc public func addCustomLayer(_ id: String, layerHost: CustomLayerHost, below belowLayerId: String, onError: ((Error)->Void)?) -> Void {
+        do {
+            try self.mapboxMap.style.addCustomLayer(
+                withId: id,
+                layerHost: layerHost,
+                layerPosition: LayerPosition.below(belowLayerId)
+            )
+        } catch {
+            onError?(error)
+        }
+    }
+    @objc public func addCustomLayer(_ id: String, layerHost: CustomLayerHost, above aboveLayerId: String, onError: ((Error)->Void)?) -> Void {
+        do {
+            try self.mapboxMap.style.addCustomLayer(withId: id, layerHost: layerHost, layerPosition: LayerPosition.above(aboveLayerId))
+        } catch {
+            onError?(error)
+        }
+    }
+    @objc public func addCustomLayer(_ id: String, layerHost: CustomLayerHost, at index: Int, onError: ((Error)->Void)?) -> Void {
+        do {
+            try self.mapboxMap.style.addCustomLayer(withId: id, layerHost: layerHost, layerPosition: LayerPosition.at(index))
+        } catch {
+            onError?(error)
+        }
+    }
+}
 
 // MapView.ornaments
 extension MapView {

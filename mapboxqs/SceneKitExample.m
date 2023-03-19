@@ -1,16 +1,34 @@
 #import "SceneKitExample.h"
 
 #import <SceneKit/SceneKit.h>
+#import <Metal/Metal.h>
 #import <MapboxMaps/MapboxMaps.h>
 #import <MapboxCoreMaps/MapboxCoreMaps.h>
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
 #import "ExampleProtocol.h"
 
-@class SceneKitExampleCustomLayerHost;
+typedef void (^RenderingWillEndHandler)(void);
+
+@interface SceneKitExampleCustomLayerHost : NSObject<MBMCustomLayerHost>
+
+@property (readonly) CLLocationCoordinate2D modelOrigin;
+@property SCNRenderer* renderer;
+@property SCNScene* scene;
+@property SCNNode* modelNode;
+@property SCNNode* cameraNode;
+@property SCNNode* textNode;
+@property BOOL useCPUOcclusion;
+@property (readonly) RenderingWillEndHandler renderingWillEndHandler;
+
+- (instancetype)initWithModelOrigin: (CLLocationCoordinate2D) modelOrigin
+            renderingWillEndHandler: (RenderingWillEndHandler) renderingWillEndHandler;
+
+@end
 
 @interface SceneKitExample () <ExampleProtocol>
 
+@property (readonly) CLLocationCoordinate2D modelOrigin;
 @property MapView* mapView;
 - (void) addModelAndTerrain;
 
@@ -20,8 +38,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:-35.39847
-                                                            longitude: 148.9819];
+    _modelOrigin = CLLocationCoordinate2DMake(-35.39847, 148.9819);
+    
+    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: self.modelOrigin.latitude
+                                                            longitude: self.modelOrigin.longitude];
     
     MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
                                                                        padding:nil
@@ -53,6 +73,21 @@
 }
 
 - (void) addModelAndTerrain {
+    __weak SceneKitExample *weakSelf = self;
+    SceneKitExampleCustomLayerHost* layerHost = [[SceneKitExampleCustomLayerHost alloc] initWithModelOrigin:self.modelOrigin
+                                                                                    renderingWillEndHandler:^{
+        if ([weakSelf respondsToSelector:@selector(finish)]) {
+            [weakSelf finish];
+        }
+    }];
+    
+    [self.mapView addCustomLayer: @"Custom"
+                       layerHost: layerHost
+                           below: @"waterway-label"
+                         onError:^(NSError * _Nonnull) {
+        // Do something here
+    }];
+    
     NSString* sourceId = @"mapbox-dem";
     [self.mapView addRasterDemSource: sourceId
                            configure:^(RasterDemSourceBuilder * _Nonnull builder) {
@@ -61,13 +96,13 @@
         [builder maxzoom:14.0];
     }
                              onError:nil];
-    
+
     MBXTerrain* terrain = [[MBXTerrain alloc] initWithSourceId:sourceId];
     MBXValue* value = [[MBXValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
-    
+
     [self.mapView setTerrain:terrain onError:nil];
-    
+
     [self.mapView addSkyLayer:@"sky-layer"
                     configure:^(SkyLayerBuilder * _Nonnull builder) {
         MBXValue* skyType = [MBXValue constant: [NSNumber numberWithInt:MBXSkyTypeAtmosphere]];
@@ -78,7 +113,7 @@
         [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
     }
                       onError:nil];
-    
+
     // Re-use terrain source for hillshade
     NSDictionary* properties = @{
         @"id": @"terrain_hillshade",
@@ -102,21 +137,6 @@
 
 @end
 
-typedef void (^RenderingWillEndHandler)(void);
-
-@interface SceneKitExampleCustomLayerHost : NSObject<MBMCustomLayerHost>
-
-@property (readonly) CLLocationCoordinate2D modelOrigin;
-@property SCNRenderer* renderer;
-@property SCNScene* scene;
-@property SCNNode* modelNode;
-@property SCNNode* cameraNode;
-@property SCNNode* textNode;
-@property BOOL useCPUOcclusion;
-@property (readonly) RenderingWillEndHandler renderingWillEndHandler;
-
-@end
-
 @implementation SceneKitExampleCustomLayerHost
 
 - (instancetype)initWithModelOrigin: (CLLocationCoordinate2D) modelOrigin
@@ -129,7 +149,9 @@ typedef void (^RenderingWillEndHandler)(void);
     return self;
 }
 
-- (void)renderingWillStart:(id<MTLDevice>)metalDevice colorPixelFormat:(NSUInteger)colorPixelFormat depthStencilPixelFormat:(NSUInteger)depthStencilPixelFormat {
+- (void)renderingWillStart:(id<MTLDevice>)metalDevice
+          colorPixelFormat:(NSUInteger)colorPixelFormat
+   depthStencilPixelFormat:(NSUInteger)depthStencilPixelFormat {
     self.renderer = [SCNRenderer rendererWithDevice:metalDevice
                                             options:nil];
     self.scene = [SCNScene new];
@@ -138,13 +160,13 @@ typedef void (^RenderingWillEndHandler)(void);
     self.modelNode = [[SCNScene sceneNamed:@"34M_17"].rootNode clone];
     [self.scene.rootNode addChildNode: self.modelNode];
     
-    self.cameraNode = [SCNNode new];
+    self.cameraNode = [[SCNNode alloc] init];
     
-    SCNCamera* camera = [SCNCamera new];
+    SCNCamera* camera = [[SCNCamera alloc] init];
     self.cameraNode.camera = camera;
     camera.usesOrthographicProjection = false;
     [self.scene.rootNode addChildNode:self.cameraNode];
-    self.renderer.pointOfView = camera;
+    self.renderer.pointOfView = self.cameraNode;
     
     [self setupLight];
     
@@ -164,7 +186,7 @@ typedef void (^RenderingWillEndHandler)(void);
     ambientLight.light.color = [UIColor colorWithWhite:0.4 alpha:1.0];
     
     [self.modelNode addChildNode: ambientLight];
-
+    
     SCNNode* lightNode = [SCNNode new];
     lightNode.light = [SCNLight new];
     lightNode.light.type = SCNLightTypeDirectional;
@@ -188,115 +210,130 @@ typedef void (^RenderingWillEndHandler)(void);
 - (simd_double4x4) makeTranslationMatrixWithX: (double) x
                                             y: (double) y
                                             z: (double) z {
-    matrix_identity_double4x4 matrix;
-        
-    matrix[3][0] = x;
-    matrix[3][1] = y;
-    matrix[3][2] = z;
+    simd_double4x4 matrix = matrix_identity_double4x4;
+    
+    matrix.columns[3][0] = x;
+    matrix.columns[3][1] = y;
+    matrix.columns[3][2] = z;
     
     return matrix;
 }
 
-@end
-    func makeTranslationMatrix(tx: Double, ty: Double, tz: Double) -> simd_double4x4 {
-        var matrix = matrix_identity_double4x4
 
-        matrix[3, 0] = tx
-        matrix[3, 1] = ty
-        matrix[3, 2] = tz
+- (simd_double4x4) makeScaleMatrixWithX: (double) x
+                                      y: (double) y
+                                      z: (double) z {
+    simd_double4x4 matrix = matrix_identity_double4x4;
+    
+    matrix.columns[0][0] = x;
+    matrix.columns[1][1] = y;
+    matrix.columns[2][2] = z;
+    
+    return matrix;
+}
 
-        return matrix
-    }
-
-    func makeScaleMatrix(xScale: Double, yScale: Double, zScale: Double) -> simd_double4x4 {
-        var matrix = matrix_identity_double4x4
-
-        matrix[0, 0] = xScale
-        matrix[1, 1] = yScale
-        matrix[2, 2] = zScale
-
-        return matrix
-    }
-
-    func render(_ parameters: CustomLayerRenderParameters, mtlCommandBuffer: MTLCommandBuffer, mtlRenderPassDescriptor: MTLRenderPassDescriptor) {
-        guard let colorTexture = mtlRenderPassDescriptor.colorAttachments[0].texture else {
-            return
-        }
-        let m = parameters.projectionMatrix
-
-        // It is essential to use double precision for computation below: using simd instead
-        // of SceneKit matrix operations.
-        var transformSimd = matrix_identity_double4x4
-        transformSimd[0, 0] = m[0].doubleValue
-        transformSimd[0, 1] = m[1].doubleValue
-        transformSimd[0, 2] = m[2].doubleValue
-        transformSimd[0, 3] = m[3].doubleValue
-        transformSimd[1, 0] = m[4].doubleValue
-        transformSimd[1, 1] = m[5].doubleValue
-        transformSimd[1, 2] = m[6].doubleValue
-        transformSimd[1, 3] = m[7].doubleValue
-        transformSimd[2, 0] = m[8].doubleValue
-        transformSimd[2, 1] = m[9].doubleValue
-        transformSimd[2, 2] = m[10].doubleValue
-        transformSimd[2, 3] = m[11].doubleValue
-        transformSimd[3, 0] = m[12].doubleValue
-        transformSimd[3, 1] = m[13].doubleValue
-        transformSimd[3, 2] = m[14].doubleValue
-        transformSimd[3, 3] = m[15].doubleValue
-
-        // Model is using metric unit system: scale x and y from meters to mercator and keep z is in meters.
-        let meterInMercatorCoordinateUnits = 1.0 / (Projection.metersPerPoint(for: modelOrigin.latitude, zoom: CGFloat(parameters.zoom)))
-        let modelScale = makeScaleMatrix(xScale: meterInMercatorCoordinateUnits, yScale: Double(-meterInMercatorCoordinateUnits), zScale: 1)
-
-        // Translate scaled model to model origin (in web mercator coordinates) and elevate to model origin's altitude (in meters).
-        let origin = Projection.project(modelOrigin, zoomScale: CGFloat(pow(2, parameters.zoom)))
-        var elevation = 0.0
-        if let elevationData = parameters.elevationData, let elevationValue = elevationData.getElevationFor(self.modelOrigin) {
-            elevation = elevationValue.doubleValue
-        }
-        let translateModel = makeTranslationMatrix(tx: origin.x, ty: origin.y, tz: elevation)
-
-        let transform = transformSimd * translateModel * modelScale
-
-        let scnMat = SCNMatrix4(
-            m11: Float(transform[0, 0]),
-            m12: Float(transform[0, 1]),
-            m13: Float(transform[0, 2]),
-            m14: Float(transform[0, 3]),
-            m21: Float(transform[1, 0]),
-            m22: Float(transform[1, 1]),
-            m23: Float(transform[1, 2]),
-            m24: Float(transform[1, 3]),
-            m31: Float(transform[2, 0]),
-            m32: Float(transform[2, 1]),
-            m33: Float(transform[2, 2]),
-            m34: Float(transform[2, 3]),
-            m41: Float(transform[3, 0]),
-            m42: Float(transform[3, 1]),
-            m43: Float(transform[3, 2]),
-            m44: Float(transform[3, 3])
-        )
-        cameraNode.camera!.projectionTransform = scnMat
-
-        // flush automatic SceneKit transaction as SceneKit animation is not running and
-        // there's need to use transform matrix in this frame (not to have it used with delay).
-        SCNTransaction.flush()
-
-        if self.useCPUOcclusion {
-            mtlRenderPassDescriptor.depthAttachment = nil
-            mtlRenderPassDescriptor.stencilAttachment = nil
-            // Example uses depth buffer to occlude model when e.g. behind the hill.
-            // If depth buffer (SCNRenderer.usesReverseZ = false) is not available, or if wished to
-            // to indicate that model is occluded or e.g. implement fade out / fade in model occlusion,
-            // the example here needs to provide CPU side occlusion implementation, too.
-            // TODO: this is blocked on https://github.com/mapbox/mapbox-maps-ios/issues/155
-        }
-        renderer.render(withViewport: CGRect(x: 0, y: 0, width: CGFloat(colorTexture.width), height: CGFloat(colorTexture.height)), commandBuffer: mtlCommandBuffer, passDescriptor: mtlRenderPassDescriptor)
-
-    }
-
-    func renderingWillEnd() {
-        // The below line is used for internal testing purposes only.
-        renderingWillEndHandler()
+- (void)renderingWillEnd {
+    if (self.renderingWillEndHandler) {
+        self.renderingWillEndHandler();
     }
 }
+
+- (void)render:(nonnull MBMCustomLayerRenderParameters *)parameters mtlCommandBuffer:(nonnull id<MTLCommandBuffer>)mtlCommandBuffer mtlRenderPassDescriptor:(nonnull MTLRenderPassDescriptor *)mtlRenderPassDescriptor {    
+    id<MTLTexture> colorTexture = mtlRenderPassDescriptor.colorAttachments[0].texture;
+    
+    if (!colorTexture) {
+        return;
+    }
+    
+    NSArray<NSNumber *>* m = parameters.projectionMatrix;
+    
+    // It is essential to use double precision for computation below: using simd instead
+    // of SceneKit matrix operations.
+    simd_double4x4 transformSimd = matrix_identity_double4x4;
+    transformSimd.columns[0][0] = m[0].doubleValue;
+    transformSimd.columns[0][1] = m[1].doubleValue;
+    transformSimd.columns[0][2] = m[2].doubleValue;
+    transformSimd.columns[0][3] = m[3].doubleValue;
+    transformSimd.columns[1][0] = m[4].doubleValue;
+    transformSimd.columns[1][1] = m[5].doubleValue;
+    transformSimd.columns[1][2] = m[6].doubleValue;
+    transformSimd.columns[1][3] = m[7].doubleValue;
+    transformSimd.columns[2][0] = m[8].doubleValue;
+    transformSimd.columns[2][1] = m[9].doubleValue;
+    transformSimd.columns[2][2] = m[10].doubleValue;
+    transformSimd.columns[2][3] = m[11].doubleValue;
+    transformSimd.columns[3][0] = m[12].doubleValue;
+    transformSimd.columns[3][1] = m[13].doubleValue;
+    transformSimd.columns[3][2] = m[14].doubleValue;
+    transformSimd.columns[3][3] = m[15].doubleValue;
+    
+    // Model is using metric unit system: scale x and y from meters to mercator and keep z is in meters.
+    double metersPerPoint = [MBMProjection getMetersPerPixelAtLatitudeForLatitude:self.modelOrigin.latitude
+                                                                             zoom:parameters.zoom];
+    double meterInMercatorCoordinateUnits = 1.0 / metersPerPoint;
+    simd_double4x4 modelScale = [self makeScaleMatrixWithX:meterInMercatorCoordinateUnits
+                                                         y:-meterInMercatorCoordinateUnits
+                                                         z:1];
+    
+    MBMMercatorCoordinate* origin = [MBMProjection projectForCoordinate:self.modelOrigin
+                                                              zoomScale:pow(2, parameters.zoom)];
+    
+    double elevation = 0.0;
+    
+    if (parameters.elevationData) {
+        NSNumber* elevationData = [parameters.elevationData getElevationForCoordinate:self.modelOrigin];
+        
+        if (elevationData) {
+            elevation = elevationData.doubleValue;
+        }
+    }
+    simd_double4x4 translateModel = [self makeTranslationMatrixWithX: origin.x
+                                                                   y: origin.y
+                                                                   z: elevation];
+    
+    simd_double4x4 transform = simd_mul(simd_mul(transformSimd, translateModel), modelScale);
+    
+    SCNMatrix4 scnMat;
+    
+    scnMat.m11 = transform.columns[0][0];
+    scnMat.m12 = transform.columns[0][1];
+    scnMat.m13 = transform.columns[0][2];
+    scnMat.m14 = transform.columns[0][3];
+    scnMat.m21 = transform.columns[1][0];
+    scnMat.m22 = transform.columns[1][1];
+    scnMat.m23 = transform.columns[1][2];
+    scnMat.m24 = transform.columns[1][3];
+    scnMat.m31 = transform.columns[2][0];
+    scnMat.m32 = transform.columns[2][1];
+    scnMat.m33 = transform.columns[2][2];
+    scnMat.m34 = transform.columns[2][3];
+    scnMat.m41 = transform.columns[3][0];
+    scnMat.m42 = transform.columns[3][1];
+    scnMat.m43 = transform.columns[3][2];
+    scnMat.m44 = transform.columns[3][3];
+    
+    self.cameraNode.camera.projectionTransform = scnMat;
+    
+    // flush automatic SceneKit transaction as SceneKit animation is not running and
+    // there's need to use transform matrix in this frame (not to have it used with delay).
+    [SCNTransaction flush];
+    
+    if (self.useCPUOcclusion) {
+        mtlRenderPassDescriptor.depthAttachment = nil;
+        mtlRenderPassDescriptor.stencilAttachment = nil;
+        // Example uses depth buffer to occlude model when e.g. behind the hill.
+        // If depth buffer (SCNRenderer.usesReverseZ = false) is not available, or if wished to
+        // to indicate that model is occluded or e.g. implement fade out / fade in model occlusion,
+        // the example here needs to provide CPU side occlusion implementation, too.
+        // TODO: this is blocked on https://github.com/mapbox/mapbox-maps-ios/issues/155
+    }
+    
+    CGRect viewPort = CGRectMake(0, 0, colorTexture.width, colorTexture.height);
+    
+    [self.renderer renderWithViewport: viewPort
+                        commandBuffer: mtlCommandBuffer
+                       passDescriptor: mtlRenderPassDescriptor];
+    
+}
+
+@end

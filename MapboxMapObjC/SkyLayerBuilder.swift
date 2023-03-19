@@ -22,6 +22,26 @@ extension MapView {
             onError?(error)
         }
     }
+    
+    @objc public func addLayerAbove(withProperties properties: NSDictionary, layerId: String, onError: ((Error)->Void)?) {
+        do {
+            let swiftProperties = properties as! [String: Any]
+            try self.mapboxMap.style.addLayer(with: swiftProperties,
+                                              layerPosition: .above(layerId))
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayerAt(withProperties properties: NSDictionary, index: Int, onError: ((Error)->Void)?) {
+        do {
+            let swiftProperties = properties as! [String: Any]
+            try self.mapboxMap.style.addLayer(with: swiftProperties,
+                                              layerPosition: .at(index))
+        } catch {
+            onError?(error)
+        }
+    }
 }
 
 @objc
