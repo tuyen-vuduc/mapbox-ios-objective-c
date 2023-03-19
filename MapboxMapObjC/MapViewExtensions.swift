@@ -1,6 +1,15 @@
 import MapboxMaps
 import MapboxMobileEvents
 
+// MapView.camera
+
+@objc
+extension MapView {
+    @objc public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions) {
+        self.mapboxMap.setCamera(to: cameraOptions.swiftValue())
+    }
+}
+
 // MapView.layer
 
 @objc
@@ -26,6 +35,36 @@ extension MapView {
     @objc public func addCustomLayer(_ id: String, layerHost: CustomLayerHost, at index: Int, onError: ((Error)->Void)?) -> Void {
         do {
             try self.mapboxMap.style.addCustomLayer(withId: id, layerHost: layerHost, layerPosition: LayerPosition.at(index))
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayerBelow(withProperties properties: NSDictionary, layerId: String, onError: ((Error)->Void)?) {
+        do {
+            let swiftProperties = properties as! [String: Any]
+            try self.mapboxMap.style.addLayer(with: swiftProperties,
+                                              layerPosition: .below(layerId))
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayerAbove(withProperties properties: NSDictionary, layerId: String, onError: ((Error)->Void)?) {
+        do {
+            let swiftProperties = properties as! [String: Any]
+            try self.mapboxMap.style.addLayer(with: swiftProperties,
+                                              layerPosition: .above(layerId))
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayerAt(withProperties properties: NSDictionary, index: Int, onError: ((Error)->Void)?) {
+        do {
+            let swiftProperties = properties as! [String: Any]
+            try self.mapboxMap.style.addLayer(with: swiftProperties,
+                                              layerPosition: .at(index))
         } catch {
             onError?(error)
         }
@@ -274,7 +313,6 @@ extension MapView {
         self.location.options.puckBearingSource = source.swiftOnly()
     }
 }
-
 
 // MapView.misc
 extension MapView {

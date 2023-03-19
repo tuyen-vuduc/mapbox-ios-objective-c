@@ -25,6 +25,16 @@ open class MBXValue : NSObject {
 }
 
 
+extension UIColor {
+    func styleColor() -> StyleColor {
+        return StyleColor(self)
+    }
+    
+    class func fromStyleColor(_ color: StyleColor) -> UIColor {
+        return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: color.alpha)
+    }
+}
+
 extension MBXValue {
     func styleColor<T>() -> Value<T>? {
         if let constant = self.constant as? UIColor {
@@ -41,10 +51,18 @@ extension MBXValue {
         }
         
         return Value.expression(expression!.swiftOnly())
-    }
-    
+    }    
     func double<T>() -> Value<T>? {
         if let constant = self.constant as? Double {
+            return Value.constant(constant as! T)
+        }
+        
+        let expression = expression!.swiftOnly();
+        
+        return Value.expression(expression)
+    }
+    func boolean<T>() -> Value<T>? {
+        if let constant = self.constant as? Bool {
             return Value.constant(constant as! T)
         }
         
@@ -242,6 +260,13 @@ extension MBXValue {
     func textWritingMode<T>() -> Value<T>? {
         if let constant = self.constant as? NSNumber {
             return Value.constant(constant.textWritingMode() as! T)
+        }
+        
+        return Value.expression(expression!.swiftOnly())
+    }
+    func resolvedImage<T>() -> Value<T>? {
+        if let constant = self.constant as? MBXResolvedImage {
+            return Value.constant(constant.swiftOnly() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())

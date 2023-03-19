@@ -2,7 +2,7 @@ import Foundation
 import MapboxMaps
 
 extension MapboxCoreMaps.CameraOptions {
-    func create() -> MapboxMaps.CameraOptions {
+    func swiftValue() -> MapboxMaps.CameraOptions {
         return MapboxMaps.CameraOptions(
             center: self.__center?.coordinate,
             padding: self.__padding?.toUIEdgeInsetsValue(),

@@ -33,6 +33,9 @@
 		236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236F6C9D29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		2386378A29C6B4EF002282FF /* 34M_17.dae in Resources */ = {isa = PBXBuildFile; fileRef = 2386378929C6B4EF002282FF /* 34M_17.dae */; };
+		2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378B29C6B8FC002282FF /* LightBuilder.swift */; };
+		2386378E29C6C06D002282FF /* FillExtrusionLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */; };
+		2386379029C6D71F002282FF /* ResolvedImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378F29C6D71F002282FF /* ResolvedImageData.swift */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
 		23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */; };
@@ -171,6 +174,9 @@
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		2386378929C6B4EF002282FF /* 34M_17.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = 34M_17.dae; sourceTree = "<group>"; };
+		2386378B29C6B8FC002282FF /* LightBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBuilder.swift; sourceTree = "<group>"; };
+		2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillExtrusionLayerBuilder.swift; sourceTree = "<group>"; };
+		2386378F29C6D71F002282FF /* ResolvedImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolvedImageData.swift; sourceTree = "<group>"; };
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
 		23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOptions.swift; sourceTree = "<group>"; };
 		23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewController.h; sourceTree = "<group>"; };
@@ -538,6 +544,9 @@
 				231AF0CF29BF9633002D6CFD /* SkyLayerBuilder.swift */,
 				231AF0D129BFEDA8002D6CFD /* StyleTransition.swift */,
 				231AF0D329BFEFE4002D6CFD /* Expression.swift */,
+				2386378B29C6B8FC002282FF /* LightBuilder.swift */,
+				2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */,
+				2386378F29C6D71F002282FF /* ResolvedImageData.swift */,
 			);
 			path = MapboxMapObjC;
 			sourceTree = "<group>";
@@ -874,7 +883,9 @@
 				231AF0D029BF9633002D6CFD /* SkyLayerBuilder.swift in Sources */,
 				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
 				231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */,
+				2386379029C6D71F002282FF /* ResolvedImageData.swift in Sources */,
 				231AF0C629BF8905002D6CFD /* SourceType.swift in Sources */,
+				2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* StyleTransition.swift in Sources */,
 				231AF0C829BF8B09002D6CFD /* Encoding.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* Expression.swift in Sources */,
@@ -882,6 +893,7 @@
 				23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */,
 				2365B7F929BE844A00A013E1 /* MapInitOptionsBuilder.swift in Sources */,
 				236F6C9E29AE5BA5002D1CED /* Puck2DConfigurationBuilder.swift in Sources */,
+				2386378E29C6C06D002282FF /* FillExtrusionLayerBuilder.swift in Sources */,
 				231AF0CC29BF9305002D6CFD /* Value.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

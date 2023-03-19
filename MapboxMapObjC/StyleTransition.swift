@@ -17,4 +17,12 @@ extension MBXStyleTransition {
     func swiftOnly() -> StyleTransition {
         return StyleTransition(duration: duration, delay: delay)
     }
+    
+    class func zero() -> MBXStyleTransition {
+        return MBXStyleTransition(duration: 0, delay: 0)
+    }
+    
+    class func from(_ value: StyleTransition) -> MBXStyleTransition {
+        return MBXStyleTransition(duration: value.duration, delay: value.delay)
+    }
 }

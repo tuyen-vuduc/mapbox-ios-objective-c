@@ -43,7 +43,7 @@ open class MapInitOptionsBuilder : NSObject {
     }
     
     @objc public func cameraOptions(_ value: MapboxCoreMaps.CameraOptions?) -> MapInitOptionsBuilder {
-        self.cameraOptions = value?.create()
+        self.cameraOptions = value?.swiftValue()
         
         return self
     }
