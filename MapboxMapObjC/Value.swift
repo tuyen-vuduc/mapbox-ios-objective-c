@@ -52,6 +52,23 @@ extension MBXValue {
         return Value.expression(expression!.swiftOnly())
     }
     
+    func arrayOfString<T>() -> Value<T>? {
+        if let constant = self.constant as? NSArray,
+            let array = constant as? [String] {
+            return Value.constant(array as! T)
+        }
+        
+        return Value.expression(expression!.swiftOnly())
+    }
+    func string<T>() -> Value<T>? {
+        if let constant = self.constant as? String {
+            return Value.constant(constant as! T)
+        }
+        
+        let expression = expression!.swiftOnly();
+        
+        return Value.expression(expression)
+    }
     func arrayOfDouble<T>() -> Value<T>? {
         if let constant = self.constant as? NSArray,
             let array = constant as? [Double] {
@@ -142,6 +159,13 @@ extension MBXValue {
     func textAnchor<T>() -> Value<T>? {
         if let constant = self.constant as? NSNumber {
             return Value.constant(constant.textAnchor() as! T)
+        }
+        
+        return Value.expression(expression!.swiftOnly())
+    }
+    func arrayOfTextAnchor<T>() -> Value<T>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({$0.textAnchor()}) as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
@@ -268,6 +292,13 @@ extension MBXValue {
     func textWritingMode<T>() -> Value<T>? {
         if let constant = self.constant as? NSNumber {
             return Value.constant(constant.textWritingMode() as! T)
+        }
+        
+        return Value.expression(expression!.swiftOnly())
+    }
+    func arrayOfTextWritingMode<T>() -> Value<T>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({$0.textWritingMode()}) as! T)
         }
         
         return Value.expression(expression!.swiftOnly())

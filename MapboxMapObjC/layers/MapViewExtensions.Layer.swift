@@ -5,6 +5,47 @@ import MapboxMaps
 
 @objc
 extension MapView {
+    @objc public func addLayer(
+        target: NSObject,
+        selector: Selector,
+        layerPosition: MBXLayerPosition = .unowned,
+   layerPositionParam: NSObject?,
+        onError: ((Error)->Void)?
+    ) {
+        guard let layerBuilder = target.perform(selector) as? (any LayerBuilder) else {
+            return
+        }
+        do {
+            
+            try self.mapboxMap.style.addLayer(
+                layerBuilder.build(),
+                layerPosition: layerPosition.swiftValue(layerPositionParam)
+            )
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayer(
+        builder: ()->AnyObject,
+        layerPosition: MBXLayerPosition = .unowned,
+   layerPositionParam: NSObject?,
+        onError: ((Error)->Void)?
+    ) {
+        guard let layerBuilder = builder() as? (any LayerBuilder) else {
+            return
+        }
+        
+        do {
+            try self.mapboxMap.style.addLayer(
+                layerBuilder.build(),
+                layerPosition: layerPosition.swiftValue(layerPositionParam)
+            )
+        } catch {
+            onError?(error)
+        }
+    }
+    
     @objc public func addCustomLayer(
                 _ id: String,
            layerHost: CustomLayerHost,
@@ -38,3 +79,20 @@ extension MapView {
     }
 }
 
+public protocol LayerBuilder {
+    associatedtype T: Layer
+    
+    var id: String { get }
+    func create() -> T
+    func update(_ layer: inout T) -> Void
+}
+
+extension LayerBuilder {
+    func build() -> T {
+        var result = create()
+        
+        update(&result)
+        
+        return result
+    }
+}

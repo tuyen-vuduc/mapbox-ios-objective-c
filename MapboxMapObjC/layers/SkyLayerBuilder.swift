@@ -43,14 +43,21 @@ extension MapView {
 }
 
 @objc
-open class SkyLayerBuilder : NSObject {
-    @objc public let id: String
+open class SkyLayerBuilder : NSObject, LayerBuilder {
+    public typealias T = SkyLayer
+    
+    public let id: String
     
     init(id: String) {
         self.id = id
+        super.init()
     }
     
-    func update(_ layer: inout SkyLayer) -> Void {
+    public func create() -> SkyLayer {
+        SkyLayer(id: id)
+    }
+    
+    public func update(_ layer: inout SkyLayer) -> Void {
         if let filter = filter {
            layer.filter = filter.swiftOnly()
         }
@@ -121,14 +128,6 @@ open class SkyLayerBuilder : NSObject {
         if let skyType = skyType {
            layer.skyType = skyType.skyType()
         }
-    }
-
-    func build() -> SkyLayer {
-        var result = SkyLayer(id: id)
-        
-        update(&result)
-        
-        return result
     }
     
     private var filter: MBXExpression?;
