@@ -83,8 +83,9 @@ typedef void (^RenderingWillEndHandler)(void);
     
     [self.mapView addCustomLayer: @"Custom"
                        layerHost: layerHost
-                           below: @"waterway-label"
-                         onError:^(NSError * _Nonnull) {
+                   layerPosition: MBXLayerPositionBelow
+              layerPositionParam: @"waterway-label"
+                         onError:^(NSError * _Nonnull _) {
         // Do something here
     }];
     
@@ -122,7 +123,10 @@ typedef void (^RenderingWillEndHandler)(void);
         @"hillshade-illumination-anchor": @"map"
     };
 
-    [self.mapView addLayerBelowWithProperties:properties layerId:@"water" onError:nil];
+    [self.mapView addLayerWithProperties: properties
+                           layerPosition: MBXLayerPositionBelow
+                      layerPositionParam:@"water"
+                                 onError:nil];
 }
 
 /*

@@ -9,18 +9,21 @@ public enum MBXLayerPosition : Int {
 }
 
 extension MBXLayerPosition {
-    public func swiftValue(_ layerParam: AnyObject?) -> LayerPosition {
+    public func swiftValue(_ layerPositionParam: AnyObject?) -> LayerPosition {
         switch self {
         case .at:
-            if let index = layerParam as? Int {
+            if let index = layerPositionParam as? Int {
                 return .at(index)
             }
+            if let index = layerPositionParam as? NSNumber {
+                return .at(index.intValue)
+            }
         case .below:
-            if let layerId = layerParam as? String {
+            if let layerId = layerPositionParam as? String {
                 return .below(layerId)
             }
         case .above:
-            if let layerId = layerParam as? String {
+            if let layerId = layerPositionParam as? String {
                 return .above(layerId)
             }
         default:

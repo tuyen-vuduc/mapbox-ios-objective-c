@@ -13,11 +13,11 @@ extension MapView {
     public func polygonAnnotationManager(
         id: String?,
         layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
-        layerParam: AnyObject?
+        layerPositionParam: AnyObject?
     ) -> MBXPolygonAnnotationManager {
         let swiftValue = self.annotations.makePolygonAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerParam)
+            layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
         return MBXPolygonAnnotationManager(swiftValue)
     }

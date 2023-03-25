@@ -27,6 +27,8 @@
 		23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2229CEFF720088065B /* BuiltInStyles.swift */; };
 		23251E2529CF01310088065B /* MapViewExtensions.Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2429CF01310088065B /* MapViewExtensions.Style.swift */; };
 		23251E2729CF02690088065B /* MBXStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2629CF02690088065B /* MBXStyle.swift */; };
+		23251E2A29CF0DB00088065B /* SymbolLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2929CF0DB00088065B /* SymbolLayerBuilder.swift */; };
+		23251E2C29CF0E220088065B /* MapViewExtensions.Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2B29CF0E220088065B /* MapViewExtensions.Layer.swift */; };
 		2360108F2824796B00DAC76A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360108E2824796B00DAC76A /* AppDelegate.m */; };
 		236010922824796B00DAC76A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 236010912824796B00DAC76A /* SceneDelegate.m */; };
 		236010982824796B00DAC76A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236010962824796B00DAC76A /* Main.storyboard */; };
@@ -168,6 +170,8 @@
 		23251E2229CEFF720088065B /* BuiltInStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInStyles.swift; sourceTree = "<group>"; };
 		23251E2429CF01310088065B /* MapViewExtensions.Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.Style.swift; sourceTree = "<group>"; };
 		23251E2629CF02690088065B /* MBXStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXStyle.swift; sourceTree = "<group>"; };
+		23251E2929CF0DB00088065B /* SymbolLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolLayerBuilder.swift; sourceTree = "<group>"; };
+		23251E2B29CF0E220088065B /* MapViewExtensions.Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.Layer.swift; sourceTree = "<group>"; };
 		2360108A2824796B00DAC76A /* mapboxqs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapboxqs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2360108D2824796B00DAC76A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2360108E2824796B00DAC76A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -376,11 +380,23 @@
 		23251E2129CEFF4C0088065B /* styles */ = {
 			isa = PBXGroup;
 			children = (
+				2386378B29C6B8FC002282FF /* LightBuilder.swift */,
 				23251E2229CEFF720088065B /* BuiltInStyles.swift */,
 				23251E2429CF01310088065B /* MapViewExtensions.Style.swift */,
 				23251E2629CF02690088065B /* MBXStyle.swift */,
 			);
 			path = styles;
+			sourceTree = "<group>";
+		};
+		23251E2829CF0D4B0088065B /* layers */ = {
+			isa = PBXGroup;
+			children = (
+				2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */,
+				231AF0CF29BF9633002D6CFD /* SkyLayerBuilder.swift */,
+				23251E2929CF0DB00088065B /* SymbolLayerBuilder.swift */,
+				23251E2B29CF0E220088065B /* MapViewExtensions.Layer.swift */,
+			);
+			path = layers;
 			sourceTree = "<group>";
 		};
 		236010812824796B00DAC76A = {
@@ -567,6 +583,7 @@
 		236010C0282487FF00DAC76A /* MapboxMapObjC */ = {
 			isa = PBXGroup;
 			children = (
+				23251E2829CF0D4B0088065B /* layers */,
 				23251E2129CEFF4C0088065B /* styles */,
 				23251E1C29CEF33E0088065B /* annotations */,
 				23BB8F0029BD651400E7C218 /* enums */,
@@ -580,11 +597,8 @@
 				231AF0C329BF8826002D6CFD /* RasterDemSourceBuilder.swift */,
 				231AF0CB29BF9305002D6CFD /* Value.swift */,
 				231AF0CD29BF9319002D6CFD /* Terrain.swift */,
-				231AF0CF29BF9633002D6CFD /* SkyLayerBuilder.swift */,
 				231AF0D129BFEDA8002D6CFD /* StyleTransition.swift */,
 				231AF0D329BFEFE4002D6CFD /* Expression.swift */,
-				2386378B29C6B8FC002282FF /* LightBuilder.swift */,
-				2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */,
 				2386378F29C6D71F002282FF /* ResolvedImageData.swift */,
 			);
 			path = MapboxMapObjC;
@@ -925,11 +939,13 @@
 				23251E1729CEBA3A0088065B /* AnnotationManager.swift in Sources */,
 				231AF0D029BF9633002D6CFD /* SkyLayerBuilder.swift in Sources */,
 				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
+				23251E2A29CF0DB00088065B /* SymbolLayerBuilder.swift in Sources */,
 				23251E1929CEE9250088065B /* LayerPosition.swift in Sources */,
 				231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */,
 				2386379029C6D71F002282FF /* ResolvedImageData.swift in Sources */,
 				23251E2029CEF3870088065B /* MBXPolygonAnnotation.swift in Sources */,
 				23251E1B29CEEC6E0088065B /* MapViewExtentions.Annotations.swift in Sources */,
+				23251E2C29CF0E220088065B /* MapViewExtensions.Layer.swift in Sources */,
 				231AF0C629BF8905002D6CFD /* SourceType.swift in Sources */,
 				2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* StyleTransition.swift in Sources */,
