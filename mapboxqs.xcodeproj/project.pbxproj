@@ -45,7 +45,7 @@
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
 		23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */; };
 		23BB8E3229BC988F00E7C218 /* Examples.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3129BC988F00E7C218 /* Examples.m */; };
-		23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */; };
+		23BB8E3529BC9E7200E7C218 /* BasicMapExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3429BC9E7200E7C218 /* BasicMapExample.m */; };
 		23BB8E3829BCD21100E7C218 /* CustomStyleURLExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */; };
 		23BB8E3B29BCD22F00E7C218 /* StoryboardMapViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3A29BCD22F00E7C218 /* StoryboardMapViewExample.m */; };
 		23BB8E3E29BCD24300E7C218 /* DebugMapExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E3D29BCD24300E7C218 /* DebugMapExample.m */; };
@@ -193,8 +193,8 @@
 		23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleTableViewController.m; sourceTree = "<group>"; };
 		23BB8E3029BC988F00E7C218 /* Examples.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Examples.h; sourceTree = "<group>"; };
 		23BB8E3129BC988F00E7C218 /* Examples.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Examples.m; sourceTree = "<group>"; };
-		23BB8E3329BC9E7200E7C218 /* BasicMapExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicMapExampleViewController.h; sourceTree = "<group>"; };
-		23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicMapExampleViewController.m; sourceTree = "<group>"; };
+		23BB8E3329BC9E7200E7C218 /* BasicMapExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicMapExample.h; sourceTree = "<group>"; };
+		23BB8E3429BC9E7200E7C218 /* BasicMapExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicMapExample.m; sourceTree = "<group>"; };
 		23BB8E3629BCD21100E7C218 /* CustomStyleURLExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomStyleURLExample.h; sourceTree = "<group>"; };
 		23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomStyleURLExample.m; sourceTree = "<group>"; };
 		23BB8E3929BCD22F00E7C218 /* StoryboardMapViewExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryboardMapViewExample.h; sourceTree = "<group>"; };
@@ -407,8 +407,8 @@
 				23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */,
 				23BB8E3029BC988F00E7C218 /* Examples.h */,
 				23BB8E3129BC988F00E7C218 /* Examples.m */,
-				23BB8E3329BC9E7200E7C218 /* BasicMapExampleViewController.h */,
-				23BB8E3429BC9E7200E7C218 /* BasicMapExampleViewController.m */,
+				23BB8E3329BC9E7200E7C218 /* BasicMapExample.h */,
+				23BB8E3429BC9E7200E7C218 /* BasicMapExample.m */,
 				23BB8E3629BCD21100E7C218 /* CustomStyleURLExample.h */,
 				23BB8E3729BCD21100E7C218 /* CustomStyleURLExample.m */,
 				23BB8E3929BCD22F00E7C218 /* StoryboardMapViewExample.h */,
@@ -880,7 +880,7 @@
 				23BB8EBE29BCDBC800E7C218 /* AnimateLayerExample.m in Sources */,
 				23BB8E9429BCD90100E7C218 /* TrackingModeExample.m in Sources */,
 				23BB8E7029BCD52100E7C218 /* ViewAnnotationWithPointAnnotationExample.m in Sources */,
-				23BB8E3529BC9E7200E7C218 /* BasicMapExampleViewController.m in Sources */,
+				23BB8E3529BC9E7200E7C218 /* BasicMapExample.m in Sources */,
 				23BB8ECD29BCDC0800E7C218 /* SwitchStylesExample.m in Sources */,
 				23BB8E9A29BCD91800E7C218 /* Custom2DPuckExample.m in Sources */,
 				23BB8ECA29BCDBFA00E7C218 /* LineGradientExample.m in Sources */,
