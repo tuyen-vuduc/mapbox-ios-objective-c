@@ -6,16 +6,64 @@
 //
 
 #import "CircleAnnotationExample.h"
+#import <MapboxMaps/MapboxMaps.h>
+#import <MapboxCoreMaps/MapboxCoreMaps.h>
+#import <MapboxMapObjC/MapboxMapObjC.h>
+#import "MapboxMaps-Swift.h"
 
-@interface CircleAnnotationExample ()
+@interface CircleAnnotationExample () <MBXAnnotationInteractionDelegate>
 
 @end
 
-@implementation CircleAnnotationExample
+@implementation CircleAnnotationExample{
+    MapView* mapView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    mapView = [MapViewFactory createWithFrame:self.view.bounds
+                                      options:nil];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [self.view addSubview:mapView];
+    
+    // Create the CircleAnnotationManager
+    // Annotation managers are kept alive by `AnnotationOrchestrator`
+    // (`mapView.annotations`) until you explicitly destroy them
+    // by calling `mapView.annotations.removeAnnotationManager(withId:)`
+    MBXCircleAnnotationManager* circleAnnotationManager = [mapView circleAnnotationManager];
+    circleAnnotationManager.delegate = self;
+
+    NSMutableArray* annotations = [[NSMutableArray alloc] initWithCapacity:2000];
+    for (int i=0; i< 2000; i++) {
+        MBXCircleAnnotation* annotation = [MBXCircleAnnotation fromCenter:[self randomCoordinate]];
+        annotation.circleColor = [self randomColor];
+        annotation.circleRadius = 12;
+        annotation.isDraggable = true;
+        
+        [annotations addObject:annotation];
+    }
+
+    circleAnnotationManager.annotations = annotations;
+    // The following line is just for testing purposes.
+    if ([self respondsToSelector:@selector(finish)]) {
+        [self finish];
+    }
+}
+
+- (CLLocationCoordinate2D) randomCoordinate {
+    return CLLocationCoordinate2DMake(
+                                      arc4random_uniform(180) - 90,
+                                      arc4random_uniform(360) - 180
+                                  );
+}
+
+- (UIColor *) randomColor {
+    return  [[UIColor alloc] initWithRed: arc4random_uniform(255)/255.0
+                                   green: arc4random_uniform(255)/255.0
+                                    blue: arc4random_uniform(255)/255.0
+                                   alpha: 1];
 }
 
 /*
@@ -27,5 +75,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)annotationManager:(id<MBXAnnotationManager> _Nonnull)manager
+didDetectTappedAnnotations:(NSArray<id<MBXAnnotation>> * _Nonnull)annotations {
+    NSLog(@"AnnotationManager did detect tapped annotations: %@", annotations);
+}
 
 @end

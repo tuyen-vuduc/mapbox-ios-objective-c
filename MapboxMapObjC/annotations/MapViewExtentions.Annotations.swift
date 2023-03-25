@@ -21,4 +21,23 @@ extension MapView {
         )
         return MBXPolygonAnnotationManager(swiftValue)
     }
+    
+    public func circleAnnotationManager() -> MBXCircleAnnotationManager {
+        let swiftValue = self.annotations.makeCircleAnnotationManager()
+        return MBXCircleAnnotationManager(swiftValue)
+    }
+    
+    
+    @objc
+    public func circleAnnotationManager(
+        id: String?,
+        layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
+        layerPositionParam: AnyObject?
+    ) -> MBXCircleAnnotationManager {
+        let swiftValue = self.annotations.makeCircleAnnotationManager(
+            id:  id ?? String(UUID().uuidString.prefix(5)),
+            layerPosition: layerPosition.swiftValue(layerPositionParam)
+        )
+        return MBXCircleAnnotationManager(swiftValue)
+    }
 }

@@ -49,6 +49,7 @@
 		23B8325E29CF4CB800FA94B2 /* MBXPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8325D29CF4CB800FA94B2 /* MBXPoint.swift */; };
 		23B8326129CF4D7F00FA94B2 /* MBXGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326029CF4D7F00FA94B2 /* MBXGeometry.swift */; };
 		23B8326429CF4F1500FA94B2 /* MapViewExtensions.Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326329CF4F1500FA94B2 /* MapViewExtensions.Source.swift */; };
+		23B8326629CF5AC000FA94B2 /* MBXCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326529CF5AC000FA94B2 /* MBXCircleAnnotation.swift */; };
 		23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */; };
 		23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */; };
 		23BB8E2F29BC986200E7C218 /* ExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8E2E29BC986200E7C218 /* ExampleTableViewController.m */; };
@@ -203,6 +204,7 @@
 		23B8325D29CF4CB800FA94B2 /* MBXPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXPoint.swift; sourceTree = "<group>"; };
 		23B8326029CF4D7F00FA94B2 /* MBXGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXGeometry.swift; sourceTree = "<group>"; };
 		23B8326329CF4F1500FA94B2 /* MapViewExtensions.Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.Source.swift; sourceTree = "<group>"; };
+		23B8326529CF5AC000FA94B2 /* MBXCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXCircleAnnotation.swift; sourceTree = "<group>"; };
 		23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptions.swift; sourceTree = "<group>"; };
 		23BA6DD62826CA5A00D2D03A /* ResourceOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceOptions.swift; sourceTree = "<group>"; };
 		23BB8E2D29BC986200E7C218 /* ExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleTableViewController.h; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				23251E1629CEBA3A0088065B /* AnnotationManager.swift */,
 				23251E1D29CEF3690088065B /* MBXAnnotation.swift */,
 				23251E1F29CEF3870088065B /* MBXPolygonAnnotation.swift */,
+				23B8326529CF5AC000FA94B2 /* MBXCircleAnnotation.swift */,
 			);
 			path = annotations;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				23251E1729CEBA3A0088065B /* AnnotationManager.swift in Sources */,
 				231AF0D029BF9633002D6CFD /* SkyLayerBuilder.swift in Sources */,
 				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
+				23B8326629CF5AC000FA94B2 /* MBXCircleAnnotation.swift in Sources */,
 				23B8326129CF4D7F00FA94B2 /* MBXGeometry.swift in Sources */,
 				23251E2A29CF0DB00088065B /* SymbolLayerBuilder.swift in Sources */,
 				23251E1929CEE9250088065B /* LayerPosition.swift in Sources */,

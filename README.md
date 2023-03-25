@@ -54,7 +54,7 @@ pod 'MapboxMapObjC', '10.5.0'
 | 10 | [BuildingExtrusionsExample](./mapboxqs/BuildingExtrusionsExample.m) | OK |
 | 11 | [CameraAnimationExample](./mapboxqs/CameraAnimationExample.m) |  |
 | 12 | [CameraAnimatorsExample](./mapboxqs/CameraAnimatorsExample.m) |  |
-| 13 | [CircleAnnotationExample](./mapboxqs/CircleAnnotationExample.m) |  |
+| 13 | [CircleAnnotationExample](./mapboxqs/CircleAnnotationExample.m) | OK |
 | 14 | [ColorExpressionExample](./mapboxqs/ColorExpressionExample.m) |  |
 | 15 | [Custom2DPuckExample](./mapboxqs/Custom2DPuckExample.m) |  |
 | 16 | [Custom3DPuckExample](./mapboxqs/Custom3DPuckExample.m) |  |
