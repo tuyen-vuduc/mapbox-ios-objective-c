@@ -1,24 +1,14 @@
 import MapboxMaps
 
 @objc
-extension MapView {
-    @objc public func addFillExtrusionLayer(_ id: String, configure: (FillExtrusionLayerBuilder)->Void, onError: ((Error)->Void)?) {
-        let layerBuilder = FillExtrusionLayerBuilder(id: id)
-        configure(layerBuilder)
-        
-        do {
-            try self.mapboxMap.style.addLayer(layerBuilder.build())
-        } catch {
-            onError?(error)
-        }
-    }
-}
-
-@objc
 open class FillExtrusionLayerBuilder : NSObject, LayerBuilder {
     public typealias T = FillExtrusionLayer
     
     public let id: String
+    
+    @objc public class func withId(_ id: String) -> FillExtrusionLayerBuilder {
+        FillExtrusionLayerBuilder(id: id)
+    }
     
     init(id: String) {
         self.id = id

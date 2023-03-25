@@ -2,29 +2,6 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    @objc public func addSymbolLayer(_ id: String, target: NSObject, selector: Selector, onError: ((Error)->Void)?) {
-        let layerBuilder = SymbolLayerBuilder(id: id)
-        
-        do {
-            target.perform(selector, with: layerBuilder)
-            
-            try self.mapboxMap.style.addLayer(layerBuilder.build())
-        } catch {
-            onError?(error)
-        }
-    }
-    
-    @objc public func addSymbolLayer(_ id: String, configure: (SymbolLayerBuilder)->Void, onError: ((Error)->Void)?) {
-        let layerBuilder = SymbolLayerBuilder(id: id)
-        configure(layerBuilder)
-        
-        do {
-            try self.mapboxMap.style.addLayer(layerBuilder.build())
-        } catch {
-            onError?(error)
-        }
-    }
-    
     @objc public func updateSymbolLayer(_ id: String, configure: (SymbolLayerBuilder)->Void, onError: ((Error)->Void)?) {
         let layerBuilder = SymbolLayerBuilder(id: id)
         configure(layerBuilder)

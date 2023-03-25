@@ -2,29 +2,6 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    @objc public func addSkyLayer(_ id: String, target: NSObject, selector: Selector, onError: ((Error)->Void)?) {
-        let layerBuilder = SkyLayerBuilder(id: id)
-        
-        do {
-            target.perform(selector, with: layerBuilder)
-            
-            try self.mapboxMap.style.addLayer(layerBuilder.build())
-        } catch {
-            onError?(error)
-        }
-    }
-    
-    @objc public func addSkyLayer(_ id: String, configure: (SkyLayerBuilder)->Void, onError: ((Error)->Void)?) {
-        let layerBuilder = SkyLayerBuilder(id: id)
-        configure(layerBuilder)
-        
-        do {
-            try self.mapboxMap.style.addLayer(layerBuilder.build())
-        } catch {
-            onError?(error)
-        }
-    }
-    
     @objc public func updateSkyLayer(_ id: String, configure: (SkyLayerBuilder)->Void, onError: ((Error)->Void)?) {
         let layerBuilder = SkyLayerBuilder(id: id)
         configure(layerBuilder)
@@ -47,6 +24,10 @@ open class SkyLayerBuilder : NSObject, LayerBuilder {
     public typealias T = SkyLayer
     
     public let id: String
+    
+    @objc public class func withId(_ id: String) -> SkyLayerBuilder {
+        SkyLayerBuilder(id: id)
+    }
     
     init(id: String) {
         self.id = id
