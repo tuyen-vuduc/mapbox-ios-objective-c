@@ -10,6 +10,18 @@ extension MapView {
     }
 }
 
+// MapView.style
+
+@objc
+extension MapView {
+    @objc public func setStyle(_ styleUri: String) {
+        self.mapboxMap.style.styleManager.setStyleURIForUri(styleUri)
+    }
+    @objc public func setStyle(inJson styleJson: String) {
+        self.mapboxMap.style.styleManager.setStyleJSONForJson(styleJson)
+    }
+}
+
 // MapView.layer
 
 @objc
@@ -86,7 +98,7 @@ open class MBXCancelable : NSObject {
         self.cancelable = cancelable
     }
     
-    func cancel() {
+    @objc public func cancel() {
         self.cancelable.cancel()
     }
 }

@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExampleProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SkyLayerExample : UIViewController
+@interface SkyLayerExample : UIViewController<ExampleProtocol>
 
 @end
 

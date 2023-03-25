@@ -37,7 +37,7 @@
             [weakSelf finish];
         }
     }];
-    
+        
     self.mapView = mapView;
     [self.view addSubview:mapView];
     

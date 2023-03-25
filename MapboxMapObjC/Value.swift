@@ -19,6 +19,14 @@ open class MBXValue : NSObject {
         return MBXValue(constant: constant)
     }
     
+    @objc class public func intValue(_ value: Int) -> MBXValue {
+        return MBXValue(constant: NSNumber(value: value))
+    }
+    
+    @objc class public func doubleValue(_ value: Double) -> MBXValue {
+        return MBXValue(constant: NSNumber(value: value))
+    }
+    
     @objc class public func expression(_ expression: MBXExpression) -> MBXValue {
         return MBXValue(expression: expression)
     }
