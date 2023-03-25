@@ -33,8 +33,3 @@ public protocol MBXAnnotationInteractionDelegate: AnyObject {
         didDetectTappedAnnotations annotations: [MBXAnnotation])
 
 }
-
-@objc
-open class MBXGeometry : NSObject {
-    
-}

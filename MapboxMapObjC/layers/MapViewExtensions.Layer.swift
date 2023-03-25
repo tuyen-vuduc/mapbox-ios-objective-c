@@ -12,9 +12,11 @@ extension MapView {
    layerPositionParam: NSObject?,
         onError: ((Error)->Void)?
     ) {
-        guard let layerBuilder = target.perform(selector) as? (any LayerBuilder) else {
+        let value: Unmanaged<AnyObject> = target.perform(selector)
+        guard let layerBuilder = value.takeUnretainedValue()  as? (any LayerBuilder) else {
             return
         }
+        
         do {
             
             try self.mapboxMap.style.addLayer(

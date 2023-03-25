@@ -69,16 +69,30 @@
     [style addImage:image
                  id:imageId
          completion:nil];
+    NSString* sourceId = @"SOURCE_ID";
+    CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
+    MBXPoint* point = [MBXPoint withCoordinates: coordinates];
+    [mapView addSourceWithId:sourceId
+                    geometry:[MBXGeometry fromData:point]
+                     onError:nil];
     
-//    var source = GeoJSONSource()
-//    source.data = .geometry(Geometry.point(Point(Constants.coordinate)))
-//    try? style.addSource(source, id: Constants.SOURCE_ID)
-//
-//    var layer = SymbolLayer(id: Constants.LAYER_ID)
-//    layer.source = Constants.SOURCE_ID
-//    layer.iconImage = .constant(.name(Constants.BLUE_ICON_ID))
-//    layer.iconAnchor = .constant(.bottom)
-//    try? style.addLayer(layer)
+    [mapView addLayerWithBuilder:^id _Nonnull{
+        return [self createSymbolLayerBuilder:sourceId
+                                         icon:imageId];
+    }
+                   layerPosition:MBXLayerPositionUnowned
+              layerPositionParam:nil
+                         onError:nil];
+}
+
+- (SymbolLayerBuilder*) createSymbolLayerBuilder: (NSString*) sourceId
+                                            icon: (NSString *) icon {
+    SymbolLayerBuilder* builder = [SymbolLayerBuilder withId: @"LAYER_ID"];
+    
+    [builder source:sourceId];
+    [builder iconImage:[MBXValue constant:[MBXResolvedImage fromName:icon]]];
+    [builder iconAnchor:[MBXValue intValue:MBXIconAnchorBottom]];
+    return builder;
 }
 
 /*

@@ -43,7 +43,7 @@ pod 'MapboxMapObjC', '10.5.0'
 | # | Example | Ported |
 | - | - | - |
 | 1 | [AddMarkersSymbolExample](./mapboxqs/AddMarkersSymbolExample.m) |  |
-| 2 | [AddOneMarkerSymbolExample](./mapboxqs/AddOneMarkerSymbolExample.m) |  |
+| 2 | [AddOneMarkerSymbolExample](./mapboxqs/AddOneMarkerSymbolExample.m) | OK |
 | 3 | [AdvancedViewportGesturesExample](./mapboxqs/AdvancedViewportGesturesExample.m) |  |
 | 4 | [AnimateGeoJSONLineExample](./mapboxqs/AnimateGeoJSONLineExample.m) |  |
 | 5 | [AnimateImageLayerExample](./mapboxqs/AnimateImageLayerExample.m) |  |

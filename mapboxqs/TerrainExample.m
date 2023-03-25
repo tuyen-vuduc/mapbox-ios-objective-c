@@ -58,6 +58,19 @@
     [self.view addSubview:mapView];
 }
 
+- (SkyLayerBuilder*) createSkyLayerBuilder {
+    SkyLayerBuilder* builder = [SkyLayerBuilder withId:@"sky-layer"];
+    
+    MBXValue* skyType = [MBXValue constant: [NSNumber numberWithInt:MBXSkyTypeAtmosphere]];
+    [builder skyType: skyType];
+    MBXValue* skyAtmosphereSun = [MBXValue constant: @[@0.0, @0.0]];
+    [builder skyAtmosphereSun: skyAtmosphereSun];
+    MBXValue* skyAtmosphereSunIntensity = [MBXValue constant: @15.0];
+    [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
+    
+    return builder;
+}
+
 - (void) addTerrain {
     NSString* sourceId = @"mapbox-dem";
     [self.mapView addRasterDemSource: sourceId
@@ -74,16 +87,11 @@
     
     [self.mapView setTerrain:terrain onError:nil];
     
-    [self.mapView addSkyLayer:@"sky-layer"
-                  configure:^(SkyLayerBuilder * _Nonnull builder) {
-                        MBXValue* skyType = [MBXValue constant: [NSNumber numberWithInt:MBXSkyTypeAtmosphere]];
-                        [builder skyType: skyType];
-                        MBXValue* skyAtmosphereSun = [MBXValue constant: @[@0.0, @0.0]];
-                        [builder skyAtmosphereSun: skyAtmosphereSun];
-                        MBXValue* skyAtmosphereSunIntensity = [MBXValue constant: @15.0];
-                        [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
-                    }
-                      onError:nil];
+    [self.mapView addLayerWithTarget:self
+                            selector:@selector(createSkyLayerBuilder)
+                       layerPosition:MBXLayerPositionUnowned
+                  layerPositionParam:nil
+                             onError:nil];
 }
 
 /*

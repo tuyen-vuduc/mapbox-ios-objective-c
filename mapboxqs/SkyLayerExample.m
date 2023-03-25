@@ -59,7 +59,7 @@
     [self addSegmentedControl];
      
      // Add a custom `SkyLayer` once the map's style is finished loading.
-     __weak SkyLayerExample *weakSelf = self;
+     __strong SkyLayerExample *weakSelf = self;
      [mapView onStyleLoaded:^(id _Nonnull _) {
          [self addSkyLayer];
          
@@ -76,16 +76,18 @@
 - (void) addSkyLayer {
     // Initialize a sky layer with a sky type of `gradient`, which applies a gradient effect to the sky.
     // Read more about sky layer types on the Mapbox blog: https://www.mapbox.com/blog/sky-api-atmospheric-scattering-algorithm-for-3d-maps
-    [mapView addSkyLayer:skyLayerId
-                  target:self
-                selector:@selector(buildSkyLayer:)
-                 onError:^(NSError * _Nonnull _) {
-            // Do nothing
-        NSLog(@"Failed to add sky layer to the map's style.");
+    [mapView addLayerWithTarget:self
+                       selector:@selector(createSkyLayerBuilder)
+                  layerPosition:MBXLayerPositionUnowned
+             layerPositionParam:nil
+                        onError: ^(NSError* error) {
+        NSLog(@"%@", error);
     }];
 }
 
-- (void) buildSkyLayer: (SkyLayerBuilder * _Nonnull) builder {
+- (SkyLayerBuilder * ) createSkyLayerBuilder {
+    SkyLayerBuilder * builder = [SkyLayerBuilder withId:skyLayerId];
+    
     [builder skyType:[MBXValue intValue:MBXSkyTypeGradient]];
     
     
@@ -111,6 +113,8 @@
     // Set the sky's color to light blue with a light pink halo effect.
     [builder skyAtmosphereColor:[MBXValue constant:[UIColor skyBlue]]];
     [builder skyAtmosphereHaloColor:[MBXValue constant:[UIColor lightPink]]];
+    
+    return builder;
 }
 
 // Update the sky type when the `UISegmentedControl` value is changed.

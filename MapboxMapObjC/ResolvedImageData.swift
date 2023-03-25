@@ -28,6 +28,16 @@ open class MBXResolvedImage : NSObject, Codable {
 }
 
 extension MBXResolvedImage {
+    @objc
+    public class func from(name: String) -> MBXResolvedImage {
+        MBXResolvedImage(name: name)
+    }
+    
+    @objc
+    public class func from(name: String, available: Bool) -> MBXResolvedImage {
+        MBXResolvedImage(name: name, available: available)
+    }
+    
     func swiftOnly() -> ResolvedImage {
         var data: Data!
         let jsonEncoder = JSONEncoder()

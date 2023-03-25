@@ -25,6 +25,10 @@ open class SymbolLayerBuilder : NSObject, LayerBuilder {
     
     public let id: String
     
+    @objc public class func withId(_ id: String) -> SymbolLayerBuilder {
+        SymbolLayerBuilder(id: id)
+    }
+    
     init(id: String) {
         self.id = id
         super.init()
@@ -62,7 +66,7 @@ open class SymbolLayerBuilder : NSObject, LayerBuilder {
 
         /// Part of the icon placed closest to the anchor.
         if let iconAnchor = iconAnchor {
-            layer.iconAnchor = iconAnchor.anchor()
+            layer.iconAnchor = iconAnchor.iconAnchor()
         }
 
         /// If true, other symbols can be visible even if they collide with the icon.
