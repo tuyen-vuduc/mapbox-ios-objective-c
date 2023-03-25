@@ -19,6 +19,11 @@
 		231AF0D829BFF17D002D6CFD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D729BFF17D002D6CFD /* Common.swift */; };
 		231AF0DA29C09E11002D6CFD /* CommonMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D929C09E11002D6CFD /* CommonMapping.swift */; };
 		231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */; };
+		23251E1729CEBA3A0088065B /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1629CEBA3A0088065B /* AnnotationManager.swift */; };
+		23251E1929CEE9250088065B /* LayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1829CEE9250088065B /* LayerPosition.swift */; };
+		23251E1B29CEEC6E0088065B /* MapViewExtentions.Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1A29CEEC6E0088065B /* MapViewExtentions.Annotations.swift */; };
+		23251E1E29CEF3690088065B /* MBXAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1D29CEF3690088065B /* MBXAnnotation.swift */; };
+		23251E2029CEF3870088065B /* MBXPolygonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1F29CEF3870088065B /* MBXPolygonAnnotation.swift */; };
 		2360108F2824796B00DAC76A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360108E2824796B00DAC76A /* AppDelegate.m */; };
 		236010922824796B00DAC76A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 236010912824796B00DAC76A /* SceneDelegate.m */; };
 		236010982824796B00DAC76A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 236010962824796B00DAC76A /* Main.storyboard */; };
@@ -152,6 +157,11 @@
 		231AF0D729BFF17D002D6CFD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		231AF0D929C09E11002D6CFD /* CommonMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMapping.swift; sourceTree = "<group>"; };
 		231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		23251E1629CEBA3A0088065B /* AnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationManager.swift; sourceTree = "<group>"; };
+		23251E1829CEE9250088065B /* LayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerPosition.swift; sourceTree = "<group>"; };
+		23251E1A29CEEC6E0088065B /* MapViewExtentions.Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtentions.Annotations.swift; sourceTree = "<group>"; };
+		23251E1D29CEF3690088065B /* MBXAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXAnnotation.swift; sourceTree = "<group>"; };
+		23251E1F29CEF3870088065B /* MBXPolygonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBXPolygonAnnotation.swift; sourceTree = "<group>"; };
 		2360108A2824796B00DAC76A /* mapboxqs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapboxqs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2360108D2824796B00DAC76A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2360108E2824796B00DAC76A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -346,6 +356,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23251E1C29CEF33E0088065B /* annotations */ = {
+			isa = PBXGroup;
+			children = (
+				23251E1A29CEEC6E0088065B /* MapViewExtentions.Annotations.swift */,
+				23251E1629CEBA3A0088065B /* AnnotationManager.swift */,
+				23251E1D29CEF3690088065B /* MBXAnnotation.swift */,
+				23251E1F29CEF3870088065B /* MBXPolygonAnnotation.swift */,
+			);
+			path = annotations;
+			sourceTree = "<group>";
+		};
 		236010812824796B00DAC76A = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +551,7 @@
 		236010C0282487FF00DAC76A /* MapboxMapObjC */ = {
 			isa = PBXGroup;
 			children = (
+				23251E1C29CEF33E0088065B /* annotations */,
 				23BB8F0029BD651400E7C218 /* enums */,
 				236010C1282487FF00DAC76A /* MapboxMapObjC.h */,
 				23BA6DD22826C9FB00D2D03A /* CameraOptions.swift */,
@@ -562,6 +584,7 @@
 				231AF0D729BFF17D002D6CFD /* Common.swift */,
 				231AF0D929C09E11002D6CFD /* CommonMapping.swift */,
 				231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */,
+				23251E1829CEE9250088065B /* LayerPosition.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -872,6 +895,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23251E1E29CEF3690088065B /* MBXAnnotation.swift in Sources */,
 				23BB8EFD29BD647400E7C218 /* OrnamentVisibility.swift in Sources */,
 				231AF0CE29BF9319002D6CFD /* Terrain.swift in Sources */,
 				231AF0DA29C09E11002D6CFD /* CommonMapping.swift in Sources */,
@@ -880,10 +904,14 @@
 				23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */,
 				23BA6DD32826C9FB00D2D03A /* CameraOptions.swift in Sources */,
 				231AF0C429BF8826002D6CFD /* RasterDemSourceBuilder.swift in Sources */,
+				23251E1729CEBA3A0088065B /* AnnotationManager.swift in Sources */,
 				231AF0D029BF9633002D6CFD /* SkyLayerBuilder.swift in Sources */,
 				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
+				23251E1929CEE9250088065B /* LayerPosition.swift in Sources */,
 				231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */,
 				2386379029C6D71F002282FF /* ResolvedImageData.swift in Sources */,
+				23251E2029CEF3870088065B /* MBXPolygonAnnotation.swift in Sources */,
+				23251E1B29CEEC6E0088065B /* MapViewExtentions.Annotations.swift in Sources */,
 				231AF0C629BF8905002D6CFD /* SourceType.swift in Sources */,
 				2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* StyleTransition.swift in Sources */,

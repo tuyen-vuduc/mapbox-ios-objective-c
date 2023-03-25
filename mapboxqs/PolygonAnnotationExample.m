@@ -6,26 +6,118 @@
 //
 
 #import "PolygonAnnotationExample.h"
+#import <MapboxMaps/MapboxMaps.h>
+#import <MapboxCoreMaps/MapboxCoreMaps.h>
+#import <MapboxMapObjC/MapboxMapObjC.h>
+#import "MapboxMaps-Swift.h"
 
-@interface PolygonAnnotationExample ()
+@interface PolygonAnnotationExample () <MBXAnnotationInteractionDelegate>
 
 @end
 
-@implementation PolygonAnnotationExample
+@implementation PolygonAnnotationExample {
+    MapView* mapView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 25.04579
+                                                            longitude: -88.90136];
+    
+    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
+                                                                       padding:nil
+                                                                        anchor:nil
+                                                                          zoom:@5
+                                                                       bearing:nil
+                                                                         pitch:nil];
+    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
+    
+    MapInitOptions* options = [[builder
+                                 cameraOptions:cameraOptions]
+                               build];
+    
+    mapView = [MapViewFactory createWithFrame:self.view.bounds
+                                      options:options];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    [self.view addSubview:mapView];
+    
+    
+    __weak PolygonAnnotationExample *weakSelf = self;
+    // Allows the delegate to receive information about map events.
+    [mapView onMapLoaded:^(id _Nonnull _) {
+        [self setupExample];
+        
+        if ([weakSelf respondsToSelector:@selector(finish)]) {
+            [weakSelf finish];
+        }
+    }];
 }
 
-/*
-#pragma mark - Navigation
+// Wait for the map to load before adding an annotation.
+- (void) setupExample {
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Create the PolygonAnnotationManager
+    // Annotation managers are kept alive by `AnnotationOrchestrator`
+    // (`mapView.annotations`) until you explicitly destroy them
+    // by calling `mapView.annotations.removeAnnotationManager(withId:)`
+    MBXPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManager];
+    
+    // Set the delegate to receive callback if annotation is tapped or dragged
+    polygonAnnotationManager.delegate = self;
+
+    // Create the polygon annotation
+    MBXPolygonAnnotation* polygonAnnotation = [MBXPolygonAnnotation polygon: [self makePolygon]];
+
+    // Style the polygon annotation
+    polygonAnnotation.fillColor = [UIColor redColor];
+    polygonAnnotation.fillOpacity = 0.8;
+
+    // Add the polygon annotation to the manager
+    polygonAnnotationManager.annotations = @[
+        polygonAnnotation
+    ];
 }
-*/
 
+- (MBXPolygon*) makePolygon {
+    // Describe the polygon's geometry
+    CLLocationCoordinate2D coord1 = CLLocationCoordinate2DMake(24.51713945052515, -89.857177734375);
+    CLLocationCoordinate2D coord2 = CLLocationCoordinate2DMake(24.51713945052515, -87.967529296875);
+    CLLocationCoordinate2D coord3 = CLLocationCoordinate2DMake(26.244156283890756, -87.967529296875);
+    CLLocationCoordinate2D coord4 = CLLocationCoordinate2DMake(26.244156283890756, -89.857177734375);
+    CLLocationCoordinate2D coord5 = CLLocationCoordinate2DMake(24.51713945052515, -89.857177734375);
+    
+    NSArray* outerRingCoords = @[
+        [NSValue value:&coord1 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&coord2 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&coord3 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&coord4 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&coord5 withObjCType:@encode(CLLocationCoordinate2D)]
+    ];
+    
+    CLLocationCoordinate2D icoord1 = CLLocationCoordinate2DMake(25.085598897064752, -89.20898437499999);
+    CLLocationCoordinate2D icoord2 = CLLocationCoordinate2DMake(25.085598897064752, -88.61572265625);
+    CLLocationCoordinate2D icoord3 = CLLocationCoordinate2DMake(25.720735134412106, -88.61572265625);
+    CLLocationCoordinate2D icoord4 = CLLocationCoordinate2DMake(25.720735134412106, -89.20898437499999);
+    CLLocationCoordinate2D icoord5 = CLLocationCoordinate2DMake(25.085598897064752, -89.20898437499999);
+
+    // This polygon has an intererior polygon which represents a hole in the shape.
+    NSArray* innerRingCoords = @[
+        [NSValue value:&icoord1 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&icoord2 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&icoord3 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&icoord4 withObjCType:@encode(CLLocationCoordinate2D)],
+        [NSValue value:&icoord5 withObjCType:@encode(CLLocationCoordinate2D)]
+    ];
+
+    return [MBXPolygon createWithOuterRingCoordinates:outerRingCoords
+                                 innerRingCoordinates:@[innerRingCoords]];
+}
+
+- (void)annotationManager:(id<MBXAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id<MBXAnnotation>> * _Nonnull)annotations {
+    NSLog(@"AnnotationManager did detect tapped annotations: %@", annotations);
+}
 @end
+
+
