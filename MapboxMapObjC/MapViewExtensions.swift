@@ -10,18 +10,6 @@ extension MapView {
     }
 }
 
-// MapView.style
-
-@objc
-extension MapView {
-    @objc public func setStyle(_ styleUri: String) {
-        self.mapboxMap.style.styleManager.setStyleURIForUri(styleUri)
-    }
-    @objc public func setStyle(inJson styleJson: String) {
-        self.mapboxMap.style.styleManager.setStyleJSONForJson(styleJson)
-    }
-}
-
 // MapView.layer
 
 @objc

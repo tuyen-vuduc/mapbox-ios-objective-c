@@ -83,7 +83,7 @@
     [self initLightPositionButton];
     
     MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    MapInitOptions* options = [[builder styleLight] build];
+    MapInitOptions* options = [[builder styleUriString:BuiltInStyles.light] build];
     
     self.mapView =[MapViewFactory createWithFrame:self.view.bounds
                                           options:options];

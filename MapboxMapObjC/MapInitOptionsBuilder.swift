@@ -59,47 +59,4 @@ open class MapInitOptionsBuilder : NSObject {
         
         return self
     }
-    
-    /// Mapbox Streets is a general-purpose style with detailed road and transit networks.
-    @objc public func styleStreets() -> MapInitOptionsBuilder {
-        self.styleUri = .streets
-        
-        return self
-    }
-
-    /// Mapbox Outdoors is a general-purpose style tailored to outdoor activities.
-    @objc public func styleOutdoors() -> MapInitOptionsBuilder {
-        self.styleUri = .outdoors
-        
-        return self
-    }
-
-    /// Mapbox Light is a subtle, light-colored backdrop for data visualizations.
-    @objc public func styleLight() -> MapInitOptionsBuilder {
-        self.styleUri = .light
-        
-        return self
-    }
-
-    /// Mapbox Dark is a subtle, dark-colored backdrop for data visualizations.
-    @objc public func styleDark() -> MapInitOptionsBuilder {
-        self.styleUri = .dark
-        
-        return self
-    }
-
-    /// The Mapbox Satellite style is a base-map of high-resolution satellite and aerial imagery.
-    @objc public func styleSatellite() -> MapInitOptionsBuilder {
-        self.styleUri = .satellite
-        
-        return self
-    }
-
-    /// The Mapbox Satellite Streets style combines the high-resolution satellite and aerial imagery
-    /// of Mapbox Satellite with unobtrusive labels and translucent roads from Mapbox Streets.
-    @objc public func styleSatelliteStreets() -> MapInitOptionsBuilder {
-        self.styleUri = .satelliteStreets
-        
-        return self
-    }
 }

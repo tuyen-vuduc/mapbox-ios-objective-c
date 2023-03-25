@@ -8,7 +8,7 @@
 #import "Examples.h"
 #import "ExampleModel.h"
 
-#import "BasicMapExampleViewController.h"
+#import "BasicMapExample.h"
 #import "CustomStyleURLExample.h"
 #import "StoryboardMapViewExample.h"
 #import "DebugMapExample.h"

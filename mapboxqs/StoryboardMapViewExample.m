@@ -47,7 +47,7 @@
     
     MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
-    return [[[[builder accessToken:defaultAccessToken] cameraOptions:cameraOptions] styleLight] build];
+    return [[[[builder accessToken:defaultAccessToken] cameraOptions:cameraOptions] styleUriString:BuiltInStyles.light] build];
 }
 
 @end

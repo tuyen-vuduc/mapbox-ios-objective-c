@@ -5,7 +5,7 @@
 //  Created by Tuyen Vu on 11/03/2023.
 //
 
-#import "BasicMapExampleViewController.h"
+#import "BasicMapExample.h"
 #import <MapboxMaps/MapboxMaps.h>
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
