@@ -1,7 +1,7 @@
 import MapboxMaps
 
 extension MapView {
-    @objc public func setTerrain(_ value: MBXTerrain, onError: ((Error)->Void)?) {
+    @objc public func setTerrain(_ value: TMBTerrain, onError: ((Error)->Void)?) {
         let swiftOnly = value.swiftOnly()
         
         do
@@ -14,7 +14,7 @@ extension MapView {
 }
 
 @objc
-open class MBXTerrain : NSObject {
+open class TMBTerrain : NSObject {
     public var sourceId: String
 
     @objc public init(sourceId: String) {
@@ -22,11 +22,11 @@ open class MBXTerrain : NSObject {
     }
 
     /// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
-    @objc public var exaggeration: MBXValue?
+    @objc public var exaggeration: TMBValue?
 }
 
 
-extension MBXTerrain {
+extension TMBTerrain {
     func swiftOnly() -> Terrain {
         var result = Terrain(sourceId: self.sourceId)
         

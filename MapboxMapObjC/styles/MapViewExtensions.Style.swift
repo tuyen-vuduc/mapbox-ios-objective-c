@@ -10,7 +10,7 @@ extension MapView {
     @objc public func setStyle(inJson styleJson: String) {
         self.mapboxMap.style.styleManager.setStyleJSONForJson(styleJson)
     }
-    @objc public func loadStyle(_ styleUri: String, completion: ((MBXStyle?, Error?) -> Void)?) {
+    @objc public func loadStyle(_ styleUri: String, completion: ((TMBStyle?, Error?) -> Void)?) {
         let uri = StyleURI(url: URL(string: styleUri)!)!
         self.mapboxMap.loadStyleURI(uri) { result in
             guard let completion = completion else {
@@ -19,7 +19,7 @@ extension MapView {
             
             switch(result) {
                 case .success(let style):
-                    completion(MBXStyle(style), nil)
+                    completion(TMBStyle(style), nil)
                 case .failure(let error):
                     completion(nil, error)
             }

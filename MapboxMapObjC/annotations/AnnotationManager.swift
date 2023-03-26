@@ -9,7 +9,7 @@ import Foundation
 import MapboxMaps
 
 @objc
-public protocol MBXAnnotationManager: AnyObject {
+public protocol TMBAnnotationManager: AnyObject {
     /// The id of this annotation manager.
     var id: String { get }
 
@@ -22,14 +22,14 @@ public protocol MBXAnnotationManager: AnyObject {
 
 /// A delegate that is called when a tap is detected on an annotation (or on several of them).
 @objc
-public protocol MBXAnnotationInteractionDelegate: AnyObject {
+public protocol TMBAnnotationInteractionDelegate: AnyObject {
 
     /// This method is invoked when a tap gesture is detected on an annotation
     /// - Parameters:
     ///   - manager: The `AnnotationManager` that detected this tap gesture
     ///   - annotations: A list of `Annotations` that were tapped
     func annotationManager(
-        _ manager: MBXAnnotationManager,
-        didDetectTappedAnnotations annotations: [MBXAnnotation])
+        _ manager: TMBAnnotationManager,
+        didDetectTappedAnnotations annotations: [TMBAnnotation])
 
 }

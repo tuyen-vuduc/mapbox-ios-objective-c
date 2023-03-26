@@ -1,27 +1,27 @@
 import Turf
 @objc
-public protocol MBXGeoData {
+public protocol TMBGeoData {
     
 }
 
 @objc
-open class MBCGeometry : NSObject {
-    public let data: MBXGeoData
+open class TMBGeometry : NSObject {
+    public let data: TMBGeoData
     
-    init(_ data: MBXGeoData) {
+    init(_ data: TMBGeoData) {
         self.data = data
     }
     
     @objc
-    public class func from(data: MBXGeoData) -> MBCGeometry {
-        MBCGeometry(data)
+    public class func from(data: TMBGeoData) -> TMBGeometry {
+        TMBGeometry(data)
     }
 }
 
-extension MBCGeometry {
+extension TMBGeometry {
     func swiftValue() -> Geometry? {
         switch (self.data) {
-        case let point as MBXPoint:
+        case let point as TMBPoint:
             return Geometry.point(point.swiftValue)
         default:
             break

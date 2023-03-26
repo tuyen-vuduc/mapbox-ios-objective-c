@@ -78,7 +78,7 @@
     // Read more about sky layer types on the Mapbox blog: https://www.mapbox.com/blog/sky-api-atmospheric-scattering-algorithm-for-3d-maps
     [mapView addLayerWithTarget:self
                        selector:@selector(createSkyLayerBuilder)
-                  layerPosition:MBXLayerPositionUnowned
+                  layerPosition:TMBLayerPositionUnowned
              layerPositionParam:nil
                         onError: ^(NSError* error) {
         NSLog(@"%@", error);
@@ -88,7 +88,7 @@
 - (SkyLayerBuilder * ) createSkyLayerBuilder {
     SkyLayerBuilder * builder = [SkyLayerBuilder withId:skyLayerId];
     
-    [builder skyType:[MBXValue intValue:MBXSkyTypeGradient]];
+    [builder skyType:[TMBValue intValue:TMBSkyTypeGradient]];
     
     
     // Define the position of the sun.
@@ -100,7 +100,7 @@
     // horizon line. Lower values place the sun below the horizon line, while higher values place the sun's
     // center further above the horizon line.
     float polarAngle = 90;
-    [builder skyAtmosphereSun:[MBXValue constant:@[
+    [builder skyAtmosphereSun:[TMBValue constant:@[
             [NSNumber numberWithDouble:azimuthalAngle],
             [NSNumber numberWithDouble:polarAngle]
         ]
@@ -108,23 +108,23 @@
     ];
 
     // The intensity or brightness of the sun.
-    [builder skyAtmosphereSunIntensity:[MBXValue doubleValue:10]];
+    [builder skyAtmosphereSunIntensity:[TMBValue doubleValue:10]];
 
     // Set the sky's color to light blue with a light pink halo effect.
-    [builder skyAtmosphereColor:[MBXValue constant:[UIColor skyBlue]]];
-    [builder skyAtmosphereHaloColor:[MBXValue constant:[UIColor lightPink]]];
+    [builder skyAtmosphereColor:[TMBValue constant:[UIColor skyBlue]]];
+    [builder skyAtmosphereHaloColor:[TMBValue constant:[UIColor lightPink]]];
     
     return builder;
 }
 
 // Update the sky type when the `UISegmentedControl` value is changed.
 - (void) updateSkyLayer: (UISegmentedControl *) sender {
-    MBXValue* skyType;
+    TMBValue* skyType;
     
     if (segmentedControl.selectedSegmentIndex == 0) {
-        skyType = [MBXValue intValue:MBXSkyTypeGradient];
+        skyType = [TMBValue intValue:TMBSkyTypeGradient];
     } else {
-        skyType = [MBXValue intValue:MBXSkyTypeAtmosphere];
+        skyType = [TMBValue intValue:TMBSkyTypeAtmosphere];
     }
     
     [mapView updateSkyLayer: skyLayerId
@@ -148,8 +148,8 @@
             NSLog(@"Failed to add a RasterDEMSource to the map's style.");
     }];
     
-    MBXTerrain* terrain = [[MBXTerrain alloc] initWithSourceId:sourceId];
-    MBXValue* value = [[MBXValue alloc] initWithConstant:@1.5];
+    TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
+    TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
     [mapView setTerrain:terrain onError:^(NSError * _Nonnull _) {
         NSLog(@"Failed to add a terrain layer to the map's style.");

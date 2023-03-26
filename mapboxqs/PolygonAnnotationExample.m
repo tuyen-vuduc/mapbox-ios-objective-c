@@ -11,7 +11,7 @@
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
 
-@interface PolygonAnnotationExample () <MBXAnnotationInteractionDelegate>
+@interface PolygonAnnotationExample () <TMBAnnotationInteractionDelegate>
 
 @end
 
@@ -62,13 +62,13 @@
     // Annotation managers are kept alive by `AnnotationOrchestrator`
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
-    MBXPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManager];
+    TMBPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManager];
     
     // Set the delegate to receive callback if annotation is tapped or dragged
     polygonAnnotationManager.delegate = self;
 
     // Create the polygon annotation
-    MBXPolygonAnnotation* polygonAnnotation = [MBXPolygonAnnotation polygon: [self makePolygon]];
+    TMBPolygonAnnotation* polygonAnnotation = [TMBPolygonAnnotation polygon: [self makePolygon]];
 
     // Style the polygon annotation
     polygonAnnotation.fillColor = [UIColor redColor];
@@ -80,7 +80,7 @@
     ];
 }
 
-- (MBXPolygon*) makePolygon {
+- (TMBPolygon*) makePolygon {
     // Describe the polygon's geometry
     CLLocationCoordinate2D coord1 = CLLocationCoordinate2DMake(24.51713945052515, -89.857177734375);
     CLLocationCoordinate2D coord2 = CLLocationCoordinate2DMake(24.51713945052515, -87.967529296875);
@@ -111,11 +111,11 @@
         [NSValue value:&icoord5 withObjCType:@encode(CLLocationCoordinate2D)]
     ];
 
-    return [MBXPolygon createWithOuterRingCoordinates:outerRingCoords
+    return [TMBPolygon createWithOuterRingCoordinates:outerRingCoords
                                  innerRingCoordinates:@[innerRingCoords]];
 }
 
-- (void)annotationManager:(id<MBXAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id<MBXAnnotation>> * _Nonnull)annotations {
+- (void)annotationManager:(id<TMBAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id<TMBAnnotation>> * _Nonnull)annotations {
     NSLog(@"AnnotationManager did detect tapped annotations: %@", annotations);
 }
 @end

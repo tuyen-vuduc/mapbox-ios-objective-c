@@ -73,7 +73,7 @@
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds options:nil];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [mapView ornamentsOptionsScaleBarVisibility: MBXOrnamentVisibilityVisible];
+    [mapView ornamentsOptionsScaleBarVisibility: TMBOrnamentVisibilityVisible];
     
     if (@available(iOS 15.0, *)) {
         float maxFPS = UIScreen.mainScreen.maximumFramesPerSecond;

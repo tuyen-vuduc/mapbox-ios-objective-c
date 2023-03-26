@@ -1,27 +1,27 @@
 import MapboxMaps
 
-@objc open class MBXExpression: NSObject {
+@objc open class TMBExpression: NSObject {
     /// Time allotted for transitions to complete in seconds.
-    public let `operator`: MBXOperator
+    public let `operator`: TMBOperator
     
     /// Length of time before a transition begins in seconds.
     public let arguments: [Any]
     
-    init(`operator`: MBXOperator, arguments: [Any]) {
+    init(`operator`: TMBOperator, arguments: [Any]) {
         self.operator =  `operator`
         self.arguments = arguments
     }
     
-    @objc class public func create(withOperator `operator`: MBXOperator) -> MBXExpression{
-        return MBXExpression(operator: `operator`, arguments: [])
+    @objc class public func create(withOperator `operator`: TMBOperator) -> TMBExpression{
+        return TMBExpression(operator: `operator`, arguments: [])
     }
     
-    @objc class public func create(withOperator `operator`: MBXOperator, arguments: [Any]) -> MBXExpression{
-        return MBXExpression(operator: `operator`, arguments: arguments)
+    @objc class public func create(withOperator `operator`: TMBOperator, arguments: [Any]) -> TMBExpression{
+        return TMBExpression(operator: `operator`, arguments: arguments)
     }
 }
 
-let operatorMapping: [MBXOperator:Expression.Operator] = [
+let operatorMapping: [TMBOperator:Expression.Operator] = [
     /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
     .subtract: .subtract,
 
@@ -304,13 +304,13 @@ let operatorMapping: [MBXOperator:Expression.Operator] = [
     .cubicBezier: .cubicBezier,
 ]
 
-extension MBXExpression {
+extension TMBExpression {
     func swiftOnly() -> Expression {
         let `operator` = operatorMapping[self.operator]!
         
         let arguments: [Exp.Argument] = self.arguments.compactMap({
             switch $0 {
-            case let expression as MBXExpression:
+            case let expression as TMBExpression:
                 return Exp.Argument.expression(expression.swiftOnly())
             case let `number` as NSNumber:
                 return Exp.Argument.number(`number`.doubleValue)

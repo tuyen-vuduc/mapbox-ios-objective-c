@@ -2,7 +2,7 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    @objc public func addSource(id: String, geometry: MBCGeometry, onError: ((Error)->Void)?) -> Void {
+    @objc public func addSource(id: String, geometry: TMBGeometry, onError: ((Error)->Void)?) -> Void {
         do {
             var source = GeoJSONSource()
             source.data = .geometry(geometry.swiftValue()!)
@@ -10,7 +10,5 @@ extension MapView {
         } catch {
             onError?(error)
         }
-            
     }
 }
-

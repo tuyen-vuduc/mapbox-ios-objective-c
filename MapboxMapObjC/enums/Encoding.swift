@@ -1,5 +1,5 @@
 @objc
-public enum MBXEncoding : Int {
+public enum TMBEncoding : Int {
     /// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
     case terrarium
 

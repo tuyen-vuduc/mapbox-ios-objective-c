@@ -1,13 +1,13 @@
 import MapboxMaps
 
 @objc
-public enum MBXOrnamentVisibility : Int {
+public enum TMBOrnamentVisibility : Int {
     case adaptive
     case hidden
     case visible
 }
 
-extension MBXOrnamentVisibility {
+extension TMBOrnamentVisibility {
     func swiftOnly() -> OrnamentVisibility {
         switch (self) {
         case .adaptive:

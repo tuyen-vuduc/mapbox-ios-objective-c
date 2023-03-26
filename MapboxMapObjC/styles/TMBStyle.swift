@@ -1,7 +1,7 @@
 import MapboxMaps
 
 @objc
-open class MBXStyle : NSObject {
+open class TMBStyle : NSObject {
     let style: Style;
     
     init(_ style: Style) {

@@ -1,7 +1,7 @@
 import MapboxMaps
 
 @objc
-open class MBXResolvedImageData : NSObject {
+open class TMBResolvedImageData : NSObject {
     public let available: Bool
     public let name: String
     
@@ -12,7 +12,7 @@ open class MBXResolvedImageData : NSObject {
 }
 
 @objc
-open class MBXResolvedImage : NSObject, Codable {
+open class TMBResolvedImage : NSObject, Codable {
     public let available: Bool?
     public let name: String
     
@@ -27,15 +27,15 @@ open class MBXResolvedImage : NSObject, Codable {
     }
 }
 
-extension MBXResolvedImage {
+extension TMBResolvedImage {
     @objc
-    public class func from(name: String) -> MBXResolvedImage {
-        MBXResolvedImage(name: name)
+    public class func from(name: String) -> TMBResolvedImage {
+        TMBResolvedImage(name: name)
     }
     
     @objc
-    public class func from(name: String, available: Bool) -> MBXResolvedImage {
-        MBXResolvedImage(name: name, available: available)
+    public class func from(name: String, available: Bool) -> TMBResolvedImage {
+        TMBResolvedImage(name: name, available: available)
     }
     
     func swiftOnly() -> ResolvedImage {
@@ -52,7 +52,7 @@ extension MBXResolvedImage {
     }
 }
 
-extension MBXValue {
+extension TMBValue {
     
 }
 

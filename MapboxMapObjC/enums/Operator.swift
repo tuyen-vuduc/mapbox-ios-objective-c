@@ -1,5 +1,5 @@
 @objc
-public enum MBXOperator: Int {
+public enum TMBOperator: Int {
 
     /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
     case subtract

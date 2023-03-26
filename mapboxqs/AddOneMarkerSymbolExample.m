@@ -48,7 +48,7 @@
     __weak AddOneMarkerSymbolExample *weakSelf = self;
     // Allows the delegate to receive information about map events.
     
-    [mapView loadStyle:BuiltInStyles.streets completion:^(MBXStyle * _Nullable style, NSError * _Nullable error) {
+    [mapView loadStyle:BuiltInStyles.streets completion:^(TMBStyle * _Nullable style, NSError * _Nullable error) {
         if (error) {
             NSLog(error.description);
             return;
@@ -62,7 +62,7 @@
     }];
 }
 
-- (void) addMarkerAnnotation: (MBXStyle *) style {
+- (void) addMarkerAnnotation: (TMBStyle *) style {
     NSString* imageId = @"BLUE_ICON_ID";
     UIImage* image = [UIImage imageNamed:@"blue_marker_view"];
     
@@ -71,16 +71,16 @@
          completion:nil];
     NSString* sourceId = @"SOURCE_ID";
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
-    MBXPoint* point = [MBXPoint withCoordinates: coordinates];
+    TMBPoint* point = [TMBPoint withCoordinates: coordinates];
     [mapView addSourceWithId:sourceId
-                    geometry:[MBCGeometry fromData:point]
+                    geometry:[TMBGeometry fromData:point]
                      onError:nil];
     
     [mapView addLayerWithBuilder:^id _Nonnull{
         return [self createSymbolLayerBuilder:sourceId
                                          icon:imageId];
     }
-                   layerPosition:MBXLayerPositionUnowned
+                   layerPosition:TMBLayerPositionUnowned
               layerPositionParam:nil
                          onError:nil];
 }
@@ -90,8 +90,8 @@
     SymbolLayerBuilder* builder = [SymbolLayerBuilder withId: @"LAYER_ID"];
     
     [builder source:sourceId];
-    [builder iconImage:[MBXValue constant:[MBXResolvedImage fromName:icon]]];
-    [builder iconAnchor:[MBXValue intValue:MBXIconAnchorBottom]];
+    [builder iconImage:[TMBValue constant:[TMBResolvedImage fromName:icon]]];
+    [builder iconAnchor:[TMBValue intValue:TMBIconAnchorBottom]];
     return builder;
 }
 

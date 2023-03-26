@@ -1,6 +1,6 @@
 import MapboxMaps
 
-class MBXError : Error {
+class TMBError : Error {
     public let message: String
     
     init(message: String) {
@@ -11,7 +11,7 @@ class MBXError : Error {
 @objc
 extension MapView {
     /// Whether extruded geometries are lit relative to the map or viewport.
-    @objc public func lightAnchor(_ value: MBXAnchor, onError: ((Error)->Void)?) {
+    @objc public func lightAnchor(_ value: TMBAnchor, onError: ((Error)->Void)?) {
         do {
            try self.mapboxMap.style.setLightProperty("anchor", value: anchorMapping[value]!)
         } catch {
@@ -31,7 +31,7 @@ extension MapView {
     }
 
     /// Transition property for `color`
-    @objc public func lightColorTransition(_ value: MBXStyleTransition, onError: ((Error)->Void)?) {
+    @objc public func lightColorTransition(_ value: TMBStyleTransition, onError: ((Error)->Void)?) {
         do {
             try self.mapboxMap.style.setLightProperty("colorTransition", value: value.swiftOnly())
         } catch {
@@ -49,7 +49,7 @@ extension MapView {
     }
 
     /// Transition property for `intensity`
-    @objc public func lightIntensityTransition(_ value: MBXStyleTransition, onError: ((Error)->Void)?) {
+    @objc public func lightIntensityTransition(_ value: TMBStyleTransition, onError: ((Error)->Void)?) {
         do {
            try self.mapboxMap.style.setLightProperty("intensityTransition", value: value.swiftOnly())
         } catch {
@@ -67,7 +67,7 @@ extension MapView {
     }
 
     /// Transition property for `position`
-    @objc public func lightPositionTransition(_ value: MBXStyleTransition, onError: ((Error)->Void)?) {
+    @objc public func lightPositionTransition(_ value: TMBStyleTransition, onError: ((Error)->Void)?) {
         do {
             try self.mapboxMap.style.setLightProperty("positionTransition", value: value.swiftOnly())
         } catch {

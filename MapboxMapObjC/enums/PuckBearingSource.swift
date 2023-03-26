@@ -1,11 +1,11 @@
 import MapboxMaps
 
-@objc public enum MBXPuckBearingSource : Int {
+@objc public enum TMBPuckBearingSource : Int {
     case heading
     case course
 }
 
-extension MBXPuckBearingSource {
+extension TMBPuckBearingSource {
     func swiftOnly() -> PuckBearingSource {
         switch(self) {
         case .heading: return .heading

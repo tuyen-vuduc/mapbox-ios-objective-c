@@ -123,7 +123,7 @@ typedef enum State : int {
 
     dispatch_group_enter(dispatchGroup);
     
-    MBCCancelable* stylePackDownload = [offlineManager loadStyleWithStyleUriString:BuiltInStyles.outdoors
+    TMBCancelable* stylePackDownload = [offlineManager loadStyleWithStyleUriString:BuiltInStyles.outdoors
                                                                   styleLoadOptions:stylePackLoadOptions
                                                                           progress:^(MBMStylePackLoadProgress * _Nonnull progress) {
         // These closures do not get called from the main thread. In this case
@@ -185,7 +185,7 @@ typedef enum State : int {
     // there is only ever one TileStore per unique path.
     dispatch_group_enter(dispatchGroup);
     
-    MBCCancelable* tileRegionDownload = [tileStore loadTileRegionForId:tileRegionId
+    TMBCancelable* tileRegionDownload = [tileStore loadTileRegionForId:tileRegionId
                                                            loadOptions:tileRegionLoadOptions
                                                               progress:^(MBXTileRegionLoadProgress * _Nonnull progress) {
         // These closures do not get called from the main thread. In this case
@@ -232,7 +232,7 @@ typedef enum State : int {
 
 - (void) cancelDownloads {
     // Canceling will trigger `.canceled` errors that will then change state
-    [downloads enumerateObjectsUsingBlock:^(MBCCancelable*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [downloads enumerateObjectsUsingBlock:^(TMBCancelable*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj cancel];
     }];
 }
@@ -445,10 +445,10 @@ typedef enum State : int {
             return;
         }
         
-        MBXPointAnnotation* pointAnnotation = [MBXPointAnnotation fromCoordinate:self->tokyoCoord];
+        TMBPointAnnotation* pointAnnotation = [TMBPointAnnotation fromCoordinate:self->tokyoCoord];
         [pointAnnotation image:[UIImage imageNamed:@"custom_marker"] name:@"custom-marker"];
         
-        MBXPointAnnotationManager* pointAnnotationManager = [mapView pointAnnotationManager];
+        TMBPointAnnotationManager* pointAnnotationManager = [mapView pointAnnotationManager];
         pointAnnotationManager.annotations = @[pointAnnotation];
     }];
 

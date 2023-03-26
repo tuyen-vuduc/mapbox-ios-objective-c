@@ -10,7 +10,7 @@ extension OfflineManager {
         styleLoadOptions: StylePackLoadOptions,
         progress: @escaping StylePackLoadProgressCallback,
         completion: @escaping (StylePack?, Error?)->Void
-    ) -> MBCCancelable {
+    ) -> TMBCancelable {
         let cancelable = self.loadStylePack(
             for: StyleURI(rawValue: styleUriString)!,
             loadOptions: styleLoadOptions,
@@ -23,7 +23,7 @@ extension OfflineManager {
                 completion(nil, error)
             }
         }
-        return MBCCancelable(cancelable: cancelable)
+        return TMBCancelable(cancelable: cancelable)
     }
     
     @objc
@@ -51,7 +51,7 @@ extension TileStore {
     public func loadTileRegion(forId id: String,
                                loadOptions: TileRegionLoadOptions,
                                progress: TileRegionLoadProgressCallback? = nil,
-                               completion: @escaping (TileRegion?, Error?) -> Void) -> MBCCancelable {
+                               completion: @escaping (TileRegion?, Error?) -> Void) -> TMBCancelable {
         let cancelable = loadTileRegion(forId: id, loadOptions: loadOptions, progress: progress) { result in
             switch(result) {
             case .success(let tileRegion):
@@ -61,7 +61,7 @@ extension TileStore {
             }
         }
         
-        return MBCCancelable(cancelable: cancelable)
+        return TMBCancelable(cancelable: cancelable)
     }
     
     @objc

@@ -1,14 +1,14 @@
 import MapboxMaps
 
 @objc
-public enum MBXLayerPosition : Int {
+public enum TMBLayerPosition : Int {
     case at
     case below
     case above
     case unowned
 }
 
-extension MBXLayerPosition {
+extension TMBLayerPosition {
     public func swiftValue(_ layerPositionParam: AnyObject?) -> LayerPosition {
         switch self {
         case .at:

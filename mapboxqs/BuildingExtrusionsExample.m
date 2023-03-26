@@ -135,43 +135,43 @@
     [builder source:@"composite"];
     [builder minZoom: @15];
     [builder sourceLayer:@"building"];
-    [builder fillExtrusionColor:[MBXValue constant:[UIColor lightGrayColor]]];
-    [builder fillExtrusionOpacity:[MBXValue constant:@0.6]];
-    [builder fillExtrusionAmbientOcclusionIntensity: [MBXValue constant:@0.3]];
-    [builder fillExtrusionAmbientOcclusionRadius: [MBXValue constant:@3.0]];
+    [builder fillExtrusionColor:[TMBValue constant:[UIColor lightGrayColor]]];
+    [builder fillExtrusionOpacity:[TMBValue constant:@0.6]];
+    [builder fillExtrusionAmbientOcclusionIntensity: [TMBValue constant:@0.3]];
+    [builder fillExtrusionAmbientOcclusionRadius: [TMBValue constant:@3.0]];
     
-    MBXExpression* filterExpression = [MBXExpression createWithOperator:MBXOperatorEq
+    TMBExpression* filterExpression = [TMBExpression createWithOperator:TMBOperatorEq
                                                               arguments:@[
-        [MBXExpression createWithOperator:MBXOperatorGet
+        [TMBExpression createWithOperator:TMBOperatorGet
                                 arguments: @[ @"extrude" ]],
         @"true"
     ]];
     
     [builder filter:filterExpression];
     
-    MBXExpression* fillExtrusionHeightExpression = [MBXExpression createWithOperator:MBXOperatorInterpolate
+    TMBExpression* fillExtrusionHeightExpression = [TMBExpression createWithOperator:TMBOperatorInterpolate
                                                               arguments:@[
-        [MBXExpression createWithOperator:MBXOperatorLinear],
-        [MBXExpression createWithOperator:MBXOperatorZoom],
+        [TMBExpression createWithOperator:TMBOperatorLinear],
+        [TMBExpression createWithOperator:TMBOperatorZoom],
         @15,
         @0,
         @15.05,
-        [MBXExpression createWithOperator:MBXOperatorGet
+        [TMBExpression createWithOperator:TMBOperatorGet
                                 arguments: @[ @"height" ]]
     ]];
-    [builder fillExtrusionHeight:[MBXValue expression:fillExtrusionHeightExpression]];
+    [builder fillExtrusionHeight:[TMBValue expression:fillExtrusionHeightExpression]];
     
-    MBXExpression* fillExtrusionBaseExpression = [MBXExpression createWithOperator:MBXOperatorInterpolate
+    TMBExpression* fillExtrusionBaseExpression = [TMBExpression createWithOperator:TMBOperatorInterpolate
                                                               arguments:@[
-        [MBXExpression createWithOperator:MBXOperatorLinear],
-        [MBXExpression createWithOperator:MBXOperatorZoom],
+        [TMBExpression createWithOperator:TMBOperatorLinear],
+        [TMBExpression createWithOperator:TMBOperatorZoom],
         @15,
         @0,
         @15.05,
-        [MBXExpression createWithOperator:MBXOperatorGet
+        [TMBExpression createWithOperator:TMBOperatorGet
                                 arguments: @[ @"min_height" ]]
     ]];
-    [builder fillExtrusionBase:[MBXValue expression:fillExtrusionBaseExpression]];
+    [builder fillExtrusionBase:[TMBValue expression:fillExtrusionBaseExpression]];
     
     return builder;
 }
@@ -181,7 +181,7 @@
     [self.mapView addLayerWithBuilder:^id _Nonnull{
         return [self create3dBuildingsFillExtrusionLayerBuilder];
     }
-                        layerPosition:MBXLayerPositionUnowned
+                        layerPosition:TMBLayerPositionUnowned
                    layerPositionParam:nil
                               onError:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);

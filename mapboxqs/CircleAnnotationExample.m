@@ -11,7 +11,7 @@
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
 
-@interface CircleAnnotationExample () <MBXAnnotationInteractionDelegate>
+@interface CircleAnnotationExample () <TMBAnnotationInteractionDelegate>
 
 @end
 
@@ -32,12 +32,12 @@
     // Annotation managers are kept alive by `AnnotationOrchestrator`
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
-    MBXCircleAnnotationManager* circleAnnotationManager = [mapView circleAnnotationManager];
+    TMBCircleAnnotationManager* circleAnnotationManager = [mapView circleAnnotationManager];
     circleAnnotationManager.delegate = self;
 
     NSMutableArray* annotations = [[NSMutableArray alloc] initWithCapacity:2000];
     for (int i=0; i< 2000; i++) {
-        MBXCircleAnnotation* annotation = [MBXCircleAnnotation fromCenter:[self randomCoordinate]];
+        TMBCircleAnnotation* annotation = [TMBCircleAnnotation fromCenter:[self randomCoordinate]];
         annotation.circleColor = [self randomColor];
         annotation.circleRadius = 12;
         annotation.isDraggable = true;
@@ -76,8 +76,8 @@
 }
 */
 
-- (void)annotationManager:(id<MBXAnnotationManager> _Nonnull)manager
-didDetectTappedAnnotations:(NSArray<id<MBXAnnotation>> * _Nonnull)annotations {
+- (void)annotationManager:(id<TMBAnnotationManager> _Nonnull)manager
+didDetectTappedAnnotations:(NSArray<id<TMBAnnotation>> * _Nonnull)annotations {
     NSLog(@"AnnotationManager did detect tapped annotations: %@", annotations);
 }
 

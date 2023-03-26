@@ -1,5 +1,5 @@
 @objc
-public enum MBXSourceType : Int {
+public enum TMBSourceType : Int {
     /// A vector tile source.
     case vector
 

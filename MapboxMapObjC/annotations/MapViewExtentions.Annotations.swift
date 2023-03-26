@@ -4,57 +4,57 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    public func polygonAnnotationManager() -> MBXPolygonAnnotationManager {
+    public func polygonAnnotationManager() -> TMBPolygonAnnotationManager {
         let swiftValue = self.annotations.makePolygonAnnotationManager()
-        return MBXPolygonAnnotationManager(swiftValue)
+        return TMBPolygonAnnotationManager(swiftValue)
     }
     
     @objc
     public func polygonAnnotationManager(
         id: String?,
-        layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
+        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
         layerPositionParam: AnyObject?
-    ) -> MBXPolygonAnnotationManager {
+    ) -> TMBPolygonAnnotationManager {
         let swiftValue = self.annotations.makePolygonAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
-        return MBXPolygonAnnotationManager(swiftValue)
+        return TMBPolygonAnnotationManager(swiftValue)
     }
     
-    public func circleAnnotationManager() -> MBXCircleAnnotationManager {
+    public func circleAnnotationManager() -> TMBCircleAnnotationManager {
         let swiftValue = self.annotations.makeCircleAnnotationManager()
-        return MBXCircleAnnotationManager(swiftValue)
+        return TMBCircleAnnotationManager(swiftValue)
     }
     
     @objc
     public func circleAnnotationManager(
         id: String?,
-        layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
+        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
         layerPositionParam: AnyObject?
-    ) -> MBXCircleAnnotationManager {
+    ) -> TMBCircleAnnotationManager {
         let swiftValue = self.annotations.makeCircleAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
-        return MBXCircleAnnotationManager(swiftValue)
+        return TMBCircleAnnotationManager(swiftValue)
     }
     
-    public func pointAnnotationManager() -> MBXPointAnnotationManager {
+    public func pointAnnotationManager() -> TMBPointAnnotationManager {
         let swiftValue = self.annotations.makePointAnnotationManager()
-        return MBXPointAnnotationManager(swiftValue)
+        return TMBPointAnnotationManager(swiftValue)
     }
     
     @objc
     public func pointAnnotationManager(
         id: String?,
-        layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
+        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
         layerPositionParam: AnyObject?
-    ) -> MBXPointAnnotationManager {
+    ) -> TMBPointAnnotationManager {
         let swiftValue = self.annotations.makePointAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
-        return MBXPointAnnotationManager(swiftValue)
+        return TMBPointAnnotationManager(swiftValue)
     }
 }

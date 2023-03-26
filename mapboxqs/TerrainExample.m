@@ -61,11 +61,11 @@
 - (SkyLayerBuilder*) createSkyLayerBuilder {
     SkyLayerBuilder* builder = [SkyLayerBuilder withId:@"sky-layer"];
     
-    MBXValue* skyType = [MBXValue constant: [NSNumber numberWithInt:MBXSkyTypeAtmosphere]];
+    TMBValue* skyType = [TMBValue constant: [NSNumber numberWithInt:TMBSkyTypeAtmosphere]];
     [builder skyType: skyType];
-    MBXValue* skyAtmosphereSun = [MBXValue constant: @[@0.0, @0.0]];
+    TMBValue* skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     [builder skyAtmosphereSun: skyAtmosphereSun];
-    MBXValue* skyAtmosphereSunIntensity = [MBXValue constant: @15.0];
+    TMBValue* skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
     
     return builder;
@@ -81,15 +81,15 @@
                             }
                              onError:nil];
     
-    MBXTerrain* terrain = [[MBXTerrain alloc] initWithSourceId:sourceId];
-    MBXValue* value = [[MBXValue alloc] initWithConstant:@1.5];
+    TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
+    TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
     
     [self.mapView setTerrain:terrain onError:nil];
     
     [self.mapView addLayerWithTarget:self
                             selector:@selector(createSkyLayerBuilder)
-                       layerPosition:MBXLayerPositionUnowned
+                       layerPosition:TMBLayerPositionUnowned
                   layerPositionParam:nil
                              onError:nil];
 }

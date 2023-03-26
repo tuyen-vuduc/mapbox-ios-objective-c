@@ -2,256 +2,256 @@ import MapboxMaps
 
 extension NSNumber {
     func visibility() -> Visibility? {
-        let visibility = MBXVisibility(rawValue: intValue)
+        let visibility = TMBVisibility(rawValue: intValue)
         return visibility?.swiftOnly()
     }
     func lineCap() -> LineCap? {
-        let lineCap = MBXLineCap(rawValue: intValue)
+        let lineCap = TMBLineCap(rawValue: intValue)
         return lineCap?.swiftOnly()
     }
     func lineJoin() -> LineJoin? {
-        let lineJoin = MBXLineJoin(rawValue: intValue)
+        let lineJoin = TMBLineJoin(rawValue: intValue)
         return lineJoin?.swiftOnly()
     }
     func iconAnchor() -> IconAnchor? {
-        let iconAnchor = MBXIconAnchor(rawValue: intValue)
+        let iconAnchor = TMBIconAnchor(rawValue: intValue)
         return iconAnchor?.swiftOnly()
     }
     func iconPitchAlignment() -> IconPitchAlignment? {
-        let iconPitchAlignment = MBXIconPitchAlignment(rawValue: intValue)
+        let iconPitchAlignment = TMBIconPitchAlignment(rawValue: intValue)
         return iconPitchAlignment?.swiftOnly()
     }
     func iconRotationAlignment() -> IconRotationAlignment? {
-        let iconRotationAlignment = MBXIconRotationAlignment(rawValue: intValue)
+        let iconRotationAlignment = TMBIconRotationAlignment(rawValue: intValue)
         return iconRotationAlignment?.swiftOnly()
     }
     func iconTextFit() -> IconTextFit? {
-        let iconTextFit = MBXIconTextFit(rawValue: intValue)
+        let iconTextFit = TMBIconTextFit(rawValue: intValue)
         return iconTextFit?.swiftOnly()
     }
     func symbolPlacement() -> SymbolPlacement? {
-        let symbolPlacement = MBXSymbolPlacement(rawValue: intValue)
+        let symbolPlacement = TMBSymbolPlacement(rawValue: intValue)
         return symbolPlacement?.swiftOnly()
     }
     func symbolZOrder() -> SymbolZOrder? {
-        let symbolZOrder = MBXSymbolZOrder(rawValue: intValue)
+        let symbolZOrder = TMBSymbolZOrder(rawValue: intValue)
         return symbolZOrder?.swiftOnly()
     }
     func textAnchor() -> TextAnchor? {
-        let textAnchor = MBXTextAnchor(rawValue: intValue)
+        let textAnchor = TMBTextAnchor(rawValue: intValue)
         return textAnchor?.swiftOnly()
     }
     func textJustify() -> TextJustify? {
-        let textJustify = MBXTextJustify(rawValue: intValue)
+        let textJustify = TMBTextJustify(rawValue: intValue)
         return textJustify?.swiftOnly()
     }
     func textPitchAlignment() -> TextPitchAlignment? {
-        let textPitchAlignment = MBXTextPitchAlignment(rawValue: intValue)
+        let textPitchAlignment = TMBTextPitchAlignment(rawValue: intValue)
         return textPitchAlignment?.swiftOnly()
     }
     func textRotationAlignment() -> TextRotationAlignment? {
-        let textRotationAlignment = MBXTextRotationAlignment(rawValue: intValue)
+        let textRotationAlignment = TMBTextRotationAlignment(rawValue: intValue)
         return textRotationAlignment?.swiftOnly()
     }
     func textTransform() -> TextTransform? {
-        let textTransform = MBXTextTransform(rawValue: intValue)
+        let textTransform = TMBTextTransform(rawValue: intValue)
         return textTransform?.swiftOnly()
     }
     func fillTranslateAnchor() -> FillTranslateAnchor? {
-        let fillTranslateAnchor = MBXFillTranslateAnchor(rawValue: intValue)
+        let fillTranslateAnchor = TMBFillTranslateAnchor(rawValue: intValue)
         return fillTranslateAnchor?.swiftOnly()
     }
     func lineTranslateAnchor() -> LineTranslateAnchor? {
-        let lineTranslateAnchor = MBXLineTranslateAnchor(rawValue: intValue)
+        let lineTranslateAnchor = TMBLineTranslateAnchor(rawValue: intValue)
         return lineTranslateAnchor?.swiftOnly()
     }
     func iconTranslateAnchor() -> IconTranslateAnchor? {
-        let iconTranslateAnchor = MBXIconTranslateAnchor(rawValue: intValue)
+        let iconTranslateAnchor = TMBIconTranslateAnchor(rawValue: intValue)
         return iconTranslateAnchor?.swiftOnly()
     }
     func textTranslateAnchor() -> TextTranslateAnchor? {
-        let textTranslateAnchor = MBXTextTranslateAnchor(rawValue: intValue)
+        let textTranslateAnchor = TMBTextTranslateAnchor(rawValue: intValue)
         return textTranslateAnchor?.swiftOnly()
     }
     func circlePitchAlignment() -> CirclePitchAlignment? {
-        let circlePitchAlignment = MBXCirclePitchAlignment(rawValue: intValue)
+        let circlePitchAlignment = TTMBirclePitchAlignment(rawValue: intValue)
         return circlePitchAlignment?.swiftOnly()
     }
     func circlePitchScale() -> CirclePitchScale? {
-        let circlePitchScale = MBXCirclePitchScale(rawValue: intValue)
+        let circlePitchScale = TTMBirclePitchScale(rawValue: intValue)
         return circlePitchScale?.swiftOnly()
     }
     func circleTranslateAnchor() -> CircleTranslateAnchor? {
-        let circleTranslateAnchor = MBXCircleTranslateAnchor(rawValue: intValue)
+        let circleTranslateAnchor = TTMBircleTranslateAnchor(rawValue: intValue)
         return circleTranslateAnchor?.swiftOnly()
     }
     func fillExtrusionTranslateAnchor() -> FillExtrusionTranslateAnchor? {
-        let fillExtrusionTranslateAnchor = MBXFillExtrusionTranslateAnchor(rawValue: intValue)
+        let fillExtrusionTranslateAnchor = TMBFillExtrusionTranslateAnchor(rawValue: intValue)
         return fillExtrusionTranslateAnchor?.swiftOnly()
     }
     func rasterResampling() -> RasterResampling? {
-        let rasterResampling = MBXRasterResampling(rawValue: intValue)
+        let rasterResampling = TMBRasterResampling(rawValue: intValue)
         return rasterResampling?.swiftOnly()
     }
     func hillshadeIlluminationAnchor() -> HillshadeIlluminationAnchor? {
-        let hillshadeIlluminationAnchor = MBXHillshadeIlluminationAnchor(rawValue: intValue)
+        let hillshadeIlluminationAnchor = TMBHillshadeIlluminationAnchor(rawValue: intValue)
         return hillshadeIlluminationAnchor?.swiftOnly()
     }
     func skyType() -> SkyType? {
-        let skyType = MBXSkyType(rawValue: intValue)
+        let skyType = TMBSkyType(rawValue: intValue)
         return skyType?.swiftOnly()
     }
     func anchor() -> Anchor? {
-        let anchor = MBXAnchor(rawValue: intValue)
+        let anchor = TMBAnchor(rawValue: intValue)
         return anchor?.swiftOnly()
     }
     func styleProjectionName() -> StyleProjectionName? {
-        let styleProjectionName = MBXStyleProjectionName(rawValue: intValue)
+        let styleProjectionName = TMBStyleProjectionName(rawValue: intValue)
         return styleProjectionName?.swiftOnly()
     }
     func textWritingMode() -> TextWritingMode? {
-        let textWritingMode = MBXTextWritingMode(rawValue: intValue)
+        let textWritingMode = TMBTextWritingMode(rawValue: intValue)
         return textWritingMode?.swiftOnly()
     }
 }
 
-extension MBXVisibility {
+extension TMBVisibility {
     func swiftOnly() -> Visibility? {
         return visibilityMapping[self]
     }
 }
 
-extension MBXLineCap {
+extension TMBLineCap {
     func swiftOnly() -> LineCap? {
         return lineCapMapping[self]
     }
 }
-extension MBXLineJoin {
+extension TMBLineJoin {
     func swiftOnly() -> LineJoin? {
         return lineJoinMapping[self]
     }
 }
-extension MBXIconAnchor {
+extension TMBIconAnchor {
     func swiftOnly() -> IconAnchor? {
         return iconAnchorMapping[self]
     }
 }
-extension MBXIconPitchAlignment {
+extension TMBIconPitchAlignment {
     func swiftOnly() -> IconPitchAlignment? {
         return iconPitchAlignmentMapping[self]
     }
 }
-extension MBXIconRotationAlignment {
+extension TMBIconRotationAlignment {
     func swiftOnly() -> IconRotationAlignment? {
         return iconRotationAlignmentMapping[self]
     }
 }
-extension MBXIconTextFit {
+extension TMBIconTextFit {
     func swiftOnly() -> IconTextFit? {
         return iconTextFitMapping[self]
     }
 }
-extension MBXSymbolPlacement {
+extension TMBSymbolPlacement {
     func swiftOnly() -> SymbolPlacement? {
         return symbolPlacementMapping[self]
     }
 }
-extension MBXSymbolZOrder {
+extension TMBSymbolZOrder {
     func swiftOnly() -> SymbolZOrder? {
         return symbolZOrderMapping[self]
     }
 }
-extension MBXTextAnchor {
+extension TMBTextAnchor {
     func swiftOnly() -> TextAnchor? {
         return textAnchorMapping[self]
     }
 }
-extension MBXTextJustify {
+extension TMBTextJustify {
     func swiftOnly() -> TextJustify? {
         return textJustifyMapping[self]
     }
 }
-extension MBXTextPitchAlignment {
+extension TMBTextPitchAlignment {
     func swiftOnly() -> TextPitchAlignment? {
         return textPitchAlignmentMapping[self]
     }
 }
-extension MBXTextRotationAlignment {
+extension TMBTextRotationAlignment {
     func swiftOnly() -> TextRotationAlignment? {
         return textRotationAlignmentMapping[self]
     }
 }
-extension MBXTextTransform {
+extension TMBTextTransform {
     func swiftOnly() -> TextTransform? {
         return textTransformMapping[self]
     }
 }
-extension MBXFillTranslateAnchor {
+extension TMBFillTranslateAnchor {
     func swiftOnly() -> FillTranslateAnchor? {
         return fillTranslateAnchorMapping[self]
     }
 }
-extension MBXLineTranslateAnchor {
+extension TMBLineTranslateAnchor {
     func swiftOnly() -> LineTranslateAnchor? {
         return lineTranslateAnchorMapping[self]
     }
 }
-extension MBXIconTranslateAnchor {
+extension TMBIconTranslateAnchor {
     func swiftOnly() -> IconTranslateAnchor? {
         return iconTranslateAnchorMapping[self]
     }
 }
-extension MBXTextTranslateAnchor {
+extension TMBTextTranslateAnchor {
     func swiftOnly() -> TextTranslateAnchor? {
         return textTranslateAnchorMapping[self]
     }
 }
-extension MBXCirclePitchAlignment {
+extension TTMBirclePitchAlignment {
     func swiftOnly() -> CirclePitchAlignment? {
         return circlePitchAlignmentMapping[self]
     }
 }
-extension MBXCirclePitchScale {
+extension TTMBirclePitchScale {
     func swiftOnly() -> CirclePitchScale? {
         return circlePitchScaleMapping[self]
     }
 }
-extension MBXCircleTranslateAnchor {
+extension TTMBircleTranslateAnchor {
     func swiftOnly() -> CircleTranslateAnchor? {
         return circleTranslateAnchorMapping[self]
     }
 }
-extension MBXFillExtrusionTranslateAnchor {
+extension TMBFillExtrusionTranslateAnchor {
     func swiftOnly() -> FillExtrusionTranslateAnchor? {
         return fillExtrusionTranslateAnchorMapping[self]
     }
 }
-extension MBXRasterResampling {
+extension TMBRasterResampling {
     func swiftOnly() -> RasterResampling? {
         return rasterResamplingMapping[self]
     }
 }
-extension MBXHillshadeIlluminationAnchor {
+extension TMBHillshadeIlluminationAnchor {
     func swiftOnly() -> HillshadeIlluminationAnchor? {
         return hillshadeIlluminationAnchorMapping[self]
     }
 }
-extension MBXSkyType {
+extension TMBSkyType {
     func swiftOnly() -> SkyType? {
         return skyTypeMapping[self]
     }
 }
-extension MBXAnchor {
+extension TMBAnchor {
     func swiftOnly() -> Anchor? {
         return anchorMapping[self]
     }
 }
-extension MBXStyleProjectionName {
+extension TMBStyleProjectionName {
     func swiftOnly() -> StyleProjectionName? {
         return styleProjectionNameMapping[self]
     }
 }
-extension MBXTextWritingMode {
+extension TMBTextWritingMode {
     func swiftOnly() -> TextWritingMode? {
         return textWritingModeMapping[self]
     }

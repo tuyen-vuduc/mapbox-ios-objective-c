@@ -8,7 +8,7 @@ extension MapView {
     @objc public func addLayer(
         target: NSObject,
         selector: Selector,
-        layerPosition: MBXLayerPosition = .unowned,
+        layerPosition: TMBLayerPosition = .unowned,
    layerPositionParam: NSObject?,
         onError: ((Error)->Void)?
     ) {
@@ -30,7 +30,7 @@ extension MapView {
     
     @objc public func addLayer(
         builder: ()->AnyObject,
-        layerPosition: MBXLayerPosition = .unowned,
+        layerPosition: TMBLayerPosition = .unowned,
    layerPositionParam: NSObject?,
         onError: ((Error)->Void)?
     ) {
@@ -51,7 +51,7 @@ extension MapView {
     @objc public func addCustomLayer(
                 _ id: String,
            layerHost: CustomLayerHost,
-       layerPosition: MBXLayerPosition = .unowned,
+       layerPosition: TMBLayerPosition = .unowned,
   layerPositionParam: NSObject?,
              onError: ((Error)->Void)?) -> Void {
         do {
@@ -67,7 +67,7 @@ extension MapView {
     
     @objc public func addLayer(
                properties: NSDictionary,
-            layerPosition: MBXLayerPosition = .unowned,
+            layerPosition: TMBLayerPosition = .unowned,
        layerPositionParam: NSObject?,
                   onError: ((Error)->Void)?) {
         do {

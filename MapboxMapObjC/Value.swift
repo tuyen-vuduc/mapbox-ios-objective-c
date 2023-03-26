@@ -1,34 +1,34 @@
 import MapboxMaps
 
 @objc
-open class MBXValue : NSObject {
+open class TMBValue : NSObject {
     let constant: NSObject?
-    let expression: MBXExpression?
+    let expression: TMBExpression?
     
     @objc public init(constant: NSObject) {
         self.constant = constant
         self.expression = nil
     }
     
-    @objc public init(expression: MBXExpression) {
+    @objc public init(expression: TMBExpression) {
         self.expression = expression
         self.constant = nil
     }
     
-    @objc class public func constant(_ constant: NSObject) -> MBXValue {
-        return MBXValue(constant: constant)
+    @objc class public func constant(_ constant: NSObject) -> TMBValue {
+        return TMBValue(constant: constant)
     }
     
-    @objc class public func intValue(_ value: Int) -> MBXValue {
-        return MBXValue(constant: NSNumber(value: value))
+    @objc class public func intValue(_ value: Int) -> TMBValue {
+        return TMBValue(constant: NSNumber(value: value))
     }
     
-    @objc class public func doubleValue(_ value: Double) -> MBXValue {
-        return MBXValue(constant: NSNumber(value: value))
+    @objc class public func doubleValue(_ value: Double) -> TMBValue {
+        return TMBValue(constant: NSNumber(value: value))
     }
     
-    @objc class public func expression(_ expression: MBXExpression) -> MBXValue {
-        return MBXValue(expression: expression)
+    @objc class public func expression(_ expression: TMBExpression) -> TMBValue {
+        return TMBValue(expression: expression)
     }
 }
 
@@ -43,7 +43,7 @@ extension UIColor {
     }
 }
 
-extension MBXValue {
+extension TMBValue {
     func styleColor<T>() -> Value<T>? {
         if let constant = self.constant as? UIColor {
             return Value.constant(StyleColor(constant) as! T)
@@ -304,7 +304,7 @@ extension MBXValue {
         return Value.expression(expression!.swiftOnly())
     }
     func resolvedImage<T>() -> Value<T>? {
-        if let constant = self.constant as? MBXResolvedImage {
+        if let constant = self.constant as? TMBResolvedImage {
             return Value.constant(constant.swiftOnly() as! T)
         }
         

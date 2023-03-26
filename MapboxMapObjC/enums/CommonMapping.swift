@@ -1,7 +1,7 @@
 import MapboxMaps
 
 
-let visibilityMapping: [MBXVisibility:Visibility] = [
+let visibilityMapping: [TMBVisibility:Visibility] = [
 
     /// The layer is shown.
     .visible : .visible,
@@ -13,7 +13,7 @@ let visibilityMapping: [MBXVisibility:Visibility] = [
 // MARK: LINE_CAP
 
 /// The display of line endings.
-let lineCapMapping: [MBXLineCap:LineCap] = [
+let lineCapMapping: [TMBLineCap:LineCap] = [
 
     /// A cap with a squared-off end which is drawn to the exact endpoint of the line.
     .butt : .butt,
@@ -29,7 +29,7 @@ let lineCapMapping: [MBXLineCap:LineCap] = [
 // MARK: LINE_JOIN
 
 /// The display of lines when joining.
-let lineJoinMapping: [MBXLineJoin:LineJoin] = [
+let lineJoinMapping: [TMBLineJoin:LineJoin] = [
 
     /// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line's width.
     .bevel : .bevel,
@@ -45,7 +45,7 @@ let lineJoinMapping: [MBXLineJoin:LineJoin] = [
 // MARK: ICON_ANCHOR
 
 /// Part of the icon placed closest to the anchor.
-let iconAnchorMapping: [MBXIconAnchor:IconAnchor] = [
+let iconAnchorMapping: [TMBIconAnchor:IconAnchor] = [
 
     /// The center of the icon is placed closest to the anchor.
     .center : .center,
@@ -79,7 +79,7 @@ let iconAnchorMapping: [MBXIconAnchor:IconAnchor] = [
 // MARK: ICON_PITCH_ALIGNMENT
 
 /// Orientation of icon when map is pitched.
-let iconPitchAlignmentMapping: [MBXIconPitchAlignment:IconPitchAlignment] = [
+let iconPitchAlignmentMapping: [TMBIconPitchAlignment:IconPitchAlignment] = [
 
     /// The icon is aligned to the plane of the map.
     .map : .map,
@@ -95,7 +95,7 @@ let iconPitchAlignmentMapping: [MBXIconPitchAlignment:IconPitchAlignment] = [
 // MARK: ICON_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of icons.
-let iconRotationAlignmentMapping: [MBXIconRotationAlignment:IconRotationAlignment] = [
+let iconRotationAlignmentMapping: [TMBIconRotationAlignment:IconRotationAlignment] = [
 
     /// When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_POINT], aligns icons east-west. When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_LINE] or [@link Property#SYMBOL_PLACEMENT_LINE_CENTER], aligns icon x-axes with the line.
     .map : .map,
@@ -111,7 +111,7 @@ let iconRotationAlignmentMapping: [MBXIconRotationAlignment:IconRotationAlignmen
 // MARK: ICON_TEXT_FIT
 
 /// Scales the icon to fit around the associated text.
-let iconTextFitMapping: [MBXIconTextFit:IconTextFit] = [
+let iconTextFitMapping: [TMBIconTextFit:IconTextFit] = [
 
     /// The icon is displayed at its intrinsic aspect ratio.
     .none : .none,
@@ -130,7 +130,7 @@ let iconTextFitMapping: [MBXIconTextFit:IconTextFit] = [
 // MARK: SYMBOL_PLACEMENT
 
 /// Label placement relative to its geometry.
-let symbolPlacementMapping: [MBXSymbolPlacement:SymbolPlacement] = [
+let symbolPlacementMapping: [TMBSymbolPlacement:SymbolPlacement] = [
 
     /// The label is placed at the point where the geometry is located.
     .point : .point,
@@ -146,7 +146,7 @@ let symbolPlacementMapping: [MBXSymbolPlacement:SymbolPlacement] = [
 // MARK: SYMBOL_Z_ORDER
 
 /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
-let symbolZOrderMapping: [MBXSymbolZOrder:SymbolZOrder] = [
+let symbolZOrderMapping: [TMBSymbolZOrder:SymbolZOrder] = [
 
     /// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if [@link ICON_ALLOW_OVERLAP] or [@link TEXT_ALLOW_OVERLAP] is set to [@link TRUE] or [@link ICON_IGNORE_PLACEMENT] or [@link TEXT_IGNORE_PLACEMENT] is [@link FALSE].
     .auto : .auto,
@@ -162,7 +162,7 @@ let symbolZOrderMapping: [MBXSymbolZOrder:SymbolZOrder] = [
 // MARK: TEXT_ANCHOR
 
 /// Part of the text placed closest to the anchor.
-let textAnchorMapping: [MBXTextAnchor:TextAnchor] = [
+let textAnchorMapping: [TMBTextAnchor:TextAnchor] = [
 
     /// The center of the text is placed closest to the anchor.
     .center : .center,
@@ -196,7 +196,7 @@ let textAnchorMapping: [MBXTextAnchor:TextAnchor] = [
 // MARK: TEXT_JUSTIFY
 
 /// Text justification options.
-let textJustifyMapping: [MBXTextJustify:TextJustify] = [
+let textJustifyMapping: [TMBTextJustify:TextJustify] = [
 
     /// The text is aligned towards the anchor position.
     .auto : .auto,
@@ -215,7 +215,7 @@ let textJustifyMapping: [MBXTextJustify:TextJustify] = [
 // MARK: TEXT_PITCH_ALIGNMENT
 
 /// Orientation of text when map is pitched.
-let textPitchAlignmentMapping: [MBXTextPitchAlignment:TextPitchAlignment] = [
+let textPitchAlignmentMapping: [TMBTextPitchAlignment:TextPitchAlignment] = [
 
     /// The text is aligned to the plane of the map.
     .map : .map,
@@ -231,7 +231,7 @@ let textPitchAlignmentMapping: [MBXTextPitchAlignment:TextPitchAlignment] = [
 // MARK: TEXT_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
-let textRotationAlignmentMapping: [MBXTextRotationAlignment:TextRotationAlignment] = [
+let textRotationAlignmentMapping: [TMBTextRotationAlignment:TextRotationAlignment] = [
 
     /// When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_POINT], aligns text east-west. When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_LINE] or [@link Property#SYMBOL_PLACEMENT_LINE_CENTER], aligns text x-axes with the line.
     .map : .map,
@@ -247,7 +247,7 @@ let textRotationAlignmentMapping: [MBXTextRotationAlignment:TextRotationAlignmen
 // MARK: TEXT_TRANSFORM
 
 /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
-let textTransformMapping: [MBXTextTransform:TextTransform] = [
+let textTransformMapping: [TMBTextTransform:TextTransform] = [
 
     /// The text is not altered.
     .none : .none,
@@ -263,7 +263,7 @@ let textTransformMapping: [MBXTextTransform:TextTransform] = [
 // MARK: FILL_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-translate`.
-let fillTranslateAnchorMapping: [MBXFillTranslateAnchor:FillTranslateAnchor] = [
+let fillTranslateAnchorMapping: [TMBFillTranslateAnchor:FillTranslateAnchor] = [
 
     /// The fill is translated relative to the map.
     .map : .map,
@@ -276,7 +276,7 @@ let fillTranslateAnchorMapping: [MBXFillTranslateAnchor:FillTranslateAnchor] = [
 // MARK: LINE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `line-translate`.
-let lineTranslateAnchorMapping: [MBXLineTranslateAnchor:LineTranslateAnchor] = [
+let lineTranslateAnchorMapping: [TMBLineTranslateAnchor:LineTranslateAnchor] = [
 
     /// The line is translated relative to the map.
     .map : .map,
@@ -289,7 +289,7 @@ let lineTranslateAnchorMapping: [MBXLineTranslateAnchor:LineTranslateAnchor] = [
 // MARK: ICON_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `icon-translate`.
-let iconTranslateAnchorMapping: [MBXIconTranslateAnchor:IconTranslateAnchor] = [
+let iconTranslateAnchorMapping: [TMBIconTranslateAnchor:IconTranslateAnchor] = [
 
     /// Icons are translated relative to the map.
     .map : .map,
@@ -302,7 +302,7 @@ let iconTranslateAnchorMapping: [MBXIconTranslateAnchor:IconTranslateAnchor] = [
 // MARK: TEXT_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `text-translate`.
-let textTranslateAnchorMapping: [MBXTextTranslateAnchor:TextTranslateAnchor] = [
+let textTranslateAnchorMapping: [TMBTextTranslateAnchor:TextTranslateAnchor] = [
 
     /// The text is translated relative to the map.
     .map : .map,
@@ -315,7 +315,7 @@ let textTranslateAnchorMapping: [MBXTextTranslateAnchor:TextTranslateAnchor] = [
 // MARK: CIRCLE_PITCH_ALIGNMENT
 
 /// Orientation of circle when map is pitched.
-let circlePitchAlignmentMapping: [MBXCirclePitchAlignment:CirclePitchAlignment] = [
+let circlePitchAlignmentMapping: [TTMBirclePitchAlignment:CirclePitchAlignment] = [
 
     /// The circle is aligned to the plane of the map.
     .map : .map,
@@ -328,7 +328,7 @@ let circlePitchAlignmentMapping: [MBXCirclePitchAlignment:CirclePitchAlignment] 
 // MARK: CIRCLE_PITCH_SCALE
 
 /// Controls the scaling behavior of the circle when the map is pitched.
-let circlePitchScaleMapping: [MBXCirclePitchScale:CirclePitchScale] = [
+let circlePitchScaleMapping: [TTMBirclePitchScale:CirclePitchScale] = [
 
     /// Circles are scaled according to their apparent distance to the camera.
     .map : .map,
@@ -341,7 +341,7 @@ let circlePitchScaleMapping: [MBXCirclePitchScale:CirclePitchScale] = [
 // MARK: CIRCLE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `circle-translate`.
-let circleTranslateAnchorMapping: [MBXCircleTranslateAnchor:CircleTranslateAnchor] = [
+let circleTranslateAnchorMapping: [TTMBircleTranslateAnchor:CircleTranslateAnchor] = [
 
     /// The circle is translated relative to the map.
     .map : .map,
@@ -354,7 +354,7 @@ let circleTranslateAnchorMapping: [MBXCircleTranslateAnchor:CircleTranslateAncho
 // MARK: FILL_EXTRUSION_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-extrusion-translate`.
-let fillExtrusionTranslateAnchorMapping: [MBXFillExtrusionTranslateAnchor:FillExtrusionTranslateAnchor] = [
+let fillExtrusionTranslateAnchorMapping: [TMBFillExtrusionTranslateAnchor:FillExtrusionTranslateAnchor] = [
 
     /// The fill extrusion is translated relative to the map.
     .map : .map,
@@ -367,7 +367,7 @@ let fillExtrusionTranslateAnchorMapping: [MBXFillExtrusionTranslateAnchor:FillEx
 // MARK: RASTER_RESAMPLING
 
 /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-let rasterResamplingMapping: [MBXRasterResampling:RasterResampling] = [
+let rasterResamplingMapping: [TMBRasterResampling:RasterResampling] = [
 
     /// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
     .linear : .linear,
@@ -380,7 +380,7 @@ let rasterResamplingMapping: [MBXRasterResampling:RasterResampling] = [
 // MARK: HILLSHADE_ILLUMINATION_ANCHOR
 
 /// Direction of light source when map is rotated.
-let hillshadeIlluminationAnchorMapping: [MBXHillshadeIlluminationAnchor:HillshadeIlluminationAnchor] = [
+let hillshadeIlluminationAnchorMapping: [TMBHillshadeIlluminationAnchor:HillshadeIlluminationAnchor] = [
 
     /// The hillshade illumination is relative to the north direction.
     .map : .map,
@@ -393,7 +393,7 @@ let hillshadeIlluminationAnchorMapping: [MBXHillshadeIlluminationAnchor:Hillshad
 // MARK: SKY_TYPE
 
 /// The type of the sky
-public let skyTypeMapping: [MBXSkyType:SkyType] = [
+public let skyTypeMapping: [TMBSkyType:SkyType] = [
 
     /// Renders the sky with a gradient that can be configured with [@link SKY_GRADIENT_RADIUS] and [@link SKY_GRADIENT].
     .gradient : .gradient,
@@ -406,7 +406,7 @@ public let skyTypeMapping: [MBXSkyType:SkyType] = [
 // MARK: ANCHOR
 
 /// Whether extruded geometries are lit relative to the map or viewport.
-let anchorMapping: [MBXAnchor:Anchor] = [
+let anchorMapping: [TMBAnchor:Anchor] = [
 
     /// The position of the light source is aligned to the rotation of the map.
     .map : .map,
@@ -419,7 +419,7 @@ let anchorMapping: [MBXAnchor:Anchor] = [
 // MARK: NAME
 
 /// The name of the projection to be used for rendering the map.
-let styleProjectionNameMapping: [MBXStyleProjectionName:StyleProjectionName] = [
+let styleProjectionNameMapping: [TMBStyleProjectionName:StyleProjectionName] = [
 
     /// The Mercator projection is the default projection.
     .mercator : .mercator,
@@ -432,7 +432,7 @@ let styleProjectionNameMapping: [MBXStyleProjectionName:StyleProjectionName] = [
 // MARK: TEXT_WRITING_MODE
 
 /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
-let textWritingModeMapping: [MBXTextWritingMode:TextWritingMode] = [
+let textWritingModeMapping: [TMBTextWritingMode:TextWritingMode] = [
 
     /// If a text's language supports horizontal writing mode, symbols would be laid out horizontally.
     .horizontal : .horizontal,
@@ -442,7 +442,7 @@ let textWritingModeMapping: [MBXTextWritingMode:TextWritingMode] = [
 
 ]
 
-let mbxvisibilityMapping: [Visibility:MBXVisibility] = [
+let TMBvisibilityMapping: [Visibility:TMBVisibility] = [
 
     /// The layer is shown.
     .visible : .visible,
@@ -454,7 +454,7 @@ let mbxvisibilityMapping: [Visibility:MBXVisibility] = [
 // MARK: LINE_CAP
 
 /// The display of line endings.
-let mbxlineCapMapping: [LineCap:MBXLineCap] = [
+let TMBlineCapMapping: [LineCap:TMBLineCap] = [
 
     /// A cap with a squared-off end which is drawn to the exact endpoint of the line.
     .butt : .butt,
@@ -470,7 +470,7 @@ let mbxlineCapMapping: [LineCap:MBXLineCap] = [
 // MARK: LINE_JOIN
 
 /// The display of lines when joining.
-let mbxlineJoinMapping: [LineJoin:MBXLineJoin] = [
+let TMBlineJoinMapping: [LineJoin:TMBLineJoin] = [
 
     /// A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line's width.
     .bevel : .bevel,
@@ -486,7 +486,7 @@ let mbxlineJoinMapping: [LineJoin:MBXLineJoin] = [
 // MARK: ICON_ANCHOR
 
 /// Part of the icon placed closest to the anchor.
-let mbxiconAnchorMapping: [IconAnchor:MBXIconAnchor] = [
+let TMBiconAnchorMapping: [IconAnchor:TMBIconAnchor] = [
 
     /// The center of the icon is placed closest to the anchor.
     .center : .center,
@@ -520,7 +520,7 @@ let mbxiconAnchorMapping: [IconAnchor:MBXIconAnchor] = [
 // MARK: ICON_PITCH_ALIGNMENT
 
 /// Orientation of icon when map is pitched.
-let mbxiconPitchAlignmentMapping: [IconPitchAlignment:MBXIconPitchAlignment] = [
+let TMBiconPitchAlignmentMapping: [IconPitchAlignment:TMBIconPitchAlignment] = [
 
     /// The icon is aligned to the plane of the map.
     .map : .map,
@@ -536,7 +536,7 @@ let mbxiconPitchAlignmentMapping: [IconPitchAlignment:MBXIconPitchAlignment] = [
 // MARK: ICON_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of icons.
-let mbxiconRotationAlignmentMapping: [IconRotationAlignment:MBXIconRotationAlignment] = [
+let TMBiconRotationAlignmentMapping: [IconRotationAlignment:TMBIconRotationAlignment] = [
 
     /// When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_POINT], aligns icons east-west. When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_LINE] or [@link Property#SYMBOL_PLACEMENT_LINE_CENTER], aligns icon x-axes with the line.
     .map : .map,
@@ -552,7 +552,7 @@ let mbxiconRotationAlignmentMapping: [IconRotationAlignment:MBXIconRotationAlign
 // MARK: ICON_TEXT_FIT
 
 /// Scales the icon to fit around the associated text.
-let mbxiconTextFitMapping: [IconTextFit:MBXIconTextFit] = [
+let TMBiconTextFitMapping: [IconTextFit:TMBIconTextFit] = [
 
     /// The icon is displayed at its intrinsic aspect ratio.
     .none : .none,
@@ -571,7 +571,7 @@ let mbxiconTextFitMapping: [IconTextFit:MBXIconTextFit] = [
 // MARK: SYMBOL_PLACEMENT
 
 /// Label placement relative to its geometry.
-let mbxsymbolPlacementMapping: [SymbolPlacement:MBXSymbolPlacement] = [
+let TMBsymbolPlacementMapping: [SymbolPlacement:TMBSymbolPlacement] = [
 
     /// The label is placed at the point where the geometry is located.
     .point : .point,
@@ -587,7 +587,7 @@ let mbxsymbolPlacementMapping: [SymbolPlacement:MBXSymbolPlacement] = [
 // MARK: SYMBOL_Z_ORDER
 
 /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
-let mbxsymbolZOrderMapping: [SymbolZOrder:MBXSymbolZOrder] = [
+let TMBsymbolZOrderMapping: [SymbolZOrder:TMBSymbolZOrder] = [
 
     /// Sorts symbols by symbol sort key if set. Otherwise, sorts symbols by their y-position relative to the viewport if [@link ICON_ALLOW_OVERLAP] or [@link TEXT_ALLOW_OVERLAP] is set to [@link TRUE] or [@link ICON_IGNORE_PLACEMENT] or [@link TEXT_IGNORE_PLACEMENT] is [@link FALSE].
     .auto : .auto,
@@ -603,7 +603,7 @@ let mbxsymbolZOrderMapping: [SymbolZOrder:MBXSymbolZOrder] = [
 // MARK: TEXT_ANCHOR
 
 /// Part of the text placed closest to the anchor.
-let mbxtextAnchorMapping: [TextAnchor:MBXTextAnchor] = [
+let TMBtextAnchorMapping: [TextAnchor:TMBTextAnchor] = [
 
     /// The center of the text is placed closest to the anchor.
     .center : .center,
@@ -637,7 +637,7 @@ let mbxtextAnchorMapping: [TextAnchor:MBXTextAnchor] = [
 // MARK: TEXT_JUSTIFY
 
 /// Text justification options.
-let mbxtextJustifyMapping: [TextJustify:MBXTextJustify] = [
+let TMBtextJustifyMapping: [TextJustify:TMBTextJustify] = [
 
     /// The text is aligned towards the anchor position.
     .auto : .auto,
@@ -656,7 +656,7 @@ let mbxtextJustifyMapping: [TextJustify:MBXTextJustify] = [
 // MARK: TEXT_PITCH_ALIGNMENT
 
 /// Orientation of text when map is pitched.
-let mbxtextPitchAlignmentMapping: [TextPitchAlignment:MBXTextPitchAlignment] = [
+let TMBtextPitchAlignmentMapping: [TextPitchAlignment:TMBTextPitchAlignment] = [
 
     /// The text is aligned to the plane of the map.
     .map : .map,
@@ -672,7 +672,7 @@ let mbxtextPitchAlignmentMapping: [TextPitchAlignment:MBXTextPitchAlignment] = [
 // MARK: TEXT_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
-let mbxtextRotationAlignmentMapping: [TextRotationAlignment:MBXTextRotationAlignment] = [
+let TMBtextRotationAlignmentMapping: [TextRotationAlignment:TMBTextRotationAlignment] = [
 
     /// When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_POINT], aligns text east-west. When [@link SYMBOL_PLACEMENT] is set to [@link Property#SYMBOL_PLACEMENT_LINE] or [@link Property#SYMBOL_PLACEMENT_LINE_CENTER], aligns text x-axes with the line.
     .map : .map,
@@ -688,7 +688,7 @@ let mbxtextRotationAlignmentMapping: [TextRotationAlignment:MBXTextRotationAlign
 // MARK: TEXT_TRANSFORM
 
 /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
-let mbxtextTransformMapping: [TextTransform:MBXTextTransform] = [
+let TMBtextTransformMapping: [TextTransform:TMBTextTransform] = [
 
     /// The text is not altered.
     .none : .none,
@@ -704,7 +704,7 @@ let mbxtextTransformMapping: [TextTransform:MBXTextTransform] = [
 // MARK: FILL_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-translate`.
-let mbxfillTranslateAnchorMapping: [FillTranslateAnchor:MBXFillTranslateAnchor] = [
+let TMBfillTranslateAnchorMapping: [FillTranslateAnchor:TMBFillTranslateAnchor] = [
 
     /// The fill is translated relative to the map.
     .map : .map,
@@ -717,7 +717,7 @@ let mbxfillTranslateAnchorMapping: [FillTranslateAnchor:MBXFillTranslateAnchor] 
 // MARK: LINE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `line-translate`.
-let mbxlineTranslateAnchorMapping: [LineTranslateAnchor:MBXLineTranslateAnchor] = [
+let TMBlineTranslateAnchorMapping: [LineTranslateAnchor:TMBLineTranslateAnchor] = [
 
     /// The line is translated relative to the map.
     .map : .map,
@@ -730,7 +730,7 @@ let mbxlineTranslateAnchorMapping: [LineTranslateAnchor:MBXLineTranslateAnchor] 
 // MARK: ICON_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `icon-translate`.
-let mbxiconTranslateAnchorMapping: [IconTranslateAnchor:MBXIconTranslateAnchor] = [
+let TMBiconTranslateAnchorMapping: [IconTranslateAnchor:TMBIconTranslateAnchor] = [
 
     /// Icons are translated relative to the map.
     .map : .map,
@@ -743,7 +743,7 @@ let mbxiconTranslateAnchorMapping: [IconTranslateAnchor:MBXIconTranslateAnchor] 
 // MARK: TEXT_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `text-translate`.
-let mbxtextTranslateAnchorMapping: [TextTranslateAnchor:MBXTextTranslateAnchor] = [
+let TMBtextTranslateAnchorMapping: [TextTranslateAnchor:TMBTextTranslateAnchor] = [
 
     /// The text is translated relative to the map.
     .map : .map,
@@ -756,7 +756,7 @@ let mbxtextTranslateAnchorMapping: [TextTranslateAnchor:MBXTextTranslateAnchor] 
 // MARK: CIRCLE_PITCH_ALIGNMENT
 
 /// Orientation of circle when map is pitched.
-let mbxcirclePitchAlignmentMapping: [CirclePitchAlignment:MBXCirclePitchAlignment] = [
+let TTMBirclePitchAlignmentMapping: [CirclePitchAlignment:TTMBirclePitchAlignment] = [
 
     /// The circle is aligned to the plane of the map.
     .map : .map,
@@ -769,7 +769,7 @@ let mbxcirclePitchAlignmentMapping: [CirclePitchAlignment:MBXCirclePitchAlignmen
 // MARK: CIRCLE_PITCH_SCALE
 
 /// Controls the scaling behavior of the circle when the map is pitched.
-let mbxcirclePitchScaleMapping: [CirclePitchScale:MBXCirclePitchScale] = [
+let TTMBirclePitchScaleMapping: [CirclePitchScale:TTMBirclePitchScale] = [
 
     /// Circles are scaled according to their apparent distance to the camera.
     .map : .map,
@@ -782,7 +782,7 @@ let mbxcirclePitchScaleMapping: [CirclePitchScale:MBXCirclePitchScale] = [
 // MARK: CIRCLE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `circle-translate`.
-let mbxcircleTranslateAnchorMapping: [CircleTranslateAnchor:MBXCircleTranslateAnchor] = [
+let TTMBircleTranslateAnchorMapping: [CircleTranslateAnchor:TTMBircleTranslateAnchor] = [
 
     /// The circle is translated relative to the map.
     .map : .map,
@@ -795,7 +795,7 @@ let mbxcircleTranslateAnchorMapping: [CircleTranslateAnchor:MBXCircleTranslateAn
 // MARK: FILL_EXTRUSION_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-extrusion-translate`.
-let mbxfillExtrusionTranslateAnchorMapping: [FillExtrusionTranslateAnchor:MBXFillExtrusionTranslateAnchor] = [
+let TMBfillExtrusionTranslateAnchorMapping: [FillExtrusionTranslateAnchor:TMBFillExtrusionTranslateAnchor] = [
 
     /// The fill extrusion is translated relative to the map.
     .map : .map,
@@ -808,7 +808,7 @@ let mbxfillExtrusionTranslateAnchorMapping: [FillExtrusionTranslateAnchor:MBXFil
 // MARK: RASTER_RESAMPLING
 
 /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-let mbxrasterResamplingMapping: [RasterResampling:MBXRasterResampling] = [
+let TMBrasterResamplingMapping: [RasterResampling:TMBRasterResampling] = [
 
     /// (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
     .linear : .linear,
@@ -821,7 +821,7 @@ let mbxrasterResamplingMapping: [RasterResampling:MBXRasterResampling] = [
 // MARK: HILLSHADE_ILLUMINATION_ANCHOR
 
 /// Direction of light source when map is rotated.
-let mbxhillshadeIlluminationAnchorMapping: [HillshadeIlluminationAnchor:MBXHillshadeIlluminationAnchor] = [
+let TMBhillshadeIlluminationAnchorMapping: [HillshadeIlluminationAnchor:TMBHillshadeIlluminationAnchor] = [
 
     /// The hillshade illumination is relative to the north direction.
     .map : .map,
@@ -834,7 +834,7 @@ let mbxhillshadeIlluminationAnchorMapping: [HillshadeIlluminationAnchor:MBXHills
 // MARK: SKY_TYPE
 
 /// The type of the sky
-public let mbxskyTypeMapping: [SkyType:MBXSkyType] = [
+public let TMBskyTypeMapping: [SkyType:TMBSkyType] = [
 
     /// Renders the sky with a gradient that can be configured with [@link SKY_GRADIENT_RADIUS] and [@link SKY_GRADIENT].
     .gradient : .gradient,
@@ -847,7 +847,7 @@ public let mbxskyTypeMapping: [SkyType:MBXSkyType] = [
 // MARK: ANCHOR
 
 /// Whether extruded geometries are lit relative to the map or viewport.
-let mbxanchorMapping: [Anchor:MBXAnchor] = [
+let TMBanchorMapping: [Anchor:TMBAnchor] = [
 
     /// The position of the light source is aligned to the rotation of the map.
     .map : .map,
@@ -860,7 +860,7 @@ let mbxanchorMapping: [Anchor:MBXAnchor] = [
 // MARK: NAME
 
 /// The name of the projection to be used for rendering the map.
-let mbxstyleProjectionNameMapping: [StyleProjectionName:MBXStyleProjectionName] = [
+let TMBstyleProjectionNameMapping: [StyleProjectionName:TMBStyleProjectionName] = [
 
     /// The Mercator projection is the default projection.
     .mercator : .mercator,
@@ -873,7 +873,7 @@ let mbxstyleProjectionNameMapping: [StyleProjectionName:MBXStyleProjectionName] 
 // MARK: TEXT_WRITING_MODE
 
 /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
-let mbxtextWritingModeMapping: [TextWritingMode:MBXTextWritingMode] = [
+let TMBtextWritingModeMapping: [TextWritingMode:TMBTextWritingMode] = [
 
     /// If a text's language supports horizontal writing mode, symbols would be laid out horizontally.
     .horizontal : .horizontal,

@@ -1,5 +1,5 @@
 @objc
-public protocol MBXAnnotation: AnyObject {
+public protocol TMBAnnotation: AnyObject {
 
     /// The unique identifier of the annotation.
     var id: String { get }

@@ -1,7 +1,7 @@
 import MapboxMaps
 
 @objc
-open class MBXPointAnnotation : NSObject, MBXAnnotation {
+open class TMBCircleAnnotation : NSObject, TMBAnnotation {
     @objc
     public var id: String {
         return swiftValue.id
@@ -18,12 +18,33 @@ open class MBXPointAnnotation : NSObject, MBXAnnotation {
     }
     
     @objc
-    public var isSelected: Bool {
+    public var circleColor: UIColor? {
         set {
-            swiftValue.isSelected = newValue
+            if let color = newValue {
+                swiftValue.circleColor = StyleColor(color)
+            } else {
+                swiftValue.circleColor = nil
+            }
         }
         get {
-            swiftValue.isSelected
+            if let color = swiftValue.circleColor {
+                return UIColor(
+                    red: color.red,
+                    green: color.green,
+                    blue: color.blue,
+                    alpha: color.alpha)
+            }
+            return nil
+        }
+    }
+    
+    @objc
+    public var circleRadius: Double {
+        set {
+            swiftValue.circleRadius = newValue
+        }
+        get {
+            return swiftValue.circleRadius!
         }
     }
     
@@ -37,29 +58,24 @@ open class MBXPointAnnotation : NSObject, MBXAnnotation {
         }
     }
     
-    @objc
-    public func image(_ image: UIImage, name: String) {
-        swiftValue.image = PointAnnotation.Image(image: image, name: name)
-    }
+    public var swiftValue: CircleAnnotation
     
-    public var swiftValue: PointAnnotation
-    
-    public init(swiftValue: PointAnnotation) {
+    public init(swiftValue: CircleAnnotation) {
         self.swiftValue = swiftValue
         super.init()
     }
     
     @objc
-    public class func from(coordinate: LocationCoordinate2D) -> MBXPointAnnotation {
-        let swiftValue = PointAnnotation(point: Point(coordinate))
-        return MBXPointAnnotation(swiftValue: swiftValue)
+    public class func from(center coordinate: LocationCoordinate2D) -> TMBCircleAnnotation {
+        let swiftValue = CircleAnnotation(centerCoordinate: coordinate)
+        return TMBCircleAnnotation(swiftValue: swiftValue)
     }
 }
 
 @objc
-open class MBXPointAnnotationManager : NSObject, MBXAnnotationManager, AnnotationInteractionDelegate {
+open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, AnnotationInteractionDelegate {
     
-    // MARK: - MBXAnnotationManager protocol conformance
+    // MARK: - TMBAnnotationManager protocol conformance
     @objc
     public var id: String {
         get {
@@ -84,18 +100,17 @@ open class MBXPointAnnotationManager : NSObject, MBXAnnotationManager, Annotatio
         didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
         if let delegate = self.delegate {
             let items = annotations.map { annotation in
-                return MBXPointAnnotation(swiftValue: annotation as! PointAnnotation)
+                return TMBCircleAnnotation(swiftValue: annotation as! CircleAnnotation)
             }
             delegate.annotationManager(self, didDetectTappedAnnotations: items)
         }
     }
     
     @objc
-    public var annotations: [MBXPointAnnotation] {
+    public var annotations: [TMBCircleAnnotation] {
         get {
             return swiftValue.annotations.map({
-                MBXPointAnnotation(swiftValue: $0)
-                
+                TMBCircleAnnotation(swiftValue: $0)                
             })
         }
         set {
@@ -105,14 +120,14 @@ open class MBXPointAnnotationManager : NSObject, MBXAnnotationManager, Annotatio
         }
     }
     
-    public let swiftValue: PointAnnotationManager
+    public let swiftValue: CircleAnnotationManager
     
     /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
     /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
     @objc
-    public weak var delegate: MBXAnnotationInteractionDelegate?
+    public weak var delegate: TMBAnnotationInteractionDelegate?
     
-    public init(_ swiftValue: PointAnnotationManager) {
+    public init(_ swiftValue: CircleAnnotationManager) {
         self.swiftValue = swiftValue
         super.init()
         swiftValue.delegate = self

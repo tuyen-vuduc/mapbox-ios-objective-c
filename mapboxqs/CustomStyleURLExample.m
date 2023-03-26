@@ -29,7 +29,7 @@
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:mapInitOptions];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [mapView ornamentsOptionsScaleBarVisibility: MBXOrnamentVisibilityVisible];
+    [mapView ornamentsOptionsScaleBarVisibility: TMBOrnamentVisibilityVisible];
     
     __weak CustomStyleURLExample *weakSelf = self;
     [mapView onStyleLoaded:^(id _Nonnull) {

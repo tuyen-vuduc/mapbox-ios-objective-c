@@ -1,6 +1,6 @@
 import Turf
 @objc
-open class MBXPoint : NSObject, MBXGeoData {
+open class TMBPoint : NSObject, TMBGeoData {
     public var swiftValue: Point
     
     public var coordinates: LocationCoordinate2D {
@@ -17,7 +17,7 @@ open class MBXPoint : NSObject, MBXGeoData {
     }
     
     @objc
-    public class func with(coordinates: LocationCoordinate2D) -> MBXPoint {
-        MBXPoint(coordinates)
+    public class func with(coordinates: LocationCoordinate2D) -> TMBPoint {
+        TMBPoint(coordinates)
     }
 }
