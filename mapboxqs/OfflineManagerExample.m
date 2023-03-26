@@ -91,9 +91,9 @@ typedef enum State : int {
     downloads = [[NSMutableArray alloc] init];
     
     // Initialize a logger that writes into the text view
-    logger = [[OfflineManagerLogWriter alloc] initWithTextView:_logView];
+    logger = [[OfflineManagerLogWriter alloc] initWithTextView:self.logView];
     
-    self.state = state_initial;
+    [self updateState:state_initial];
     
     // The following line is just for testing purposes.
     if ([self respondsToSelector:@selector(finish)]) {
@@ -131,17 +131,19 @@ typedef enum State : int {
         // queue.
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!self.stylePackProgressView) return;
+            if (!self.stylePackProgressView) {
+                return;
+            }
             
-            [self->logger logWithMessage: [NSString stringWithFormat:@"StylePack = %@", progress]
+            [self->logger logWithMessage: [NSString stringWithFormat:@"StylePackLoadProgress: %llu / %llu", progress.completedResourceCount, progress.requiredResourceCount]
                           category: @"Example"
                              color: nil];
+            
+            self.stylePackProgressView.progress = progress.completedResourceCount * 1.0f / progress.requiredResourceCount;
         });
     }
                                                                         completion:^(MBMStylePack * _Nullable stylePack, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            dispatch_group_leave(dispatchGroup);
-           
             if (error) {
                 [self->logger logWithMessage:[NSString stringWithFormat:@"stylePack download Error = %@", error]
                                     category:@"Example"
@@ -149,9 +151,11 @@ typedef enum State : int {
                 return;
             }
             
-            [self->logger logWithMessage:[NSString stringWithFormat:@"StylePack = %@", stylePack]
+            [self->logger logWithMessage:[NSString stringWithFormat:@"StylePack %@: %llu / %llu", stylePack.styleURI, stylePack.completedResourceCount, stylePack.requiredResourceCount]
                                 category:@"Example"
                                    color:nil];
+            
+            dispatch_group_leave(dispatchGroup);
         });
     }];
     
@@ -190,7 +194,7 @@ typedef enum State : int {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!self.tileRegionProgressView) return;
             
-            [self->logger logWithMessage:[NSString stringWithFormat:@"%@", progress] category:@"Example" color:nil];
+            [self->logger logWithMessage:[NSString stringWithFormat:@"TileRegionLoadProgress: %llu / %llu", progress.completedResourceCount, progress.requiredResourceCount] category:@"Example" color:nil];
             
             self.tileRegionProgressView.progress = progress.completedResourceCount * 1.0f/progress.requiredResourceCount;
         });
@@ -216,13 +220,14 @@ typedef enum State : int {
         self->downloads = @[].mutableCopy;
         
         if (downloadError) {
-            self.state = state_finished;
+            [self updateState:state_finished];
         } else {
-            self.state = state_downloaded;
+            [self updateState:state_downloaded];
         }
     });
     
     downloads = @[stylePackDownload, tileRegionDownload].mutableCopy;
+    [self updateState:state_downloading];
 }
 
 - (void) cancelDownloads {
@@ -285,7 +290,7 @@ typedef enum State : int {
     // when removed. The TileStore is also used when `ResourceOptions.isLoadTilePacksFromNetwork`
     // is `true`, and also by the Navigation SDK.
     // This removes the tiles from the predictive cache.
-    [tileStore setOptionForKey:MBXTileStoreOptions.DiskQuota value:0];
+    [tileStore setOptionForKey:MBXTileStoreOptions.DiskQuota value:[NSNumber numberWithInt:0]];
 
     // Remove the style pack with the style uri.
     // Note this will not remove the downloaded style pack, instead, it will
@@ -297,7 +302,7 @@ typedef enum State : int {
 - (void)didTapButton:(UIButton *)sender {
     switch (self.state) {
     case state_unknown:
-        self.state = state_initial;
+            [self updateState:state_initial];
         break;
     case state_initial:
         [self downloadTileRegions];
@@ -307,25 +312,42 @@ typedef enum State : int {
         [self cancelDownloads];
         break;
     case state_downloaded:
-        self.state = state_mapViewDisplayed;
+            [self updateState:state_mapViewDisplayed];
         break;
     case state_mapViewDisplayed:
         [self showDownloadedRegions];
-        self.state = state_finished;
+            [self updateState:state_finished];
         break;
     case state_finished:
         [self removeTileRegionAndStylePack];
         [self showDownloadedRegions];
-        self.state = state_initial;
+        [self updateState:state_initial];
         break;
     }
 }
 
-- (void) setState:(StateEnum)newValue {
-    StateEnum oldValue = _state;
-    _state = newValue;
+- (NSString*) stateString: (StateEnum) value {
+    switch (value) {
+        case state_initial:
+            return @"initial";
+        case state_finished:
+            return @"finished";
+        case state_downloaded:
+            return @"downloaded";
+        case state_downloading:
+            return @"downloading";
+        case state_mapViewDisplayed:
+            return @"mapViewDisplayed";
+        case state_unknown:
+            return @"unknown";
+    }
+}
+
+- (void) updateState:(StateEnum)newValue {
+    StateEnum oldValue = self.state;
+    self.state = newValue;
     
-    [logger logWithMessage:[NSString stringWithFormat:@"Changing state from %d -> %d", oldValue, newValue]
+    [logger logWithMessage:[NSString stringWithFormat:@"Changing state from %@ -> %@", [self stateString:oldValue], [self stateString:newValue]]
                   category:@"Example"
                      color:[UIColor orangeColor]];
 
@@ -419,7 +441,9 @@ typedef enum State : int {
     // to the tile region API.
     __weak OfflineManagerExample* weakSelf = self;
     [mapView onStyleLoaded:^(id _Nonnull _) {
-        if (self->mapView) return;
+        if (!self->mapView) {
+            return;
+        }
         
         MBXPointAnnotation* pointAnnotation = [MBXPointAnnotation fromCoordinate:self->tokyoCoord];
         [pointAnnotation image:[UIImage imageNamed:@"custom_marker"] name:@"custom-marker"];
@@ -442,7 +466,7 @@ typedef enum State : int {
 }
 
 - (instancetype)initWithTextView: (UITextView *) textView {
-    textView = textView;
+    self->textView = textView;
     log = [NSMutableAttributedString new];
     return [super init];
 }
@@ -454,6 +478,10 @@ typedef enum State : int {
 
 - (void) logWithMessage: (NSString *) message category: (NSString *) category color: (UIColor *) color {
     NSLog(@"[%@] %@", category, message);
+    
+    if (!color) {
+        color = [UIColor blackColor];
+    }
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!self->textView || !self->log) return;

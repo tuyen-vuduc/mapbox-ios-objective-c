@@ -8,12 +8,13 @@ extension OfflineManager {
     public func loadStyle(
         styleUriString: String,
         styleLoadOptions: StylePackLoadOptions,
-        progress: StylePackLoadProgressCallback,
+        progress: @escaping StylePackLoadProgressCallback,
         completion: @escaping (StylePack?, Error?)->Void
     ) -> MBCCancelable {
         let cancelable = self.loadStylePack(
             for: StyleURI(rawValue: styleUriString)!,
-            loadOptions: styleLoadOptions
+            loadOptions: styleLoadOptions,
+            progress: progress
         ) { result in
             switch(result) {
             case .success(let stylePack):
