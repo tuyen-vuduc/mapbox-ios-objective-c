@@ -73,7 +73,7 @@
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
     MBXPoint* point = [MBXPoint withCoordinates: coordinates];
     [mapView addSourceWithId:sourceId
-                    geometry:[MBXGeometry fromData:point]
+                    geometry:[MBCGeometry fromData:point]
                      onError:nil];
     
     [mapView addLayerWithBuilder:^id _Nonnull{

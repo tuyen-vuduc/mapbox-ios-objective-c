@@ -27,7 +27,6 @@ extension MapView {
         return MBXCircleAnnotationManager(swiftValue)
     }
     
-    
     @objc
     public func circleAnnotationManager(
         id: String?,
@@ -39,5 +38,23 @@ extension MapView {
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
         return MBXCircleAnnotationManager(swiftValue)
+    }
+    
+    public func pointAnnotationManager() -> MBXPointAnnotationManager {
+        let swiftValue = self.annotations.makePointAnnotationManager()
+        return MBXPointAnnotationManager(swiftValue)
+    }
+    
+    @objc
+    public func pointAnnotationManager(
+        id: String?,
+        layerPosition: MBXLayerPosition = MBXLayerPosition.unowned,
+        layerPositionParam: AnyObject?
+    ) -> MBXPointAnnotationManager {
+        let swiftValue = self.annotations.makePointAnnotationManager(
+            id:  id ?? String(UUID().uuidString.prefix(5)),
+            layerPosition: layerPosition.swiftValue(layerPositionParam)
+        )
+        return MBXPointAnnotationManager(swiftValue)
     }
 }

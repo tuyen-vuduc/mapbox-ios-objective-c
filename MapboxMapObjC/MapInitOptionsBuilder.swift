@@ -3,11 +3,11 @@ import MapboxMaps
 @objc
 open class MapInitOptionsBuilder : NSObject {
     @objc public class var defaultResourceOptions: MapboxCoreMaps.ResourceOptions {
-        return MapboxCoreMaps.ResourceOptions(ResourceOptionsManager.default.resourceOptions)
+        MapboxCoreMaps.ResourceOptions(ResourceOptionsManager.default.resourceOptions)
     }
     
     @objc public class func create() -> MapInitOptionsBuilder {
-        return MapInitOptionsBuilder()
+        MapInitOptionsBuilder()
     }
     
     private var resourceOptions: ResourceOptions = ResourceOptionsManager.default.resourceOptions
@@ -58,5 +58,13 @@ open class MapInitOptionsBuilder : NSObject {
         self.styleUri = StyleURI(url: value)
         
         return self
+    }
+}
+
+@objc
+extension MapInitOptions {
+    @objc
+    public func resourceOptions() -> MapboxCoreMaps.ResourceOptions {
+        MapboxCoreMaps.ResourceOptions(resourceOptions)
     }
 }

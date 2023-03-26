@@ -5,7 +5,7 @@ public protocol MBXGeoData {
 }
 
 @objc
-open class MBXGeometry : NSObject {
+open class MBCGeometry : NSObject {
     public let data: MBXGeoData
     
     init(_ data: MBXGeoData) {
@@ -13,12 +13,12 @@ open class MBXGeometry : NSObject {
     }
     
     @objc
-    public class func from(data: MBXGeoData) -> MBXGeometry {
-        MBXGeometry(data)
+    public class func from(data: MBXGeoData) -> MBCGeometry {
+        MBCGeometry(data)
     }
 }
 
-extension MBXGeometry {
+extension MBCGeometry {
     func swiftValue() -> Geometry? {
         switch (self.data) {
         case let point as MBXPoint:

@@ -17,10 +17,11 @@ extension MapView {
                 return
             }
             
-            if let style = try? result.get() {
-                completion(MBXStyle(style), nil)
-            } else {
-                completion(nil, MBXError(message: "Cannot load style"))
+            switch(result) {
+                case .success(let style):
+                    completion(MBXStyle(style), nil)
+                case .failure(let error):
+                    completion(nil, error)
             }
         }
     }
