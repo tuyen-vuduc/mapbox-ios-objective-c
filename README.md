@@ -82,7 +82,7 @@ pod 'MapboxMapObjC', '10.5.0'
 | 38 | [LocalizationExample](./mapboxqs/LocalizationExample.m) |  |
 | 39 | [MultipleGeometriesExample](./mapboxqs/MultipleGeometriesExample.m) |  |
 | 40 | [NavigationSimulatorExample](./mapboxqs/NavigationSimulatorExample.m) |  |
-| 41 | [OfflineManagerExample](./mapboxqs/OfflineManagerExample.m) |  |
+| 41 | [OfflineManagerExample](./mapboxqs/OfflineManagerExample.m) | OK |
 | 42 | [OfflineRegionManagerExample](./mapboxqs/OfflineRegionManagerExample.m) |  |
 | 43 | [PitchAndDistanceExample](./mapboxqs/PitchAndDistanceExample.m) |  |
 | 44 | [PointAnnotationClusteringExample](./mapboxqs/PointAnnotationClusteringExample.m) |  |
