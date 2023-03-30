@@ -11,6 +11,7 @@ extension MapView {
 }
 
 // MapView.ornaments
+@objc 
 extension MapView {
     @objc public func ornamentsOptionsScaleBarVisibility(_ value: TMBOrnamentVisibility) {
         self.ornaments.options.scaleBar.visibility = value.swiftOnly()

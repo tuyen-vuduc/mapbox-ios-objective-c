@@ -110,5 +110,5 @@ pod 'MapboxMapObjC', '10.5.0'
 | 66 | [VoiceOverAccessibilityExample](./mapboxqs/VoiceOverAccessibilityExample.m) |  |
 
 # LICENSE
-This library is release under MIT license. You are freely to use and make changes. 
+This library is release under The BSD 3-Clause License. You are freely to use and make changes. 
 However, this license doesn't override [the license from Mapbox](https://www.mapbox.com/legal/tos).
