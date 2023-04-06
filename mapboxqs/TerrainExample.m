@@ -73,13 +73,24 @@
 
 - (void) addTerrain {
     NSString* sourceId = @"mapbox-dem";
-    [self.mapView addRasterDemSource: sourceId
-                           configure:^(RasterDemSourceBuilder * _Nonnull builder) {
-                                [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
-                                [builder tileSize:514.0];
-                                [builder maxzoom:14.0];
-                            }
-                             onError:nil];
+// Use builder
+//    [self.mapView addRasterDemSource: sourceId
+//                           configure:^(RasterDemSourceBuilder * _Nonnull builder) {
+//                                [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
+//                                [builder tileSize:514.0];
+//                                [builder maxzoom:14.0];
+//                            }
+//                             onError:nil];
+    [self.mapView addSource:sourceId
+                 properties:@{
+        @"type": @"raster-dem",
+        @"url": @"mapbox://mapbox.mapbox-terrain-dem-v1",
+        @"tileSize": @514.0,
+        @"maxzoom": @14.0
+    }
+                    onError:^(NSError * _Nonnull error) {
+        
+    }];
     
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];

@@ -6,6 +6,38 @@ import MapboxMaps
 @objc
 extension MapView {
     @objc public func addLayer(
+        properties: [String: Any],
+        layerPosition: TMBLayerPosition = .unowned,
+   layerPositionParam: NSObject?,
+        onError: ((Error)->Void)?
+    ) {
+        do {
+            try self.mapboxMap.style.addLayer(
+                with: properties,
+                layerPosition: layerPosition.swiftValue(layerPositionParam)
+            )
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addPersistentLayer(
+        properties: [String: Any],
+        layerPosition: TMBLayerPosition = .unowned,
+   layerPositionParam: NSObject?,
+        onError: ((Error)->Void)?
+    ) {
+        do {
+            try self.mapboxMap.style.addPersistentLayer(
+                with: properties,
+                layerPosition: layerPosition.swiftValue(layerPositionParam)
+            )
+        } catch {
+            onError?(error)
+        }
+    }
+    
+    @objc public func addLayer(
         target: NSObject,
         selector: Selector,
         layerPosition: TMBLayerPosition = .unowned,
@@ -27,7 +59,6 @@ extension MapView {
             onError?(error)
         }
     }
-    
     @objc public func addLayer(
         builder: ()->AnyObject,
         layerPosition: TMBLayerPosition = .unowned,
@@ -60,21 +91,6 @@ extension MapView {
                 layerHost: layerHost,
                 layerPosition: layerPosition.swiftValue(layerPositionParam)
             )
-        } catch {
-            onError?(error)
-        }
-    }
-    
-    @objc public func addLayer(
-               properties: NSDictionary,
-            layerPosition: TMBLayerPosition = .unowned,
-       layerPositionParam: NSObject?,
-                  onError: ((Error)->Void)?) {
-        do {
-            let swiftProperties = properties as! [String: Any]
-            try self.mapboxMap.style.addLayer(
-                         with: swiftProperties,
-                layerPosition: layerPosition.swiftValue(layerPositionParam))
         } catch {
             onError?(error)
         }
