@@ -22,10 +22,11 @@ extension MapView {
 extension MapView {
     /// The style has been fully loaded, and the map has rendered all visible tiles.
     @discardableResult
-    @objc public func onMapLoaded(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onMapLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .mapLoaded) { data in
-            // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -36,10 +37,12 @@ extension MapView {
     /// In case of `source` or `tile` loading errors, `source-id` will contain the id of the source failing.
     /// In case of `tile` loading errors, `tile-id` will contain the id of the tile.
     @discardableResult
-    @objc public func onMapLoadingError(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onMapLoadingError(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .mapLoadingError) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -49,10 +52,12 @@ extension MapView {
     /// and the map has rendered all requested non-volatile tiles. The event will not be emitted if `setUserAnimationInProgress`
     /// and / or `setGestureInProgress` is set to `true`.
     @discardableResult
-    @objc public func onMapIdle(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onMapIdle(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .mapIdle) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -67,10 +72,12 @@ extension MapView {
     /// - `sprite`: Style's sprite sheet is parsed and it is possible to add or update images.
     /// - `sources`: All sources defined by the style are loaded and their properties could be read and updated if needed.
     @discardableResult
-    @objc public func onStyleDataLoaded(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onStyleDataLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .styleDataLoaded) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -81,10 +88,11 @@ extension MapView {
     /// Note: The style specified sprite would be marked as loaded even with sprite loading error (An error will be emitted via `.mapLoadingError`).
     /// Sprite loading error is not fatal and we don't want it to block the map rendering, thus this event will still be emitted if style and sources are fully loaded.
     @discardableResult
-    @objc public func onStyleLoaded(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onStyleLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .styleLoaded) { data in
-            // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -94,10 +102,12 @@ extension MapView {
     /// one of the required images is missing in the sprite sheet. Subscriber has to provide the missing image
     /// by calling ``Style/addImage(_:id:sdf:contentInsets:)``.
     @discardableResult
-    @objc public func onStyleImageMissing(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onStyleImageMissing(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .styleImageMissing) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -105,10 +115,12 @@ extension MapView {
 
     /// An image added to the style is no longer needed and can be removed using ``Style/removeImage(withId:)``.
     @discardableResult
-    @objc public func onStyleImageRemoveUnused(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onStyleImageRemoveUnused(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .styleImageRemoveUnused) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -126,10 +138,12 @@ extension MapView {
     /// The `loaded` property will be set to `true` if all source's data required for visible viewport of the map, are loaded.
     /// The `tile-id` property defines the tile id if the `type` field equals `tile`.
     @discardableResult
-    @objc public func onSourceDataLoaded(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onSourceDataLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .sourceDataLoaded) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -139,10 +153,12 @@ extension MapView {
     /// The event is emitted synchronously, therefore, it is possible to immediately
     /// read added source's properties.
     @discardableResult
-    @objc public func onSourceAdded(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onSourceAdded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .sourceAdded) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -152,10 +168,12 @@ extension MapView {
     /// The event is emitted synchronously, thus, ``Style/allSourceIdentifiers`` will be
     /// in sync when the observer receives the notification.
     @discardableResult
-    @objc public func onSourceRemoved(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onSourceRemoved(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .sourceRemoved) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -166,10 +184,12 @@ extension MapView {
     /// The `needs-repaint` property provides information about ongoing transitions that trigger map repaint.
     /// The `placement-changed` property tells if the symbol placement has been changed in the visible viewport.
     @discardableResult
-    @objc public func onRenderFrameStarted(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onRenderFrameStarted(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .renderFrameStarted) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -180,10 +200,12 @@ extension MapView {
     /// is modified by calling camera methods. The event is emitted synchronously,
     /// so that an updated camera state can be fetched immediately.
     @discardableResult
-    @objc public func onRenderFrameFinished(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onRenderFrameFinished(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .renderFrameFinished) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -194,10 +216,12 @@ extension MapView {
     /// is modified by calling camera methods. The event is emitted synchronously,
     /// so that an updated camera state can be fetched immediately.
     @discardableResult
-    @objc public func onEvenCameraChanged(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onEvenCameraChanged(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .cameraChanged) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
@@ -206,10 +230,12 @@ extension MapView {
     /// The `ResourceRequest` event allows client to observe resource requests made by a
     /// map or snapshotter.
     @discardableResult
-    @objc public func onResourceRequest(_ handler: @escaping (AnyObject) -> Void) -> TMBCancelable {
+    @objc public func onResourceRequest(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .resourceRequest) { data in
             // TODO Convert data to obj-c data
-            handler(data)
+            handler([
+                "event": data.name
+            ])
         }
         
         return TMBCancelable(cancelable: cancelable)
