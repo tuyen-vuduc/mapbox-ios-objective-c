@@ -25,7 +25,7 @@ extension MapView {
     @objc public func onMapLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .mapLoaded) { data in
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -41,7 +41,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .mapLoadingError) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -56,7 +56,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .mapIdle) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -76,7 +76,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .styleDataLoaded) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -91,7 +91,7 @@ extension MapView {
     @objc public func onStyleLoaded(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
         let cancelable = mapboxMap.onNext(event: .styleLoaded) { data in
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -106,7 +106,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .styleImageMissing) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -119,7 +119,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .styleImageRemoveUnused) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -142,7 +142,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .sourceDataLoaded) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -157,7 +157,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .sourceAdded) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -172,7 +172,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .sourceRemoved) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -188,7 +188,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .renderFrameStarted) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -204,7 +204,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .renderFrameFinished) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -220,7 +220,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .cameraChanged) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
@@ -234,7 +234,7 @@ extension MapView {
         let cancelable = mapboxMap.onNext(event: .resourceRequest) { data in
             // TODO Convert data to obj-c data
             handler([
-                "event": data.name
+                "name": data.name
             ])
         }
         
