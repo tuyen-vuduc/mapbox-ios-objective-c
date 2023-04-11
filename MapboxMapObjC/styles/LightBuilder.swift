@@ -10,6 +10,24 @@ class TMBError : Error {
 
 @objc
 extension MapView {
+    /// Color tint for lighting extruded geometries.
+    @objc public func setLightProperty(_ name: String, value: Any, onError: ((Error)->Void)?) {
+        do {
+            try self.mapboxMap.style.setLightProperty(name, value: value)
+        } catch {
+            onError?(error)
+        }
+    }
+
+    /// Color tint for lighting extruded geometries.
+    @objc public func setLight(properties: [String: Any], onError: ((Error)->Void)?) {
+        do {
+            try self.mapboxMap.style.setLight(properties: properties)
+        } catch {
+            onError?(error)
+        }
+    }
+
     /// Whether extruded geometries are lit relative to the map or viewport.
     @objc public func lightAnchor(_ value: TMBAnchor, onError: ((Error)->Void)?) {
         do {

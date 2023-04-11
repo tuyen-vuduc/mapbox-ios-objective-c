@@ -15,27 +15,6 @@ extension MapView {
         }
             
     }
-    
-    @objc public func addSource(_ id: String, properties: [String: Any], onError: ((Error)->Void)?) -> Void {
-        do {
-            try self.mapboxMap.style.addSource(withId: id, properties: properties)
-        } catch {
-            onError?(error)
-        }
-            
-    }
-    
-    @objc public func removeSource(_ id: String, onError: ((Error)->Void)?) -> Void {
-        do {
-            try self.mapboxMap.style.removeSource(withId: id)
-        } catch {
-            onError?(error)
-        }            
-    }
-    
-    @objc public func sourceExists(_ id: String) -> Bool {
-        self.mapboxMap.style.sourceExists(withId: id)
-    }
 }
 
 @objc
