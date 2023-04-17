@@ -81,6 +81,14 @@ open class TMBPolygon : NSObject {
     }
     
     @objc
+    public init(
+        _ coordinates: [[LocationCoordinate2D]]
+    ) {
+        swiftValue = Polygon(coordinates)
+        super.init()
+    }
+    
+    @objc
     public class func create(
         outerRingCoordinates: [CLLocationCoordinate2D],
         innerRingCoordinates: [[CLLocationCoordinate2D]]
@@ -89,6 +97,13 @@ open class TMBPolygon : NSObject {
             outerRingCoordinates: outerRingCoordinates,
             innerRingCoordinates: innerRingCoordinates
         )
+    }
+    
+    @objc
+    public class func from(
+        coordinates: [[LocationCoordinate2D]]
+    ) -> TMBPolygon {
+        return TMBPolygon(coordinates)
     }
 }
 
