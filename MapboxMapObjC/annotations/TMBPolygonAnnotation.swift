@@ -156,6 +156,41 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
         }
     }
     
+    // MARK: - Common layer properties
+
+    /// Whether or not the fill should be antialiased.
+    @objc
+    public var fillAntialias: Bool {
+        get {
+            return self.swiftValue.fillAntialias ?? false
+        }
+        set {
+            self.swiftValue.fillAntialias = newValue
+        }
+    }
+
+    /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
+    @objc
+    public var fillTranslate: [Double]? {
+        get {
+            return self.swiftValue.fillTranslate
+        }
+        set {
+            self.swiftValue.fillTranslate = newValue
+        }
+    }
+
+    /// Controls the frame of reference for `fill-translate`.
+    @objc
+    public var fillTranslateAnchor: TMBFillTranslateAnchor {
+        get {
+            return (self.swiftValue.fillTranslateAnchor?.objcValue())!
+        }
+        set {
+            self.swiftValue.fillTranslateAnchor = newValue.swiftValue()
+        }
+    }
+    
     public let swiftValue: PolygonAnnotationManager
     
     /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.

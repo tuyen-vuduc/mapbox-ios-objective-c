@@ -61,7 +61,7 @@
 - (SkyLayerBuilder*) createSkyLayerBuilder {
     SkyLayerBuilder* builder = [SkyLayerBuilder withId:@"sky-layer"];
     
-    TMBValue* skyType = [TMBValue constant: [NSNumber numberWithInt:TMBSkyTypeAtmosphere]];
+    TMBValue* skyType = [TMBValue constant: TMBSkyType.atmosphere];
     [builder skyType: skyType];
     TMBValue* skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     [builder skyAtmosphereSun: skyAtmosphereSun];

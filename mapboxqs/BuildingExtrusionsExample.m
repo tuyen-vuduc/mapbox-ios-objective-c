@@ -140,35 +140,35 @@
     [builder fillExtrusionAmbientOcclusionIntensity: [TMBValue constant:@0.3]];
     [builder fillExtrusionAmbientOcclusionRadius: [TMBValue constant:@3.0]];
     
-    TMBExpression* filterExpression = [TMBExpression createWithOperator:TMBOperatorEq
+    TMBExpression* filterExpression = [TMBExpression createWithOperator:TMBOperator.eq
                                                               arguments:@[
-        [TMBExpression createWithOperator:TMBOperatorGet
+        [TMBExpression createWithOperator:TMBOperator.get
                                 arguments: @[ @"extrude" ]],
         @"true"
     ]];
     
     [builder filter:filterExpression];
     
-    TMBExpression* fillExtrusionHeightExpression = [TMBExpression createWithOperator:TMBOperatorInterpolate
+    TMBExpression* fillExtrusionHeightExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
                                                               arguments:@[
-        [TMBExpression createWithOperator:TMBOperatorLinear],
-        [TMBExpression createWithOperator:TMBOperatorZoom],
+        [TMBExpression createWithOperator:TMBOperator.linear],
+        [TMBExpression createWithOperator:TMBOperator.zoom],
         @15,
         @0,
         @15.05,
-        [TMBExpression createWithOperator:TMBOperatorGet
+        [TMBExpression createWithOperator:TMBOperator.get
                                 arguments: @[ @"height" ]]
     ]];
     [builder fillExtrusionHeight:[TMBValue expression:fillExtrusionHeightExpression]];
     
-    TMBExpression* fillExtrusionBaseExpression = [TMBExpression createWithOperator:TMBOperatorInterpolate
+    TMBExpression* fillExtrusionBaseExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
                                                               arguments:@[
-        [TMBExpression createWithOperator:TMBOperatorLinear],
-        [TMBExpression createWithOperator:TMBOperatorZoom],
+        [TMBExpression createWithOperator:TMBOperator.linear],
+        [TMBExpression createWithOperator:TMBOperator.zoom],
         @15,
         @0,
         @15.05,
-        [TMBExpression createWithOperator:TMBOperatorGet
+        [TMBExpression createWithOperator:TMBOperator.get
                                 arguments: @[ @"min_height" ]]
     ]];
     [builder fillExtrusionBase:[TMBValue expression:fillExtrusionBaseExpression]];

@@ -31,7 +31,7 @@ extension MapView {
     /// Whether extruded geometries are lit relative to the map or viewport.
     @objc public func lightAnchor(_ value: TMBAnchor, onError: ((Error)->Void)?) {
         do {
-           try self.mapboxMap.style.setLightProperty("anchor", value: anchorMapping[value]!)
+            try self.mapboxMap.style.setLightProperty("anchor", value: value.stringValue())
         } catch {
             onError?(error)
         }

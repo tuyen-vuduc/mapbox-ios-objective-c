@@ -88,7 +88,7 @@
 - (SkyLayerBuilder * ) createSkyLayerBuilder {
     SkyLayerBuilder * builder = [SkyLayerBuilder withId:skyLayerId];
     
-    [builder skyType:[TMBValue intValue:TMBSkyTypeGradient]];
+    [builder skyType:[TMBValue constant:TMBSkyType.gradient]];
     
     
     // Define the position of the sun.
@@ -122,9 +122,9 @@
     TMBValue* skyType;
     
     if (segmentedControl.selectedSegmentIndex == 0) {
-        skyType = [TMBValue intValue:TMBSkyTypeGradient];
+        skyType = [TMBValue constant:TMBSkyType.gradient];
     } else {
-        skyType = [TMBValue intValue:TMBSkyTypeAtmosphere];
+        skyType = [TMBValue constant:TMBSkyType.atmosphere];
     }
     
     [mapView updateSkyLayer: skyLayerId

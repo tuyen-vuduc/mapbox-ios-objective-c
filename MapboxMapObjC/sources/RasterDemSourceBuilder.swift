@@ -24,12 +24,7 @@ open class RasterDemSourceBuilder : NSObject {
         result.url = url
         result.attribution = attribution
         result.bounds = bounds;
-        
-        switch(encoding) {
-        case .mapbox: result.encoding = .mapbox
-        case .terrarium: result.encoding = .terrarium
-        default:break
-        }
+        result.encoding = encoding?.swiftValue()
         
         result.maxOverscaleFactorForParentTiles = maxOverscaleFactorForParentTiles
         result.maxzoom = maxzoom

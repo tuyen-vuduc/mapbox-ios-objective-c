@@ -94,211 +94,211 @@ extension TMBValue {
         return Value.expression(expression!.swiftOnly())
     }
     func visibility<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.visibility() as! T)
+        if let constant = self.constant as? TMBVisibility {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func lineCap<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.lineCap() as! T)
+        if let constant = self.constant as? TMBLineCap {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func lineJoin<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.lineJoin() as! T)
+        if let constant = self.constant as? TMBLineJoin {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func iconAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.iconAnchor() as! T)
+        if let constant = self.constant as? TMBIconAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func iconPitchAlignment<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.iconPitchAlignment() as! T)
+        if let constant = self.constant as? TMBIconPitchAlignment {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func iconRotationAlignment<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.iconRotationAlignment() as! T)
+        if let constant = self.constant as? TMBIconRotationAlignment {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func iconTextFit<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.iconTextFit() as! T)
+        if let constant = self.constant as? TMBIconTextFit {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func symbolPlacement<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.symbolPlacement() as! T)
+        if let constant = self.constant as? TMBSymbolPlacement {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func symbolZOrder<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.symbolZOrder() as! T)
+        if let constant = self.constant as? TMBSymbolZOrder {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textAnchor() as! T)
+        if let constant = self.constant as? TMBTextAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func arrayOfTextAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? [NSNumber] {
-            return Value.constant(constant.map({$0.textAnchor()}) as! T)
+        if let constant = self.constant as? [TMBTextAnchor] {
+            return Value.constant(constant.map({$0.swiftValue()}) as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textJustify<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textJustify() as! T)
+        if let constant = self.constant as? TMBTextJustify {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textPitchAlignment<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textPitchAlignment() as! T)
+        if let constant = self.constant as? TMBTextPitchAlignment {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textRotationAlignment<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textRotationAlignment() as! T)
+        if let constant = self.constant as? TMBTextRotationAlignment {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textTransform<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textTransform() as! T)
+        if let constant = self.constant as? TMBTextTransform {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func fillTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.fillTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBFillTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func lineTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.lineTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBLineTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func iconTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.iconTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBIconTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBTextTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func circlePitchAlignment<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.circlePitchAlignment() as! T)
+        if let constant = self.constant as? TMBCirclePitchAlignment {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func circlePitchScale<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.circlePitchScale() as! T)
+        if let constant = self.constant as? TMBCirclePitchScale {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func circleTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.circleTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBCircleTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func fillExtrusionTranslateAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.fillExtrusionTranslateAnchor() as! T)
+        if let constant = self.constant as? TMBFillExtrusionTranslateAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func rasterResampling<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.rasterResampling() as! T)
+        if let constant = self.constant as? TMBRasterResampling {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func hillshadeIlluminationAnchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.hillshadeIlluminationAnchor() as! T)
+        if let constant = self.constant as? TMBHillshadeIlluminationAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func skyType<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.skyType() as! T)
+        if let constant = self.constant as? TMBSkyType {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func anchor<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.anchor() as! T)
+        if let constant = self.constant as? TMBAnchor {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func styleProjectionName<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.styleProjectionName() as! T)
+        if let constant = self.constant as? TMBStyleProjectionName {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func textWritingMode<T>() -> Value<T>? {
-        if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.textWritingMode() as! T)
+        if let constant = self.constant as? TMBTextWritingMode {
+            return Value.constant(constant.swiftValue() as! T)
         }
         
         return Value.expression(expression!.swiftOnly())
     }
     func arrayOfTextWritingMode<T>() -> Value<T>? {
-        if let constant = self.constant as? [NSNumber] {
-            return Value.constant(constant.map({$0.textWritingMode()}) as! T)
+        if let constant = self.constant as? [TMBTextWritingMode] {
+            return Value.constant(constant.map({$0.swiftValue()}) as! T)
         }
         
         return Value.expression(expression!.swiftOnly())

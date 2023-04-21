@@ -10,7 +10,7 @@
 		2309802E29D3A403008EF30C /* MapboxMapObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 236010BF282487FF00DAC76A /* MapboxMapObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		231AF0C429BF8826002D6CFD /* RasterDemSourceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C329BF8826002D6CFD /* RasterDemSourceBuilder.swift */; };
 		231AF0C629BF8905002D6CFD /* SourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C529BF8905002D6CFD /* SourceType.swift */; };
-		231AF0C829BF8B09002D6CFD /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C729BF8B09002D6CFD /* Encoding.swift */; };
+		231AF0C829BF8B09002D6CFD /* SourceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C729BF8B09002D6CFD /* SourceProperties.swift */; };
 		231AF0CC29BF9305002D6CFD /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CB29BF9305002D6CFD /* Value.swift */; };
 		231AF0CE29BF9319002D6CFD /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CD29BF9319002D6CFD /* Terrain.swift */; };
 		231AF0D029BF9633002D6CFD /* SkyLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CF29BF9633002D6CFD /* SkyLayerBuilder.swift */; };
@@ -18,8 +18,6 @@
 		231AF0D429BFEFE4002D6CFD /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D329BFEFE4002D6CFD /* Expression.swift */; };
 		231AF0D629BFF042002D6CFD /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D529BFF042002D6CFD /* Operator.swift */; };
 		231AF0D829BFF17D002D6CFD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D729BFF17D002D6CFD /* Common.swift */; };
-		231AF0DA29C09E11002D6CFD /* CommonMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D929C09E11002D6CFD /* CommonMapping.swift */; };
-		231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */; };
 		23251E1729CEBA3A0088065B /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1629CEBA3A0088065B /* AnnotationManager.swift */; };
 		23251E1929CEE9250088065B /* LayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1829CEE9250088065B /* LayerPosition.swift */; };
 		23251E1B29CEEC6E0088065B /* MapViewExtentions.Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1A29CEEC6E0088065B /* MapViewExtentions.Annotations.swift */; };
@@ -128,6 +126,7 @@
 		23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */; };
 		23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
+		23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC867B29F206C800C07BF6 /* NamedString.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
 /* End PBXBuildFile section */
@@ -161,7 +160,7 @@
 		1C18D6659143F51DB92FF65C /* Pods-mapboxqs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.debug.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.debug.xcconfig"; sourceTree = "<group>"; };
 		231AF0C329BF8826002D6CFD /* RasterDemSourceBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasterDemSourceBuilder.swift; sourceTree = "<group>"; };
 		231AF0C529BF8905002D6CFD /* SourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceType.swift; sourceTree = "<group>"; };
-		231AF0C729BF8B09002D6CFD /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
+		231AF0C729BF8B09002D6CFD /* SourceProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceProperties.swift; sourceTree = "<group>"; };
 		231AF0CB29BF9305002D6CFD /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		231AF0CD29BF9319002D6CFD /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		231AF0CF29BF9633002D6CFD /* SkyLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyLayerBuilder.swift; sourceTree = "<group>"; };
@@ -169,8 +168,6 @@
 		231AF0D329BFEFE4002D6CFD /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		231AF0D529BFF042002D6CFD /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		231AF0D729BFF17D002D6CFD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		231AF0D929C09E11002D6CFD /* CommonMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMapping.swift; sourceTree = "<group>"; };
-		231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		23251E1629CEBA3A0088065B /* AnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationManager.swift; sourceTree = "<group>"; };
 		23251E1829CEE9250088065B /* LayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerPosition.swift; sourceTree = "<group>"; };
 		23251E1A29CEEC6E0088065B /* MapViewExtentions.Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtentions.Annotations.swift; sourceTree = "<group>"; };
@@ -356,6 +353,7 @@
 		23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuckBearingSource.swift; sourceTree = "<group>"; };
 		23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleProtocol.h; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
+		23FC867B29F206C800C07BF6 /* NamedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedString.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
 		8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapboxqs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,12 +655,11 @@
 				23BB8EFC29BD647400E7C218 /* OrnamentVisibility.swift */,
 				23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */,
 				231AF0C529BF8905002D6CFD /* SourceType.swift */,
-				231AF0C729BF8B09002D6CFD /* Encoding.swift */,
+				231AF0C729BF8B09002D6CFD /* SourceProperties.swift */,
 				231AF0D529BFF042002D6CFD /* Operator.swift */,
 				231AF0D729BFF17D002D6CFD /* Common.swift */,
-				231AF0D929C09E11002D6CFD /* CommonMapping.swift */,
-				231AF0DB29C0A3C4002D6CFD /* CommonExtensions.swift */,
 				23251E1829CEE9250088065B /* LayerPosition.swift */,
+				23FC867B29F206C800C07BF6 /* NamedString.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -976,9 +973,9 @@
 			files = (
 				23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */,
 				23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */,
+				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
 				23BB8EFD29BD647400E7C218 /* OrnamentVisibility.swift in Sources */,
 				231AF0CE29BF9319002D6CFD /* Terrain.swift in Sources */,
-				231AF0DA29C09E11002D6CFD /* CommonMapping.swift in Sources */,
 				23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */,
 				23BA6DD72826CA5A00D2D03A /* ResourceOptions.swift in Sources */,
 				23251E2729CF02690088065B /* TMBStyle.swift in Sources */,
@@ -994,7 +991,6 @@
 				23251E2A29CF0DB00088065B /* SymbolLayerBuilder.swift in Sources */,
 				23B88A6629CFFEE800F508B5 /* TMBPointAnnotation.swift in Sources */,
 				23251E1929CEE9250088065B /* LayerPosition.swift in Sources */,
-				231AF0DC29C0A3C4002D6CFD /* CommonExtensions.swift in Sources */,
 				2386379029C6D71F002282FF /* ResolvedImageData.swift in Sources */,
 				23251E2029CEF3870088065B /* TMBPolygonAnnotation.swift in Sources */,
 				23251E1B29CEEC6E0088065B /* MapViewExtentions.Annotations.swift in Sources */,
@@ -1004,7 +1000,7 @@
 				2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* StyleTransition.swift in Sources */,
 				23251E2529CF01310088065B /* MapViewExtensions.Style.swift in Sources */,
-				231AF0C829BF8B09002D6CFD /* Encoding.swift in Sources */,
+				231AF0C829BF8B09002D6CFD /* SourceProperties.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* Expression.swift in Sources */,
 				231AF0D629BFF042002D6CFD /* Operator.swift in Sources */,
 				23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */,

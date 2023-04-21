@@ -88,10 +88,10 @@
 - (SymbolLayerBuilder*) createSymbolLayerBuilder: (NSString*) sourceId
                                             icon: (NSString *) icon {
     SymbolLayerBuilder* builder = [SymbolLayerBuilder withId: @"LAYER_ID"];
-    
+        
     [builder source:sourceId];
     [builder iconImage:[TMBValue constant:[TMBResolvedImage fromName:icon]]];
-    [builder iconAnchor:[TMBValue intValue:TMBIconAnchorBottom]];
+    [builder iconAnchor:[TMBValue constant: TMBIconAnchor.bottom]];
     return builder;
 }
 
