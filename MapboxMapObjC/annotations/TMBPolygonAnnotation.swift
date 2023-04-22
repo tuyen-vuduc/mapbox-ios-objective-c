@@ -182,12 +182,15 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
 
     /// Controls the frame of reference for `fill-translate`.
     @objc
-    public var fillTranslateAnchor: TMBFillTranslateAnchor {
+    public var fillTranslateAnchor: TMBFillTranslateAnchor? {
         get {
-            return (self.swiftValue.fillTranslateAnchor?.objcValue())!
+            guard let fillTranslateAnchor = self.swiftValue.fillTranslateAnchor else {
+                return nil
+            }
+            return TMBFillTranslateAnchor(value: self.swiftValue.fillTranslateAnchor!)
         }
         set {
-            self.swiftValue.fillTranslateAnchor = newValue.swiftValue()
+            self.swiftValue.fillTranslateAnchor = newValue?.swiftValue()
         }
     }
     

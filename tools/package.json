@@ -1,0 +1,17 @@
+{
+  "name": "tmbobjc",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Transpile Swift code to ObcJ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mapbox",
+    "objective-c",
+    "objc"
+  ],
+  "author": "Tuyen Vu <hi@tuyen-vuduc.tech>",
+  "license": "Apache-2.0"
+}

@@ -132,4 +132,59 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
         super.init()
         swiftValue.delegate = self
     }
+    
+    // MARK: - Common layer properties
+
+    /// Orientation of circle when map is pitched.
+    @objc
+    public var circlePitchAlignment: TMBCirclePitchAlignment? {
+        get {
+            guard let circlePitchAlignment = self.swiftValue.circlePitchAlignment else {
+                return nil
+            }
+            return TMBCirclePitchAlignment(value: self.swiftValue.circlePitchAlignment!)
+        }
+        set {
+            self.swiftValue.circlePitchAlignment = newValue?.swiftValue()
+        }
+    }
+
+    /// Controls the scaling behavior of the circle when the map is pitched.
+    @objc
+    public var circlePitchScale: TMBCirclePitchScale? {
+        get {
+            guard let circlePitchScale = self.swiftValue.circlePitchScale else {
+                return nil
+            }
+            return TMBCirclePitchScale(value: self.swiftValue.circlePitchScale!)
+        }
+        set {
+            self.swiftValue.circlePitchScale = newValue?.swiftValue()
+        }
+    }
+
+    /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
+    @objc
+    public var circleTranslate: [Double]? {
+        get {
+            return self.swiftValue.circleTranslate
+        }
+        set {
+            self.swiftValue.circleTranslate = newValue
+        }
+    }
+
+    /// Controls the frame of reference for `circle-translate`.
+    @objc
+    public var circleTranslateAnchor: TMBCircleTranslateAnchor? {
+        get {
+            guard let circleTranslateAnchor = self.swiftValue.circleTranslateAnchor else {
+                return nil
+            }
+            return TMBCircleTranslateAnchor(value: self.swiftValue.circleTranslateAnchor!)
+        }
+        set {
+            self.swiftValue.circleTranslateAnchor = newValue?.swiftValue()
+        }
+    }
 }
