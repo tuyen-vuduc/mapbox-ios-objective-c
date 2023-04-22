@@ -62,7 +62,9 @@
     // Annotation managers are kept alive by `AnnotationOrchestrator`
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
-    TMBPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManager];
+    TMBPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManagerWithId:nil
+                                                                                      layerPosition:TMBLayerPositionUnowned
+                                                                                 layerPositionParam:nil];
     
     // Set the delegate to receive callback if annotation is tapped or dragged
     polygonAnnotationManager.delegate = self;

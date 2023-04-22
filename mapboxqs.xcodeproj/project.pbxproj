@@ -125,6 +125,7 @@
 		23BB8EFD29BD647400E7C218 /* OrnamentVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EFC29BD647400E7C218 /* OrnamentVisibility.swift */; };
 		23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */; };
 		23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */; };
+		23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC867B29F206C800C07BF6 /* NamedString.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
@@ -352,6 +353,7 @@
 		23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
 		23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuckBearingSource.swift; sourceTree = "<group>"; };
 		23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleProtocol.h; sourceTree = "<group>"; };
+		23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotation.swift; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		23FC867B29F206C800C07BF6 /* NamedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedString.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				23251E1F29CEF3870088065B /* TMBPolygonAnnotation.swift */,
 				23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */,
 				23B88A6529CFFEE800F508B5 /* TMBPointAnnotation.swift */,
+				23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */,
 			);
 			path = annotations;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				23251E2529CF01310088065B /* MapViewExtensions.Style.swift in Sources */,
 				231AF0C829BF8B09002D6CFD /* SourceProperties.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* Expression.swift in Sources */,
+				23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */,
 				231AF0D629BFF042002D6CFD /* Operator.swift in Sources */,
 				23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */,
 				2365B7F929BE844A00A013E1 /* MapInitOptionsBuilder.swift in Sources */,

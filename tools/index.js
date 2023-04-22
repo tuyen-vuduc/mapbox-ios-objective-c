@@ -16,6 +16,11 @@ var prefixedTypes = lines.map((item, index) => {
  var transformed = lines.map((item, index) => {
     if (/^\s+public var/.test(item)) {
         var propType = prefixedTypes[index][1];
+
+        if (/StyleColor\?$/.test(propType)) {
+            return item.replace(/StyleColor\?/, 'UIColor?');
+        }
+
         if (/(Bool|Double)\?$/.test(propType)) {
             return item.replace(/(Bool|Double)\?/, 'NSNumber?');
         }
@@ -31,9 +36,19 @@ ${item.replace(/: (\[?)(\w+)(\]?\??)/, ': $1TMB$2$3')}`;
         var propName = prefixedTypes[index-2][0];
         var propType = prefixedTypes[index-2][1];
         
+        if (/StyleColor\?$/.test(propType)) {
+            return `            guard let ${propName} = self.swiftValue.${propName} else {
+                return nil
+            }
+            return UIColor(
+                red: ${propName}.red,
+                green: ${propName}.green,
+                blue: ${propName}.blue,
+                alpha: ${propName}.alpha)`;
+        }
+
         if (/(Bool|Double)\?$/.test(propType)) {
-            return `            // ${propType}
-            guard let ${propName} = self.swiftValue.${propName} else {
+            return `            guard let ${propName} = self.swiftValue.${propName} else {
                 return nil
             }
             return NSNumber(value: ${propName})`;
@@ -59,6 +74,15 @@ ${item.replace(/: (\[?)(\w+)(\]?\??)/, ': $1TMB$2$3')}`;
         var propName = prefixedTypes[index-5][0];
         var propType = prefixedTypes[index-5][1];
         
+        if (/StyleColor\?$/.test(propType)) { 
+            return `            guard let ${propName} = newValue else {
+                self.swiftValue.${propName} = nil
+                return
+            }
+            
+            self.swiftValue.${propName} = StyleColor(${propName})`;
+        }
+
         if (/(Bool)\?$/.test(propType)) {
             return `            // ${propType}
             self.swiftValue.${propName} = newValue?.boolValue`;

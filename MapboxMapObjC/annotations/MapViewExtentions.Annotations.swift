@@ -4,11 +4,6 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    public func polygonAnnotationManager() -> TMBPolygonAnnotationManager {
-        let swiftValue = self.annotations.makePolygonAnnotationManager()
-        return TMBPolygonAnnotationManager(swiftValue)
-    }
-    
     @objc
     public func polygonAnnotationManager(
         id: String?,
@@ -20,11 +15,6 @@ extension MapView {
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
         return TMBPolygonAnnotationManager(swiftValue)
-    }
-    
-    public func circleAnnotationManager() -> TMBCircleAnnotationManager {
-        let swiftValue = self.annotations.makeCircleAnnotationManager()
-        return TMBCircleAnnotationManager(swiftValue)
     }
     
     @objc
@@ -40,11 +30,6 @@ extension MapView {
         return TMBCircleAnnotationManager(swiftValue)
     }
     
-    public func pointAnnotationManager() -> TMBPointAnnotationManager {
-        let swiftValue = self.annotations.makePointAnnotationManager()
-        return TMBPointAnnotationManager(swiftValue)
-    }
-    
     @objc
     public func pointAnnotationManager(
         id: String?,
@@ -56,5 +41,18 @@ extension MapView {
             layerPosition: layerPosition.swiftValue(layerPositionParam)
         )
         return TMBPointAnnotationManager(swiftValue)
+    }
+    
+    @objc
+    public func polylineAnnotationManager(
+        id: String?,
+        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
+        layerPositionParam: AnyObject?
+    ) -> TMBPolylineAnnotationManager {
+        let swiftValue = self.annotations.makePolylineAnnotationManager(
+            id:  id ?? String(UUID().uuidString.prefix(5)),
+            layerPosition: layerPosition.swiftValue(layerPositionParam)
+        )
+        return TMBPolylineAnnotationManager(swiftValue)
     }
 }
