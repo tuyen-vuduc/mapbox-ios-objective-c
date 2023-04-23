@@ -54,6 +54,425 @@ open class TMBPointAnnotation : NSObject, TMBAnnotation {
         let swiftValue = PointAnnotation(point: Point(coordinate))
         return TMBPointAnnotation(swiftValue: swiftValue)
     }
+    
+    // MARK: - Style Properties -
+
+    /// Part of the icon placed closest to the anchor.
+    @objc
+    public var iconAnchor: TMBIconAnchor? {
+        get {
+            guard let iconAnchor = self.swiftValue.iconAnchor else {
+                return nil
+            }
+            return TMBIconAnchor(value: iconAnchor)
+        }
+        set {
+            self.swiftValue.iconAnchor = newValue?.swiftValue()
+        }
+    }
+
+    /// Name of image in sprite to use for drawing an image background.
+    @objc
+    public var iconImage: String? {
+        get {
+            return self.swiftValue.iconImage
+        }
+        set {
+            self.swiftValue.iconImage = newValue
+        }
+    }
+
+    /// Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of `icon-size` to obtain the final offset in pixels. When combined with `icon-rotate` the offset will be as if the rotated direction was up.
+    @objc
+    public var iconOffset: [Double]? {
+        get {
+            return self.swiftValue.iconOffset
+        }
+        set {
+            self.swiftValue.iconOffset = newValue
+        }
+    }
+
+    /// Rotates the icon clockwise.
+    @objc
+    public var iconRotate: NSNumber? {
+        get {
+            // Double?
+            guard let iconRotate = self.swiftValue.iconRotate else {
+                return nil
+            }
+            return NSNumber(value: iconRotate)
+        }
+        set {
+            self.swiftValue.iconRotate = newValue?.doubleValue
+        }
+    }
+
+    /// Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by `icon-size`. 1 is the original size; 3 triples the size of the image.
+    @objc
+    public var iconSize: NSNumber? {
+        get {
+            // Double?
+            guard let iconSize = self.swiftValue.iconSize else {
+                return nil
+            }
+            return NSNumber(value: iconSize)
+        }
+        set {
+            self.swiftValue.iconSize = newValue?.doubleValue
+        }
+    }
+
+    /// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first.  When `icon-allow-overlap` or `text-allow-overlap` is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
+    @objc
+    public var symbolSortKey: NSNumber? {
+        get {
+            // Double?
+            guard let symbolSortKey = self.swiftValue.symbolSortKey else {
+                return nil
+            }
+            return NSNumber(value: symbolSortKey)
+        }
+        set {
+            self.swiftValue.symbolSortKey = newValue?.doubleValue
+        }
+    }
+
+    /// Part of the text placed closest to the anchor.
+    @objc
+    public var textAnchor: TMBTextAnchor? {
+        get {
+            guard let textAnchor = self.swiftValue.textAnchor else {
+                return nil
+            }
+            return TMBTextAnchor(value: textAnchor)
+        }
+        set {
+            self.swiftValue.textAnchor = newValue?.swiftValue()
+        }
+    }
+
+    /// Value to use for a text label. If a plain `string` is provided, it will be treated as a `formatted` with default/inherited formatting options. SDF images are not supported in formatted text and will be ignored.
+    @objc
+    public var textField: String? {
+        get {
+            return self.swiftValue.textField
+        }
+        set {
+            self.swiftValue.textField = newValue
+        }
+    }
+
+    /// Text justification options.
+    @objc
+    public var textJustify: TMBTextJustify? {
+        get {
+            guard let textJustify = self.swiftValue.textJustify else {
+                return nil
+            }
+            return TMBTextJustify(value: textJustify)
+        }
+        set {
+            self.swiftValue.textJustify = newValue?.swiftValue()
+        }
+    }
+
+    /// Text tracking amount.
+    @objc
+    public var textLetterSpacing: NSNumber? {
+        get {
+            // Double?
+            guard let textLetterSpacing = self.swiftValue.textLetterSpacing else {
+                return nil
+            }
+            return NSNumber(value: textLetterSpacing)
+        }
+        set {
+            self.swiftValue.textLetterSpacing = newValue?.doubleValue
+        }
+    }
+
+    /// Text leading value for multi-line text.
+    @objc
+    public var textLineHeight: NSNumber? {
+        get {
+            // Double?
+            guard let textLineHeight = self.swiftValue.textLineHeight else {
+                return nil
+            }
+            return NSNumber(value: textLineHeight)
+        }
+        set {
+            self.swiftValue.textLineHeight = newValue?.doubleValue
+        }
+    }
+
+    /// The maximum line width for text wrapping.
+    @objc
+    public var textMaxWidth: NSNumber? {
+        get {
+            // Double?
+            guard let textMaxWidth = self.swiftValue.textMaxWidth else {
+                return nil
+            }
+            return NSNumber(value: textMaxWidth)
+        }
+        set {
+            self.swiftValue.textMaxWidth = newValue?.doubleValue
+        }
+    }
+
+    /// Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.
+    @objc
+    public var textOffset: [Double]? {
+        get {
+            return self.swiftValue.textOffset
+        }
+        set {
+            self.swiftValue.textOffset = newValue
+        }
+    }
+
+    /// Radial offset of text, in the direction of the symbol's anchor. Useful in combination with `text-variable-anchor`, which defaults to using the two-dimensional `text-offset` if present.
+    @objc
+    public var textRadialOffset: NSNumber? {
+        get {
+            // Double?
+            guard let textRadialOffset = self.swiftValue.textRadialOffset else {
+                return nil
+            }
+            return NSNumber(value: textRadialOffset)
+        }
+        set {
+            self.swiftValue.textRadialOffset = newValue?.doubleValue
+        }
+    }
+
+    /// Rotates the text clockwise.
+    @objc
+    public var textRotate: NSNumber? {
+        get {
+            // Double?
+            guard let textRotate = self.swiftValue.textRotate else {
+                return nil
+            }
+            return NSNumber(value: textRotate)
+        }
+        set {
+            self.swiftValue.textRotate = newValue?.doubleValue
+        }
+    }
+
+    /// Font size.
+    @objc
+    public var textSize: NSNumber? {
+        get {
+            // Double?
+            guard let textSize = self.swiftValue.textSize else {
+                return nil
+            }
+            return NSNumber(value: textSize)
+        }
+        set {
+            self.swiftValue.textSize = newValue?.doubleValue
+        }
+    }
+
+    /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
+    @objc
+    public var textTransform: TMBTextTransform? {
+        get {
+            guard let textTransform = self.swiftValue.textTransform else {
+                return nil
+            }
+            return TMBTextTransform(value: textTransform)
+        }
+        set {
+            self.swiftValue.textTransform = newValue?.swiftValue()
+        }
+    }
+
+    /// The color of the icon. This can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
+    @objc
+    public var iconColor: UIColor? {
+        get {
+            guard let iconColor = self.swiftValue.iconColor else {
+                return nil
+            }
+            return UIColor(
+                red: iconColor.red,
+                green: iconColor.green,
+                blue: iconColor.blue,
+                alpha: iconColor.alpha)
+        }
+        set {
+            guard let iconColor = newValue else {
+                self.swiftValue.iconColor = nil
+                return
+            }
+            
+            self.swiftValue.iconColor = StyleColor(iconColor)
+        }
+    }
+
+    /// Fade out the halo towards the outside.
+    @objc
+    public var iconHaloBlur: NSNumber? {
+        get {
+            // Double?
+            guard let iconHaloBlur = self.swiftValue.iconHaloBlur else {
+                return nil
+            }
+            return NSNumber(value: iconHaloBlur)
+        }
+        set {
+            self.swiftValue.iconHaloBlur = newValue?.doubleValue
+        }
+    }
+
+    /// The color of the icon's halo. Icon halos can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
+    @objc
+    public var iconHaloColor: UIColor? {
+        get {
+            guard let iconHaloColor = self.swiftValue.iconHaloColor else {
+                return nil
+            }
+            return UIColor(
+                red: iconHaloColor.red,
+                green: iconHaloColor.green,
+                blue: iconHaloColor.blue,
+                alpha: iconHaloColor.alpha)
+        }
+        set {
+            guard let iconHaloColor = newValue else {
+                self.swiftValue.iconHaloColor = nil
+                return
+            }
+            
+            self.swiftValue.iconHaloColor = StyleColor(iconHaloColor)
+        }
+    }
+
+    /// Distance of halo to the icon outline.
+    @objc
+    public var iconHaloWidth: NSNumber? {
+        get {
+            // Double?
+            guard let iconHaloWidth = self.swiftValue.iconHaloWidth else {
+                return nil
+            }
+            return NSNumber(value: iconHaloWidth)
+        }
+        set {
+            self.swiftValue.iconHaloWidth = newValue?.doubleValue
+        }
+    }
+
+    /// The opacity at which the icon will be drawn.
+    @objc
+    public var iconOpacity: NSNumber? {
+        get {
+            // Double?
+            guard let iconOpacity = self.swiftValue.iconOpacity else {
+                return nil
+            }
+            return NSNumber(value: iconOpacity)
+        }
+        set {
+            self.swiftValue.iconOpacity = newValue?.doubleValue
+        }
+    }
+
+    /// The color with which the text will be drawn.
+    @objc
+    public var textColor: UIColor? {
+        get {
+            guard let textColor = self.swiftValue.textColor else {
+                return nil
+            }
+            return UIColor(
+                red: textColor.red,
+                green: textColor.green,
+                blue: textColor.blue,
+                alpha: textColor.alpha)
+        }
+        set {
+            guard let textColor = newValue else {
+                self.swiftValue.textColor = nil
+                return
+            }
+            
+            self.swiftValue.textColor = StyleColor(textColor)
+        }
+    }
+
+    /// The halo's fadeout distance towards the outside.
+    @objc
+    public var textHaloBlur: NSNumber? {
+        get {
+            // Double?
+            guard let textHaloBlur = self.swiftValue.textHaloBlur else {
+                return nil
+            }
+            return NSNumber(value: textHaloBlur)
+        }
+        set {
+            self.swiftValue.textHaloBlur = newValue?.doubleValue
+        }
+    }
+
+    /// The color of the text's halo, which helps it stand out from backgrounds.
+    @objc
+    public var textHaloColor: UIColor? {
+        get {
+            guard let textHaloColor = self.swiftValue.textHaloColor else {
+                return nil
+            }
+            return UIColor(
+                red: textHaloColor.red,
+                green: textHaloColor.green,
+                blue: textHaloColor.blue,
+                alpha: textHaloColor.alpha)
+        }
+        set {
+            guard let textHaloColor = newValue else {
+                self.swiftValue.textHaloColor = nil
+                return
+            }
+            
+            self.swiftValue.textHaloColor = StyleColor(textHaloColor)
+        }
+    }
+
+    /// Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.
+    @objc
+    public var textHaloWidth: NSNumber? {
+        get {
+            // Double?
+            guard let textHaloWidth = self.swiftValue.textHaloWidth else {
+                return nil
+            }
+            return NSNumber(value: textHaloWidth)
+        }
+        set {
+            self.swiftValue.textHaloWidth = newValue?.doubleValue
+        }
+    }
+
+    /// The opacity at which the text will be drawn.
+    @objc
+    public var textOpacity: NSNumber? {
+        get {
+            // Double?
+            guard let textOpacity = self.swiftValue.textOpacity else {
+                return nil
+            }
+            return NSNumber(value: textOpacity)
+        }
+        set {
+            self.swiftValue.textOpacity = newValue?.doubleValue
+        }
+    }
 }
 
 @objc
@@ -121,6 +540,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     // MARK: - Common layer properties
 
     /// If true, the icon will be visible even if it collides with other previously drawn symbols.
+    @objc
     public var iconAllowOverlap: NSNumber? {
         get {
             // Bool?
@@ -136,6 +556,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, other symbols can be visible even if they collide with the icon.
+    @objc
     public var iconIgnorePlacement: NSNumber? {
         get {
             // Bool?
@@ -151,6 +572,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, the icon may be flipped to prevent it from being rendered upside-down.
+    @objc
     public var iconKeepUpright: NSNumber? {
         get {
             // Bool?
@@ -166,6 +588,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, text will display without their corresponding icons when the icon collides with other symbols and the text does not.
+    @objc
     public var iconOptional: NSNumber? {
         get {
             // Bool?
@@ -181,6 +604,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// Size of the additional area around the icon bounding box used for detecting symbol collisions.
+    @objc
     public var iconPadding: NSNumber? {
         get {
             // Double?
@@ -249,6 +673,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, the symbols will not cross tile edges to avoid mutual collisions. Recommended in layers that don't have enough padding in the vector tile to prevent collisions, or if it is a point symbol layer placed after a line symbol layer. When using a client that supports global collision detection, like Mapbox GL JS version 0.42.0 or greater, enabling this property is not needed to prevent clipped labels at tile boundaries.
+    @objc
     public var symbolAvoidEdges: NSNumber? {
         get {
             // Bool?
@@ -278,6 +703,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// Distance between two symbol anchors.
+    @objc
     public var symbolSpacing: NSNumber? {
         get {
             // Double?
@@ -307,6 +733,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, the text will be visible even if it collides with other previously drawn symbols.
+    @objc
     public var textAllowOverlap: NSNumber? {
         get {
             // Bool?
@@ -333,6 +760,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, other symbols can be visible even if they collide with the text.
+    @objc
     public var textIgnorePlacement: NSNumber? {
         get {
             // Bool?
@@ -348,6 +776,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, the text may be flipped vertically to prevent it from being rendered upside-down.
+    @objc
     public var textKeepUpright: NSNumber? {
         get {
             // Bool?
@@ -363,6 +792,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// Maximum angle change between adjacent characters.
+    @objc
     public var textMaxAngle: NSNumber? {
         get {
             // Double?
@@ -378,6 +808,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// If true, icons will display without their corresponding text when the text collides with other symbols and the icon does not.
+    @objc
     public var textOptional: NSNumber? {
         get {
             // Bool?
@@ -393,6 +824,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     }
 
     /// Size of the additional area around the text bounding box used for detecting symbol collisions.
+    @objc
     public var textPadding: NSNumber? {
         get {
             // Double?
@@ -509,6 +941,7 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Text leading value for multi-line text.
     @available(*, deprecated, message: "text-line-height property is now data driven, use `PointAnnotation.textLineHeight` instead.")
+    @objc
     public var textLineHeight: NSNumber? {
         get {
             // Double?

@@ -23,9 +23,11 @@ open class TMBScheme :NSObject, NamedString {
     }
     
     /// Slippy map tilenames scheme.
+    @objc
     public static let xyz:TMBScheme = TMBScheme(value: .xyz)
 
     /// OSGeo spec scheme.
+    @objc
     public static let tms:TMBScheme = TMBScheme(value: .tms)
 }
 
@@ -50,9 +52,11 @@ open class TMBEncoding :NSObject, NamedString {
     }
     
     /// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
+    @objc
     public static let terrarium:TMBEncoding = TMBEncoding(value: .terrarium)
 
     /// Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info.
+    @objc
     public static let mapbox:TMBEncoding = TMBEncoding(value: .mapbox)
 }
 

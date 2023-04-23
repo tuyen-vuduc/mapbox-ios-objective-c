@@ -75,6 +75,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
+    @objc
     public var lineSortKey: NSNumber? {
         get {
             guard let lineSortKey = self.swiftValue.lineSortKey else {
@@ -89,6 +90,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// Blur applied to the line, in pixels.
+    @objc
     public var lineBlur: NSNumber? {
         get {
             guard let lineBlur = self.swiftValue.lineBlur else {
@@ -103,6 +105,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// The color with which the line will be drawn.
+    @objc
     public var lineColor: UIColor? {
         get {
             guard let lineColor = self.swiftValue.lineColor else {
@@ -125,6 +128,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// Draws a line casing outside of a line's actual path. Value indicates the width of the inner gap.
+    @objc
     public var lineGapWidth: NSNumber? {
         get {
             guard let lineGapWidth = self.swiftValue.lineGapWidth else {
@@ -139,6 +143,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// The line's offset. For linear features, a positive value offsets the line to the right, relative to the direction of the line, and a negative value to the left. For polygon features, a positive value results in an inset, and a negative value results in an outset.
+    @objc
     public var lineOffset: NSNumber? {
         get {
             guard let lineOffset = self.swiftValue.lineOffset else {
@@ -153,6 +158,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// The opacity at which the line will be drawn.
+    @objc
     public var lineOpacity: NSNumber? {
         get {
             guard let lineOpacity = self.swiftValue.lineOpacity else {
@@ -178,6 +184,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     }
 
     /// Stroke thickness.
+    @objc
     public var lineWidth: NSNumber? {
         get {
             guard let lineWidth = self.swiftValue.lineWidth else {
@@ -271,6 +278,7 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     }
 
     /// Used to automatically convert miter joins to bevel joins for sharp angles.
+    @objc
     public var lineMiterLimit: NSNumber? {
         get {
             guard let lineMiterLimit = self.swiftValue.lineMiterLimit else {
@@ -285,6 +293,7 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     }
 
     /// Used to automatically convert round joins to miter joins for shallow angles.
+    @objc
     public var lineRoundLimit: NSNumber? {
         get {
             guard let lineRoundLimit = self.swiftValue.lineRoundLimit else {
@@ -344,6 +353,4 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
             self.swiftValue.lineTrimOffset = newValue
         }
     }
-
-
 }

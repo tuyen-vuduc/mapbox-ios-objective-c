@@ -107,7 +107,7 @@ open class RasterDemSourceBuilder : NSObject {
     /// The encoding used by this source. Mapbox Terrain RGB is used by default
     private var encoding: TMBEncoding?;
     @discardableResult
-    @objc public func encoding(_ value: TMBEncoding) -> RasterDemSourceBuilder {
+    @objc public func encoding(_ value: TMBEncoding?) -> RasterDemSourceBuilder {
         encoding = value
         
         return self

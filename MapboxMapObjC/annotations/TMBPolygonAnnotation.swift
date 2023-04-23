@@ -187,7 +187,7 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
             guard let fillTranslateAnchor = self.swiftValue.fillTranslateAnchor else {
                 return nil
             }
-            return TMBFillTranslateAnchor(value: self.swiftValue.fillTranslateAnchor!)
+            return TMBFillTranslateAnchor(value: fillTranslateAnchor)
         }
         set {
             self.swiftValue.fillTranslateAnchor = newValue?.swiftValue()

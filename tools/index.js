@@ -18,11 +18,13 @@ var prefixedTypes = lines.map((item, index) => {
         var propType = prefixedTypes[index][1];
 
         if (/StyleColor\?$/.test(propType)) {
-            return item.replace(/StyleColor\?/, 'UIColor?');
+            return `    @objc
+${item.replace(/StyleColor\?/, 'UIColor?')}`;
         }
 
         if (/(Bool|Double)\?$/.test(propType)) {
-            return item.replace(/(Bool|Double)\?/, 'NSNumber?');
+            return `    @objc
+${item.replace(/(Bool|Double)\?/, 'NSNumber?')}`;
         }
 
         if (/Bool|String|Double/.test(propType.replace(/[\[\]\?]/img, ''))) return `    @objc
@@ -48,7 +50,8 @@ ${item.replace(/: (\[?)(\w+)(\]?\??)/, ': $1TMB$2$3')}`;
         }
 
         if (/(Bool|Double)\?$/.test(propType)) {
-            return `            guard let ${propName} = self.swiftValue.${propName} else {
+            return `            // ${propType}
+            guard let ${propName} = self.swiftValue.${propName} else {
                 return nil
             }
             return NSNumber(value: ${propName})`;
@@ -89,8 +92,7 @@ ${item.replace(/: (\[?)(\w+)(\]?\??)/, ': $1TMB$2$3')}`;
         }
 
         if (/(Double)\?$/.test(propType)) {
-            return `            // ${propType}
-            self.swiftValue.${propName} = newValue?.doubleValue`;
+            return `            self.swiftValue.${propName} = newValue?.doubleValue`;
         }
 
         if (/Bool|String|Double/.test(propType.replace(/[\[\]\?]/img, ''))) 
