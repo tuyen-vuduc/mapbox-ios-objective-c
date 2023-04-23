@@ -10,6 +10,7 @@
 #import <MapboxCoreMaps/MapboxCoreMaps.h>
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
+#import <MapKit/MapKit.h>
 
 @interface PolygonAnnotationExample () <TMBAnnotationInteractionDelegate>
 
@@ -91,11 +92,11 @@
     CLLocationCoordinate2D coord5 = CLLocationCoordinate2DMake(24.51713945052515, -89.857177734375);
     
     NSArray* outerRingCoords = @[
-        [NSValue value:&coord1 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&coord2 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&coord3 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&coord4 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&coord5 withObjCType:@encode(CLLocationCoordinate2D)]
+        [NSValue valueWithMKCoordinate: coord1],
+        [NSValue valueWithMKCoordinate: coord2],
+        [NSValue valueWithMKCoordinate: coord3],
+        [NSValue valueWithMKCoordinate: coord4],
+        [NSValue valueWithMKCoordinate: coord5]
     ];
     
     CLLocationCoordinate2D icoord1 = CLLocationCoordinate2DMake(25.085598897064752, -89.20898437499999);
@@ -106,11 +107,11 @@
 
     // This polygon has an intererior polygon which represents a hole in the shape.
     NSArray* innerRingCoords = @[
-        [NSValue value:&icoord1 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&icoord2 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&icoord3 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&icoord4 withObjCType:@encode(CLLocationCoordinate2D)],
-        [NSValue value:&icoord5 withObjCType:@encode(CLLocationCoordinate2D)]
+        [NSValue valueWithMKCoordinate: icoord1],
+        [NSValue valueWithMKCoordinate: icoord2],
+        [NSValue valueWithMKCoordinate: icoord3],
+        [NSValue valueWithMKCoordinate: icoord4],
+        [NSValue valueWithMKCoordinate: icoord5]
     ];
 
     return [TMBPolygon createWithOuterRingCoordinates:outerRingCoords
