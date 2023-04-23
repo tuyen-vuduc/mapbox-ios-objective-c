@@ -7,6 +7,10 @@ extension SourceType {
 @objc
 open class TMBSourceType :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
     init(value: SourceType) {
         self.value = value.rawValue
     }

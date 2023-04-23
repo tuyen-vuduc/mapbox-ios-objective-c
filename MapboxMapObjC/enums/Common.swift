@@ -9,6 +9,11 @@ extension Visibility {
 @objc
 open class TMBVisibility :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: Visibility) {
         self.value = value.rawValue
     }
@@ -40,6 +45,11 @@ extension LineCap {
 @objc
 open class TMBLineCap :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: LineCap) {
         self.value = value.rawValue
     }
@@ -76,6 +86,11 @@ extension LineJoin {
 @objc
 open class TMBLineJoin :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: LineJoin) {
         self.value = value.rawValue
     }
@@ -112,6 +127,11 @@ extension IconAnchor {
 @objc
 open class TMBIconAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: IconAnchor) {
         self.value = value.rawValue
     }
@@ -172,6 +192,11 @@ extension IconPitchAlignment {
 @objc
 open class TMBIconPitchAlignment :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: IconPitchAlignment) {
         self.value = value.rawValue
     }
@@ -208,6 +233,11 @@ extension IconRotationAlignment {
 @objc
 open class TMBIconRotationAlignment :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: IconRotationAlignment) {
         self.value = value.rawValue
     }
@@ -244,6 +274,11 @@ extension IconTextFit {
 @objc
 open class TMBIconTextFit :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: IconTextFit) {
         self.value = value.rawValue
     }
@@ -284,6 +319,11 @@ extension SymbolPlacement {
 @objc
 open class TMBSymbolPlacement :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: SymbolPlacement) {
         self.value = value.rawValue
     }
@@ -320,6 +360,11 @@ extension SymbolZOrder {
 @objc
 open class TMBSymbolZOrder :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: SymbolZOrder) {
         self.value = value.rawValue
     }
@@ -356,6 +401,11 @@ extension TextAnchor {
 @objc
 open class TMBTextAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextAnchor) {
         self.value = value.rawValue
     }
@@ -416,6 +466,11 @@ extension TextJustify {
 @objc
 open class TMBTextJustify :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextJustify) {
         self.value = value.rawValue
     }
@@ -456,6 +511,11 @@ extension TextPitchAlignment {
 @objc
 open class TMBTextPitchAlignment :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextPitchAlignment) {
         self.value = value.rawValue
     }
@@ -492,6 +552,11 @@ extension TextRotationAlignment {
 @objc
 open class TMBTextRotationAlignment :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextRotationAlignment) {
         self.value = value.rawValue
     }
@@ -528,6 +593,11 @@ extension TextTransform {
 @objc
 open class TMBTextTransform :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextTransform) {
         self.value = value.rawValue
     }
@@ -564,6 +634,11 @@ extension FillTranslateAnchor {
 @objc
 open class TMBFillTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: FillTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -596,6 +671,11 @@ extension LineTranslateAnchor {
 @objc
 open class TMBLineTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: LineTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -628,6 +708,11 @@ extension IconTranslateAnchor {
 @objc
 open class TMBIconTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: IconTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -660,6 +745,11 @@ extension TextTranslateAnchor {
 @objc
 open class TMBTextTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -692,6 +782,11 @@ extension CirclePitchAlignment {
 @objc
 open class TMBCirclePitchAlignment :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: CirclePitchAlignment) {
         self.value = value.rawValue
     }
@@ -724,6 +819,11 @@ extension CirclePitchScale {
 @objc
 open class TMBCirclePitchScale :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: CirclePitchScale) {
         self.value = value.rawValue
     }
@@ -756,6 +856,11 @@ extension CircleTranslateAnchor {
 @objc
 open class TMBCircleTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: CircleTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -788,6 +893,11 @@ extension FillExtrusionTranslateAnchor {
 @objc
 open class TMBFillExtrusionTranslateAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: FillExtrusionTranslateAnchor) {
         self.value = value.rawValue
     }
@@ -820,6 +930,11 @@ extension RasterResampling {
 @objc
 open class TMBRasterResampling :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: RasterResampling) {
         self.value = value.rawValue
     }
@@ -852,6 +967,11 @@ extension HillshadeIlluminationAnchor {
 @objc
 open class TMBHillshadeIlluminationAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: HillshadeIlluminationAnchor) {
         self.value = value.rawValue
     }
@@ -884,6 +1004,11 @@ extension SkyType {
 @objc
 open class TMBSkyType :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: SkyType) {
         self.value = value.rawValue
     }
@@ -916,6 +1041,11 @@ extension Anchor {
 @objc
 open class TMBAnchor :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: Anchor) {
         self.value = value.rawValue
     }
@@ -948,6 +1078,11 @@ extension StyleProjectionName {
 @objc
 open class TMBStyleProjectionName :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: StyleProjectionName) {
         self.value = value.rawValue
     }
@@ -980,6 +1115,11 @@ extension TextWritingMode {
 @objc
 open class TMBTextWritingMode :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
+
     init(value: TextWritingMode) {
         self.value = value.rawValue
     }

@@ -7,6 +7,10 @@ extension Expression.Operator {
 @objc
 open class TMBOperator :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
     init(value: Expression.Operator) {
         self.value = value.rawValue
     }

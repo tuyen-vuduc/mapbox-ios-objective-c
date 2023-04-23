@@ -74,7 +74,7 @@
 
     // Style the polygon annotation
     polygonAnnotation.fillColor = [UIColor redColor];
-    polygonAnnotation.fillOpacity = 0.8;
+    polygonAnnotation.fillOpacity = @0.8;
 
     // Add the polygon annotation to the manager
     polygonAnnotationManager.annotations = @[

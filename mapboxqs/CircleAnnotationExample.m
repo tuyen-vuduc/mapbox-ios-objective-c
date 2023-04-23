@@ -41,7 +41,7 @@
     for (int i=0; i< 2000; i++) {
         TMBCircleAnnotation* annotation = [TMBCircleAnnotation fromCenter:[self randomCoordinate]];
         annotation.circleColor = [self randomColor];
-        annotation.circleRadius = 12;
+        annotation.circleRadius = @12;
         annotation.isDraggable = true;
         
         [annotations addObject:annotation];

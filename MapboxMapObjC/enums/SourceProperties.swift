@@ -11,6 +11,10 @@ extension Scheme {
 @objc
 open class TMBScheme :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
     init(value: Scheme) {
         self.value = value.rawValue
     }
@@ -40,6 +44,10 @@ extension Encoding {
 @objc
 open class TMBEncoding :NSObject, NamedString {
     private let value: String
+    @objc
+    public init(value: String) {
+        self.value = value
+    }
     init(value: Encoding) {
         self.value = value.rawValue
     }
