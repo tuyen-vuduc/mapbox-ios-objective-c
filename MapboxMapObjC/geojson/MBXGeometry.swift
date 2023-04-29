@@ -1,6 +1,9 @@
 import MapboxCommon
+
 @objc
-extension Geometry {
+open class GeometryHelper : NSObject {
+    private override init() { }
+    
     @objc
     public class func createPoint(_ location: NSValue) -> Geometry {
         return Geometry(point: location)
