@@ -13,6 +13,7 @@ import MapboxMaps
     }
     
     init(arguments: [Any]) {
+        self.operator = nil
         self.arguments = arguments
     }
     

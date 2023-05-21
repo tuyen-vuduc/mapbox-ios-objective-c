@@ -34,11 +34,13 @@ extension MapView {
     public func pointAnnotationManager(
         id: String?,
         layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
-        layerPositionParam: AnyObject?
+        layerPositionParam: AnyObject?,
+        clusterOptions: TMBClusterOptions?
     ) -> TMBPointAnnotationManager {
         let swiftValue = self.annotations.makePointAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerPositionParam)
+            layerPosition: layerPosition.swiftValue(layerPositionParam),
+            clusterOptions: clusterOptions?.swiftValue()
         )
         return TMBPointAnnotationManager(swiftValue)
     }

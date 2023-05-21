@@ -450,7 +450,8 @@ typedef enum State : int {
         
         TMBPointAnnotationManager* pointAnnotationManager = [mapView pointAnnotationManagerWithId:nil
                                                                                     layerPosition:TMBLayerPositionUnowned
-                                                                               layerPositionParam:nil];
+                                                                               layerPositionParam:nil
+                                                                                   clusterOptions:nil];
         pointAnnotationManager.annotations = @[pointAnnotation];
     }];
 
