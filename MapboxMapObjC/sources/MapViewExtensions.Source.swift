@@ -51,23 +51,38 @@ extension MapView {
         }
     }
     
-    @objc public func addGeoJSONSource(id: String, geojson: String, onComplete: ((Error?)->Void)?) -> Void {
+    @objc public func addGeoJSONSource(id: String, properties: [String: Any], geojson: String, onComplete: ((Error?)->Void)?) -> Void {
         do {
-            let data =  geojson.data(using: .utf8)
-            let source = try JSONDecoder().decode(GeoJSONSource.self, from: data!)
-            try self.mapboxMap.style.addSource(source, id: id)
+            try self.mapboxMap.style.addSource(withId: id, properties: properties)
             
-            onComplete?(nil)
+            updateGeoJSONSource(id: id, geojson: geojson, onComplete: onComplete)
         } catch {
             onComplete?(error)
         }
     }
     
-    @objc public func addGeoJSONSource(id: String, url: URL, onComplete: ((Error?)->Void)?) -> Void {
+    @objc public func updateGeoJSONSource(id: String, geojson: String, onComplete: ((Error?)->Void)?) -> Void {
         do {
-            var source = GeoJSONSource()
-            source.data = .url(url)
-            try self.mapboxMap.style.addSource(source, id: id)
+            let data =  geojson.data(using: .utf8)
+            let sourceData = try JSONDecoder().decode(GeoJSONSourceData.self, from: data!)
+            
+            var source: GeoJSONObject?
+            
+            switch sourceData {
+            case .feature(let feature):
+                source = .feature(feature)
+            case .featureCollection(let featureCollection):
+                source = .featureCollection(featureCollection)
+            case .geometry(let geometry):
+                source = .geometry(geometry)
+            default:
+                source = nil
+            }
+            
+            if let source = source {
+                try self.mapboxMap.style.updateGeoJSONSource(withId: id, geoJSON: source)
+            }
+            
             onComplete?(nil)
         } catch {
             onComplete?(error)
