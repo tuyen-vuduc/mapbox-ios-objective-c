@@ -2,7 +2,7 @@ import MapboxMaps
 
 @objc open class TMBExpression: NSObject {
     /// Time allotted for transitions to complete in seconds.
-    public let `operator`: TMBOperator
+    public let `operator`: TMBOperator?
     
     /// Length of time before a transition begins in seconds.
     public let arguments: [Any]
@@ -12,12 +12,20 @@ import MapboxMaps
         self.arguments = arguments
     }
     
+    init(arguments: [Any]) {
+        self.arguments = arguments
+    }
+    
     @objc class public func create(withOperator `operator`: TMBOperator) -> TMBExpression{
         return TMBExpression(operator: `operator`, arguments: [])
     }
     
     @objc class public func create(withOperator `operator`: TMBOperator, arguments: [Any]) -> TMBExpression{
         return TMBExpression(operator: `operator`, arguments: arguments)
+    }
+    
+    @objc class public func create(arguments: [Any]) -> TMBExpression{
+        return TMBExpression(arguments: arguments)
     }
 }
 
@@ -306,8 +314,6 @@ let operatorMapping: [TMBOperator:Expression.Operator] = [
 
 extension TMBExpression {
     func swiftOnly() -> Expression {
-        let `operator` = operatorMapping[self.operator]!
-        
         let arguments: [Exp.Argument] = self.arguments.compactMap({
             switch $0 {
             case let expression as TMBExpression:
@@ -322,16 +328,22 @@ extension TMBExpression {
                 return Exp.Argument.stringArray(`strings`)
             case let bool as Bool:
                 return Exp.Argument.boolean(bool)
-// TODO
-//            case let geoJsonObj as GeoJSONObject:
-//                return Exp.Argument.geoJSONObject(geoJsonObj)
-//            case let option as Option:
-//                return Exp.Argument.option(option)
+                // TODO
+                //            case let geoJsonObj as GeoJSONObject:
+                //                return Exp.Argument.geoJSONObject(geoJsonObj)
+                //            case let option as Option:
+                //                return Exp.Argument.option(option)
             default:
                 return Exp.Argument.null
             }
         })
         
-        return Expression(operator: `operator`, arguments: arguments)
+        if let xoperator = self.operator {
+            let `operator` = operatorMapping[xoperator]!
+            
+            return Expression(operator: `operator`, arguments: arguments)
+        }
+        
+        return Expression(arguments: arguments)
     }
 }

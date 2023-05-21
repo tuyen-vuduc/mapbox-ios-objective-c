@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
     CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 55.665957
                                                             longitude: 12.550343];
     

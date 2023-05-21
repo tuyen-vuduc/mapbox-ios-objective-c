@@ -127,6 +127,7 @@
 		23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */; };
 		23BB8F0229BD653400E7C218 /* PuckBearingSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */; };
 		23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */; };
+		23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */; };
 		23F7987C282737C700A4B28F /* MapViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F7987B282737C700A4B28F /* MapViewFactory.swift */; };
 		23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC867B29F206C800C07BF6 /* NamedString.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
@@ -356,6 +357,7 @@
 		23BB8F0129BD653400E7C218 /* PuckBearingSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuckBearingSource.swift; sourceTree = "<group>"; };
 		23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleProtocol.h; sourceTree = "<group>"; };
 		23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotation.swift; sourceTree = "<group>"; };
+		23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fire_Hydrants.geojson; sourceTree = "<group>"; };
 		23F7987B282737C700A4B28F /* MapViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewFactory.swift; sourceTree = "<group>"; };
 		23FC867B29F206C800C07BF6 /* NamedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedString.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 		2360108C2824796B00DAC76A /* mapboxqs */ = {
 			isa = PBXGroup;
 			children = (
+				23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */,
 				23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */,
 				2386378929C6B4EF002282FF /* 34M_17.dae */,
 				2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */,
@@ -788,6 +791,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */,
 				2386378A29C6B4EF002282FF /* 34M_17.dae in Resources */,
 				2365B7F729BE82E400A013E1 /* StoryboardMapViewExample.storyboard in Resources */,
 				23B8326829CF61D700FA94B2 /* OfflineManagerExample.storyboard in Resources */,

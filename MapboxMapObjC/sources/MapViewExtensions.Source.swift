@@ -1,4 +1,5 @@
 import MapboxMaps
+import MapboxCommon
 
 @objc
 extension MapView {
@@ -53,7 +54,10 @@ extension MapView {
     
     @objc public func addGeoJSONSource(id: String, properties: [String: Any], geojson: String, onComplete: ((Error?)->Void)?) -> Void {
         do {
-            try self.mapboxMap.style.addSource(withId: id, properties: properties)
+            // Fake data properties
+            var xproperties = properties
+            xproperties["data"] = ""
+            try self.mapboxMap.style.addSource(withId: id, properties: xproperties)
             
             updateGeoJSONSource(id: id, geojson: geojson, onComplete: onComplete)
         } catch {
