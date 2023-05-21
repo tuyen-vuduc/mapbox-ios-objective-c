@@ -50,4 +50,27 @@ extension MapView {
             onError?(error)
         }
     }
+    
+    @objc public func addGeoJSONSource(id: String, geojson: String, onComplete: ((Error?)->Void)?) -> Void {
+        do {
+            let data =  geojson.data(using: .utf8)
+            let source = try JSONDecoder().decode(GeoJSONSource.self, from: data!)
+            try self.mapboxMap.style.addSource(source, id: id)
+            
+            onComplete?(nil)
+        } catch {
+            onComplete?(error)
+        }
+    }
+    
+    @objc public func addGeoJSONSource(id: String, url: URL, onComplete: ((Error?)->Void)?) -> Void {
+        do {
+            var source = GeoJSONSource()
+            source.data = .url(url)
+            try self.mapboxMap.style.addSource(source, id: id)
+            onComplete?(nil)
+        } catch {
+            onComplete?(error)
+        }
+    }
 }
