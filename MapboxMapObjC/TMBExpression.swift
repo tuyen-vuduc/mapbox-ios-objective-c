@@ -17,6 +17,24 @@ import MapboxMaps
         self.arguments = arguments
     }
     
+    override open var description: String {
+        var args = arguments.map { $0 }
+        if let `operator` = `operator` {
+            args.insert(`operator`, at: 0)
+        }
+        
+        return args.description
+    }
+    
+    override open var debugDescription: String {
+        var args = arguments.map { $0 }
+        if let `operator` = `operator` {
+            args.insert(`operator`, at: 0)
+        }
+        
+        return args.debugDescription        
+    }
+    
     @objc class public func create(withOperator `operator`: TMBOperator) -> TMBExpression{
         return TMBExpression(operator: `operator`, arguments: [])
     }

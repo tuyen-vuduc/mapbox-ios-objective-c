@@ -30,6 +30,10 @@ open class TMBValue : NSObject {
     @objc class public func expression(_ expression: TMBExpression) -> TMBValue {
         return TMBValue(expression: expression)
     }
+    
+    override open var debugDescription: String {
+        constant?.description ?? expression?.description ?? "<<NULL>>"
+    }
 }
 
 
