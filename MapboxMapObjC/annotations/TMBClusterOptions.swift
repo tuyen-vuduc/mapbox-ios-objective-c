@@ -13,24 +13,24 @@ import MapboxMaps
 open class TMBClusterOptions : NSObject {
     /// The circle radius of the cluster items, 18 by default. Units in pixels.
     @objc
-    public var circleRadius: TMBValue
+    public var circleRadius: TMBValue?
 
     /// The circle color, black by default.
     @objc
-    public var circleColor: TMBValue
+    public var circleColor: TMBValue?
 
     /// The text color of cluster item, white by default
     @objc
-    public var textColor: TMBValue
+    public var textColor: TMBValue?
 
     /// The text size of cluster item, 12 by default. Units in pixels.
     @objc
-    public var textSize: TMBValue
+    public var textSize: TMBValue?
 
     /// Value to use for a text label of the cluster. `get("point_count")` by default which
     /// will show the count of points in the cluster
     @objc
-    public var textField: TMBValue
+    public var textField: TMBValue?
 
     /// Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal
     /// to the width of a tile, 50 by default. Value must be greater than or equal to 0.
@@ -83,11 +83,11 @@ open class TMBClusterOptions : NSObject {
     /// Providing clusterOptions when initializing a ``PointAnnotationManager``
     /// will turn on clustering for that ``PointAnnotationManager``.
     @objc
-    public init(circleRadius: TMBValue,
-                circleColor: TMBValue,
-                textColor: TMBValue,
-                textSize: TMBValue,
-                textField: TMBValue,
+    public init(circleRadius: TMBValue?,
+                circleColor: TMBValue?,
+                textColor: TMBValue?,
+                textSize: TMBValue?,
+                textField: TMBValue?,
                 clusterRadius: Double = 50,
                 clusterMaxZoom: Double = 14,
                 clusterProperties: [String: TMBExpression]? = nil) {
@@ -103,11 +103,11 @@ open class TMBClusterOptions : NSObject {
     
     func swiftValue() -> ClusterOptions {
         return ClusterOptions(
-            circleRadius: circleRadius.double() ?? .constant(18),
-            circleColor: circleColor.styleColor() ?? .constant(StyleColor(.black)),
-            textColor: textColor.styleColor() ?? .constant(StyleColor(.white)),
-            textSize: textSize.double() ?? .constant(12),
-            textField: textField.string() ?? .expression(Exp(.get) { "point_count" }),
+            circleRadius: circleRadius?.double() ?? .constant(18),
+            circleColor: circleColor?.styleColor() ?? .constant(StyleColor(.black)),
+            textColor: textColor?.styleColor() ?? .constant(StyleColor(.white)),
+            textSize: textSize?.double() ?? .constant(12),
+            textField: textField?.string() ?? .expression(Exp(.get) { "point_count" }),
             clusterRadius: clusterRadius,
             clusterMaxZoom: clusterMaxZoom,
             clusterProperties: clusterProperties?.mapValues({ item in
