@@ -8,6 +8,12 @@ extension MapView {
     @objc public func setCamera(to cameraOptions: MapboxCoreMaps.CameraOptions) {
         self.mapboxMap.setCamera(to: cameraOptions.swiftValue())
     }
+    @objc public func coordinateFromScreenPosition(_ point: CGPoint) -> CLLocationCoordinate2D {
+        self.mapboxMap.coordinate(for: point)
+    }
+    @objc public func coordinateFromScreenPositions(_ point: [CGPoint]) -> [CLLocationCoordinate2D] {
+        self.mapboxMap.coordinates(for: point)
+    }
 }
 
 // MapView.ornaments
