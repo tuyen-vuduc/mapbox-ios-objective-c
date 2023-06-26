@@ -46,6 +46,7 @@
 		2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378B29C6B8FC002282FF /* LightBuilder.swift */; };
 		2386378E29C6C06D002282FF /* FillExtrusionLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */; };
 		2386379029C6D71F002282FF /* TMBResolvedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386378F29C6D71F002282FF /* TMBResolvedImage.swift */; };
+		239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */; };
 		23B8325E29CF4CB800FA94B2 /* TMBPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8325D29CF4CB800FA94B2 /* TMBPoint.swift */; };
 		23B8326129CF4D7F00FA94B2 /* TMBGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326029CF4D7F00FA94B2 /* TMBGeometry.swift */; };
 		23B8326429CF4F1500FA94B2 /* MapViewExtensions.Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326329CF4F1500FA94B2 /* MapViewExtensions.Source.swift */; };
@@ -208,6 +209,7 @@
 		2386378B29C6B8FC002282FF /* LightBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBuilder.swift; sourceTree = "<group>"; };
 		2386378D29C6C06D002282FF /* FillExtrusionLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillExtrusionLayerBuilder.swift; sourceTree = "<group>"; };
 		2386378F29C6D71F002282FF /* TMBResolvedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBResolvedImage.swift; sourceTree = "<group>"; };
+		239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.Extensions.swift; sourceTree = "<group>"; };
 		23B8325D29CF4CB800FA94B2 /* TMBPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPoint.swift; sourceTree = "<group>"; };
 		23B8326029CF4D7F00FA94B2 /* TMBGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBGeometry.swift; sourceTree = "<group>"; };
 		23B8326329CF4F1500FA94B2 /* MapViewExtensions.Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.Source.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				231AF0D129BFEDA8002D6CFD /* TMBStyleTransition.swift */,
 				231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */,
 				2386378F29C6D71F002282FF /* TMBResolvedImage.swift */,
+				239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */,
 			);
 			path = MapboxMapObjC;
 			sourceTree = "<group>";
@@ -1015,6 +1018,7 @@
 				2386378C29C6B8FC002282FF /* LightBuilder.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* TMBStyleTransition.swift in Sources */,
 				23251E2529CF01310088065B /* MapViewExtensions.Style.swift in Sources */,
+				239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */,
 				231AF0C829BF8B09002D6CFD /* SourceProperties.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* TMBExpression.swift in Sources */,
 				23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */,

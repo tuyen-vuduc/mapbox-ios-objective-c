@@ -1,5 +1,83 @@
 import MapboxMaps
 import MapboxMobileEvents
+import Turf
+
+// MapView.query
+
+@objc
+extension MapView {
+    @objc public func queryRenderedFeatures(within shape: [CGPoint],
+                                            options: RenderedQueryOptions? = nil,
+                                            completion: (([QueriedFeature]?, Error?)->Void)?) -> TMBCancelable {
+        let cancelable = self.mapboxMap.queryRenderedFeatures(with: shape, options: options) { result in
+            switch result {
+            case .success(let features):
+                completion?(features, nil)
+            case .failure(let error):
+                completion?(nil, error)
+            }
+        }
+        return TMBCancelable(cancelable: cancelable)
+    }
+    @objc public func queryRenderedFeatures(in rect: CGRect,
+                                            options: RenderedQueryOptions? = nil,
+                                            completion: (([QueriedFeature]?, Error?)->Void)?) -> TMBCancelable {
+        let cancelable = self.mapboxMap.queryRenderedFeatures(with: rect, options: options) { result in
+            switch result {
+            case .success(let features):
+                completion?(features, nil)
+            case .failure(let error):
+                completion?(nil, error)
+            }
+        }
+        return TMBCancelable(cancelable: cancelable)
+    }
+    @objc public func queryRenderedFeatures(with point: CGPoint,
+                                            options: RenderedQueryOptions? = nil,
+                                            completion: (([QueriedFeature]?, Error?)->Void)?) -> TMBCancelable {
+        let cancelable = self.mapboxMap.queryRenderedFeatures(with: point, options: options) { result in
+            switch result {
+            case .success(let features):
+                completion?(features, nil)
+            case .failure(let error):
+                completion?(nil, error)
+            }
+        }
+        return TMBCancelable(cancelable: cancelable)
+    }
+    @objc public func querySourceFeatures(for sourceId: String,
+                                          options: SourceQueryOptions,
+                                          completion: (([QueriedFeature]?, Error?)->Void)?) {
+        self.mapboxMap.querySourceFeatures(for: sourceId, options: options) { result in
+            switch result {
+            case .success(let features):
+                completion?(features, nil)
+            case .failure(let error):
+                completion?(nil, error)
+            }
+        }
+    }
+    @objc public func queryFeatureExtension(for sourceId: String,
+                                            feature: MapboxCommon.Feature,
+                                            extension: String,
+                                            extensionField: String,
+                                            args: [String: Any]? = nil,
+                                            completion: ((FeatureExtensionValue?, Error?)->Void)?) {
+        let xfeature = Turf.Feature(feature)
+        self.mapboxMap.queryFeatureExtension(for: sourceId,
+                                             feature: xfeature,
+                                             extension: `extension`,
+                                             extensionField: extensionField,
+                                             args: args) { result in
+            switch result {
+            case .success(let features):
+                completion?(features, nil)
+            case .failure(let error):
+                completion?(nil, error)
+            }
+        }
+    }
+}
 
 // MapView.camera
 
