@@ -2,6 +2,42 @@ import Turf
 import MapboxMaps
 import MapboxCommon
 
+extension MapboxCommon.Geometry {
+
+    /// Allows a `MapboxCommon.Geometry` to be initialized with a `GeometryConvertible`.
+    /// - Parameter geometry: The `GeometryConvertible` to transform into a `MapboxCommon.Geometry`.
+    internal convenience init(_ geometry: GeometryConvertible) {
+        switch geometry.geometry {
+        case .point(let point):
+            self.init(point: point.coordinates.toValue())
+        case .lineString(let line):
+            self.init(line: line.coordinates.map { $0.toValue() })
+        case .polygon(let polygon):
+            self.init(polygon: polygon.coordinates.map { $0.map { $0.toValue() } })
+        case .multiPoint(let multiPoint):
+            self.init(multiPoint: multiPoint.coordinates.map { $0.toValue() })
+        case .multiLineString(let multiLine):
+            self.init(multiLine: multiLine.coordinates.map { $0.map { $0.toValue() } })
+        case .multiPolygon(let multiPolygon):
+            self.init(multiPolygon: multiPolygon.coordinates.map { $0.map { $0.map { $0.toValue() } } })
+        case .geometryCollection(let geometryCollection):
+            self.init(geometryCollection: geometryCollection.geometries.map(MapboxCommon.Geometry.init(_:)))
+
+        #if USING_TURF_WITH_LIBRARY_EVOLUTION
+        @unknown default:
+            fatalError("Could not determine Geometry from given Turf Geometry")
+        #endif
+        }
+    }
+}
+
+extension CLLocationCoordinate2D {
+    /// Convert a `CLLocationCoordinate` to a `NSValue` which wraps a `CGPoint`.
+    internal func toValue() -> NSValue {
+        return NSValue(cgPoint: CGPoint(x: latitude, y: longitude))
+    }
+}
+
 extension Turf.Geometry {
 
     /// Allows a Turf object to be initialized with an internal `Geometry` object.
