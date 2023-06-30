@@ -23,7 +23,8 @@
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds options:nil];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [mapView ornamentsOptionsScaleBarVisibility: TMBOrnamentVisibilityVisible];
+    TMBOrnamentOptions* ornamentOptions = [[mapView ornaments] options];
+    [[ornamentOptions scaleBar] setVisibility:TMBOrnamentVisibilityVisible];
     
     self.mapView = mapView;
     [self.view addSubview:mapView];
