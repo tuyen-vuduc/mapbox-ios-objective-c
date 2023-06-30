@@ -4,6 +4,10 @@ import MapboxMaps
 
 @objc
 extension MapView {
+    @objc func viewAnnotations() -> TMBViewAnnotationManager {
+        TMBViewAnnotationManager(self.viewAnnotations)
+    }
+    
     @objc
     public func polygonAnnotationManager(
         id: String?,
