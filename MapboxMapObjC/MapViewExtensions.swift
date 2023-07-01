@@ -94,14 +94,6 @@ extension MapView {
     }
 }
 
-// MapView.ornaments
-@objc 
-extension MapView {
-    @objc public func ornaments() -> TMBOrnamentsManager {
-        TMBOrnamentsManager(self.ornaments)
-    }
-}
-
 // MapView.events
 extension MapView {
     /// The style has been fully loaded, and the map has rendered all visible tiles.

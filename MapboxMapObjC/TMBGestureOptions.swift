@@ -1,5 +1,12 @@
 import MapboxMaps
 
+@objc
+extension MapView {
+    @objc public func gestures() -> TMBGestureManager {
+        TMBGestureManager(self.gestures)
+    }
+}
+
 /// Options used to configure the direction in which the map is allowed to move
 /// during a pan gesture. Called `ScrollMode` in the Android SDK for
 /// consistency with platform conventions.
@@ -286,7 +293,7 @@ public protocol TMBGestureManagerDelegate {
     
     private var swiftValue: GestureManager;
     
-    init(swiftValue: GestureManager) {
+    init(_ swiftValue: GestureManager) {
         self.swiftValue = swiftValue
         super.init()
         swiftValue.delegate = self
@@ -323,12 +330,5 @@ extension MapboxMaps.GestureType {
         case .singleTap:
             return .singleTap
         }
-    }
-}
-
-@objc
-extension MapView {
-    @objc public func gestureManager() -> TMBGestureManager {
-        TMBGestureManager(swiftValue: self.gestures)
     }
 }

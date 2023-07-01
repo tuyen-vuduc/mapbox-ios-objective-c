@@ -11,6 +11,16 @@ extension MapView {
             completion?(error)
         }
     }
+    
+    @objc public func cameraBounds() -> MapboxCoreMaps.CameraBounds {
+        let rawValue = self.mapboxMap.cameraBounds
+        return MapboxCoreMaps.CameraBounds(
+            bounds: rawValue.bounds,
+            maxZoom: rawValue.maxZoom,
+            minZoom: rawValue.minZoom,
+            maxPitch: rawValue.maxPitch,
+            minPitch: rawValue.minPitch)
+    }
 }
 
 extension MapboxCoreMaps.CameraBoundsOptions {

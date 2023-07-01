@@ -3,6 +3,13 @@ import MapboxCoreMaps
 import UIKit
 
 @objc
+extension MapView {
+    @objc public func viewAnnotations() -> TMBViewAnnotationManager {
+        TMBViewAnnotationManager(self.viewAnnotations)
+    }
+}
+
+@objc
 open class TMBViewAnnotationManager : NSObject {
     private let _self: ViewAnnotationManager
     private var observers = [ObjectIdentifier: ViewAnnotationUpdateObserver]()

@@ -1,6 +1,13 @@
 import MapboxMaps
 
 @objc
+extension MapView {
+    @objc public func ornaments() -> TMBOrnamentsManager {
+        TMBOrnamentsManager(self.ornaments)
+    }
+}
+
+@objc
 open class TMBOrnamentsManager : NSObject {
     private let _self: OrnamentsManager
     
