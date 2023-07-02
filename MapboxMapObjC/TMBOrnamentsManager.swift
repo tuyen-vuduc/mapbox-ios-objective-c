@@ -180,7 +180,7 @@ open class TMBOrnamentsManager : NSObject {
     /// True if the scale bar is using metric units, false if the scale bar is using imperial units.
     ///
     /// The default value for this property is `Locale.current.usesMetricSystem`.
-    public var useMetricUnits: Bool{
+    public var useMetricUnits: Bool {
         get {
             _self.useMetricUnits
         }

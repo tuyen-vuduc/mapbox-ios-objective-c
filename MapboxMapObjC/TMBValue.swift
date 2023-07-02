@@ -36,7 +36,6 @@ open class TMBValue : NSObject {
     }
 }
 
-
 extension UIColor {
     func styleColor() -> StyleColor {
         return StyleColor(self)
