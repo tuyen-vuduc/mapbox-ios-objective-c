@@ -63,7 +63,7 @@
     // Annotation managers are kept alive by `AnnotationOrchestrator`
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
-    TMBPolygonAnnotationManager* polygonAnnotationManager = [mapView polygonAnnotationManagerWithId:nil
+    TMBPolygonAnnotationManager* polygonAnnotationManager = [[mapView annotations] makePolygonAnnotationManagerWithId:nil
                                                                                       layerPosition:TMBLayerPositionUnowned
                                                                                  layerPositionParam:nil];
     

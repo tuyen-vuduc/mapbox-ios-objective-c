@@ -41,7 +41,6 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     
     public init(swiftValue: PolylineAnnotation) {
         self.swiftValue = swiftValue
-        super.init()
     }
     
     @objc
@@ -206,19 +205,19 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var id: String {
         get {
-            return self.swiftValue.id
+            return self._self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self.swiftValue.sourceId
+            return self._self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self.swiftValue.layerId
+            return self._self.layerId
         }
     }
     
@@ -236,29 +235,36 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var annotations: [TMBPolylineAnnotation] {
         get {
-            return swiftValue.annotations.map({
+            return _self.annotations.map({
                 TMBPolylineAnnotation(swiftValue: $0)
                 
             })
         }
         set {
-            swiftValue.annotations = newValue.map({
+            _self.annotations = newValue.map({
                 $0.swiftValue
             })
         }
     }
     
-    public let swiftValue: PolylineAnnotationManager
+    public let _self: PolylineAnnotationManager
     
     /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
     /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
     @objc
-    public weak var delegate: TMBAnnotationInteractionDelegate?
+    public weak var delegate: TMBAnnotationInteractionDelegate? {
+        didSet {
+            guard delegate != nil else {
+                _self.delegate = nil
+                return
+            }
+            
+            _self.delegate = self
+        }
+    }
     
     public init(_ swiftValue: PolylineAnnotationManager) {
-        self.swiftValue = swiftValue
-        super.init()
-        swiftValue.delegate = self
+        self._self = swiftValue
     }
     
     // MARK: - Common layer properties
@@ -267,13 +273,13 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineCap: TMBLineCap? {
         get {
-            guard let lineCap = self.swiftValue.lineCap else {
+            guard let lineCap = self._self.lineCap else {
                 return nil
             }
             return TMBLineCap(value: lineCap)
         }
         set {
-            self.swiftValue.lineCap = newValue?.swiftValue()
+            self._self.lineCap = newValue?.swiftValue()
         }
     }
 
@@ -281,14 +287,14 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineMiterLimit: NSNumber? {
         get {
-            guard let lineMiterLimit = self.swiftValue.lineMiterLimit else {
+            guard let lineMiterLimit = self._self.lineMiterLimit else {
                 return nil
             }
             return NSNumber(value: lineMiterLimit)
         }
         set {
             // Double?
-            self.swiftValue.lineMiterLimit = newValue?.doubleValue
+            self._self.lineMiterLimit = newValue?.doubleValue
         }
     }
 
@@ -296,14 +302,14 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineRoundLimit: NSNumber? {
         get {
-            guard let lineRoundLimit = self.swiftValue.lineRoundLimit else {
+            guard let lineRoundLimit = self._self.lineRoundLimit else {
                 return nil
             }
             return NSNumber(value: lineRoundLimit)
         }
         set {
             // Double?
-            self.swiftValue.lineRoundLimit = newValue?.doubleValue
+            self._self.lineRoundLimit = newValue?.doubleValue
         }
     }
 
@@ -311,10 +317,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineDasharray: [Double]? {
         get {
-            return self.swiftValue.lineDasharray
+            return self._self.lineDasharray
         }
         set {
-            self.swiftValue.lineDasharray = newValue
+            self._self.lineDasharray = newValue
         }
     }
 
@@ -322,10 +328,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTranslate: [Double]? {
         get {
-            return self.swiftValue.lineTranslate
+            return self._self.lineTranslate
         }
         set {
-            self.swiftValue.lineTranslate = newValue
+            self._self.lineTranslate = newValue
         }
     }
 
@@ -333,13 +339,13 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTranslateAnchor: TMBLineTranslateAnchor? {
         get {
-            guard let lineTranslateAnchor = self.swiftValue.lineTranslateAnchor else {
+            guard let lineTranslateAnchor = self._self.lineTranslateAnchor else {
                 return nil
             }
             return TMBLineTranslateAnchor(value: lineTranslateAnchor)
         }
         set {
-            self.swiftValue.lineTranslateAnchor = newValue?.swiftValue()
+            self._self.lineTranslateAnchor = newValue?.swiftValue()
         }
     }
 
@@ -347,10 +353,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTrimOffset: [Double]? {
         get {
-            return self.swiftValue.lineTrimOffset
+            return self._self.lineTrimOffset
         }
         set {
-            self.swiftValue.lineTrimOffset = newValue
+            self._self.lineTrimOffset = newValue
         }
     }
 }

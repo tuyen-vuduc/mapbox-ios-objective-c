@@ -172,19 +172,19 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var id: String {
         get {
-            return self.swiftValue.id
+            return self._self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self.swiftValue.sourceId
+            return self._self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self.swiftValue.layerId
+            return self._self.layerId
         }
     }
     
@@ -202,13 +202,13 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var annotations: [TMBPolygonAnnotation] {
         get {
-            return swiftValue.annotations.map({
+            return _self.annotations.map({
                 TMBPolygonAnnotation(swiftValue: $0)
                 
             })
         }
         set {
-            swiftValue.annotations = newValue.map({
+            _self.annotations = newValue.map({
                 $0.swiftValue
             })
         }
@@ -221,14 +221,14 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     public var fillAntialias: NSNumber? {
         get {
             // Bool?
-            guard let fillAntialias = self.swiftValue.fillAntialias else {
+            guard let fillAntialias = self._self.fillAntialias else {
                 return nil
             }
             return NSNumber(value: fillAntialias)
         }
         set {
             // Bool?
-            self.swiftValue.fillAntialias = newValue?.boolValue
+            self._self.fillAntialias = newValue?.boolValue
         }
     }
 
@@ -236,10 +236,10 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var fillTranslate: [Double]? {
         get {
-            return self.swiftValue.fillTranslate
+            return self._self.fillTranslate
         }
         set {
-            self.swiftValue.fillTranslate = newValue
+            self._self.fillTranslate = newValue
         }
     }
 
@@ -247,26 +247,33 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var fillTranslateAnchor: TMBFillTranslateAnchor? {
         get {
-            guard let fillTranslateAnchor = self.swiftValue.fillTranslateAnchor else {
+            guard let fillTranslateAnchor = self._self.fillTranslateAnchor else {
                 return nil
             }
             return TMBFillTranslateAnchor(value: fillTranslateAnchor)
         }
         set {
-            self.swiftValue.fillTranslateAnchor = newValue?.swiftValue()
+            self._self.fillTranslateAnchor = newValue?.swiftValue()
         }
     }
     
-    public let swiftValue: PolygonAnnotationManager
+    public let _self: PolygonAnnotationManager
     
     /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
     /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
     @objc
-    public weak var delegate: TMBAnnotationInteractionDelegate?
+    public weak var delegate: TMBAnnotationInteractionDelegate? {
+        didSet {
+            guard delegate != nil else {
+                _self.delegate = nil
+                return
+            }
+            
+            _self.delegate = self
+        }
+    }
     
     public init(_ swiftValue: PolygonAnnotationManager) {
-        self.swiftValue = swiftValue
-        super.init()
-        swiftValue.delegate = self
+        self._self = swiftValue
     }
 }

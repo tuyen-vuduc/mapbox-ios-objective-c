@@ -32,7 +32,7 @@
     // Annotation managers are kept alive by `AnnotationOrchestrator`
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
-    TMBCircleAnnotationManager* circleAnnotationManager = [mapView circleAnnotationManagerWithId:nil
+    TMBCircleAnnotationManager* circleAnnotationManager = [[mapView annotations] makeCircleAnnotationManagerWithId:nil
                                                                                    layerPosition:TMBLayerPositionUnowned
                                                                               layerPositionParam:nil];
     circleAnnotationManager.delegate = self;
