@@ -336,23 +336,3 @@ extension MapView {
         self.mapboxMap.debugOptions = debugOptions;
     }
 }
-
-@objc
-open class TMBCancelable : NSObject {
-    let cancelable: AnyObject;
-    
-    init(cancelable: Cancelable) {
-        self.cancelable = cancelable
-    }
-    
-    init(cancelable: MapboxCommon.Cancelable) {
-        self.cancelable = cancelable
-    }
-    
-    @objc public func cancel() {
-        let cancelSel = #selector(cancel)
-        if cancelable.responds(to: cancelSel) {
-            _ = cancelable.perform(cancelSel)
-        }
-    }
-}

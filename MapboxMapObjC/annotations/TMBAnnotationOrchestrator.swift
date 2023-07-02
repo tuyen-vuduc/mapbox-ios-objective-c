@@ -2,7 +2,7 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    public func annotations() -> TMBAnnotationOrchestrator {
+    @objc public func annotations() -> TMBAnnotationOrchestrator {
         return TMBAnnotationOrchestrator(self.annotations)
     }
 }
