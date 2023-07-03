@@ -1049,7 +1049,7 @@ open class TMBAnchor :NSObject, NamedString {
     init(value: Anchor) {
         self.value = value.rawValue
     }
-    func swiftValue() -> Anchor{
+    func swiftValue() -> Anchor {
         Anchor(rawValue: value)!
     }
     @objc

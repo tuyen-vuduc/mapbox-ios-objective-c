@@ -196,19 +196,19 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var id: String {
         get {
-            return self._self.id
+            return _self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self._self.sourceId
+            return _self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self._self.layerId
+            return _self.layerId
         }
     }
     
@@ -263,13 +263,13 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var circlePitchAlignment: TMBCirclePitchAlignment? {
         get {
-            guard let circlePitchAlignment = self._self.circlePitchAlignment else {
+            guard let circlePitchAlignment = _self.circlePitchAlignment else {
                 return nil
             }
             return TMBCirclePitchAlignment(value: circlePitchAlignment)
         }
         set {
-            self._self.circlePitchAlignment = newValue?.swiftValue()
+            _self.circlePitchAlignment = newValue?.swiftValue()
         }
     }
 
@@ -277,13 +277,13 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var circlePitchScale: TMBCirclePitchScale? {
         get {
-            guard let circlePitchScale = self._self.circlePitchScale else {
+            guard let circlePitchScale = _self.circlePitchScale else {
                 return nil
             }
             return TMBCirclePitchScale(value: circlePitchScale)
         }
         set {
-            self._self.circlePitchScale = newValue?.swiftValue()
+            _self.circlePitchScale = newValue?.swiftValue()
         }
     }
 
@@ -291,10 +291,10 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var circleTranslate: [Double]? {
         get {
-            return self._self.circleTranslate
+            return _self.circleTranslate
         }
         set {
-            self._self.circleTranslate = newValue
+            _self.circleTranslate = newValue
         }
     }
 
@@ -302,13 +302,13 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var circleTranslateAnchor: TMBCircleTranslateAnchor? {
         get {
-            guard let circleTranslateAnchor = self._self.circleTranslateAnchor else {
+            guard let circleTranslateAnchor = _self.circleTranslateAnchor else {
                 return nil
             }
             return TMBCircleTranslateAnchor(value: circleTranslateAnchor)
         }
         set {
-            self._self.circleTranslateAnchor = newValue?.swiftValue()
+            _self.circleTranslateAnchor = newValue?.swiftValue()
         }
     }
 }

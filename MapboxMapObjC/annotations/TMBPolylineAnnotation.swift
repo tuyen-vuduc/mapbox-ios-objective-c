@@ -205,19 +205,19 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var id: String {
         get {
-            return self._self.id
+            return _self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self._self.sourceId
+            return _self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self._self.layerId
+            return _self.layerId
         }
     }
     
@@ -273,13 +273,13 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineCap: TMBLineCap? {
         get {
-            guard let lineCap = self._self.lineCap else {
+            guard let lineCap = _self.lineCap else {
                 return nil
             }
             return TMBLineCap(value: lineCap)
         }
         set {
-            self._self.lineCap = newValue?.swiftValue()
+            _self.lineCap = newValue?.swiftValue()
         }
     }
 
@@ -287,14 +287,14 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineMiterLimit: NSNumber? {
         get {
-            guard let lineMiterLimit = self._self.lineMiterLimit else {
+            guard let lineMiterLimit = _self.lineMiterLimit else {
                 return nil
             }
             return NSNumber(value: lineMiterLimit)
         }
         set {
             // Double?
-            self._self.lineMiterLimit = newValue?.doubleValue
+            _self.lineMiterLimit = newValue?.doubleValue
         }
     }
 
@@ -302,14 +302,14 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineRoundLimit: NSNumber? {
         get {
-            guard let lineRoundLimit = self._self.lineRoundLimit else {
+            guard let lineRoundLimit = _self.lineRoundLimit else {
                 return nil
             }
             return NSNumber(value: lineRoundLimit)
         }
         set {
             // Double?
-            self._self.lineRoundLimit = newValue?.doubleValue
+            _self.lineRoundLimit = newValue?.doubleValue
         }
     }
 
@@ -317,10 +317,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineDasharray: [Double]? {
         get {
-            return self._self.lineDasharray
+            return _self.lineDasharray
         }
         set {
-            self._self.lineDasharray = newValue
+            _self.lineDasharray = newValue
         }
     }
 
@@ -328,10 +328,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTranslate: [Double]? {
         get {
-            return self._self.lineTranslate
+            return _self.lineTranslate
         }
         set {
-            self._self.lineTranslate = newValue
+            _self.lineTranslate = newValue
         }
     }
 
@@ -339,13 +339,13 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTranslateAnchor: TMBLineTranslateAnchor? {
         get {
-            guard let lineTranslateAnchor = self._self.lineTranslateAnchor else {
+            guard let lineTranslateAnchor = _self.lineTranslateAnchor else {
                 return nil
             }
             return TMBLineTranslateAnchor(value: lineTranslateAnchor)
         }
         set {
-            self._self.lineTranslateAnchor = newValue?.swiftValue()
+            _self.lineTranslateAnchor = newValue?.swiftValue()
         }
     }
 
@@ -353,10 +353,10 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
     @objc
     public var lineTrimOffset: [Double]? {
         get {
-            return self._self.lineTrimOffset
+            return _self.lineTrimOffset
         }
         set {
-            self._self.lineTrimOffset = newValue
+            _self.lineTrimOffset = newValue
         }
     }
 }

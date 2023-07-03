@@ -482,19 +482,19 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var id: String {
         get {
-            return self._self.id
+            return _self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self._self.sourceId
+            return _self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self._self.layerId
+            return _self.layerId
         }
     }
     
@@ -551,14 +551,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var iconAllowOverlap: NSNumber? {
         get {
             // Bool?
-            guard let iconAllowOverlap = self._self.iconAllowOverlap else {
+            guard let iconAllowOverlap = _self.iconAllowOverlap else {
                 return nil
             }
             return NSNumber(value: iconAllowOverlap)
         }
         set {
             // Bool?
-            self._self.iconAllowOverlap = newValue?.boolValue
+            _self.iconAllowOverlap = newValue?.boolValue
         }
     }
 
@@ -567,14 +567,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var iconIgnorePlacement: NSNumber? {
         get {
             // Bool?
-            guard let iconIgnorePlacement = self._self.iconIgnorePlacement else {
+            guard let iconIgnorePlacement = _self.iconIgnorePlacement else {
                 return nil
             }
             return NSNumber(value: iconIgnorePlacement)
         }
         set {
             // Bool?
-            self._self.iconIgnorePlacement = newValue?.boolValue
+            _self.iconIgnorePlacement = newValue?.boolValue
         }
     }
 
@@ -583,14 +583,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var iconKeepUpright: NSNumber? {
         get {
             // Bool?
-            guard let iconKeepUpright = self._self.iconKeepUpright else {
+            guard let iconKeepUpright = _self.iconKeepUpright else {
                 return nil
             }
             return NSNumber(value: iconKeepUpright)
         }
         set {
             // Bool?
-            self._self.iconKeepUpright = newValue?.boolValue
+            _self.iconKeepUpright = newValue?.boolValue
         }
     }
 
@@ -599,14 +599,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var iconOptional: NSNumber? {
         get {
             // Bool?
-            guard let iconOptional = self._self.iconOptional else {
+            guard let iconOptional = _self.iconOptional else {
                 return nil
             }
             return NSNumber(value: iconOptional)
         }
         set {
             // Bool?
-            self._self.iconOptional = newValue?.boolValue
+            _self.iconOptional = newValue?.boolValue
         }
     }
 
@@ -615,14 +615,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var iconPadding: NSNumber? {
         get {
             // Double?
-            guard let iconPadding = self._self.iconPadding else {
+            guard let iconPadding = _self.iconPadding else {
                 return nil
             }
             return NSNumber(value: iconPadding)
         }
         set {
             // Double?
-            self._self.iconPadding = newValue?.doubleValue
+            _self.iconPadding = newValue?.doubleValue
         }
     }
 
@@ -630,13 +630,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconPitchAlignment: TMBIconPitchAlignment? {
         get {
-            guard let iconPitchAlignment = self._self.iconPitchAlignment else {
+            guard let iconPitchAlignment = _self.iconPitchAlignment else {
                 return nil
             }
             return TMBIconPitchAlignment(value: iconPitchAlignment)
         }
         set {
-            self._self.iconPitchAlignment = newValue?.swiftValue()
+            _self.iconPitchAlignment = newValue?.swiftValue()
         }
     }
 
@@ -644,13 +644,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconRotationAlignment: TMBIconRotationAlignment? {
         get {
-            guard let iconRotationAlignment = self._self.iconRotationAlignment else {
+            guard let iconRotationAlignment = _self.iconRotationAlignment else {
                 return nil
             }
             return TMBIconRotationAlignment(value: iconRotationAlignment)
         }
         set {
-            self._self.iconRotationAlignment = newValue?.swiftValue()
+            _self.iconRotationAlignment = newValue?.swiftValue()
         }
     }
 
@@ -658,13 +658,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconTextFit: TMBIconTextFit? {
         get {
-            guard let iconTextFit = self._self.iconTextFit else {
+            guard let iconTextFit = _self.iconTextFit else {
                 return nil
             }
             return TMBIconTextFit(value: iconTextFit)
         }
         set {
-            self._self.iconTextFit = newValue?.swiftValue()
+            _self.iconTextFit = newValue?.swiftValue()
         }
     }
 
@@ -672,10 +672,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconTextFitPadding: [Double]? {
         get {
-            return self._self.iconTextFitPadding
+            return _self.iconTextFitPadding
         }
         set {
-            self._self.iconTextFitPadding = newValue
+            _self.iconTextFitPadding = newValue
         }
     }
 
@@ -684,14 +684,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var symbolAvoidEdges: NSNumber? {
         get {
             // Bool?
-            guard let symbolAvoidEdges = self._self.symbolAvoidEdges else {
+            guard let symbolAvoidEdges = _self.symbolAvoidEdges else {
                 return nil
             }
             return NSNumber(value: symbolAvoidEdges)
         }
         set {
             // Bool?
-            self._self.symbolAvoidEdges = newValue?.boolValue
+            _self.symbolAvoidEdges = newValue?.boolValue
         }
     }
 
@@ -699,13 +699,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var symbolPlacement: TMBSymbolPlacement? {
         get {
-            guard let symbolPlacement = self._self.symbolPlacement else {
+            guard let symbolPlacement = _self.symbolPlacement else {
                 return nil
             }
             return TMBSymbolPlacement(value: symbolPlacement)
         }
         set {
-            self._self.symbolPlacement = newValue?.swiftValue()
+            _self.symbolPlacement = newValue?.swiftValue()
         }
     }
 
@@ -714,14 +714,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var symbolSpacing: NSNumber? {
         get {
             // Double?
-            guard let symbolSpacing = self._self.symbolSpacing else {
+            guard let symbolSpacing = _self.symbolSpacing else {
                 return nil
             }
             return NSNumber(value: symbolSpacing)
         }
         set {
             // Double?
-            self._self.symbolSpacing = newValue?.doubleValue
+            _self.symbolSpacing = newValue?.doubleValue
         }
     }
 
@@ -729,13 +729,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var symbolZOrder: TMBSymbolZOrder? {
         get {
-            guard let symbolZOrder = self._self.symbolZOrder else {
+            guard let symbolZOrder = _self.symbolZOrder else {
                 return nil
             }
             return TMBSymbolZOrder(value: symbolZOrder)
         }
         set {
-            self._self.symbolZOrder = newValue?.swiftValue()
+            _self.symbolZOrder = newValue?.swiftValue()
         }
     }
 
@@ -744,14 +744,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textAllowOverlap: NSNumber? {
         get {
             // Bool?
-            guard let textAllowOverlap = self._self.textAllowOverlap else {
+            guard let textAllowOverlap = _self.textAllowOverlap else {
                 return nil
             }
             return NSNumber(value: textAllowOverlap)
         }
         set {
             // Bool?
-            self._self.textAllowOverlap = newValue?.boolValue
+            _self.textAllowOverlap = newValue?.boolValue
         }
     }
 
@@ -759,10 +759,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textFont: [String]? {
         get {
-            return self._self.textFont
+            return _self.textFont
         }
         set {
-            self._self.textFont = newValue
+            _self.textFont = newValue
         }
     }
 
@@ -771,14 +771,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textIgnorePlacement: NSNumber? {
         get {
             // Bool?
-            guard let textIgnorePlacement = self._self.textIgnorePlacement else {
+            guard let textIgnorePlacement = _self.textIgnorePlacement else {
                 return nil
             }
             return NSNumber(value: textIgnorePlacement)
         }
         set {
             // Bool?
-            self._self.textIgnorePlacement = newValue?.boolValue
+            _self.textIgnorePlacement = newValue?.boolValue
         }
     }
 
@@ -787,14 +787,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textKeepUpright: NSNumber? {
         get {
             // Bool?
-            guard let textKeepUpright = self._self.textKeepUpright else {
+            guard let textKeepUpright = _self.textKeepUpright else {
                 return nil
             }
             return NSNumber(value: textKeepUpright)
         }
         set {
             // Bool?
-            self._self.textKeepUpright = newValue?.boolValue
+            _self.textKeepUpright = newValue?.boolValue
         }
     }
 
@@ -803,14 +803,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textMaxAngle: NSNumber? {
         get {
             // Double?
-            guard let textMaxAngle = self._self.textMaxAngle else {
+            guard let textMaxAngle = _self.textMaxAngle else {
                 return nil
             }
             return NSNumber(value: textMaxAngle)
         }
         set {
             // Double?
-            self._self.textMaxAngle = newValue?.doubleValue
+            _self.textMaxAngle = newValue?.doubleValue
         }
     }
 
@@ -819,14 +819,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textOptional: NSNumber? {
         get {
             // Bool?
-            guard let textOptional = self._self.textOptional else {
+            guard let textOptional = _self.textOptional else {
                 return nil
             }
             return NSNumber(value: textOptional)
         }
         set {
             // Bool?
-            self._self.textOptional = newValue?.boolValue
+            _self.textOptional = newValue?.boolValue
         }
     }
 
@@ -835,14 +835,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textPadding: NSNumber? {
         get {
             // Double?
-            guard let textPadding = self._self.textPadding else {
+            guard let textPadding = _self.textPadding else {
                 return nil
             }
             return NSNumber(value: textPadding)
         }
         set {
             // Double?
-            self._self.textPadding = newValue?.doubleValue
+            _self.textPadding = newValue?.doubleValue
         }
     }
 
@@ -850,13 +850,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textPitchAlignment: TMBTextPitchAlignment? {
         get {
-            guard let textPitchAlignment = self._self.textPitchAlignment else {
+            guard let textPitchAlignment = _self.textPitchAlignment else {
                 return nil
             }
             return TMBTextPitchAlignment(value: textPitchAlignment)
         }
         set {
-            self._self.textPitchAlignment = newValue?.swiftValue()
+            _self.textPitchAlignment = newValue?.swiftValue()
         }
     }
 
@@ -864,13 +864,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textRotationAlignment: TMBTextRotationAlignment? {
         get {
-            guard let textRotationAlignment = self._self.textRotationAlignment else {
+            guard let textRotationAlignment = _self.textRotationAlignment else {
                 return nil
             }
             return TMBTextRotationAlignment(value: textRotationAlignment)
         }
         set {
-            self._self.textRotationAlignment = newValue?.swiftValue()
+            _self.textRotationAlignment = newValue?.swiftValue()
         }
     }
 
@@ -878,10 +878,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textVariableAnchor: [TMBTextAnchor]? {
         get {
-            return self._self.textVariableAnchor?.map { TMBTextAnchor(value: $0) }
+            return _self.textVariableAnchor?.map { TMBTextAnchor(value: $0) }
         }
         set {
-            self._self.textVariableAnchor = newValue?.map { $0.swiftValue() }
+            _self.textVariableAnchor = newValue?.map { $0.swiftValue() }
         }
     }
 
@@ -889,10 +889,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textWritingMode: [TMBTextWritingMode]? {
         get {
-            return self._self.textWritingMode?.map { TMBTextWritingMode(value: $0) }
+            return _self.textWritingMode?.map { TMBTextWritingMode(value: $0) }
         }
         set {
-            self._self.textWritingMode = newValue?.map { $0.swiftValue() }
+            _self.textWritingMode = newValue?.map { $0.swiftValue() }
         }
     }
 
@@ -900,10 +900,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconTranslate: [Double]? {
         get {
-            return self._self.iconTranslate
+            return _self.iconTranslate
         }
         set {
-            self._self.iconTranslate = newValue
+            _self.iconTranslate = newValue
         }
     }
 
@@ -911,13 +911,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var iconTranslateAnchor: TMBIconTranslateAnchor? {
         get {
-            guard let iconTranslateAnchor = self._self.iconTranslateAnchor else {
+            guard let iconTranslateAnchor = _self.iconTranslateAnchor else {
                 return nil
             }
             return TMBIconTranslateAnchor(value: iconTranslateAnchor)
         }
         set {
-            self._self.iconTranslateAnchor = newValue?.swiftValue()
+            _self.iconTranslateAnchor = newValue?.swiftValue()
         }
     }
 
@@ -925,10 +925,10 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textTranslate: [Double]? {
         get {
-            return self._self.textTranslate
+            return _self.textTranslate
         }
         set {
-            self._self.textTranslate = newValue
+            _self.textTranslate = newValue
         }
     }
 
@@ -936,13 +936,13 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     @objc
     public var textTranslateAnchor: TMBTextTranslateAnchor? {
         get {
-            guard let textTranslateAnchor = self._self.textTranslateAnchor else {
+            guard let textTranslateAnchor = _self.textTranslateAnchor else {
                 return nil
             }
             return TMBTextTranslateAnchor(value: textTranslateAnchor)
         }
         set {
-            self._self.textTranslateAnchor = newValue?.swiftValue()
+            _self.textTranslateAnchor = newValue?.swiftValue()
         }
     }
 
@@ -952,14 +952,14 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
     public var textLineHeight: NSNumber? {
         get {
             // Double?
-            guard let textLineHeight = self._self.textLineHeight else {
+            guard let textLineHeight = _self.textLineHeight else {
                 return nil
             }
             return NSNumber(value: textLineHeight)
         }
         set {
             // Double?
-            self._self.textLineHeight = newValue?.doubleValue
+            _self.textLineHeight = newValue?.doubleValue
         }
     }
 

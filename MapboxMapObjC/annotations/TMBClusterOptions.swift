@@ -111,7 +111,7 @@ open class TMBClusterOptions : NSObject {
             clusterRadius: clusterRadius,
             clusterMaxZoom: clusterMaxZoom,
             clusterProperties: clusterProperties?.mapValues({ item in
-                return item.swiftOnly()
+                return item.rawValue
             })
         )
     }

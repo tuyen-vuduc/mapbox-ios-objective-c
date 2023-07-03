@@ -449,8 +449,7 @@ typedef enum State : int {
         [pointAnnotation image:[UIImage imageNamed:@"custom_marker"] name:@"custom-marker"];
         
         TMBPointAnnotationManager* pointAnnotationManager = [[mapView annotations] makePointAnnotationManagerWithId:nil
-                                                                                    layerPosition:TMBLayerPositionUnowned
-                                                                               layerPositionParam:nil
+                                                                                    layerPosition:nil
                                                                                    clusterOptions:nil];
         pointAnnotationManager.annotations = @[pointAnnotation];
     }];

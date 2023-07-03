@@ -44,13 +44,12 @@ open class TMBAnnotationOrchestrator : NSObject {
     /// - Returns: An instance of `PointAnnotationManager`
     @objc public func makePointAnnotationManager(
         id: String?,
-        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
-        layerPositionParam: AnyObject?,
+        layerPosition: TMBLayerPosition?,
         clusterOptions: TMBClusterOptions?
     ) -> TMBPointAnnotationManager {
         let swiftValue = _self.makePointAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerPositionParam),
+            layerPosition: layerPosition?.swiftValue() ?? .default,
             clusterOptions: clusterOptions?.swiftValue()
         )
         return TMBPointAnnotationManager(swiftValue)
@@ -67,12 +66,11 @@ open class TMBAnnotationOrchestrator : NSObject {
     /// - Returns: An instance of `PolygonAnnotationManager`
     @objc public func makePolygonAnnotationManager(
         id: String?,
-        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
-        layerPositionParam: AnyObject?
+        layerPosition: TMBLayerPosition?
     ) -> TMBPolygonAnnotationManager {
         let swiftValue = _self.makePolygonAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerPositionParam)
+            layerPosition: layerPosition?.swiftValue() ?? .default
         )
         return TMBPolygonAnnotationManager(swiftValue)
     }
@@ -88,12 +86,11 @@ open class TMBAnnotationOrchestrator : NSObject {
     /// - Returns: An instance of `PolylineAnnotationManager`
     @objc public func makePolylineAnnotationManager(
         id: String?,
-        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
-        layerPositionParam: AnyObject?
+        layerPosition: TMBLayerPosition?
     ) -> TMBPolylineAnnotationManager {
         let swiftValue = _self.makePolylineAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerPositionParam)
+            layerPosition: layerPosition?.swiftValue() ?? .default
         )
         return TMBPolylineAnnotationManager(swiftValue)
     }
@@ -109,12 +106,11 @@ open class TMBAnnotationOrchestrator : NSObject {
     /// - Returns: An instance of `CircleAnnotationManager`
     @objc public func makeCircleAnnotationManager(
         id: String?,
-        layerPosition: TMBLayerPosition = TMBLayerPosition.unowned,
-        layerPositionParam: AnyObject?
+        layerPosition: TMBLayerPosition?
     ) -> TMBCircleAnnotationManager {
         let swiftValue = _self.makeCircleAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition.swiftValue(layerPositionParam)
+            layerPosition: layerPosition?.swiftValue() ?? .default
         )
         return TMBCircleAnnotationManager(swiftValue)
     }

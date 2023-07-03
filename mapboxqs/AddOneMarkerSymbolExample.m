@@ -65,11 +65,8 @@
     NSString* imageId = @"BLUE_ICON_ID";
     UIImage* image = [UIImage imageNamed:@"blue_marker_view"];
     
-    [style addImageWithId:imageId
-                    image:image
-                      sdf: false
-            contentInsets: UIEdgeInsetsZero
-               completion:nil];
+    [style addImage:image id:imageId sdf:false contentInsets:UIEdgeInsetsZero completion:nil];
+    
     NSString* sourceId = @"SOURCE_ID";
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
     TMBPoint* point = [TMBPoint withCoordinates: coordinates];
@@ -81,8 +78,7 @@
         return [self createSymbolLayerBuilder:sourceId
                                          icon:imageId];
     }
-                   layerPosition:TMBLayerPositionUnowned
-              layerPositionParam:nil
+                   layerPosition:nil
                          onError:nil];
 }
 

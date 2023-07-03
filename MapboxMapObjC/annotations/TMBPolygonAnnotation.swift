@@ -18,7 +18,6 @@ open class TMBPolygonAnnotation : NSObject, TMBAnnotation {
     }
         
     public var swiftValue: PolygonAnnotation
-    
     public init(swiftValue: PolygonAnnotation) {
         self.swiftValue = swiftValue
         super.init()
@@ -172,19 +171,19 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var id: String {
         get {
-            return self._self.id
+            return _self.id
         }
     }
     @objc
     public var sourceId: String {
         get {
-            return self._self.sourceId
+            return _self.sourceId
         }
     }
     @objc
     public var layerId: String {
         get {
-            return self._self.layerId
+            return _self.layerId
         }
     }
     
@@ -221,14 +220,14 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     public var fillAntialias: NSNumber? {
         get {
             // Bool?
-            guard let fillAntialias = self._self.fillAntialias else {
+            guard let fillAntialias = _self.fillAntialias else {
                 return nil
             }
             return NSNumber(value: fillAntialias)
         }
         set {
             // Bool?
-            self._self.fillAntialias = newValue?.boolValue
+            _self.fillAntialias = newValue?.boolValue
         }
     }
 
@@ -236,10 +235,10 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var fillTranslate: [Double]? {
         get {
-            return self._self.fillTranslate
+            return _self.fillTranslate
         }
         set {
-            self._self.fillTranslate = newValue
+            _self.fillTranslate = newValue
         }
     }
 
@@ -247,13 +246,13 @@ open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, Annotat
     @objc
     public var fillTranslateAnchor: TMBFillTranslateAnchor? {
         get {
-            guard let fillTranslateAnchor = self._self.fillTranslateAnchor else {
+            guard let fillTranslateAnchor = _self.fillTranslateAnchor else {
                 return nil
             }
             return TMBFillTranslateAnchor(value: fillTranslateAnchor)
         }
         set {
-            self._self.fillTranslateAnchor = newValue?.swiftValue()
+            _self.fillTranslateAnchor = newValue?.swiftValue()
         }
     }
     

@@ -6,6 +6,12 @@ import Turf
 @_implementationOnly import MapboxCommon_Private
 @_implementationOnly import MapboxCoreMaps_Private
 
+@objc extension MapView {
+    @objc public func mapboxMap() -> TMBMapboxMap {
+        return TMBMapboxMap(self.mapboxMap)
+    }
+}
+
 // swiftlint:disable type_body_length
 
 /// MapboxMap provides access to the map model, including the camera, style, observable map events,
