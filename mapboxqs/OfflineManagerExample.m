@@ -440,7 +440,7 @@ typedef enum State : int {
     // Add a point annotation that shows the point geometry that were passed
     // to the tile region API.
     __weak OfflineManagerExample* weakSelf = self;
-    [mapView onStyleLoaded:^(id _Nonnull _) {
+    [[mapView mapboxMap] onStyleLoaded:^(id _Nonnull _) {
         if (!self->mapView) {
             return;
         }

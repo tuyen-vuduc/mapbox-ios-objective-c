@@ -14,7 +14,12 @@ extension MapboxMaps.ResourceOptions {
                   tileStore: objcValue.tileStore,
                   tileStoreUsageMode: objcValue.tileStoreUsageMode)
     }
+    
+    public func objcValue() -> MapboxCoreMaps.ResourceOptions {
+        return MapboxCoreMaps.ResourceOptions(self)
+    }
 }
+
 extension MapboxCoreMaps.ResourceOptions {
     internal convenience init(_ swiftValue: MapboxMaps.ResourceOptions) {
         self.init(accessToken: swiftValue.accessToken,
@@ -23,5 +28,9 @@ extension MapboxCoreMaps.ResourceOptions {
                   assetPath: swiftValue.assetPathURL?.path,
                   tileStore: swiftValue.tileStore,
                   tileStoreUsageMode: swiftValue.tileStoreUsageMode)
+    }
+    
+    public func swiftValue() -> ResourceOptions {
+        return ResourceOptions(self)
     }
 }
