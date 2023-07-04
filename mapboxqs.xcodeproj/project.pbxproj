@@ -135,6 +135,16 @@
 		23BB8EFA29BCDE0300E7C218 /* GlobeExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EF929BCDE0300E7C218 /* GlobeExample.m */; };
 		23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */; };
 		23C0217F2A54748D002229B5 /* TMBSymbolLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0217E2A54748D002229B5 /* TMBSymbolLayer.swift */; };
+		23C021812A547EDB002229B5 /* TMBRasterDemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */; };
+		23C021832A548076002229B5 /* TMBBackgroundLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021822A548076002229B5 /* TMBBackgroundLayer.swift */; };
+		23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021842A54810A002229B5 /* TMBCircleLayer.swift */; };
+		23C021872A548141002229B5 /* TMBFillExtrusionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021862A548141002229B5 /* TMBFillExtrusionLayer.swift */; };
+		23C021892A548183002229B5 /* TMBFillLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021882A548183002229B5 /* TMBFillLayer.swift */; };
+		23C0218B2A5481BB002229B5 /* TMBHeatmapLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0218A2A5481BB002229B5 /* TMBHeatmapLayer.swift */; };
+		23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0218C2A5481ED002229B5 /* TMBHillshadeLayer.swift */; };
+		23C0218F2A548224002229B5 /* TMBLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0218E2A548224002229B5 /* TMBLineLayer.swift */; };
+		23C021912A548261002229B5 /* TMBLocationIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */; };
+		23C021932A548296002229B5 /* TMBRasterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021922A548296002229B5 /* TMBRasterLayer.swift */; };
 		23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */; };
 		23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */; };
 		23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */; };
@@ -374,6 +384,16 @@
 		23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtensions.swift; sourceTree = "<group>"; };
 		23BB8F0729BDE61600E7C218 /* ExampleProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleProtocol.h; sourceTree = "<group>"; };
 		23C0217E2A54748D002229B5 /* TMBSymbolLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSymbolLayer.swift; sourceTree = "<group>"; };
+		23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBRasterDemSource.swift; sourceTree = "<group>"; };
+		23C021822A548076002229B5 /* TMBBackgroundLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBBackgroundLayer.swift; sourceTree = "<group>"; };
+		23C021842A54810A002229B5 /* TMBCircleLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCircleLayer.swift; sourceTree = "<group>"; };
+		23C021862A548141002229B5 /* TMBFillExtrusionLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBFillExtrusionLayer.swift; sourceTree = "<group>"; };
+		23C021882A548183002229B5 /* TMBFillLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBFillLayer.swift; sourceTree = "<group>"; };
+		23C0218A2A5481BB002229B5 /* TMBHeatmapLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBHeatmapLayer.swift; sourceTree = "<group>"; };
+		23C0218C2A5481ED002229B5 /* TMBHillshadeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBHillshadeLayer.swift; sourceTree = "<group>"; };
+		23C0218E2A548224002229B5 /* TMBLineLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLineLayer.swift; sourceTree = "<group>"; };
+		23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLocationIndicatorLayer.swift; sourceTree = "<group>"; };
+		23C021922A548296002229B5 /* TMBRasterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBRasterLayer.swift; sourceTree = "<group>"; };
 		23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotation.swift; sourceTree = "<group>"; };
 		23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fire_Hydrants.geojson; sourceTree = "<group>"; };
 		23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBClusterOptions.swift; sourceTree = "<group>"; };
@@ -439,8 +459,17 @@
 				23251E1829CEE9250088065B /* TMBLayerPosition.swift */,
 				2396BE8D2A517D540085913F /* TMBLayerType.swift */,
 				2396BE8F2A5180DA0085913F /* TMBLayer.swift */,
+				23C021822A548076002229B5 /* TMBBackgroundLayer.swift */,
+				23C021842A54810A002229B5 /* TMBCircleLayer.swift */,
+				23C021862A548141002229B5 /* TMBFillExtrusionLayer.swift */,
+				23C021882A548183002229B5 /* TMBFillLayer.swift */,
+				23C0218A2A5481BB002229B5 /* TMBHeatmapLayer.swift */,
+				23C0218C2A5481ED002229B5 /* TMBHillshadeLayer.swift */,
+				23C0218E2A548224002229B5 /* TMBLineLayer.swift */,
+				23C021922A548296002229B5 /* TMBRasterLayer.swift */,
 				2396BE912A5186210085913F /* TMBSkyLayer.swift */,
 				23C0217E2A54748D002229B5 /* TMBSymbolLayer.swift */,
+				23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */,
 			);
 			path = layers;
 			sourceTree = "<group>";
@@ -677,6 +706,7 @@
 			children = (
 				231AF0C529BF8905002D6CFD /* TMBSourceType.swift */,
 				2396BE972A5242210085913F /* TMBSource.swift */,
+				23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -1010,10 +1040,12 @@
 			files = (
 				232E9F172A537F8C00E87D0A /* TMBAtmosphere.swift in Sources */,
 				23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */,
+				23C021892A548183002229B5 /* TMBFillLayer.swift in Sources */,
 				23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */,
 				2396BE822A50409C0085913F /* TMBLocationManager.swift in Sources */,
 				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
 				2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */,
+				23C021932A548296002229B5 /* TMBRasterLayer.swift in Sources */,
 				231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */,
 				23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */,
 				23BA6DD72826CA5A00D2D03A /* ResourceOptionsExtensions.swift in Sources */,
@@ -1025,6 +1057,7 @@
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
 				2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */,
 				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
+				23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */,
 				235BEDA92A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift in Sources */,
 				2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */,
 				23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */,
@@ -1037,6 +1070,8 @@
 				2379C78729FCB19800D0936D /* GeometryHelper.swift in Sources */,
 				2396BE842A5106080085913F /* TMBAnnotationOrchestrator.swift in Sources */,
 				231AF0C629BF8905002D6CFD /* TMBSourceType.swift in Sources */,
+				23C021872A548141002229B5 /* TMBFillExtrusionLayer.swift in Sources */,
+				23C0218B2A5481BB002229B5 /* TMBHeatmapLayer.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* TMBStyleTransition.swift in Sources */,
 				232E9F1B2A538BFB00E87D0A /* MapInitOptionsExtensions.swift in Sources */,
 				232E9F1D2A5390FF00E87D0A /* TMBResourceOptionsManager.swift in Sources */,
@@ -1044,10 +1079,14 @@
 				239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */,
 				2396BE922A5186210085913F /* TMBSkyLayer.swift in Sources */,
 				2396BE982A5242210085913F /* TMBSource.swift in Sources */,
+				23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */,
 				2396BE962A5198080085913F /* NSNumberExtensions.swift in Sources */,
 				231AF0C829BF8B09002D6CFD /* TMBScheme.swift in Sources */,
 				232E9F192A53827C00E87D0A /* TMBStyleProjection.swift in Sources */,
+				23C0218F2A548224002229B5 /* TMBLineLayer.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* TMBExpression.swift in Sources */,
+				23C021912A548261002229B5 /* TMBLocationIndicatorLayer.swift in Sources */,
+				23C021812A547EDB002229B5 /* TMBRasterDemSource.swift in Sources */,
 				23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */,
 				231AF0D629BFF042002D6CFD /* TMBOperator.swift in Sources */,
 				2396BE7E2A4F33B90085913F /* TMBOrnamentsManager.swift in Sources */,
@@ -1057,6 +1096,7 @@
 				2396BE862A510A310085913F /* TMBViewport.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
 				2396BE8E2A517D540085913F /* TMBLayerType.swift in Sources */,
+				23C021832A548076002229B5 /* TMBBackgroundLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
