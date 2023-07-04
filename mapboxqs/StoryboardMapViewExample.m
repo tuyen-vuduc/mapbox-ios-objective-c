@@ -35,7 +35,7 @@
 */
 
 - (MapInitOptions * _Nonnull)mapInitOptions {
-    NSString* defaultAccessToken = MapInitOptionsBuilder.defaultResourceOptions.accessToken;
+    NSString* defaultAccessToken = [TMBResourceOptionsManager.default_ resourceOptions].accessToken;
     CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:40.728 longitude:-74.0060];
     
     MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
@@ -45,9 +45,12 @@
                                                                  bearing:nil
                                                                 pitch:nil];
     
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    
-    return [[[[builder accessToken:defaultAccessToken] cameraOptions:cameraOptions] styleUriString:BuiltInStyles.light] build];
+    return [MapInitOptionsFactory
+            createWithResourceOptions:[[MBMResourceOptions alloc] initWithAccessToken:defaultAccessToken baseURL:nil dataPath:nil assetPath:nil tileStore:nil]
+            mapOptions:nil
+            cameraOptions:cameraOptions
+            styleURI:BuiltInStyles.light
+            styleJSON:nil];
 }
 
 @end

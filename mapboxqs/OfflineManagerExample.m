@@ -79,14 +79,10 @@ typedef enum State : int {
                                                                           zoom:[NSNumber numberWithFloat:tokyoZoom]
                                                                        bearing:nil
                                                                          pitch:nil];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
-    mapInitOptions = [[[builder
-                                 cameraOptions:cameraOptions]
-                                 styleUriString:BuiltInStyles.outdoors]
-                               build];
+    mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:BuiltInStyles.outdoors styleJSON:nil];
     
-    offlineManager = [[MBMOfflineManager alloc] initWithResourceOptions:[mapInitOptions resourceOptions]];
+    offlineManager = [[MBMOfflineManager alloc] initWithResourceOptions:[mapInitOptions getResourceOptions]];
     
     downloads = [[NSMutableArray alloc] init];
     
@@ -356,7 +352,7 @@ typedef enum State : int {
             [self resetUI];
 
             MBXTileStore* tileStore = [MBXTileStore getDefault];
-            NSString *accessToken = MapInitOptionsBuilder.defaultResourceOptions.accessToken;
+            NSString *accessToken = TMBResourceOptionsManager.default_.resourceOptions.accessToken;
             [tileStore setOptionForKey:MBXTileStoreOptions.MapboxAccessToken value:accessToken];
             
             self->tileStore = tileStore;

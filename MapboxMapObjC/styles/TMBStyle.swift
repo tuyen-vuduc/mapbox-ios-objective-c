@@ -219,6 +219,17 @@ import MapboxMaps
         }
     }
     
+    @objc public func addSource(id: String, geometry: MapboxCommon.Geometry, completion: ((Error?)->Void)?) -> Void {
+        do {
+            var source = GeoJSONSource()
+            source.data = .geometry(Geometry(geometry)!)
+            try _self.addSource(source, id: id)
+            completion?(nil)
+        } catch {
+            completion?(error)
+        }
+    }
+    
     private func sourceTypeToSource(_ id: String, sourceType: TMBSourceType) throws -> Source  {
         switch(sourceType.rawValue) {
         case .vector:

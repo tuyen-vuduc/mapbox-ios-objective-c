@@ -33,8 +33,7 @@
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
     TMBCircleAnnotationManager* circleAnnotationManager = [[mapView annotations] makeCircleAnnotationManagerWithId:nil
-                                                                                   layerPosition:TMBLayerPositionUnowned
-                                                                              layerPositionParam:nil];
+                                                                                   layerPosition:nil];
     circleAnnotationManager.delegate = self;
 
     NSMutableArray* annotations = [[NSMutableArray alloc] initWithCapacity:2000];

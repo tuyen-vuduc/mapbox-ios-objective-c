@@ -32,11 +32,8 @@
                                                                           zoom:@5
                                                                        bearing:nil
                                                                          pitch:nil];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
-    MapInitOptions* options = [[builder
-                                 cameraOptions:cameraOptions]
-                               build];
+    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -47,7 +44,7 @@
     
     __weak PolygonAnnotationExample *weakSelf = self;
     // Allows the delegate to receive information about map events.
-    [mapView onMapLoaded:^(id _Nonnull _) {
+    [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
         [self setupExample];
         
         if ([weakSelf respondsToSelector:@selector(finish)]) {
@@ -64,8 +61,7 @@
     // (`mapView.annotations`) until you explicitly destroy them
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
     TMBPolygonAnnotationManager* polygonAnnotationManager = [[mapView annotations] makePolygonAnnotationManagerWithId:nil
-                                                                                      layerPosition:TMBLayerPositionUnowned
-                                                                                 layerPositionParam:nil];
+                                                                                      layerPosition:nil];
     
     // Set the delegate to receive callback if annotation is tapped or dragged
     polygonAnnotationManager.delegate = self;

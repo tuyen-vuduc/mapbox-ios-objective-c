@@ -10,6 +10,7 @@
 #import <MapboxCoreMaps/MapboxCoreMaps.h>
 #import <MapboxMapObjC/MapboxMapObjC.h>
 #import "MapboxMaps-Swift.h"
+#import <MapKit/MapKit.h>
 
 @interface AddOneMarkerSymbolExample ()
 
@@ -31,11 +32,7 @@
                                                                           zoom:@8
                                                                        bearing:nil
                                                                          pitch:nil];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    
-    MapInitOptions* options = [[builder
-                                 cameraOptions:cameraOptions]
-                               build];
+    MapInitOptions* options= [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -47,9 +44,9 @@
     __weak AddOneMarkerSymbolExample *weakSelf = self;
     // Allows the delegate to receive information about map events.
     
-    [mapView loadStyle:BuiltInStyles.streets completion:^(TMBStyle * _Nullable style, NSError * _Nullable error) {
+    [[mapView mapboxMap] loadStyleURI:BuiltInStyles.streets completion:^(TMBStyle * _Nullable style, NSError * _Nullable error) {
         if (error) {
-            NSLog(error.description);
+            NSLog(@"%@", error);
             return;
         }
         
@@ -69,27 +66,34 @@
     
     NSString* sourceId = @"SOURCE_ID";
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
-    TMBPoint* point = [TMBPoint withCoordinates: coordinates];
-    [mapView addSourceWithId:sourceId
-                    geometry:[TMBGeometry fromData:point]
-                     onError:nil];
+    MBXGeometry* point = [GeometryHelper createPoint: [NSValue valueWithMKCoordinate:coordinates]];
+    [[[mapView mapboxMap] style] addSourceWithId:sourceId geometry:point completion: ^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+            return;
+        }
+    }];
     
-    [mapView addLayerWithBuilder:^id _Nonnull{
-        return [self createSymbolLayerBuilder:sourceId
-                                         icon:imageId];
-    }
-                   layerPosition:nil
-                         onError:nil];
+    [[[mapView mapboxMap] style]
+     addLayer:[self createSymbolLayer:sourceId
+                                 icon:imageId]
+     layerPosition:nil
+     completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
-- (SymbolLayerBuilder*) createSymbolLayerBuilder: (NSString*) sourceId
+- (TMBSymbolLayer*) createSymbolLayer: (NSString*) sourceId
                                             icon: (NSString *) icon {
-    SymbolLayerBuilder* builder = [SymbolLayerBuilder withId: @"LAYER_ID"];
+    TMBSymbolLayer* layer = [[TMBSymbolLayer alloc] initWithId: @"LAYER_ID"];
         
-    [builder source:sourceId];
-    [builder iconImage:[TMBValue constant:[TMBResolvedImage fromName:icon]]];
-    [builder iconAnchor:[TMBValue constant: TMBIconAnchor.bottom]];
-    return builder;
+    layer.source = sourceId;
+    layer.iconImage = [TMBValue constant:[TMBResolvedImage fromName:icon]];
+    layer.iconAnchor = [TMBValue constant: TMBIconAnchor.bottom];
+    
+    return layer;
 }
 
 /*

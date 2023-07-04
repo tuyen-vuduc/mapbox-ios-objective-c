@@ -24,8 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    MapInitOptions* mapInitOptions = [[builder styleUriString: @"mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j"] build];
+    MapInitOptions* mapInitOptions = [MapInitOptionsFactory
+                                      createWithResourceOptions:nil
+                                      mapOptions:nil
+                                      cameraOptions:nil
+                                      styleURI:@"mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j"
+                                      styleJSON:nil];
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:mapInitOptions];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -33,7 +37,7 @@
     [[ornamentOptions scaleBar] setVisibility:TMBOrnamentVisibilityVisible];
     
     __weak CustomStyleURLExample *weakSelf = self;
-    [mapView onStyleLoaded:^(id _Nonnull) {
+    [[mapView  mapboxMap] onStyleLoaded:^(id _Nonnull) {
         if ([weakSelf respondsToSelector:@selector(finish)]) {
             [weakSelf finish];
         }

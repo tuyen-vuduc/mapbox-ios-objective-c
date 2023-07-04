@@ -10,7 +10,7 @@ import MapboxMaps
     }
     
     /// Unique layer name
-    @objc var id: String {
+    @objc public var id: String {
         get {
             _self.id
         }
@@ -20,13 +20,13 @@ import MapboxMaps
     }
 
     /// Rendering type of this layer.
-    @objc var type: TMBLayerType {
+    @objc public var type: TMBLayerType {
         return _self.type.objcValue()!
     }
 
     /// An expression specifying conditions on source features.
     /// Only features that match the filter are displayed.
-    @objc var filter: TMBExpression? {
+    @objc public var filter: TMBExpression? {
         get {
             return _self.filter?.objcValue()
         }
@@ -37,7 +37,7 @@ import MapboxMaps
 
     /// Name of a source description to be used for this layer.
     /// Required for all layer types except background.
-    @objc var source: String? {
+    @objc public var source: String? {
         get {
             _self.source
         }
@@ -49,7 +49,7 @@ import MapboxMaps
     /// Layer to use from a vector tile source.
     /// Required for vector tile sources.
     /// Prohibited for all other source types, including GeoJSON sources.
-    @objc var sourceLayer: String? {
+    @objc public var sourceLayer: String? {
         get {
             _self.sourceLayer
         }
@@ -59,7 +59,7 @@ import MapboxMaps
     }
 
     /// The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden.
-    @objc var minZoom: NSNumber? {
+    @objc public var minZoom: NSNumber? {
         get {
             _self.minZoom?.NSNumber
         }
@@ -69,7 +69,7 @@ import MapboxMaps
     }
 
     /// The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden.
-    @objc var maxZoom: NSNumber? {
+    @objc public var maxZoom: NSNumber? {
         get {
             _self.maxZoom?.NSNumber
         }
@@ -90,7 +90,7 @@ import MapboxMaps
     }
     
     /// The identifier of the layer
-    public var id: String {
+    @objc public var id: String {
         get {
             return _self.id
         }
@@ -100,7 +100,7 @@ import MapboxMaps
     }
 
     /// The type of the layer
-    public var type: TMBLayerType {
+    @objc public var type: TMBLayerType {
         get {
             return _self.type.objcValue()!
         }

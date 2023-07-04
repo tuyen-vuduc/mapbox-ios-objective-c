@@ -35,18 +35,19 @@
                                                                        bearing:@80
                                                                          pitch:@85];
     
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    
-    MapInitOptions* options = [[[builder
-                                    cameraOptions:cameraOptions]
-                                   styleUriString:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y"] build];
+    MapInitOptions* options = [MapInitOptionsFactory
+                               createWithResourceOptions:nil
+                               mapOptions:nil
+                               cameraOptions:cameraOptions
+                               styleURI:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y"
+                               styleJSON:nil];
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:options];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     __weak TerrainExample *weakSelf = self;
-    [mapView onStyleLoaded:^(id _Nonnull) {
+    [[mapView mapboxMap] onStyleLoaded:^(id _Nonnull) {
         [weakSelf addTerrain];
         
         if ([weakSelf respondsToSelector:@selector(finish)]) {
@@ -58,51 +59,54 @@
     [self.view addSubview:mapView];
 }
 
-- (SkyLayerBuilder*) createSkyLayerBuilder {
-    SkyLayerBuilder* builder = [SkyLayerBuilder withId:@"sky-layer"];
+- (TMBSkyLayer*) createSkyLayer {
+    TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    TMBValue* skyType = [TMBValue constant: TMBSkyType.atmosphere];
-    [builder skyType: skyType];
-    TMBValue* skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
-    [builder skyAtmosphereSun: skyAtmosphereSun];
-    TMBValue* skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
-    [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
+    layer.skyType = [TMBValue constant: TMBSkyType.atmosphere];
+    layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
+    layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     
-    return builder;
+    return layer;
 }
 
 - (void) addTerrain {
     NSString* sourceId = @"mapbox-dem";
-// Use builder
-//    [self.mapView addRasterDemSource: sourceId
-//                           configure:^(RasterDemSourceBuilder * _Nonnull builder) {
-//                                [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
-//                                [builder tileSize:514.0];
-//                                [builder maxzoom:14.0];
-//                            }
-//                             onError:nil];
-    [self.mapView addSource:sourceId
-                 properties:@{
+    // Use builder
+    //    [self.mapView addRasterDemSource: sourceId
+    //                           configure:^(RasterDemSourceBuilder * _Nonnull builder) {
+    //                                [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
+    //                                [builder tileSize:514.0];
+    //                                [builder maxzoom:14.0];
+    //                            }
+    //                             onError:nil];
+    [[[self.mapView mapboxMap] style]
+     addSourceWithId:sourceId
+     properties:@{
         @"type": @"raster-dem",
         @"url": @"mapbox://mapbox.mapbox-terrain-dem-v1",
         @"tileSize": @514.0,
         @"maxzoom": @14.0
     }
-                    onError:^(NSError * _Nonnull error) {
-        
-    }];
+     completion:^(NSError * _Nonnull error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+        }];
     
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
     
-    [self.mapView setTerrain:terrain onError:nil];
+    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:nil];
     
-    [self.mapView addLayerWithTarget:self
-                            selector:@selector(createSkyLayerBuilder)
-                       layerPosition:TMBLayerPositionUnowned
-                  layerPositionParam:nil
-                             onError:nil];
+    [[[self.mapView mapboxMap] style]
+     addLayer:[self createSkyLayer]
+     layerPosition:nil
+     completion:^(NSError * _Nullable error) {
+       if (error) {
+           NSLog(@"%@", error);
+       }
+    }];
 }
 
 /*

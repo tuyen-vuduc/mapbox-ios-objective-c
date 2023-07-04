@@ -50,17 +50,14 @@ typedef void (^RenderingWillEndHandler)(void);
                                                                        bearing:@180
                                                                          pitch:@60];
     
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    
-    MapInitOptions* options = [[builder
-                                    cameraOptions:cameraOptions] build];
+    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:options];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     __weak SceneKitExample *weakSelf = self;
-    [mapView onStyleLoaded:^(id _Nonnull) {
+    [[mapView mapboxMap] onStyleLoaded:^(id _Nonnull) {
         [weakSelf addModelAndTerrain];
         
         if ([weakSelf respondsToSelector:@selector(finish)]) {
@@ -96,7 +93,7 @@ typedef void (^RenderingWillEndHandler)(void);
     
     [self.mapView addCustomLayer: @"Custom"
                        layerHost: layerHost
-                   layerPosition: TMBLayerPositionBelow
+                   layerPosition: TMBLayerPosition.below()
               layerPositionParam: @"waterway-label"
                          onError:^(NSError * _Nonnull _) {
         // Do something here

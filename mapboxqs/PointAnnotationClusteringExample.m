@@ -32,12 +32,12 @@
                                                                           zoom:@11
                                                                        bearing:nil
                                                                          pitch:nil];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    
-    MapInitOptions* options = [[[builder
-                                 cameraOptions:cameraOptions]
-                                styleUriString: BuiltInStyles.light]
-                               build];
+    MapInitOptions* options = [MapInitOptionsFactory
+                               createWithResourceOptions:nil
+                               mapOptions:nil
+                               cameraOptions:cameraOptions
+                               styleURI:BuiltInStyles.light
+                               styleJSON:nil];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -51,7 +51,7 @@
 //    mapView.gestures.singleTapGestureRecognizer.addTarget(self, action: #selector(handleTap(gestureRecognizer:)))
 
     // Add the source and style layers once the map has loaded.
-    [mapView onMapLoaded:^(id _Nonnull _) {
+    [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
         [weakSelf addPointAnnotations];
     }];
 }

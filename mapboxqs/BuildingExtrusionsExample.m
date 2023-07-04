@@ -82,15 +82,14 @@
     [self initLightColorButton];
     [self initLightPositionButton];
     
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
-    MapInitOptions* options = [[builder styleUriString:BuiltInStyles.light] build];
+    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:nil styleURI:BuiltInStyles.light styleJSON:nil];
     
     self.mapView =[MapViewFactory createWithFrame:self.view.bounds
                                           options:options];
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.mapView];
 
-    [self.mapView onStyleLoaded:^(id _Nonnull obj) {
+    [[self.mapView mapboxMap] onStyleLoaded:^(id _Nonnull obj) {
             [self setupExample];
     }];
     
@@ -119,7 +118,7 @@
                                                                           zoom:@15.5
                                                                        bearing:@-17.6
                                                                          pitch:@45];
-    [self.mapView setCameraTo: cameraOptions];
+    [[self.mapView mapboxMap] setCameraTo: cameraOptions];
     
     __weak BuildingExtrusionsExample *weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 5.0), dispatch_get_main_queue(), ^{

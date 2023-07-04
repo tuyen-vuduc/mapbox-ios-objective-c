@@ -42,12 +42,8 @@
                                                                           zoom:@12.5
                                                                        bearing:nil
                                                                          pitch:@83];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
-    MapInitOptions* options = [[[builder
-                                 cameraOptions:cameraOptions]
-                                styleUriString:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y"]
-                               build];
+    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y" styleJSON:nil];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -60,7 +56,7 @@
      
      // Add a custom `SkyLayer` once the map's style is finished loading.
      __strong SkyLayerExample *weakSelf = self;
-     [mapView onStyleLoaded:^(id _Nonnull _) {
+     [[mapView mapboxMap] onStyleLoaded:^(id _Nonnull _) {
          [self addSkyLayer];
          
          // Add a terrain layer.
@@ -76,20 +72,16 @@
 - (void) addSkyLayer {
     // Initialize a sky layer with a sky type of `gradient`, which applies a gradient effect to the sky.
     // Read more about sky layer types on the Mapbox blog: https://www.mapbox.com/blog/sky-api-atmospheric-scattering-algorithm-for-3d-maps
-    [mapView addLayerWithTarget:self
-                       selector:@selector(createSkyLayerBuilder)
-                  layerPosition:TMBLayerPositionUnowned
-             layerPositionParam:nil
-                        onError: ^(NSError* error) {
-        NSLog(@"%@", error);
+    [[[mapView mapboxMap] style] addLayer:[self createSkyLayer] layerPosition:nil completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
 }
 
-- (SkyLayerBuilder * ) createSkyLayerBuilder {
-    SkyLayerBuilder * builder = [SkyLayerBuilder withId:skyLayerId];
-    
-    [builder skyType:[TMBValue constant:TMBSkyType.gradient]];
-    
+- (TMBSkyLayer * ) createSkyLayer {
+    TMBSkyLayer * builder = [[TMBSkyLayer alloc]  initWithId:skyLayerId];
+    builder.skyType = [TMBValue constant:TMBSkyType.gradient];
     
     // Define the position of the sun.
     // The azimuthal angle indicates the sun's position relative to 0 degrees north. When the map's bearing
@@ -100,19 +92,18 @@
     // horizon line. Lower values place the sun below the horizon line, while higher values place the sun's
     // center further above the horizon line.
     float polarAngle = 90;
-    [builder skyAtmosphereSun:[TMBValue constant:@[
+    builder.skyAtmosphereSun = [TMBValue constant:@[
             [NSNumber numberWithDouble:azimuthalAngle],
             [NSNumber numberWithDouble:polarAngle]
         ]
-      ]
-    ];
+      ];
 
     // The intensity or brightness of the sun.
-    [builder skyAtmosphereSunIntensity:[TMBValue doubleValue:10]];
+    builder.skyAtmosphereSunIntensity = [TMBValue doubleValue:10];
 
     // Set the sky's color to light blue with a light pink halo effect.
-    [builder skyAtmosphereColor:[TMBValue constant:[UIColor skyBlue]]];
-    [builder skyAtmosphereHaloColor:[TMBValue constant:[UIColor lightPink]]];
+    builder.skyAtmosphereColor = [TMBValue constant:[UIColor skyBlue]];
+    builder.skyAtmosphereHaloColor = [TMBValue constant:[UIColor lightPink]];
     
     return builder;
 }
@@ -127,11 +118,13 @@
         skyType = [TMBValue constant:TMBSkyType.atmosphere];
     }
     
-    [mapView updateSkyLayer: skyLayerId
-                  configure:^(SkyLayerBuilder * _Nonnull builder) {
-        [builder skyType:skyType];
-    } onError:^(NSError * _Nonnull _) {
-        NSLog(@"Failed to update the sky type for layer with id %@.", self->skyLayerId);
+    [[[mapView mapboxMap] style] updateLayerWithId:skyLayerId type:TMBLayerTypeSky update:^(TMBLayer * _Nonnull layer) {
+        TMBSkyLayer* skyLayer = (TMBSkyLayer*) layer;
+        skyLayer.skyType = skyType;
+    } completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
 }
 

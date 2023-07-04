@@ -32,12 +32,13 @@
                                                                           zoom:@11
                                                                        bearing:nil
                                                                          pitch:nil];
-    MapInitOptionsBuilder* builder = [MapInitOptionsBuilder create];
     
-    MapInitOptions* options = [[[builder
-                                 cameraOptions:cameraOptions]
-                                styleUriString: BuiltInStyles.dark]
-                               build];
+    MapInitOptions* options = [MapInitOptionsFactory
+                               createWithResourceOptions:nil
+                               mapOptions:nil
+                               cameraOptions:cameraOptions
+                               styleURI:BuiltInStyles.dark
+                               styleJSON:nil];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
