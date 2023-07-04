@@ -11,15 +11,15 @@ import MapboxMaps
         self.arguments = arguments
     }
     
-    public static func format(options: TMBFormatOptions) -> TMBExpressionOptions {
+    @objc public static func format(options: TMBFormatOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.format, options: options, arguments: options.expressionArguments)
     }
     
-    public static func numberFormat(options: TMBNumberFormatOptions) -> TMBExpressionOptions {
+    @objc public static func numberFormat(options: TMBNumberFormatOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.numberFormat, options: options, arguments: options.expressionArguments)
     }
     
-    public static func collator(options: TMBCollatorOptions) -> TMBExpressionOptions {
+    @objc public static func collator(options: TMBCollatorOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.collator, options: options, arguments: options.expressionArguments)
     }
 }
@@ -177,20 +177,20 @@ import MapboxMaps
     }
 
     /// Whether comparison option is case sensitive.
-    public var caseSensitive: NSNumber? {
+    @objc public var caseSensitive: NSNumber? {
         get { _self.caseSensitive?.asNumber() }
         set { _self.caseSensitive = newValue?.boolValue }
     }
 
     /// Whether the comparison operation is diacritic sensitive
-    public var diacriticSensitive: NSNumber? {
+    @objc public var diacriticSensitive: NSNumber? {
         get { _self.diacriticSensitive?.asNumber() }
         set { _self.diacriticSensitive = newValue?.boolValue }
     }
 
     /// The locale argument specifies the IETF language tag of the locale to use.
     /// If none is provided, the default locale is used.
-    public var locale: String? {
+    @objc public var locale: String? {
         get { _self.locale }
         set { _self.locale = newValue }
     }
@@ -199,8 +199,8 @@ import MapboxMaps
         return [.option(.collator(_self))]
     }
 
-    public init(caseSensitive: Bool?, diacriticSensitive: Bool?, locale: String?) {
-        _self = CollatorOptions(caseSensitive: caseSensitive, diacriticSensitive: diacriticSensitive, locale: locale)
+    @objc public init(caseSensitive: NSNumber?, diacriticSensitive: NSNumber?, locale: String?) {
+        _self = CollatorOptions(caseSensitive: caseSensitive?.boolValue, diacriticSensitive: diacriticSensitive?.boolValue, locale: locale)
     }
 
 }

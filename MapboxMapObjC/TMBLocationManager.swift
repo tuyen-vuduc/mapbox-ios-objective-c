@@ -817,7 +817,7 @@ extension PuckBearingSource {
     // swiftlint:enable nesting
 
     /// Flag determining whether the pulsing circle animation. `true` by default.
-    public var isEnabled: Bool {
+    @objc public var isEnabled: Bool {
         get {
             _self.isEnabled
         }
@@ -827,7 +827,7 @@ extension PuckBearingSource {
     }
 
     /// The color of the pulsing circle.
-    public var color: UIColor {
+    @objc public var color: UIColor {
         get {
             _self.color
         }
@@ -837,7 +837,7 @@ extension PuckBearingSource {
     }
 
     /// The radius of the pulsing circle.
-    public var radius: TMBPuck2DConfigurationPulsingRadius {
+    @objc public var radius: TMBPuck2DConfigurationPulsingRadius {
         get {
             switch(_self.radius) {
             case .constant(_):
@@ -856,7 +856,7 @@ extension PuckBearingSource {
             }
         }
     }
-    public var radiusValue: Double {
+    @objc public var radiusValue: Double {
         get {
             switch(_self.radius) {
             case .constant(let value):

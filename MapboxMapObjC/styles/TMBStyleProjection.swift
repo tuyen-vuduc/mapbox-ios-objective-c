@@ -10,7 +10,7 @@ import MapboxMaps
     }
 
     /// The name of the projection.
-    public var name: TMBStyleProjectionName {
+    @objc public var name: TMBStyleProjectionName {
         get {
             _self.name.objcValue()
         }

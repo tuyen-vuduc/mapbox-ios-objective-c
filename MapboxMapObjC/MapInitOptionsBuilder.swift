@@ -60,11 +60,3 @@ open class MapInitOptionsBuilder : NSObject {
         return self
     }
 }
-
-@objc
-extension MapInitOptions {
-    @objc
-    public func resourceOptions() -> MapboxCoreMaps.ResourceOptions {
-        MapboxCoreMaps.ResourceOptions(resourceOptions)
-    }
-}

@@ -10,7 +10,7 @@ open class TMBTerrain : NSObject {
         return _self
     }
     
-    public var sourceId: String {
+    @objc public var sourceId: String {
         get {
             _self.source
         }

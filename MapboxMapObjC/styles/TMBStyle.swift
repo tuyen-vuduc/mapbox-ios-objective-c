@@ -1387,3 +1387,47 @@ extension TMBStyle {
         return _self.projection.objcValue()
     }
 }
+
+@objc
+extension TMBStyle {
+    @objc public func addGeoJSONSource(id: String, properties: [String: Any], geojson: String, onComplete: ((Error?)->Void)?) -> Void {
+        do {
+            // Fake data properties
+            var xproperties = properties
+            xproperties["data"] = ""
+            try _self.addSource(withId: id, properties: xproperties)
+            
+            updateGeoJSONSource(id: id, geojson: geojson, onComplete: onComplete)
+        } catch {
+            onComplete?(error)
+        }
+    }
+    
+    @objc public func updateGeoJSONSource(id: String, geojson: String, onComplete: ((Error?)->Void)?) -> Void {
+        do {
+            let data =  geojson.data(using: .utf8)
+            let sourceData = try JSONDecoder().decode(GeoJSONSourceData.self, from: data!)
+            
+            var source: GeoJSONObject?
+            
+            switch sourceData {
+            case .feature(let feature):
+                source = .feature(feature)
+            case .featureCollection(let featureCollection):
+                source = .featureCollection(featureCollection)
+            case .geometry(let geometry):
+                source = .geometry(geometry)
+            default:
+                source = nil
+            }
+            
+            if let source = source {
+                try _self.updateGeoJSONSource(withId: id, geoJSON: source)
+            }
+            
+            onComplete?(nil)
+        } catch {
+            onComplete?(error)
+        }
+    }
+}

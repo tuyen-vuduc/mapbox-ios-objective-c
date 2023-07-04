@@ -203,15 +203,13 @@ open class TMBCameraAnimator : NSObject {
         _swiftValue.stopAnimation()
     }
     
-    @objc
-    var state: UIViewAnimatingState {
+    @objc public var state: UIViewAnimatingState {
         get {
             _swiftValue.state
         }
     }
     
-    @objc
-    func cancel() {
+    @objc public func cancel() {
         _swiftValue.cancel()
     }
     
@@ -256,33 +254,33 @@ open class TMBCameraAnimator : NSObject {
     
     /// Represents a change to the center coordinate of the map.
     /// NOTE: Setting the `toValue` of `center` overrides any `anchor` animations
-    public var center: TMBCameraTransitionChange {
+    @objc public var center: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
     
     /// Represents a change to the zoom of the map.
-    public var zoom: TMBCameraTransitionChange {
+    @objc public var zoom: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
     
     /// Represents a change to the padding of the map.
-    public var padding: TMBCameraTransitionChange {
+    @objc public var padding: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
     
     /// Represents a change to the anchor of the map
     /// NOTE: Incompatible with concurrent center animations
-    public var anchor: TMBCameraTransitionChange {
+    @objc public var anchor: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
     
     /// Represents a change to the bearing of the map.
-    public var bearing: TMBCameraTransitionChange {
+    @objc public var bearing: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
     
     /// Ensures that bearing transitions are optimized to take the shortest path. Defaults to `true`.
-    public var shouldOptimizeBearingPath: Bool  {
+    @objc public var shouldOptimizeBearingPath: Bool  {
         get {
             rawValue.shouldOptimizeBearingPath
         }
@@ -292,17 +290,17 @@ open class TMBCameraAnimator : NSObject {
     }
     
     /// Represents a change to the pitch of the map.
-    public var pitch: TMBCameraTransitionChange {
+    @objc public var pitch: TMBCameraTransitionChange {
         TMBCameraTransitionChange.fromCoordinate(rawValue.center)
     }
 }
 
 /// Generic struct used to represent a change in a value from a starting point (i.e. `fromValue`) to an end point (i.e. `toValue`).
 @objc open class TMBCameraTransitionChange : NSObject {
-    public var fromValue: NSValue
-    public var toValue: NSValue?
+    @objc public var fromValue: NSValue
+    @objc public var toValue: NSValue?
     
-    init(fromValue: NSValue, toValue: NSValue? = nil) {
+    @objc init(fromValue: NSValue, toValue: NSValue? = nil) {
         self.fromValue = fromValue
         self.toValue = toValue
     }

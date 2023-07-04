@@ -4,29 +4,6 @@ import Turf
 
 @objc
 extension MapView {
-    @available(iOSApplicationExtension, unavailable)
-    @objc public convenience init(
-        frame: CGRect,
-        mapInitOptions: MapInitOptions = MapInitOptions()
-    ) {
-        self.init(frame: frame, mapInitOptions: mapInitOptions)
-    }
-    
-    @available(iOSApplicationExtension, unavailable)
-    @objc public convenience init(
-        frame: CGRect,
-        mapInitOptions: MapInitOptions = MapInitOptions(),
-        urlOpener: TMBAttributionURLOpener
-    ) {
-        self.init(
-            frame: frame,
-            mapInitOptions: mapInitOptions,
-            urlOpener: TMBAttributionURLOpenerAdapter(urlOpener))
-    }
-}
-
-@objc
-extension MapView {
     @objc public func preferredFrameRateRange(_ value: CAFrameRateRange) {
         self.preferredFrameRateRange = value
     }
@@ -93,5 +70,30 @@ class TMBAttributionURLOpenerAdapter : AttributionURLOpener {
     
     func openAttributionURL(_ url: URL) {
         _self.openAttributionURL(url)
+    }
+}
+
+@objc
+open class MapViewFactory : NSObject {
+    /// :nodoc:
+    /// See https://developer.apple.com/forums/thread/650054 for context
+    @available(*, unavailable)
+    internal override init() {
+        fatalError("This initializer should not be called.")
+    }
+    
+    @objc public static func create(frame: CGRect, options: MapInitOptions?) -> MapView {
+        return MapView(frame: frame, mapInitOptions: options ?? MapInitOptions())
+    }
+    
+    @objc public static func create(
+        frame: CGRect,
+        mapInitOptions: MapInitOptions = MapInitOptions(),
+        urlOpener: TMBAttributionURLOpener
+    ) -> MapView {
+        return MapView(
+            frame: frame,
+            mapInitOptions: mapInitOptions,
+            urlOpener: TMBAttributionURLOpenerAdapter(urlOpener))
     }
 }

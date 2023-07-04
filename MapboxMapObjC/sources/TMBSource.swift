@@ -10,7 +10,7 @@ import MapboxMaps
     }
     
     /// Rendering type of this source.
-    @objc var type: TMBSourceType {
+    @objc public var type: TMBSourceType {
         return TMBSourceType(_self.type)
     }
 }
@@ -27,7 +27,7 @@ import MapboxMaps
     }
     
     /// The identifier of the layer
-    public var id: String {
+    @objc public var id: String {
         get {
             return _self.id
         }
@@ -37,7 +37,7 @@ import MapboxMaps
     }
 
     /// The type of the layer
-    public var type: TMBSourceType {
+    @objc public var type: TMBSourceType {
         get {
             return TMBSourceType(_self.type)
         }

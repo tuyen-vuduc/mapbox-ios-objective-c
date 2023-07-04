@@ -1089,6 +1089,7 @@ open class TMBStyleProjectionName :NSObject, NamedString {
     func swiftValue() -> StyleProjectionName{
         StyleProjectionName(rawValue: value)!
     }
+    
     @objc
     public func stringValue() -> String {
         return self.value

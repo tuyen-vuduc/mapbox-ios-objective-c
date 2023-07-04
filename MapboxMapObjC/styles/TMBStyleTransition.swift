@@ -10,7 +10,7 @@ import MapboxMaps
     }
     
     /// Time allotted for transitions to complete in seconds.
-    public var duration: Double {
+    @objc public var duration: Double {
         get {
             _self.duration
         }
@@ -20,7 +20,7 @@ import MapboxMaps
     }
     
     /// Length of time before a transition begins in seconds.
-    public var delay: Double {
+    @objc public var delay: Double {
         get {
             _self.delay
         }

@@ -16,7 +16,7 @@ import MapboxMaps
     }
     
     /// The color of the atmosphere region immediately below the horizon and within the `range` and above the horizon and within `horizon-blend`. Using opacity is recommended only for smoothly transitioning fog on/off as anything less than 100% opacity results in more tiles loaded and drawn.
-    public var color: TMBValue? {
+    @objc public var color: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.color)
         }
@@ -26,7 +26,7 @@ import MapboxMaps
     }
 
     /// Transition property for `color`
-    public var colorTransition: TMBStyleTransition? {
+    @objc public var colorTransition: TMBStyleTransition? {
         get {
             _self.colorTransition?.objcValue()
         }
@@ -36,7 +36,7 @@ import MapboxMaps
     }
 
     /// The color of the atmosphere region above the horizon, `high-color` extends further above the horizon than the `color` property and its spread can be controlled with `horizon-blend`. The opacity can be set to `0` to remove the high atmosphere color contribution.
-    public var highColor: TMBValue? {
+    @objc public var highColor: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.highColor)
         }
@@ -47,7 +47,7 @@ import MapboxMaps
 
 
     /// Transition property for `highColor`
-    public var highColorTransition: TMBStyleTransition? {
+    @objc public var highColorTransition: TMBStyleTransition? {
         get {
             _self.highColorTransition?.objcValue()
         }
@@ -57,7 +57,7 @@ import MapboxMaps
     }
 
     /// Horizon blend applies a smooth fade from the color of the atmosphere to the color of space. A value of zero leaves a sharp transition from atmosphere to space. Increasing the value blends the color of atmosphere into increasingly high angles of the sky.
-    public var horizonBlend: TMBValue? {
+    @objc public var horizonBlend: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.horizonBlend)
         }
@@ -67,7 +67,7 @@ import MapboxMaps
     }
 
     /// Transition property for `horizonBlend`
-    public var horizonBlendTransition: TMBStyleTransition? {
+    @objc public var horizonBlendTransition: TMBStyleTransition? {
         get {
             _self.horizonBlendTransition?.objcValue()
         }
@@ -77,7 +77,7 @@ import MapboxMaps
     }
 
     /// The start and end distance range in which fog fades from fully transparent to fully opaque. The distance to the point at the center of the map is defined as zero, so that negative range values are closer to the camera, and positive values are farther away.
-    public var range: TMBValue? {
+    @objc public var range: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.range)
         }
@@ -87,7 +87,7 @@ import MapboxMaps
     }
 
     /// Transition property for `range`
-    public var rangeTransition: TMBStyleTransition? {
+    @objc public var rangeTransition: TMBStyleTransition? {
         get {
             _self.rangeTransition?.objcValue()
         }
@@ -97,7 +97,7 @@ import MapboxMaps
     }
 
     /// The color of the region above the horizon and after the end of the `horizon-blend` contribution. The opacity can be set to `0` to have a transparent background.
-    public var spaceColor: TMBValue? {
+    @objc public var spaceColor: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.spaceColor)
         }
@@ -107,7 +107,7 @@ import MapboxMaps
     }
 
     /// Transition property for `spaceColor`
-    public var spaceColorTransition: TMBStyleTransition? {
+    @objc public var spaceColorTransition: TMBStyleTransition? {
         get {
             _self.starIntensityTransition?.objcValue()
         }
@@ -117,7 +117,7 @@ import MapboxMaps
     }
 
     /// A value controlling the star intensity where `0` will show no stars and `1` will show stars at their maximum intensity.
-    public var starIntensity: TMBValue? {
+    @objc public var starIntensity: TMBValue? {
         get {
             return TMBValue.fromSwiftValue(_self.starIntensity)
         }
@@ -127,7 +127,7 @@ import MapboxMaps
     }
 
     /// Transition property for `starIntensity`
-    public var starIntensityTransition: TMBStyleTransition? {
+    @objc public var starIntensityTransition: TMBStyleTransition? {
         get {
             _self.starIntensityTransition?.objcValue()
         }

@@ -47,7 +47,7 @@
         
     __weak SymbolClusteringExample *weakSelf = self;
     // Add the source and style layers once the map has loaded.
-    [mapView onMapLoaded:^(id _Nonnull _) {
+    [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
         [weakSelf addSymbolClusteringLayers];
     }];
 
@@ -65,8 +65,7 @@
     // Add the image tp the map's style. Set `sdf` to `true`. This allows the icon images to be recolored.
     // For more information about `SDF`, or Signed Distance Fields, see
     // https://docs.mapbox.com/help/troubleshooting/using-recolorable-images-in-mapbox-maps/#what-are-signed-distance-fields-sdf
-    [mapView addImageWithId:@"fire-station-icon"
-                      image:image sdf:true contentInsets:UIEdgeInsetsZero completion:nil];
+    [[[mapView mapboxMap] style] addImage:image id:@"fire-station-icon" sdf:true contentInsets:UIEdgeInsetsZero completion:nil];
     
     // Fire_Hydrants.geojson contains information about fire hydrants in the District of Columbia.
     // It was downloaded on 6/10/21 from https://opendata.dc.gov/datasets/DCGIS::fire-hydrants/about
@@ -116,7 +115,7 @@
         @"clusterProperties": clusterProperties
     };
     
-    [mapView addGeoJSONSourceWithId:@"fire-hydrant-source" properties:source geojson:fileContents onComplete:^(NSError * _Nullable error) {
+    [[[mapView mapboxMap] style] addGeoJSONSourceWithId:@"fire-hydrant-source" properties:source geojson:fileContents onComplete:^(NSError * _Nullable error) {
         
     }];
     

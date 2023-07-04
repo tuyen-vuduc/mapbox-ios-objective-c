@@ -298,7 +298,7 @@ extension OrnamentPosition {
     /// The position of the compass view.
     ///
     /// The default value for this property is `.topTrailing`.
-    public var position: TMBOrnamentPosition {
+    @objc public var position: TMBOrnamentPosition {
         get {
             _self.position.objcValue()
         }
@@ -311,7 +311,7 @@ extension OrnamentPosition {
     /// The margins of the compass view.
     ///
     /// The default value for this property is `CGPoint(x: 8.0, y: 8.0)`.
-    public var margins: CGPoint {
+    @objc public var margins: CGPoint {
         get {
             _self.margins
         }
@@ -324,7 +324,7 @@ extension OrnamentPosition {
     /// The image used for displaying the compass.
     ///
     /// The default value for this property is nil, default compass image will be drawn.
-    public var image: UIImage? {
+    @objc public var image: UIImage? {
         get {
             _self.image
         }
@@ -337,7 +337,7 @@ extension OrnamentPosition {
     /// The visibility of the compass view.
     ///
     /// The default value for this property is `.adaptive`.
-    public var visibility: TMBOrnamentVisibility {
+    @objc public var visibility: TMBOrnamentVisibility {
         get {
             _self.visibility.objcValue()
         }
@@ -363,7 +363,7 @@ extension OrnamentPosition {
     /// The position of the logo view.
     ///
     /// The default value for this property is `.bottomLeading`.
-    public var position: TMBOrnamentPosition {
+    @objc public var position: TMBOrnamentPosition {
         get {
             _self.position.objcValue()
         }
@@ -376,7 +376,7 @@ extension OrnamentPosition {
     /// The margins of the logo view.
     ///
     /// The default value for this property is `CGPoint(x: 8.0, y: 8.0)`.
-    public var margins: CGPoint {
+    @objc public var margins: CGPoint {
         get {
             _self.margins
         }
@@ -402,7 +402,7 @@ extension OrnamentPosition {
     /// The position of the attribution button.
     ///
     /// The default value for this property is `.bottomTrailing`.
-    public var position: TMBOrnamentPosition {
+    @objc public var position: TMBOrnamentPosition {
         get {
             _self.position.objcValue()
         }
@@ -415,7 +415,7 @@ extension OrnamentPosition {
     /// The margins of the attribution button.
     ///
     /// The default value for this property is `CGPoint(x: 8.0, y: 8.0)`.
-    public var margins: CGPoint {
+    @objc public var margins: CGPoint {
         get {
             _self.margins
         }

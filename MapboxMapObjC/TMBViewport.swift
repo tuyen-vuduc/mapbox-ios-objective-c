@@ -630,14 +630,14 @@ extension ViewportStatusChangeReason {
     init(_ bearing: CLLocationDirection? = nil) {
         self._bearing = bearing
     }
-    public var bearing: CLLocationDirection? {
-        return _bearing
+    @objc public var bearing: NSNumber? {
+        return _bearing?.NSNumber
     }
     
     /// ``FollowPuckViewportState`` sets ``CameraOptions/bearing`` to a constant value.
     ///
     /// - Parameter bearing: the constant value that should be used to set the camera bearing.
-    public static func constant(_ bearing: CLLocationDirection) -> TMBFollowPuckViewportStateBearing {
+    @objc public static func constant(_ bearing: CLLocationDirection) -> TMBFollowPuckViewportStateBearing {
         return TMBFollowPuckViewportStateBearing(bearing)
     }
 
@@ -661,7 +661,7 @@ extension ViewportStatusChangeReason {
 extension TMBFollowPuckViewportStateBearing {
     func swiftValue() -> FollowPuckViewportStateBearing {
         if let bearing = self.bearing {
-            return .constant(bearing)
+            return .constant(bearing.doubleValue)
         }
         
         if self == TMBFollowPuckViewportStateBearing.heading {
@@ -696,7 +696,7 @@ extension FollowPuckViewportStateBearing {
     }
     
     /// Configuration options for this state.
-    public var options: TMBFollowPuckViewportStateOptions {
+    @objc public var options: TMBFollowPuckViewportStateOptions {
         get {
             TMBFollowPuckViewportStateOptions(_self.options)
         }
@@ -707,7 +707,7 @@ extension FollowPuckViewportStateBearing {
 }
 
 extension TMBFollowPuckViewportState: TMBViewportState {
-    public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Bool) -> TMBCancelable {
+    @objc public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Bool) -> TMBCancelable {
         let cancellable = _self.observeDataSource(with: { cameraOptions in
             handler(MapboxCoreMaps.CameraOptions(cameraOptions))
         })
@@ -715,11 +715,11 @@ extension TMBFollowPuckViewportState: TMBViewportState {
         return TMBCancelable(cancelable: cancellable)
     }
     
-    public func startUpdatingCamera() {
+    @objc public func startUpdatingCamera() {
         _self.startUpdatingCamera()
     }
     
-    public func stopUpdatingCamera() {
+    @objc public func stopUpdatingCamera() {
         _self.stopUpdatingCamera()
     }
 }
@@ -840,7 +840,7 @@ extension TMBFollowPuckViewportState: TMBViewportState {
     /// an ``CameraAnimationsManager/ease(to:duration:curve:completion:)``
     /// animation with a linear timing curve and duration specified by the new value's
     /// ``OverviewViewportStateOptions/animationDuration``.
-    public var options: TMBOverviewViewportStateOptions {
+    @objc public var options: TMBOverviewViewportStateOptions {
         get {
             return TMBOverviewViewportStateOptions(_self.options)
         }
@@ -851,18 +851,18 @@ extension TMBFollowPuckViewportState: TMBViewportState {
 }
 
 extension TMBOverviewViewportState: TMBViewportState {
-    public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Bool) -> TMBCancelable {
+    @objc public func observeDataSource(with handler: @escaping (MapboxCoreMaps.CameraOptions) -> Bool) -> TMBCancelable {
         let cancelable = _self.observeDataSource(with: { cameraOptions in
             handler(MapboxCoreMaps.CameraOptions(cameraOptions))
         })
         return TMBCancelable(cancelable: cancelable)
     }
     
-    public func startUpdatingCamera() {
+    @objc public func startUpdatingCamera() {
         _self.startUpdatingCamera()
     }
     
-    public func stopUpdatingCamera() {
+    @objc public func stopUpdatingCamera() {
         _self.stopUpdatingCamera()
     }
 }
@@ -920,8 +920,9 @@ extension TMBOverviewViewportState: TMBViewportState {
     }
 }
 
+@objc
 extension TMBDefaultViewportTransition: TMBViewportTransition {
-    public func run(to toState: TMBViewportState, completion: @escaping (Bool) -> Void) -> TMBCancelable {
+    @objc public func run(to toState: TMBViewportState, completion: @escaping (Bool) -> Void) -> TMBCancelable {
         let cancelable = _self.run(to: TMBViewportStateAdapter(toState), completion: completion)
         return TMBCancelable(cancelable: cancelable)
     }
@@ -932,7 +933,7 @@ extension TMBDefaultViewportTransition: TMBViewportTransition {
 ///
 /// Use ``Viewport/makeImmediateViewportTransition()`` to create instances of this class.
 @objc open class TMBImmediateViewportTransition: NSObject, TMBViewportTransition {
-    public func run(to toState: TMBViewportState, completion: @escaping (Bool) -> Void) -> TMBCancelable {
+    @objc public func run(to toState: TMBViewportState, completion: @escaping (Bool) -> Void) -> TMBCancelable {
         let cancelable = _self.run(to: TMBViewportStateAdapter(toState), completion: completion)
         return TMBCancelable(cancelable: cancelable)
     }
