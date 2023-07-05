@@ -2,11 +2,11 @@
 import Foundation
 import MapboxMaps
 
-@objc open class TMBRasterDemSource: TMBSource {
-    private var _self: RasterDemSource
+@objc open class TMBVectorSource: TMBSource {
+    private var _self: VectorSource
     
     @objc public init() {
-        self._self = RasterDemSource()
+        self._self = VectorSource()
         super.init(self._self)
     }
 
@@ -40,6 +40,16 @@ import MapboxMaps
         }
     }
 
+    /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+    @objc public var scheme : TMBScheme? {
+        get {
+            return _self.scheme?.objcValue()
+        }
+        set {
+            _self.scheme = newValue?.swiftValue()
+        }
+    }
+
     /// Minimum zoom level for which tiles are available, as in the TileJSON spec.
     @objc public var minzoom : NSNumber? {
         get {
@@ -60,16 +70,6 @@ import MapboxMaps
         }
     }
 
-    /// The minimum visual size to display tiles for this layer. Only configurable for raster layers.
-    @objc public var tileSize : NSNumber? {
-        get {
-            return _self.tileSize?.NSNumber
-        }
-        set {
-            _self.tileSize = newValue?.doubleValue
-        }
-    }
-
     /// Contains an attribution to be displayed when the map is shown to a user.
     @objc public var attribution : String? {
         get {
@@ -80,13 +80,13 @@ import MapboxMaps
         }
     }
 
-    /// The encoding used by this source. Mapbox Terrain RGB is used by default
-    @objc public var encoding : TMBEncoding? {
+    /// A property to use as a feature id (for feature state). Either a property name, or an object of the form `{<sourceLayer>: <propertyName>}`. If specified as a string for a vector tile source, the same property is used across all its source layers. If specified as an object only specified source layers will have id overriden, others will fallback to original feature id
+    @objc public var promoteId : TMBPromoteId? {
         get {
-            return _self.encoding?.objcValue()
+            return _self.promoteId?.objcValue()
         }
         set {
-            _self.encoding = newValue?.swiftValue()
+            _self.promoteId = newValue?.rawValue
         }
     }
 

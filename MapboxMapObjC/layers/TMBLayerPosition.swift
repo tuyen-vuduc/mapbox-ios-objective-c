@@ -8,15 +8,15 @@ import MapboxMaps
         self.arg = arg
     }
     
-    public static func at(index: Int) -> TMBLayerPosition {
+    @objc public static func at(index: Int) -> TMBLayerPosition {
         return TMBLayerPosition(.at, arg: index as AnyObject)
     }
     
-    public static func below(layerId: String) -> TMBLayerPosition {
+    @objc public static func below(layerId: String) -> TMBLayerPosition {
         return TMBLayerPosition(.below, arg:layerId as AnyObject)
     }
     
-    public static func above(layerId: String) -> TMBLayerPosition {
+    @objc public static func above(layerId: String) -> TMBLayerPosition {
         return TMBLayerPosition(.above, arg:layerId as AnyObject)
     }
 }

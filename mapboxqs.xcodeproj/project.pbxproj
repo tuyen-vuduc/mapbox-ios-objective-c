@@ -145,6 +145,10 @@
 		23C0218F2A548224002229B5 /* TMBLineLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0218E2A548224002229B5 /* TMBLineLayer.swift */; };
 		23C021912A548261002229B5 /* TMBLocationIndicatorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */; };
 		23C021932A548296002229B5 /* TMBRasterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021922A548296002229B5 /* TMBRasterLayer.swift */; };
+		23C021952A54E6AC002229B5 /* TMBImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021942A54E6AC002229B5 /* TMBImageSource.swift */; };
+		23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021962A54E722002229B5 /* TMBRasterSource.swift */; };
+		23C021992A54E77F002229B5 /* TMBVectorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021982A54E77F002229B5 /* TMBVectorSource.swift */; };
+		23C0219B2A54E94C002229B5 /* TMBGeoJSONSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */; };
 		23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */; };
 		23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */; };
 		23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */; };
@@ -394,6 +398,10 @@
 		23C0218E2A548224002229B5 /* TMBLineLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLineLayer.swift; sourceTree = "<group>"; };
 		23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLocationIndicatorLayer.swift; sourceTree = "<group>"; };
 		23C021922A548296002229B5 /* TMBRasterLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBRasterLayer.swift; sourceTree = "<group>"; };
+		23C021942A54E6AC002229B5 /* TMBImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBImageSource.swift; sourceTree = "<group>"; };
+		23C021962A54E722002229B5 /* TMBRasterSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBRasterSource.swift; sourceTree = "<group>"; };
+		23C021982A54E77F002229B5 /* TMBVectorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBVectorSource.swift; sourceTree = "<group>"; };
+		23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBGeoJSONSource.swift; sourceTree = "<group>"; };
 		23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotation.swift; sourceTree = "<group>"; };
 		23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fire_Hydrants.geojson; sourceTree = "<group>"; };
 		23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBClusterOptions.swift; sourceTree = "<group>"; };
@@ -466,10 +474,10 @@
 				23C0218A2A5481BB002229B5 /* TMBHeatmapLayer.swift */,
 				23C0218C2A5481ED002229B5 /* TMBHillshadeLayer.swift */,
 				23C0218E2A548224002229B5 /* TMBLineLayer.swift */,
+				23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */,
 				23C021922A548296002229B5 /* TMBRasterLayer.swift */,
 				2396BE912A5186210085913F /* TMBSkyLayer.swift */,
 				23C0217E2A54748D002229B5 /* TMBSymbolLayer.swift */,
-				23C021902A548261002229B5 /* TMBLocationIndicatorLayer.swift */,
 			);
 			path = layers;
 			sourceTree = "<group>";
@@ -707,6 +715,10 @@
 				231AF0C529BF8905002D6CFD /* TMBSourceType.swift */,
 				2396BE972A5242210085913F /* TMBSource.swift */,
 				23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */,
+				23C021942A54E6AC002229B5 /* TMBImageSource.swift */,
+				23C021962A54E722002229B5 /* TMBRasterSource.swift */,
+				23C021982A54E77F002229B5 /* TMBVectorSource.swift */,
+				23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */,
 			);
 			path = sources;
 			sourceTree = "<group>";
@@ -1051,6 +1063,7 @@
 				23BA6DD72826CA5A00D2D03A /* ResourceOptionsExtensions.swift in Sources */,
 				2396BE882A510F980085913F /* TMBCancelable.swift in Sources */,
 				23251E2729CF02690088065B /* TMBStyle.swift in Sources */,
+				23C021992A54E77F002229B5 /* TMBVectorSource.swift in Sources */,
 				23C0217F2A54748D002229B5 /* TMBSymbolLayer.swift in Sources */,
 				23BA6DD32826C9FB00D2D03A /* CameraOptionsExtensions.swift in Sources */,
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
@@ -1089,6 +1102,7 @@
 				23C021812A547EDB002229B5 /* TMBRasterDemSource.swift in Sources */,
 				23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */,
 				231AF0D629BFF042002D6CFD /* TMBOperator.swift in Sources */,
+				23C0219B2A54E94C002229B5 /* TMBGeoJSONSource.swift in Sources */,
 				2396BE7E2A4F33B90085913F /* TMBOrnamentsManager.swift in Sources */,
 				231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */,
 				23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */,
@@ -1096,6 +1110,8 @@
 				2396BE862A510A310085913F /* TMBViewport.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
 				2396BE8E2A517D540085913F /* TMBLayerType.swift in Sources */,
+				23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */,
+				23C021952A54E6AC002229B5 /* TMBImageSource.swift in Sources */,
 				23C021832A548076002229B5 /* TMBBackgroundLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

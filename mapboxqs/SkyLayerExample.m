@@ -130,22 +130,27 @@
 
 - (void) addTerrainLayer {
     NSString* sourceId = @"mapbox-dem";
+    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] init];
+    rasterDemSource.url = @"mapbox://mapbox.mapbox-terrain-dem-v1";
+    rasterDemSource.tileSize = @514;
+    rasterDemSource.maxzoom = @14.0;
+    
         // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
-    [mapView addRasterDemSource:sourceId
-                      configure:^(RasterDemSourceBuilder * _Nonnull builder) {
-        [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
-        [builder tileSize:514];
-        [builder maxzoom:14.0];
-    }
-                        onError:^(NSError * _Nonnull _) {
-            NSLog(@"Failed to add a RasterDEMSource to the map's style.");
+    [[[mapView mapboxMap] style] addSource:rasterDemSource id:sourceId completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
     
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
-    [mapView setTerrain:terrain onError:^(NSError * _Nonnull _) {
-        NSLog(@"Failed to add a terrain layer to the map's style.");
+    [[[mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+            
+            NSLog(@"Failed to add a terrain layer to the map's style.");
+        }
     }];
 }
 

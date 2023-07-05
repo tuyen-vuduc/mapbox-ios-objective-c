@@ -69,17 +69,14 @@ typedef void (^RenderingWillEndHandler)(void);
     [self.view addSubview:mapView];
 }
 
-- (SkyLayerBuilder *) createSkyLayerBuilder {
-    SkyLayerBuilder* builder = [SkyLayerBuilder withId:@"sky-layer"];
+- (TMBSkyLayer *) createSkyLayer {
+    TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    TMBValue* skyType = [TMBValue constant: TMBSkyType.atmosphere];
-    [builder skyType: skyType];
-    TMBValue* skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
-    [builder skyAtmosphereSun: skyAtmosphereSun];
-    TMBValue* skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
-    [builder skyAtmosphereSunIntensity: skyAtmosphereSunIntensity];
+    layer.skyType = [TMBValue constant: TMBSkyType.atmosphere];
+    layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
+    layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     
-    return builder;
+    return layer;
 }
 
 - (void) addModelAndTerrain {
@@ -91,34 +88,39 @@ typedef void (^RenderingWillEndHandler)(void);
         }
     }];
     
-    [self.mapView addCustomLayer: @"Custom"
-                       layerHost: layerHost
-                   layerPosition: TMBLayerPosition.below()
-              layerPositionParam: @"waterway-label"
-                         onError:^(NSError * _Nonnull _) {
-        // Do something here
+    [[[self.mapView mapboxMap] style]
+    addCustomLayerWithId:@"Custom"
+    layerHost:layerHost
+    layerPosition:[TMBLayerPosition belowLayerId:@"waterway-label"]
+    completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
     
     NSString* sourceId = @"mapbox-dem";
-    [self.mapView addRasterDemSource: sourceId
-                           configure:^(RasterDemSourceBuilder * _Nonnull builder) {
-        [builder url:@"mapbox://mapbox.mapbox-terrain-dem-v1"];
-        [builder tileSize:512.0];
-        [builder maxzoom:14.0];
-    }
-                             onError:nil];
+    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] init];
+    rasterDemSource.url = @"mapbox://mapbox.mapbox-terrain-dem-v1";
+    rasterDemSource.tileSize = @514;
+    rasterDemSource.maxzoom = @14.0;
+    
+        // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
+    [[[self.mapView mapboxMap] style] addSource:rasterDemSource id:sourceId completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
-
-    [self.mapView setTerrain:terrain onError:nil];
-
-    [self.mapView addLayerWithTarget: self
-                            selector: @selector(createSkyLayerBuilder)
-                       layerPosition: TMBLayerPositionUnowned
-                  layerPositionParam: nil
-                             onError: nil];
+    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+            
+            NSLog(@"Failed to add a terrain layer to the map's style.");
+        }
+    }];
 
     // Re-use terrain source for hillshade
     NSDictionary* properties = @{
@@ -127,11 +129,15 @@ typedef void (^RenderingWillEndHandler)(void);
         @"source": @"mapbox-dem",
         @"hillshade-illumination-anchor": @"map"
     };
-
-    [self.mapView addLayerWithProperties: properties
-                           layerPosition: TMBLayerPositionBelow
-                      layerPositionParam:@"water"
-                                 onError:nil];
+    
+    [[[self.mapView mapboxMap] style]
+     addLayerWithProperties: properties
+     layerPosition: [TMBLayerPosition belowLayerId: @"water"]
+     completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 /*

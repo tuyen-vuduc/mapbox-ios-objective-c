@@ -2,11 +2,11 @@
 import Foundation
 import MapboxMaps
 
-@objc open class TMBRasterDemSource: TMBSource {
-    private var _self: RasterDemSource
+@objc open class TMBRasterSource: TMBSource {
+    private var _self: RasterSource
     
     @objc public init() {
-        self._self = RasterDemSource()
+        self._self = RasterSource()
         super.init(self._self)
     }
 
@@ -70,6 +70,16 @@ import MapboxMaps
         }
     }
 
+    /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
+    @objc public var scheme : TMBScheme? {
+        get {
+            return _self.scheme?.objcValue()
+        }
+        set {
+            _self.scheme = newValue?.swiftValue()
+        }
+    }
+
     /// Contains an attribution to be displayed when the map is shown to a user.
     @objc public var attribution : String? {
         get {
@@ -77,16 +87,6 @@ import MapboxMaps
         }
         set {
             _self.attribution = newValue
-        }
-    }
-
-    /// The encoding used by this source. Mapbox Terrain RGB is used by default
-    @objc public var encoding : TMBEncoding? {
-        get {
-            return _self.encoding?.objcValue()
-        }
-        set {
-            _self.encoding = newValue?.swiftValue()
         }
     }
 

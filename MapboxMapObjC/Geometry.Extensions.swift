@@ -84,7 +84,7 @@ extension Turf.Geometry {
     }
 }
 
-extension MapboxMaps.Feature {
+extension Turf.Feature {
 
     /// Initialize a `Feature` with a `MapboxCommon.Feature` object.
     /// - Parameter feature: The `MapboxCommon.Feature` to use to create the `Feature`.

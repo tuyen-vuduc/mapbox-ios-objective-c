@@ -429,7 +429,7 @@ import MapboxMaps
     /// - Throws:
     ///     An error describing why the operation was unsuccessful.
     @objc public func addLayer(
-        with properties: [String: Any],
+        withProperties properties: [String: Any],
         layerPosition: TMBLayerPosition?,
         completion: ((Error?)->Void)? = nil
     ) {
