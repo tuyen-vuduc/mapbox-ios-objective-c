@@ -1,7 +1,11 @@
 import Foundation
 import MapboxMaps
 
-extension MapboxMaps.ResourceOptions {
+extension MapboxMaps.ResourceOptions: ObjcConvertible {    
+    public func objcValue() -> MapboxCoreMaps.ResourceOptions {
+        return MapboxCoreMaps.ResourceOptions(self)
+    }
+    
     public init(_ objcValue: MapboxCoreMaps.ResourceOptions) {
         let baseURL      = objcValue.baseURL.flatMap { URL(fileURLWithPath: $0) }
         let dataPathURL = objcValue.dataPath.flatMap { URL(fileURLWithPath: $0) }
@@ -13,10 +17,6 @@ extension MapboxMaps.ResourceOptions {
                   assetPathURL: assetPathURL,
                   tileStore: objcValue.tileStore,
                   tileStoreUsageMode: objcValue.tileStoreUsageMode)
-    }
-    
-    public func objcValue() -> MapboxCoreMaps.ResourceOptions {
-        return MapboxCoreMaps.ResourceOptions(self)
     }
 }
 

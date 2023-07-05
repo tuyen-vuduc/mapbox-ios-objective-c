@@ -79,8 +79,8 @@ import MapboxMaps
     }
 }
 
-extension PromoteId {
-    func objcValue() -> TMBPromoteId {
+extension PromoteId: ObjcConvertible {
+    public func objcValue() -> TMBPromoteId {
         return TMBPromoteId(self)
     }
 }
@@ -150,8 +150,8 @@ extension PromoteId {
     }
 }
 
-extension GeoJSONSourceData {
-    func objcValue() -> TMBGeoJSONSourceData {
+extension GeoJSONSourceData: ObjcConvertible {
+    public func objcValue() -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(self)
     }
 }

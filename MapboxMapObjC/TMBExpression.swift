@@ -646,8 +646,8 @@ let tmbOperatorMapping: [Expression.Operator:TMBOperator] = [
     .cubicBezier: .cubicBezier,
 ]
 
-extension Expression {
-    func objcValue() -> TMBExpression {
+extension Expression: ObjcConvertible {
+    public func objcValue() -> TMBExpression {
         return TMBExpression(self)
     }
 }

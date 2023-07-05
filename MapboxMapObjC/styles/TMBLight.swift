@@ -88,8 +88,8 @@ import MapboxMaps
     }
 }
 
-extension Light {
-    func objcValue() -> TMBLight {
+extension Light: ObjcConvertible {
+    public func objcValue() -> TMBLight {
         return TMBLight(self)
     }
 }

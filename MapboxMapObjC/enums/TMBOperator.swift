@@ -1,6 +1,6 @@
 import MapboxMaps
-extension Expression.Operator {
-    func objcValue() -> TMBOperator {
+extension Expression.Operator: ObjcConvertible {
+    public func objcValue() -> TMBOperator {
         TMBOperator(value: self)
     }
 }

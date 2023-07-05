@@ -34,8 +34,8 @@ open class TMBTerrain : NSObject {
     }
 }
 
-extension Terrain {
-    func objcValue() -> TMBTerrain {
+extension Terrain: ObjcConvertible {
+    public func objcValue() -> TMBTerrain {
         return TMBTerrain(self)
     }
 }

@@ -597,8 +597,8 @@ extension TMBPuckBearingSource {
         }
     }
 }
-extension PuckBearingSource {
-    func objcValue() -> TMBPuckBearingSource {
+extension PuckBearingSource: ObjcConvertible {
+    public func objcValue() -> TMBPuckBearingSource {
         switch(self) {
         case .heading: return .heading
         case .course: return .course

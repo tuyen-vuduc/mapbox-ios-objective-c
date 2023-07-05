@@ -501,8 +501,8 @@ extension TMBViewportStatusChangeReason {
         return ViewportStatusChangeReason.userInteraction
     }
 }
-extension ViewportStatusChangeReason {
-    func objcValue() -> TMBViewportStatusChangeReason {
+extension ViewportStatusChangeReason: ObjcConvertible {
+    public func objcValue() -> TMBViewportStatusChangeReason {
         if self == ViewportStatusChangeReason.idleRequested {
             return TMBViewportStatusChangeReason.idleRequested
         }
@@ -671,8 +671,8 @@ extension TMBFollowPuckViewportStateBearing {
         return .course
     }
 }
-extension FollowPuckViewportStateBearing {
-    func objcValue() -> TMBFollowPuckViewportStateBearing {
+extension FollowPuckViewportStateBearing: ObjcConvertible {
+    public func objcValue() -> TMBFollowPuckViewportStateBearing {
         switch(self) {
         case .constant(let bearing):
             return TMBFollowPuckViewportStateBearing.constant(bearing)

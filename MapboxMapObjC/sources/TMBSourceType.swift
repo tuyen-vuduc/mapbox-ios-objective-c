@@ -1,6 +1,6 @@
 import MapboxMaps
-extension SourceType {
-    func objcValue() -> TMBSourceType {
+extension SourceType: ObjcConvertible {
+    public func objcValue() -> TMBSourceType {
         TMBSourceType(self)
     }
 }

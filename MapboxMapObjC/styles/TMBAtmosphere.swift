@@ -141,8 +141,8 @@ import MapboxMaps
     }
 }
 
-extension Atmosphere {
-    func objcValue() -> TMBAtmosphere {
+extension Atmosphere: ObjcConvertible {
+    public func objcValue() -> TMBAtmosphere {
         return TMBAtmosphere(self)
     }
 }

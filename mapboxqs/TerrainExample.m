@@ -91,13 +91,17 @@
         if (error) {
             NSLog(@"%@", error);
         }
-        }];
+    }];
     
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
     
-    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:nil];
+    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nonnull error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
     
     [[[self.mapView mapboxMap] style]
      addLayer:[self createSkyLayer]

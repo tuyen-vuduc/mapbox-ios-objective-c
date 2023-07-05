@@ -38,8 +38,8 @@ import MapboxMaps
     }
 }
 
-extension StyleTransition {
-    func objcValue() -> TMBStyleTransition {
+extension StyleTransition: ObjcConvertible {
+    public func objcValue() -> TMBStyleTransition {
         return TMBStyleTransition(self)
     }
 }

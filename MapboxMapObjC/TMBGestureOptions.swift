@@ -35,8 +35,8 @@ extension TMBPanMode {
     }
 }
 
-extension PanMode {
-    func objcValue() -> TMBPanMode {
+extension PanMode: ObjcConvertible {
+    public func objcValue() -> TMBPanMode {
         switch(self) {
         case .horizontal:
             return .horizontal
@@ -312,8 +312,8 @@ public protocol TMBGestureManagerDelegate {
     }
 }
 
-extension MapboxMaps.GestureType {
-    func objcValue() -> TMBGestureType {
+extension MapboxMaps.GestureType: ObjcConvertible {
+    public func objcValue() -> TMBGestureType {
         switch(self) {
         case .doubleTapToZoomIn:
             return .doubleTapToZoomIn

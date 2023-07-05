@@ -54,6 +54,10 @@ extension TMBValue {
         
         switch(value) {
         case .constant(let value):
+            if let value = value as? (any ObjcConvertible) {
+                return TMBValue(constant: value.objcValue() as! NSObject)
+            }
+            
             return TMBValue(constant: value as! NSObject)
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))

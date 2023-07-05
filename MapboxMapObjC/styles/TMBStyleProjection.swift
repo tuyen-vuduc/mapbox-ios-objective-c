@@ -25,8 +25,8 @@ import MapboxMaps
     }
 }
 
-extension StyleProjection {
-    func objcValue() -> TMBStyleProjection {
+extension StyleProjection: ObjcConvertible {
+    public func objcValue() -> TMBStyleProjection {
         return TMBStyleProjection(self)
     }
 }

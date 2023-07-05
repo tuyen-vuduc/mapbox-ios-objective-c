@@ -3,8 +3,8 @@ import Foundation
 import MapboxMaps
 
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
-extension Scheme {
-    func objcValue() -> TMBScheme {
+extension Scheme: ObjcConvertible {
+    public func objcValue() -> TMBScheme {
         TMBScheme(value: self)
     }
 }
@@ -36,8 +36,8 @@ open class TMBScheme :NSObject, NamedString {
 }
 
 /// The encoding used by this source. Mapbox Terrain RGB is used by default
-extension Encoding {
-    func objcValue() -> TMBEncoding {
+extension Encoding: ObjcConvertible {
+    public func objcValue() -> TMBEncoding {
         TMBEncoding(value: self)
     }
 }

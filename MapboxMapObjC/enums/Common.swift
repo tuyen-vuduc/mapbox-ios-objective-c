@@ -1,8 +1,8 @@
 // This file is generated.
 import MapboxMaps
 
-extension Visibility {
-    func objcValue() -> TMBVisibility {
+extension Visibility: ObjcConvertible {
+    public func objcValue() -> TMBVisibility {
         TMBVisibility(value: self)
     }
 }
@@ -37,8 +37,8 @@ open class TMBVisibility :NSObject, NamedString {
 // MARK: LINE_CAP
 
 /// The display of line endings.
-extension LineCap {
-    func objcValue() -> TMBLineCap {
+extension LineCap: ObjcConvertible {
+    public func objcValue() -> TMBLineCap {
         TMBLineCap(value: self)
     }
 }
@@ -78,8 +78,8 @@ open class TMBLineCap :NSObject, NamedString {
 // MARK: LINE_JOIN
 
 /// The display of lines when joining.
-extension LineJoin {
-    func objcValue() -> TMBLineJoin {
+extension LineJoin: ObjcConvertible {
+    public func objcValue() -> TMBLineJoin {
         TMBLineJoin(value: self)
     }
 }
@@ -119,8 +119,8 @@ open class TMBLineJoin :NSObject, NamedString {
 // MARK: ICON_ANCHOR
 
 /// Part of the icon placed closest to the anchor.
-extension IconAnchor {
-    func objcValue() -> TMBIconAnchor {
+extension IconAnchor: ObjcConvertible {
+    public func objcValue() -> TMBIconAnchor {
         TMBIconAnchor(value: self)
     }
 }
@@ -184,8 +184,8 @@ open class TMBIconAnchor :NSObject, NamedString {
 // MARK: ICON_PITCH_ALIGNMENT
 
 /// Orientation of icon when map is pitched.
-extension IconPitchAlignment {
-    func objcValue() -> TMBIconPitchAlignment {
+extension IconPitchAlignment: ObjcConvertible {
+    public func objcValue() -> TMBIconPitchAlignment {
         TMBIconPitchAlignment(value: self)
     }
 }
@@ -225,8 +225,8 @@ open class TMBIconPitchAlignment :NSObject, NamedString {
 // MARK: ICON_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of icons.
-extension IconRotationAlignment {
-    func objcValue() -> TMBIconRotationAlignment {
+extension IconRotationAlignment: ObjcConvertible {
+    public func objcValue() -> TMBIconRotationAlignment {
         TMBIconRotationAlignment(value: self)
     }
 }
@@ -266,8 +266,8 @@ open class TMBIconRotationAlignment :NSObject, NamedString {
 // MARK: ICON_TEXT_FIT
 
 /// Scales the icon to fit around the associated text.
-extension IconTextFit {
-    func objcValue() -> TMBIconTextFit {
+extension IconTextFit: ObjcConvertible {
+    public func objcValue() -> TMBIconTextFit {
         TMBIconTextFit(value: self)
     }
 }
@@ -311,8 +311,8 @@ open class TMBIconTextFit :NSObject, NamedString {
 // MARK: SYMBOL_PLACEMENT
 
 /// Label placement relative to its geometry.
-extension SymbolPlacement {
-    func objcValue() -> TMBSymbolPlacement {
+extension SymbolPlacement: ObjcConvertible {
+    public func objcValue() -> TMBSymbolPlacement {
         TMBSymbolPlacement(value: self)
     }
 }
@@ -352,8 +352,8 @@ open class TMBSymbolPlacement :NSObject, NamedString {
 // MARK: SYMBOL_Z_ORDER
 
 /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
-extension SymbolZOrder {
-    func objcValue() -> TMBSymbolZOrder {
+extension SymbolZOrder: ObjcConvertible {
+    public func objcValue() -> TMBSymbolZOrder {
         TMBSymbolZOrder(value: self)
     }
 }
@@ -393,8 +393,8 @@ open class TMBSymbolZOrder :NSObject, NamedString {
 // MARK: TEXT_ANCHOR
 
 /// Part of the text placed closest to the anchor.
-extension TextAnchor {
-    func objcValue() -> TMBTextAnchor {
+extension TextAnchor: ObjcConvertible {
+    public func objcValue() -> TMBTextAnchor {
         TMBTextAnchor(value: self)
     }
 }
@@ -458,8 +458,8 @@ open class TMBTextAnchor :NSObject, NamedString {
 // MARK: TEXT_JUSTIFY
 
 /// Text justification options.
-extension TextJustify {
-    func objcValue() -> TMBTextJustify {
+extension TextJustify: ObjcConvertible {
+    public func objcValue() -> TMBTextJustify {
         TMBTextJustify(value: self)
     }
 }
@@ -503,8 +503,8 @@ open class TMBTextJustify :NSObject, NamedString {
 // MARK: TEXT_PITCH_ALIGNMENT
 
 /// Orientation of text when map is pitched.
-extension TextPitchAlignment {
-    func objcValue() -> TMBTextPitchAlignment {
+extension TextPitchAlignment: ObjcConvertible {
+    public func objcValue() -> TMBTextPitchAlignment {
         TMBTextPitchAlignment(value: self)
     }
 }
@@ -544,8 +544,8 @@ open class TMBTextPitchAlignment :NSObject, NamedString {
 // MARK: TEXT_ROTATION_ALIGNMENT
 
 /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
-extension TextRotationAlignment {
-    func objcValue() -> TMBTextRotationAlignment {
+extension TextRotationAlignment: ObjcConvertible {
+    public func objcValue() -> TMBTextRotationAlignment {
         TMBTextRotationAlignment(value: self)
     }
 }
@@ -585,8 +585,8 @@ open class TMBTextRotationAlignment :NSObject, NamedString {
 // MARK: TEXT_TRANSFORM
 
 /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
-extension TextTransform {
-    func objcValue() -> TMBTextTransform {
+extension TextTransform: ObjcConvertible {
+    public func objcValue() -> TMBTextTransform {
         TMBTextTransform(value: self)
     }
 }
@@ -626,8 +626,8 @@ open class TMBTextTransform :NSObject, NamedString {
 // MARK: FILL_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-translate`.
-extension FillTranslateAnchor {
-    func objcValue() -> TMBFillTranslateAnchor {
+extension FillTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBFillTranslateAnchor {
         TMBFillTranslateAnchor(value: self)
     }
 }
@@ -663,8 +663,8 @@ open class TMBFillTranslateAnchor :NSObject, NamedString {
 // MARK: LINE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `line-translate`.
-extension LineTranslateAnchor {
-    func objcValue() -> TMBLineTranslateAnchor {
+extension LineTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBLineTranslateAnchor {
         TMBLineTranslateAnchor(value: self)
     }
 }
@@ -700,8 +700,8 @@ open class TMBLineTranslateAnchor :NSObject, NamedString {
 // MARK: ICON_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `icon-translate`.
-extension IconTranslateAnchor {
-    func objcValue() -> TMBIconTranslateAnchor {
+extension IconTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBIconTranslateAnchor {
         TMBIconTranslateAnchor(value: self)
     }
 }
@@ -737,8 +737,8 @@ open class TMBIconTranslateAnchor :NSObject, NamedString {
 // MARK: TEXT_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `text-translate`.
-extension TextTranslateAnchor {
-    func objcValue() -> TMBTextTranslateAnchor {
+extension TextTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBTextTranslateAnchor {
         TMBTextTranslateAnchor(value: self)
     }
 }
@@ -774,8 +774,8 @@ open class TMBTextTranslateAnchor :NSObject, NamedString {
 // MARK: CIRCLE_PITCH_ALIGNMENT
 
 /// Orientation of circle when map is pitched.
-extension CirclePitchAlignment {
-    func objcValue() -> TMBCirclePitchAlignment {
+extension CirclePitchAlignment: ObjcConvertible {
+    public func objcValue() -> TMBCirclePitchAlignment {
         TMBCirclePitchAlignment(value: self)
     }
 }
@@ -811,8 +811,8 @@ open class TMBCirclePitchAlignment :NSObject, NamedString {
 // MARK: CIRCLE_PITCH_SCALE
 
 /// Controls the scaling behavior of the circle when the map is pitched.
-extension CirclePitchScale {
-    func objcValue() -> TMBCirclePitchScale {
+extension CirclePitchScale: ObjcConvertible {
+    public func objcValue() -> TMBCirclePitchScale {
         TMBCirclePitchScale(value: self)
     }
 }
@@ -848,8 +848,8 @@ open class TMBCirclePitchScale :NSObject, NamedString {
 // MARK: CIRCLE_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `circle-translate`.
-extension CircleTranslateAnchor {
-    func objcValue() -> TMBCircleTranslateAnchor {
+extension CircleTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBCircleTranslateAnchor {
         TMBCircleTranslateAnchor(value: self)
     }
 }
@@ -885,8 +885,8 @@ open class TMBCircleTranslateAnchor :NSObject, NamedString {
 // MARK: FILL_EXTRUSION_TRANSLATE_ANCHOR
 
 /// Controls the frame of reference for `fill-extrusion-translate`.
-extension FillExtrusionTranslateAnchor {
-    func objcValue() -> TMBFillExtrusionTranslateAnchor {
+extension FillExtrusionTranslateAnchor: ObjcConvertible {
+    public func objcValue() -> TMBFillExtrusionTranslateAnchor {
         TMBFillExtrusionTranslateAnchor(value: self)
     }
 }
@@ -922,8 +922,8 @@ open class TMBFillExtrusionTranslateAnchor :NSObject, NamedString {
 // MARK: RASTER_RESAMPLING
 
 /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-extension RasterResampling {
-    func objcValue() -> TMBRasterResampling {
+extension RasterResampling: ObjcConvertible {
+    public func objcValue() -> TMBRasterResampling {
         TMBRasterResampling(value: self)
     }
 }
@@ -959,8 +959,8 @@ open class TMBRasterResampling :NSObject, NamedString {
 // MARK: HILLSHADE_ILLUMINATION_ANCHOR
 
 /// Direction of light source when map is rotated.
-extension HillshadeIlluminationAnchor {
-    func objcValue() -> TMBHillshadeIlluminationAnchor {
+extension HillshadeIlluminationAnchor: ObjcConvertible {
+    public func objcValue() -> TMBHillshadeIlluminationAnchor {
         TMBHillshadeIlluminationAnchor(value: self)
     }
 }
@@ -996,8 +996,8 @@ open class TMBHillshadeIlluminationAnchor :NSObject, NamedString {
 // MARK: SKY_TYPE
 
 /// The type of the sky
-extension SkyType {
-    func objcValue() -> TMBSkyType {
+extension SkyType: ObjcConvertible {
+    public func objcValue() -> TMBSkyType {
         TMBSkyType(value: self)
     }
 }
@@ -1033,8 +1033,8 @@ open class TMBSkyType :NSObject, NamedString {
 // MARK: ANCHOR
 
 /// Whether extruded geometries are lit relative to the map or viewport.
-extension Anchor {
-    func objcValue() -> TMBAnchor {
+extension Anchor: ObjcConvertible {
+    public func objcValue() -> TMBAnchor {
         TMBAnchor(value: self)
     }
 }
@@ -1070,8 +1070,8 @@ open class TMBAnchor :NSObject, NamedString {
 // MARK: NAME
 
 /// The name of the projection to be used for rendering the map.
-extension StyleProjectionName {
-    func objcValue() -> TMBStyleProjectionName {
+extension StyleProjectionName: ObjcConvertible {
+    public func objcValue() -> TMBStyleProjectionName {
         TMBStyleProjectionName(value: self)
     }
 }
@@ -1108,8 +1108,8 @@ open class TMBStyleProjectionName :NSObject, NamedString {
 // MARK: TEXT_WRITING_MODE
 
 /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
-extension TextWritingMode {
-    func objcValue() -> TMBTextWritingMode {
+extension TextWritingMode: ObjcConvertible {
+    public func objcValue() -> TMBTextWritingMode {
         TMBTextWritingMode(value: self)
     }
 }

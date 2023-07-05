@@ -211,8 +211,8 @@ extension TMBOrnamentVisibility {
     }
 }
 
-extension OrnamentVisibility {
-    func objcValue() -> TMBOrnamentVisibility {
+extension OrnamentVisibility: ObjcConvertible {
+    public func objcValue() -> TMBOrnamentVisibility {
         switch (self) {
         case .adaptive:
             return .adaptive
@@ -260,8 +260,8 @@ extension TMBOrnamentPosition {
     }
 }
 
-extension OrnamentPosition {
-    func objcValue() -> TMBOrnamentPosition {
+extension OrnamentPosition: ObjcConvertible {
+    public func objcValue() -> TMBOrnamentPosition {
         switch(self) {
         case .topLeft:
             return .topLeft

@@ -186,8 +186,8 @@ extension TMBViewAnnotationManagerError {
     }
 }
 
-extension ViewAnnotationManagerError {
-    func objcValue() -> TMBViewAnnotationManagerError {
+extension ViewAnnotationManagerError: ObjcConvertible {
+    public func objcValue() -> TMBViewAnnotationManagerError {
         switch(self) {
         case .viewIsAlreadyAdded:
            return .viewIsAlreadyAdded
