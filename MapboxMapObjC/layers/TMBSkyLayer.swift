@@ -38,10 +38,10 @@ import MapboxMaps
     /// A color applied to the atmosphere sun halo. The alpha channel describes how strongly the sun halo is represented in an atmosphere sky layer.
     @objc public var skyAtmosphereHaloColor: TMBValue? {
         get {
-            return TMBValue.fromSwiftValue(_self.visibility)
+            return TMBValue.fromSwiftValue(_self.skyAtmosphereHaloColor)
         }
         set {
-            _self.visibility = newValue?.styleColor()
+            _self.skyAtmosphereHaloColor = newValue?.styleColor()
         }
     }
 

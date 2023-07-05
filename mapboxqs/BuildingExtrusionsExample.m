@@ -21,8 +21,7 @@
 @property UIButton* lightColorButton;
 @property MapView* mapView;
 
-@property UIColor* lightColor;
-@property NSArray* lightPosition;
+@property TMBLight* light;
 
 @end
 
@@ -76,6 +75,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.light = [[TMBLight alloc] init];
+    
     firstPosition = @[@1.5, @90, @80];
     secondPosition = @[@1.15, @210, @30];
     
@@ -128,16 +129,16 @@
     });
 }
 
-- (FillExtrusionLayerBuilder*) create3dBuildingsFillExtrusionLayerBuilder {
-    FillExtrusionLayerBuilder* builder = [FillExtrusionLayerBuilder withId:@"3d-buildings"];
+- (TMBFillExtrusionLayer*) create3dBuildingsFillExtrusionLayer {
+    TMBFillExtrusionLayer* layer = [[TMBFillExtrusionLayer alloc] initWithId:@"3d-buildings"];
     
-    [builder source:@"composite"];
-    [builder minZoom: @15];
-    [builder sourceLayer:@"building"];
-    [builder fillExtrusionColor:[TMBValue constant:[UIColor lightGrayColor]]];
-    [builder fillExtrusionOpacity:[TMBValue constant:@0.6]];
-    [builder fillExtrusionAmbientOcclusionIntensity: [TMBValue constant:@0.3]];
-    [builder fillExtrusionAmbientOcclusionRadius: [TMBValue constant:@3.0]];
+    layer.source = @"composite";
+    layer.minZoom = @15;
+    layer.sourceLayer = @"building";
+    layer.fillExtrusionColor = [TMBValue constant:[UIColor lightGrayColor]];
+    layer.fillExtrusionOpacity = [TMBValue constant:@0.6];
+    layer.fillExtrusionAmbientOcclusionIntensity = [TMBValue constant:@0.3];
+    layer.fillExtrusionAmbientOcclusionRadius = [TMBValue constant:@3.0];
     
     TMBExpression* filterExpression = [TMBExpression createWithOperator:TMBOperator.eq
                                                               arguments:@[
@@ -146,7 +147,7 @@
         @"true"
     ]];
     
-    [builder filter:filterExpression];
+    layer.filter = filterExpression;
     
     TMBExpression* fillExtrusionHeightExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
                                                               arguments:@[
@@ -158,7 +159,7 @@
         [TMBExpression createWithOperator:TMBOperator.get
                                 arguments: @[ @"height" ]]
     ]];
-    [builder fillExtrusionHeight:[TMBValue expression:fillExtrusionHeightExpression]];
+    layer.fillExtrusionHeight = [TMBValue expression:fillExtrusionHeightExpression];
     
     TMBExpression* fillExtrusionBaseExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
                                                               arguments:@[
@@ -170,54 +171,55 @@
         [TMBExpression createWithOperator:TMBOperator.get
                                 arguments: @[ @"min_height" ]]
     ]];
-    [builder fillExtrusionBase:[TMBValue expression:fillExtrusionBaseExpression]];
+    layer.fillExtrusionBase = [TMBValue expression:fillExtrusionBaseExpression];
     
-    return builder;
+    return layer;
 }
 
 // See https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/ for equivalent gl-js example
 - (void) addBuildingExtrusions {
-    [self.mapView addLayerWithBuilder:^id _Nonnull{
-        return [self create3dBuildingsFillExtrusionLayerBuilder];
-    }
-                        layerPosition:TMBLayerPositionUnowned
-                   layerPositionParam:nil
-                              onError:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+    [[[self.mapView mapboxMap] style]
+     addLayer:[self create3dBuildingsFillExtrusionLayer]
+     layerPosition:nil
+     completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
 }
 
 // MARK: - Actions
 
 - (void) lightColorButtonTapped: (UIButton*) sender {
-    if (self.lightColor == [UIColor redColor]) {
-        self.lightColor = [UIColor blueColor];
+    if ([self.light.color isEqual:[UIColor redColor]]) {
+        self.light.color = [UIColor blueColor];
         sender.tintColor = [UIColor blueColor];
     } else {
-        self.lightColor = [UIColor redColor];
+        self.light.color = [UIColor redColor];
         sender.tintColor = [UIColor redColor];
     }
     
-    [self.mapView lightColor:self.lightColor
-                     onError:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+    [[[self.mapView mapboxMap] style] setLight:self.light completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
 }
 
 - (void) lightPositionButtonTapped: (UIButton*) sender {
-    if (self.lightPosition == firstPosition) {
-        self.lightPosition = secondPosition;
+    if ([self.light.position isEqual:firstPosition]) {
+        self.light.position = secondPosition;
         sender.imageView.transform = CGAffineTransformIdentity;
     } else {
-        self.lightPosition = firstPosition;
+        self.light.position = firstPosition;
         sender.imageView.transform = CGAffineTransformMakeRotation(2.0*M_PI/3.0);
     }
     
-    [self.mapView lightPosition:self.lightPosition
-                        onError:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+    [[[self.mapView mapboxMap] style] setLight:self.light completion:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }];
 }
-
 
 @end
