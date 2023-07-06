@@ -15,8 +15,12 @@ import MapboxMaps
         }
     }
     
-    @objc public init(id: String = UUID().uuidString) {
-        super.init(LineLayer(id: id))
+    @objc public convenience init(id: String = UUID().uuidString) {
+        self.init(LineLayer(id: id))
+    }
+    
+    public init(_ rawValue: LineLayer) {
+        super.init(rawValue)
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }

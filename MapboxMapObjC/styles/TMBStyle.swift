@@ -184,10 +184,38 @@ import MapboxMaps
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            // TODO Complete after all layers are converted
-            var layer = try _self.layer(withId: id)
-            let result = TMBLayer(layer)
+            let layer = try _self.layer(withId: id)
+            var xlayer: TMBLayer?
             
+            switch(layer) {
+            case let value as BackgroundLayer:
+                xlayer = TMBBackgroundLayer(value)
+            case let value as CircleLayer:
+                xlayer = TMBCircleLayer(value)
+            case let value as FillExtrusionLayer:
+                xlayer = TMBFillExtrusionLayer(value)
+            case let value as FillLayer:
+                xlayer = TMBFillLayer(value)
+            case let value as HeatmapLayer:
+                xlayer = TMBHeatmapLayer(value)
+            case let value as HillshadeLayer:
+                xlayer = TMBHillshadeLayer(value)
+            case let value as LineLayer:
+                xlayer = TMBLineLayer(value)
+            case let value as LocationIndicatorLayer:
+                xlayer = TMBLocationIndicatorLayer(value)
+            case let value as RasterLayer:
+                xlayer = TMBRasterLayer(value)
+            case let value as SkyLayer:
+                xlayer = TMBSkyLayer(value)
+            case let value as SymbolLayer:
+                xlayer = TMBSymbolLayer(value)
+            default:
+                completion?(nil)
+                return
+            }
+            
+            update(xlayer!)
             completion?(nil)
         }
         catch {

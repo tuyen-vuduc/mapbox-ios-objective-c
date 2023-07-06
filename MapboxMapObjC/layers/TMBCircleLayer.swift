@@ -15,8 +15,12 @@ import MapboxMaps
         }
     }
     
-    @objc public init(id: String = UUID().uuidString) {
-        super.init(CircleLayer(id: id))
+    @objc public convenience init(id: String = UUID().uuidString) {
+        self.init(CircleLayer(id: id))
+    }
+    
+    public init(_ rawValue: CircleLayer) {
+        super.init(rawValue)
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }

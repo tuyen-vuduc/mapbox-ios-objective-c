@@ -15,8 +15,12 @@ import MapboxMaps
         }
     }
     
-    @objc public init(id: String = UUID().uuidString) {
-        super.init(HeatmapLayer(id: id))
+    @objc public convenience init(id: String = UUID().uuidString) {
+        self.init(HeatmapLayer(id: id))
+    }
+    
+    public init(_ rawValue: HeatmapLayer) {
+        super.init(rawValue)
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }

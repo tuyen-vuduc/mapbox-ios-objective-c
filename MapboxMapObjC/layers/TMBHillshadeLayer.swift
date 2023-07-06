@@ -15,8 +15,12 @@ import MapboxMaps
         }
     }
     
-    @objc public init(id: String = UUID().uuidString) {
-        super.init(HillshadeLayer(id: id))
+    @objc public convenience init(id: String = UUID().uuidString) {
+        self.init(HillshadeLayer(id: id))
+    }
+    
+    public init(_ rawValue: HillshadeLayer) {
+        super.init(rawValue)
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }

@@ -15,8 +15,12 @@ import MapboxMaps
         }
     }
     
-    @objc public init(id: String = UUID().uuidString) {
-        super.init(FillExtrusionLayer(id: id))
+    @objc public convenience init(id: String = UUID().uuidString) {
+        self.init(FillExtrusionLayer(id: id))
+    }
+    
+    public init(_ rawValue: FillExtrusionLayer) {
+        super.init(rawValue)
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
