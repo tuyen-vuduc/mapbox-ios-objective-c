@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-heatmap)
 @objc open class TMBHeatmapLayer: TMBLayer {
-    private var _self: HeatmapLayer
+    private var _self: HeatmapLayer {
+        get {
+            return rawValue as! HeatmapLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = HeatmapLayer(id: id)
-        super.init(self._self)
+        super.init(HeatmapLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

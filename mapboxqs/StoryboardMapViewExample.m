@@ -44,9 +44,10 @@
                                                                     zoom:@10
                                                                  bearing:nil
                                                                 pitch:nil];
+    MBMResourceOptions* resourceOptions = [[MBMResourceOptions alloc] initWithAccessToken:defaultAccessToken baseURL:nil dataPath:nil assetPath:nil tileStore:nil];
     
     return [MapInitOptionsFactory
-            createWithResourceOptions:[[MBMResourceOptions alloc] initWithAccessToken:defaultAccessToken baseURL:nil dataPath:nil assetPath:nil tileStore:nil]
+            createWithResourceOptions:resourceOptions
             mapOptions:nil
             cameraOptions:cameraOptions
             styleURI:BuiltInStyles.light

@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-sky)
 @objc open class TMBSkyLayer: TMBLayer {
-    private var _self: SkyLayer
+    private var _self: SkyLayer {
+        get {
+            return rawValue as! SkyLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = SkyLayer(id: id)
-        super.init(self._self)
+        super.init(SkyLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility: TMBValue? {
         get {

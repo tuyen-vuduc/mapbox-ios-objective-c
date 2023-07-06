@@ -3,11 +3,17 @@ import Foundation
 import MapboxMaps
 
 @objc open class TMBImageSource: TMBSource {
-    private var _self: ImageSource
+    private var _self: ImageSource {
+        get {
+            return rawValue as! ImageSource
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init() {
-        self._self = ImageSource()
-        super.init(self._self)
+        super.init(ImageSource())
     }
 
     /// URL that points to an image.

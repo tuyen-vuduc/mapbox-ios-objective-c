@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-location-indicator)
 @objc open class TMBLocationIndicatorLayer: TMBLayer {
-    private var _self: LocationIndicatorLayer
+    private var _self: LocationIndicatorLayer {
+        get {
+            return rawValue as! LocationIndicatorLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = LocationIndicatorLayer(id: id)
-        super.init(self._self)
+        super.init(LocationIndicatorLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

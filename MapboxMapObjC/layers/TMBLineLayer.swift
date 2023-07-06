@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-line)
 @objc open class TMBLineLayer: TMBLayer {
-    private var _self: LineLayer
+    private var _self: LineLayer {
+        get {
+            return rawValue as! LineLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = LineLayer(id: id)
-        super.init(self._self)
+        super.init(LineLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-hillshade)
 @objc open class TMBHillshadeLayer: TMBLayer {
-    private var _self: HillshadeLayer
+    private var _self: HillshadeLayer {
+        get {
+            return rawValue as! HillshadeLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = HillshadeLayer(id: id)
-        super.init(self._self)
+        super.init(HillshadeLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

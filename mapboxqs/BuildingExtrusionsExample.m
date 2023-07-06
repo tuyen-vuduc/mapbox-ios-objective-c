@@ -149,28 +149,34 @@
     
     layer.filter = filterExpression;
     
-    TMBExpression* fillExtrusionHeightExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
-                                                              arguments:@[
-        [TMBExpression createWithOperator:TMBOperator.linear],
-        [TMBExpression createWithOperator:TMBOperator.zoom],
-        @15,
-        @0,
-        @15.05,
-        [TMBExpression createWithOperator:TMBOperator.get
-                                arguments: @[ @"height" ]]
-    ]];
+    TMBExpression* fillExtrusionHeightExpression = [TMBExpression
+                                                    createWithOperator:TMBOperator.interpolate
+                                                    arguments:@[
+                                                        [TMBExpression createWithOperator:TMBOperator.linear],
+                                                        [TMBExpression createWithOperator:TMBOperator.zoom],
+                                                        @15,
+                                                        @0,
+                                                        @15.05,
+                                                        [TMBExpression
+                                                         createWithOperator:TMBOperator.get
+                                                         arguments: @[ @"height" ]]
+                                                    ]
+    ];
     layer.fillExtrusionHeight = [TMBValue expression:fillExtrusionHeightExpression];
     
-    TMBExpression* fillExtrusionBaseExpression = [TMBExpression createWithOperator:TMBOperator.interpolate
-                                                              arguments:@[
-        [TMBExpression createWithOperator:TMBOperator.linear],
-        [TMBExpression createWithOperator:TMBOperator.zoom],
-        @15,
-        @0,
-        @15.05,
-        [TMBExpression createWithOperator:TMBOperator.get
-                                arguments: @[ @"min_height" ]]
-    ]];
+    TMBExpression* fillExtrusionBaseExpression = [TMBExpression
+                                                  createWithOperator:TMBOperator.interpolate
+                                                  arguments:@[
+                                                    [TMBExpression createWithOperator:TMBOperator.linear],
+                                                    [TMBExpression createWithOperator:TMBOperator.zoom],
+                                                    @15,
+                                                    @0,
+                                                    @15.05,
+                                                    [TMBExpression
+                                                     createWithOperator:TMBOperator.get
+                                                     arguments: @[ @"min_height" ]]
+                                                ]
+    ];
     layer.fillExtrusionBase = [TMBValue expression:fillExtrusionBaseExpression];
     
     return layer;

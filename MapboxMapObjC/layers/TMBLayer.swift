@@ -5,8 +5,14 @@ import MapboxMaps
     init (_ _self: Layer) {
         self._self = _self
     }
+    
     public var rawValue: Layer {
-        return _self
+        get {
+            return _self
+        }
+        set {
+            _self = newValue
+        }
     }
     
     /// Unique layer name

@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-fill)
 @objc open class TMBFillLayer: TMBLayer {
-    private var _self: FillLayer
+    private var _self: FillLayer {
+        get {
+            return rawValue as! FillLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = FillLayer(id: id)
-        super.init(self._self)
+        super.init(FillLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

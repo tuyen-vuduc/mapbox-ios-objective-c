@@ -6,15 +6,21 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-raster)
 @objc open class TMBRasterLayer: TMBLayer {
-    private var _self: RasterLayer
+    private var _self: RasterLayer {
+        get {
+            return rawValue as! RasterLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = RasterLayer(id: id)
-        super.init(self._self)
+        super.init(RasterLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
+    
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {
         get {

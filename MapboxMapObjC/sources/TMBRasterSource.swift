@@ -3,11 +3,17 @@ import Foundation
 import MapboxMaps
 
 @objc open class TMBRasterSource: TMBSource {
-    private var _self: RasterSource
+    private var _self: RasterSource {
+        get {
+            return rawValue as! RasterSource
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init() {
-        self._self = RasterSource()
-        super.init(self._self)
+        super.init(RasterSource())
     }
 
     /// A URL to a TileJSON resource. Supported protocols are `http:`, `https:`, and `mapbox://<Tileset ID>`.

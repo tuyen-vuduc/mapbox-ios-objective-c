@@ -131,7 +131,7 @@ import MapboxMaps
         completion: ((TMBLayer?, Error?)->Void)? = nil
     ) {
         do {
-            let layer = try layerTypeToLayer(id, layerType: type)
+            var layer = try layerTypeToLayer(id, layerType: type)
             let result = TMBLayer(layer)
             
             completion?(result, nil)
@@ -157,7 +157,7 @@ import MapboxMaps
         completion: ((TMBLayer?, Error?)->Void)? = nil
     ) {
         do {
-            let layer = try _self.layer(withId: id)
+            var layer = try _self.layer(withId: id)
             let result = TMBLayer(layer)
             
             completion?(result, nil)
@@ -185,7 +185,7 @@ import MapboxMaps
     ) {
         do {
             // TODO Complete after all layers are converted
-            let layer = try _self.layer(withId: id)
+            var layer = try _self.layer(withId: id)
             let result = TMBLayer(layer)
             
             completion?(nil)

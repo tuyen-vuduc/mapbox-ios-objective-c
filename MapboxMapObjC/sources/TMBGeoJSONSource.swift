@@ -3,11 +3,17 @@ import Foundation
 import MapboxMaps
 
 @objc open class TMBGeoJSONSource: TMBSource {
-    private var _self: GeoJSONSource
+    private var _self: GeoJSONSource {
+        get {
+            return rawValue as! GeoJSONSource
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init() {
-        self._self = GeoJSONSource()
-        super.init(self._self)
+        super.init(GeoJSONSource())
     }
 
     /// A URL to a GeoJSON file, or inline GeoJSON.

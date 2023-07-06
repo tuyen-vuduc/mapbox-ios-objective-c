@@ -6,15 +6,20 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-symbol)
 @objc open class TMBSymbolLayer: TMBLayer {
-    private var _self: SymbolLayer
+    private var _self: SymbolLayer {
+        get {
+            return rawValue as! SymbolLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = SymbolLayer(id: id)
-        super.init(self._self)
+        super.init(SymbolLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }
-
     
     /// Whether this layer is displayed.
     @objc public var visibility : TMBValue? {

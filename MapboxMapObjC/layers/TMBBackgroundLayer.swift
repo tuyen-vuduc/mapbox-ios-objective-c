@@ -6,11 +6,17 @@ import MapboxMaps
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-background)
 @objc open class TMBBackgroundLayer: TMBLayer {
-    private var _self: BackgroundLayer
+    private var _self: BackgroundLayer {
+        get {
+            return rawValue as! BackgroundLayer
+        }
+        set {
+            rawValue = newValue
+        }
+    }
     
     @objc public init(id: String = UUID().uuidString) {
-        self._self = BackgroundLayer(id: id)
-        super.init(self._self)
+        super.init(BackgroundLayer(id: id))
         
         self.visibility = TMBValue(constant: TMBVisibility.visible)
     }

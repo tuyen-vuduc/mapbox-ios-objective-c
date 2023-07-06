@@ -5,8 +5,14 @@ import MapboxMaps
     internal init(_ _self: Source) {
         self._self = _self
     }
+    
     public var rawValue: Source {
-        return _self
+        get {
+            return _self
+        }
+        set {
+            _self = newValue
+        }
     }
     
     /// Rendering type of this source.

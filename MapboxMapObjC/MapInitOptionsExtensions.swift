@@ -62,10 +62,12 @@ extension MapInitOptions {
         let xstyleUri = styleURI != nil
             ? StyleURI(rawValue: styleURI!)
             : .streets
+        let xcameraOptions = cameraOptions?.swiftValue()
         
         return MapInitOptions(
             resourceOptions: xresourceOptions,
             mapOptions: mapOptions ?? MapOptions(),
+            cameraOptions: xcameraOptions,
             styleURI: xstyleUri,
             styleJSON: styleJSON)
     }
