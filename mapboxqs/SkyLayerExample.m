@@ -81,7 +81,7 @@
 
 - (TMBSkyLayer * ) createSkyLayer {
     TMBSkyLayer * builder = [[TMBSkyLayer alloc]  initWithId:skyLayerId];
-    builder.skyType = [TMBValue constant:TMBSkyType.gradient];
+    builder.skyType = [TMBValue skyType:TMBSkyTypeGradient];
     
     // Define the position of the sun.
     // The azimuthal angle indicates the sun's position relative to 0 degrees north. When the map's bearing
@@ -113,9 +113,9 @@
     TMBValue* skyType;
     
     if (segmentedControl.selectedSegmentIndex == 0) {
-        skyType = [TMBValue constant:TMBSkyType.gradient];
+        skyType = [TMBValue skyType:TMBSkyTypeGradient];
     } else {
-        skyType = [TMBValue constant:TMBSkyType.atmosphere];
+        skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
     }
     
     [[[mapView mapboxMap] style]

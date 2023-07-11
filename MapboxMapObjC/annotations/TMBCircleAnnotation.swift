@@ -263,10 +263,7 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
     @objc
     public var circlePitchAlignment: TMBCirclePitchAlignment? {
         get {
-            guard let circlePitchAlignment = _self.circlePitchAlignment else {
-                return nil
-            }
-            return TMBCirclePitchAlignment(value: circlePitchAlignment)
+            return _self.circlePitchAlignment?.objcValue()
         }
         set {
             _self.circlePitchAlignment = newValue?.swiftValue()

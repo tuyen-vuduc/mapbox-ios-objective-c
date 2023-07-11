@@ -1,0 +1,4 @@
+{
+    "input": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO/Sources/MapboxMaps/Style/Generated/Enums/Enums.swift",
+    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/MapboxMapObjC/enums"
+}

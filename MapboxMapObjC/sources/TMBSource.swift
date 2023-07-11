@@ -1,24 +1,8 @@
 import MapboxMaps
 
-@objc open class TMBSource: NSObject {
-    private var _self: Source
-    internal init(_ _self: Source) {
-        self._self = _self
-    }
-    
-    public var rawValue: Source {
-        get {
-            return _self
-        }
-        set {
-            _self = newValue
-        }
-    }
-    
+@objc public protocol TMBSource {
     /// Rendering type of this source.
-    @objc public var type: TMBSourceType {
-        return TMBSourceType(_self.type)
-    }
+    var type: TMBSourceType { get }
 }
 
 

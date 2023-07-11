@@ -15,7 +15,6 @@
 		231AF0D229BFEDA8002D6CFD /* TMBStyleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D129BFEDA8002D6CFD /* TMBStyleTransition.swift */; };
 		231AF0D429BFEFE4002D6CFD /* TMBExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */; };
 		231AF0D629BFF042002D6CFD /* TMBOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D529BFF042002D6CFD /* TMBOperator.swift */; };
-		231AF0D829BFF17D002D6CFD /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D729BFF17D002D6CFD /* Common.swift */; };
 		23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */; };
 		23251E1929CEE9250088065B /* TMBLayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1829CEE9250088065B /* TMBLayerPosition.swift */; };
 		23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1D29CEF3690088065B /* TMBAnnotation.swift */; };
@@ -28,6 +27,7 @@
 		232E9F192A53827C00E87D0A /* TMBStyleProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F182A53827C00E87D0A /* TMBStyleProjection.swift */; };
 		232E9F1B2A538BFB00E87D0A /* MapInitOptionsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F1A2A538BFB00E87D0A /* MapInitOptionsExtensions.swift */; };
 		232E9F1D2A5390FF00E87D0A /* TMBResourceOptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F1C2A5390FF00E87D0A /* TMBResourceOptionsManager.swift */; };
+		234C790B2A5CDFAA001F58FD /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C790A2A5CDFA9001F58FD /* Enums.swift */; };
 		235BEDA92A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235BEDA82A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift */; };
 		2360108F2824796B00DAC76A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360108E2824796B00DAC76A /* AppDelegate.m */; };
 		236010922824796B00DAC76A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 236010912824796B00DAC76A /* SceneDelegate.m */; };
@@ -191,7 +191,6 @@
 		231AF0D129BFEDA8002D6CFD /* TMBStyleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBStyleTransition.swift; sourceTree = "<group>"; };
 		231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBExpression.swift; sourceTree = "<group>"; };
 		231AF0D529BFF042002D6CFD /* TMBOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBOperator.swift; sourceTree = "<group>"; };
-		231AF0D729BFF17D002D6CFD /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotationManager.swift; sourceTree = "<group>"; };
 		23251E1829CEE9250088065B /* TMBLayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLayerPosition.swift; sourceTree = "<group>"; };
 		23251E1D29CEF3690088065B /* TMBAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotation.swift; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		232E9F182A53827C00E87D0A /* TMBStyleProjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBStyleProjection.swift; sourceTree = "<group>"; };
 		232E9F1A2A538BFB00E87D0A /* MapInitOptionsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInitOptionsExtensions.swift; sourceTree = "<group>"; };
 		232E9F1C2A5390FF00E87D0A /* TMBResourceOptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBResourceOptionsManager.swift; sourceTree = "<group>"; };
+		234C790A2A5CDFA9001F58FD /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		235BEDA82A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraBoundsOptionsExtensions.swift; sourceTree = "<group>"; };
 		2360108A2824796B00DAC76A /* mapboxqs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapboxqs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2360108D2824796B00DAC76A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -734,9 +734,9 @@
 		23BB8F0029BD651400E7C218 /* enums */ = {
 			isa = PBXGroup;
 			children = (
+				234C790A2A5CDFA9001F58FD /* Enums.swift */,
 				231AF0C729BF8B09002D6CFD /* TMBScheme.swift */,
 				231AF0D529BFF042002D6CFD /* TMBOperator.swift */,
-				231AF0D729BFF17D002D6CFD /* Common.swift */,
 				23FC867B29F206C800C07BF6 /* NamedString.swift */,
 			);
 			path = enums;
@@ -1069,7 +1069,6 @@
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
 				2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */,
-				231AF0D829BFF17D002D6CFD /* Common.swift in Sources */,
 				23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */,
 				235BEDA92A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift in Sources */,
 				2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */,
@@ -1096,6 +1095,7 @@
 				2396BE962A5198080085913F /* NSNumberExtensions.swift in Sources */,
 				231AF0C829BF8B09002D6CFD /* TMBScheme.swift in Sources */,
 				232E9F192A53827C00E87D0A /* TMBStyleProjection.swift in Sources */,
+				234C790B2A5CDFAA001F58FD /* Enums.swift in Sources */,
 				23C0218F2A548224002229B5 /* TMBLineLayer.swift in Sources */,
 				231AF0D429BFEFE4002D6CFD /* TMBExpression.swift in Sources */,
 				23C021912A548261002229B5 /* TMBLocationIndicatorLayer.swift in Sources */,

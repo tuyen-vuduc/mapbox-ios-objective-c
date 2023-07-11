@@ -12,10 +12,10 @@ async function generateLayers() {
     }
 
     
-    await fs.readdirSync(info.dir)
+    await fs.readdirSync(info.input)
         .filter(x => !info.ignored.some(y => x.endsWith(y + '.swift')))
         .map(x => /(\w+)\.swift/.exec(x)[1])
-        .forEach(x => generateLayer(info.dir, info.output, x));    
+        .forEach(x => generateLayer(info.input, info.output, x));    
 }
 
 async function generateLayer(dir, output, layerName) {
