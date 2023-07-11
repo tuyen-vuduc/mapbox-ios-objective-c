@@ -118,9 +118,13 @@
         skyType = [TMBValue constant:TMBSkyType.atmosphere];
     }
     
-    [[[mapView mapboxMap] style] updateLayerWithId:skyLayerId type:TMBLayerTypeSky update:^(TMBLayer * _Nonnull layer) {
+    [[[mapView mapboxMap] style]
+     updateLayerWithId:skyLayerId
+     type:TMBLayerTypeSky
+     update:^id<TMBLayer> _Nonnull(id<TMBLayer> _Nonnull layer) {
         TMBSkyLayer* skyLayer = (TMBSkyLayer*) layer;
         skyLayer.skyType = skyType;
+        return skyLayer;
     } completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);

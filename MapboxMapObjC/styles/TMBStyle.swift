@@ -34,9 +34,15 @@ import MapboxMaps
         layerPosition: TMBLayerPosition? = nil,
         completion: ((Error?)->Void)? = nil
     ) {
+        guard let svc = layer as? (any SwiftValueConvertible),
+              let xlayer = svc.swiftValue() as? Layer else {
+            completion?(TMBError(message: "Invalid TMBLayer"))
+            return
+        }
+        
         do
         {
-            try _self.addLayer(layer.rawValue, layerPosition: layerPosition?.swiftValue() ?? .default)
+            try _self.addLayer(xlayer, layerPosition: layerPosition?.swiftValue() ?? .default)
             completion?(nil)
         }
         catch {
@@ -57,9 +63,15 @@ import MapboxMaps
         layerPosition: TMBLayerPosition? = nil,
         completion: ((Error?)->Void)? = nil
     ) {
+        guard let svc = layer as? (any SwiftValueConvertible),
+              let xlayer = svc.swiftValue() as? Layer else {
+            completion?(TMBError(message: "Invalid TMBLayer"))
+            return
+        }
+        
         do
         {
-            try _self.addPersistentLayer(layer.rawValue, layerPosition: layerPosition?.swiftValue() ?? .default)
+            try _self.addPersistentLayer(xlayer, layerPosition: layerPosition?.swiftValue() ?? .default)
             completion?(nil)
         }
         catch {
@@ -89,30 +101,125 @@ import MapboxMaps
         }
     }
 
-    private func layerTypeToLayer(_ id: String, layerType: TMBLayerType) throws -> Layer  {
+    private func layerTypeToLayer(_ id: String, layerType: TMBLayerType) throws -> TMBLayer  {
         switch(layerType) {
         case .fill:
-            return try _self.layer(withId: id, type: FillLayer.self)
+            let layer = try _self.layer(withId: id, type: FillLayer.self)
+            var xlayer = TMBFillLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .line:
-            return try _self.layer(withId: id, type: LineLayer.self)
+            let layer = try _self.layer(withId: id, type: LineLayer.self)
+            var xlayer = TMBLineLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .symbol:
-            return try _self.layer(withId: id, type: SymbolLayer.self)
+            let layer = try _self.layer(withId: id, type: SymbolLayer.self)
+            var xlayer = TMBSymbolLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .circle:
-            return try _self.layer(withId: id, type: CircleLayer.self)
+            let layer = try _self.layer(withId: id, type: CircleLayer.self)
+            var xlayer = TMBCircleLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .heatmap:
-            return try _self.layer(withId: id, type: HeatmapLayer.self)
+            let layer = try _self.layer(withId: id, type: HeatmapLayer.self)
+            var xlayer = TMBHeatmapLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .fillExtrusion:
-            return try _self.layer(withId: id, type: FillExtrusionLayer.self)
+            let layer = try _self.layer(withId: id, type: FillExtrusionLayer.self)
+            var xlayer = TMBFillExtrusionLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .raster:
-            return try _self.layer(withId: id, type: RasterLayer.self)
+            let layer = try _self.layer(withId: id, type: RasterLayer.self)
+            var xlayer = TMBRasterLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .hillshade:
-            return try _self.layer(withId: id, type: HillshadeLayer.self)
+            let layer = try _self.layer(withId: id, type: HillshadeLayer.self)
+            var xlayer = TMBHillshadeLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .background:
-            return try _self.layer(withId: id, type: BackgroundLayer.self)
+            let layer = try _self.layer(withId: id, type: BackgroundLayer.self)
+            var xlayer = TMBBackgroundLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .locationIndicator:
-            return try _self.layer(withId: id, type: LocationIndicatorLayer.self)
+            let layer = try _self.layer(withId: id, type: LocationIndicatorLayer.self)
+            var xlayer = TMBLocationIndicatorLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
         case .sky:
-            return try _self.layer(withId: id, type: SkyLayer.self)
+            let layer = try _self.layer(withId: id, type: SkyLayer.self)
+            var xlayer = TMBSkyLayer(id: id)
+            layer.mapTo(&xlayer)
+            return xlayer
+        }
+    }
+    
+    private func layerToLayer(_ layer: Layer) -> TMBLayer? {
+        switch(layer.type) {
+        case .fill:
+            let zlayer = layer as! FillLayer
+            var xlayer = TMBFillLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .line:
+            let zlayer = layer as! LineLayer
+            var xlayer = TMBLineLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .symbol:
+            let zlayer = layer as! SymbolLayer
+            var xlayer = TMBSymbolLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .circle:
+            let zlayer = layer as! CircleLayer
+            var xlayer = TMBCircleLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .heatmap:
+            let zlayer = layer as! HeatmapLayer
+            var xlayer = TMBHeatmapLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .fillExtrusion:
+            let zlayer = layer as! FillExtrusionLayer
+            var xlayer = TMBFillExtrusionLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .raster:
+            let zlayer = layer as! RasterLayer
+            var xlayer = TMBRasterLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .hillshade:
+            let zlayer = layer as! HillshadeLayer
+            var xlayer = TMBHillshadeLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .background:
+            let zlayer = layer as! BackgroundLayer
+            var xlayer = TMBBackgroundLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .locationIndicator:
+            let zlayer = layer as! LocationIndicatorLayer
+            var xlayer = TMBLocationIndicatorLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .sky:
+            let zlayer = layer as! SkyLayer
+            var xlayer = TMBSkyLayer(id: layer.id)
+            zlayer.mapTo(&xlayer)
+            return xlayer
+        case .model:
+            return nil
         }
     }
     
@@ -132,9 +239,7 @@ import MapboxMaps
     ) {
         do {
             var layer = try layerTypeToLayer(id, layerType: type)
-            let result = TMBLayer(layer)
-            
-            completion?(result, nil)
+            completion?(layer, nil)
         }
         catch {
             completion?(nil, error)
@@ -158,9 +263,14 @@ import MapboxMaps
     ) {
         do {
             var layer = try _self.layer(withId: id)
-            let result = TMBLayer(layer)
+            var xlayer = layerToLayer(layer)
             
-            completion?(result, nil)
+            if (xlayer == nil) {
+                completion?(nil, TMBError(message: "Invalid layer"))
+                return
+            }
+            
+            completion?(xlayer, nil)
         }
         catch {
             completion?(nil, error)
@@ -180,42 +290,90 @@ import MapboxMaps
     @objc public func updateLayer(
         withId id: String,
         type: TMBLayerType,
-        update: (TMBLayer) -> Void,
+        update: (TMBLayer) -> TMBLayer,
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            let layer = try _self.layer(withId: id)
-            var xlayer: TMBLayer?
-            
-            switch(layer) {
-            case let value as BackgroundLayer:
-                xlayer = TMBBackgroundLayer(value)
-            case let value as CircleLayer:
-                xlayer = TMBCircleLayer(value)
-            case let value as FillExtrusionLayer:
-                xlayer = TMBFillExtrusionLayer(value)
-            case let value as FillLayer:
-                xlayer = TMBFillLayer(value)
-            case let value as HeatmapLayer:
-                xlayer = TMBHeatmapLayer(value)
-            case let value as HillshadeLayer:
-                xlayer = TMBHillshadeLayer(value)
-            case let value as LineLayer:
-                xlayer = TMBLineLayer(value)
-            case let value as LocationIndicatorLayer:
-                xlayer = TMBLocationIndicatorLayer(value)
-            case let value as RasterLayer:
-                xlayer = TMBRasterLayer(value)
-            case let value as SkyLayer:
-                xlayer = TMBSkyLayer(value)
-            case let value as SymbolLayer:
-                xlayer = TMBSymbolLayer(value)
-            default:
-                completion?(nil)
-                return
+            switch(type) {
+            case .fill:
+                try _self.updateLayer(withId: id, type: FillLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBFillLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .line:
+                try _self.updateLayer(withId: id, type: LineLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBLineLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .symbol:
+                try _self.updateLayer(withId: id, type: SymbolLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBSymbolLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .circle:
+                try _self.updateLayer(withId: id, type: CircleLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBCircleLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .heatmap:
+                try _self.updateLayer(withId: id, type: HeatmapLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBHeatmapLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .fillExtrusion:
+                try _self.updateLayer(withId: id, type: FillExtrusionLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBFillExtrusionLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .raster:
+                try _self.updateLayer(withId: id, type: RasterLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBRasterLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .hillshade:
+                try _self.updateLayer(withId: id, type: HillshadeLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBHillshadeLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .background:
+                try _self.updateLayer(withId: id, type: BackgroundLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBBackgroundLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .locationIndicator:
+                try _self.updateLayer(withId: id, type: LocationIndicatorLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBLocationIndicatorLayer
+                    zlayer.mapTo(&layer)
+                }
+            case .sky:
+                try _self.updateLayer(withId: id, type: SkyLayer.self) { layer in
+                    var xlayer = layer.objcValue()
+                    
+                    var zlayer = update(xlayer) as! TMBSkyLayer
+                    zlayer.mapTo(&layer)
+                }
             }
             
-            update(xlayer!)
             completion?(nil)
         }
         catch {

@@ -99,3 +99,32 @@ extension LayerType {
         return LayerType.layerTypeMapping[self]
     }
 }
+
+extension TMBLayerType {
+    func layerClassType() -> Layer.Type {
+        switch(self) {
+        case .fill:
+            return FillLayer.self
+        case .line:
+            return LineLayer.self
+        case .symbol:
+            return SymbolLayer.self
+        case .circle:
+            return CircleLayer.self
+        case .heatmap:
+            return HeatmapLayer.self
+        case .fillExtrusion:
+            return FillExtrusionLayer.self
+        case .raster:
+            return RasterLayer.self
+        case .hillshade:
+            return HillshadeLayer.self
+        case .background:
+            return BackgroundLayer.self
+        case .locationIndicator:
+            return LocationIndicatorLayer.self
+        case .sky:
+            return SkyLayer.self
+        }
+    }
+}

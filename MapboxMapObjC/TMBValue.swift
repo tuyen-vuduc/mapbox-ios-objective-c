@@ -2,10 +2,10 @@ import MapboxMaps
 
 @objc
 open class TMBValue : NSObject {
-    let constant: NSObject?
+    let constant: Any?
     let expression: TMBExpression?
     
-    @objc public init(constant: NSObject) {
+    @objc public init(constant: Any?) {
         self.constant = constant
         self.expression = nil
     }
@@ -30,10 +30,6 @@ open class TMBValue : NSObject {
     @objc class public func expression(_ expression: TMBExpression) -> TMBValue {
         return TMBValue(expression: expression)
     }
-    
-    override open var debugDescription: String {
-        constant?.description ?? expression?.description ?? "<<NULL>>"
-    }
 }
 
 extension UIColor {
@@ -53,12 +49,12 @@ extension TMBValue {
         }
         
         switch(value) {
-        case .constant(let value):
-            if let value = value as? (any ObjcConvertible) {
-                return TMBValue(constant: value.objcValue() as! NSObject)
+        case .constant(let obj):
+            if let objcc = obj as? (any ObjcConvertible) {
+                return TMBValue(constant: objcc.objcValue() as! NSObject)
             }
             
-            return TMBValue(constant: value as! NSObject)
+            return TMBValue(constant: obj)
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))
         }
@@ -328,7 +324,11 @@ extension TMBValue {
     }
 }
 
-extension StyleColor {
+extension StyleColor: ObjcConvertible {
+    public func objcValue() -> UIColor {
+        return uiColor()
+    }
+    
     func uiColor() -> UIColor {
         return UIColor(
             red: self.red/255.0,

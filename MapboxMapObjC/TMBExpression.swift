@@ -650,4 +650,13 @@ extension Expression: ObjcConvertible {
     public func objcValue() -> TMBExpression {
         return TMBExpression(self)
     }
+    public func expression() -> TMBExpression {
+        return objcValue()
+    }
+}
+
+extension TMBExpression {
+    public func expression() -> Expression {
+        return rawValue
+    }
 }

@@ -1,0 +1,7 @@
+{
+    "dir": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO/Sources/MapboxMaps/Style/Generated/Layers",
+    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/MapboxMapObjC/layers",
+    "ignored": [
+        "ModelLayer"
+    ]
+}

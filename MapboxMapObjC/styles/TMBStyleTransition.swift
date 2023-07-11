@@ -43,3 +43,9 @@ extension StyleTransition: ObjcConvertible {
         return TMBStyleTransition(self)
     }
 }
+
+extension TMBStyleTransition {
+    public func styleTransition() -> StyleTransition {
+        return rawValue
+    }
+}

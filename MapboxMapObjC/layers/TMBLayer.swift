@@ -1,88 +1,35 @@
 import MapboxMaps
 
-@objc open class TMBLayer: NSObject {
-    private var _self: Layer
-    init (_ _self: Layer) {
-        self._self = _self
-    }
-    
-    public var rawValue: Layer {
-        get {
-            return _self
-        }
-        set {
-            _self = newValue
-        }
-    }
-    
+@objc public protocol TMBLayer {
     /// Unique layer name
-    @objc public var id: String {
-        get {
-            _self.id
-        }
-        set {
-            _self.id = newValue
-        }
-    }
-
+    @objc var id: String { get }
+    
     /// Rendering type of this layer.
-    @objc public var type: TMBLayerType {
-        return _self.type.objcValue()!
-    }
-
+    @objc var type: TMBLayerType { get }
+    
     /// An expression specifying conditions on source features.
     /// Only features that match the filter are displayed.
-    @objc public var filter: TMBExpression? {
-        get {
-            return _self.filter?.objcValue()
-        }
-        set {
-            _self.filter = newValue?.rawValue
-        }
-    }
-
+    @objc var filter: TMBExpression? { get set }
+    
     /// Name of a source description to be used for this layer.
     /// Required for all layer types except background.
-    @objc public var source: String? {
-        get {
-            _self.source
-        }
-        set {
-            _self.source = newValue
-        }
-    }
-
+    @objc var source: String? { get set }
+    
     /// Layer to use from a vector tile source.
     /// Required for vector tile sources.
     /// Prohibited for all other source types, including GeoJSON sources.
-    @objc public var sourceLayer: String? {
-        get {
-            _self.sourceLayer
-        }
-        set {
-            _self.sourceLayer = newValue
-        }
-    }
-
+    @objc var sourceLayer: String? { get set }
+    
     /// The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden.
-    @objc public var minZoom: NSNumber? {
-        get {
-            _self.minZoom?.NSNumber
-        }
-        set {
-            _self.minZoom = newValue?.doubleValue
-        }
-    }
-
+    @objc var minZoom: NSNumber? { get set }
+    
     /// The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden.
-    @objc public var maxZoom: NSNumber? {
-        get {
-            _self.maxZoom?.NSNumber
-        }
-        set {
-            _self.maxZoom = newValue?.doubleValue
-        }
-    }
+    @objc var maxZoom: NSNumber? { get set }
+}
+
+public protocol SwiftValueConvertible<T> {
+    associatedtype T
+    func swiftValue() -> T
 }
 
 /// Information about a layer

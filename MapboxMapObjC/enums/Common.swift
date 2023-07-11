@@ -1012,9 +1012,10 @@ open class TMBSkyType :NSObject, NamedString {
     init(value: SkyType) {
         self.value = value.rawValue
     }
-    func swiftValue() -> SkyType{
-        SkyType(rawValue: value)!
+    func swiftValue() -> SkyType {
+        return SkyType(rawValue: value)!
     }
+    
     @objc
     public func stringValue() -> String {
         return self.value
