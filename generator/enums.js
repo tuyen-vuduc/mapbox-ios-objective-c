@@ -1,44 +1,70 @@
 import fs from 'fs';
+import * as path from 'path';
 
 generateEnums() ;
 
-async function generateEnums() {
-    var info = JSON.parse(fs.readFileSync('enums.json', 'utf8'));    
-    if (!fs.existsSync(info.output)) {        
-        fs.mkdirSync(info.output)
+function generateEnums() {
+    var info = JSON.parse(fs.readFileSync('enums.json', 'utf8'));   
+    
+    info.enums.map(x => generateEnum(info, x));
+}
+
+async function generateEnum(repoInfo, enumInfo) {
+    var output = path.join(repoInfo.mapboxObjcRepo, enumInfo.output);
+    if (!fs.existsSync(output)) {        
+        fs.mkdirSync(output);
     }
 
-    var content = fs.readFileSync(info.input, 'utf8');
+    var input = path.join(repoInfo.mapboxRepo, enumInfo.input, enumInfo.name);
+    var content = fs.readFileSync(input, 'utf8');
     var enumUnderCheck;
     var cases = [];
+    var caseFound = false;
+    var skipped = false;
     var processingStatement = false;    
     var lines = content.split('\n')
-        .map(x => {
-            if (/^import/.test(x)) {
-                processingStatement = true;
-                return x;
-            }
-
+        .map(line => {
             if (processingStatement) {
                 processingStatement = false;
                 return 'import MapboxMaps\n';
             }
 
-            if (/^public enum/.test(x.trim())) {
-                let matches = /public enum (\w+)/.exec(x.trim())
+            if (/^\/\//.test(line.trim())
+                || !(line.trim())
+                || line.trim().startsWith('@available')) {
+                return line;
+            }
+
+            if (/^import/.test(line)) {
+                processingStatement = true;
+                return line;
+            }
+
+            if (/^public enum/.test(line.trim())) {
+                skipped = false;
+                caseFound = false
+                let matches = /public enum (\w+)/.exec(line.trim())
                 enumUnderCheck = matches[1];
 
                 return `@objc public enum TMB${enumUnderCheck}: Int {`
             }
 
-            if (/^case/.test(x.trim())) {
-                let matches = /case (\w+) = ("[^"]+")/.exec(x.trim())
+            if (skipped) {
+                return '__NA__';
+            }
+
+            if (/^case/.test(line.trim())) {
+                caseFound = true;       
+
+                let matches = /case (\w+)/.exec(line.trim())
                 cases.push(matches[1])
 
                 return `    case ${matches[1]}`;
             }
 
-            if (x.trim() == '}') {
+            if (caseFound) {    
+                skipped = true;
+                caseFound = false;          
                 let xcases = cases.map(x => `            case .${x}:
                 return .${x}`).join('\n'); 
                 let nameCamelCase = enumUnderCheck[0].toLowerCase() + enumUnderCheck.substring(1);
@@ -73,7 +99,7 @@ extension ${enumUnderCheck}: ObjcConvertible {
 ${xcases}
         }
     }
-}`
+}`;
 
                 enumUnderCheck = null;
                 cases = [];
@@ -81,10 +107,10 @@ ${xcases}
                 return xlines
             }
 
-            return x;
-        });
+            return line;
+        }).filter(x => x != '__NA__');
     
     fs.writeFileSync(
-        `${info.output}/Enums.swift`, 
+        path.join(output, enumInfo.name), 
         lines.join('\n'));
 }

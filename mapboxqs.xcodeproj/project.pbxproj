@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2309802E29D3A403008EF30C /* MapboxMapObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 236010BF282487FF00DAC76A /* MapboxMapObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		231AF0C629BF8905002D6CFD /* TMBSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C529BF8905002D6CFD /* TMBSourceType.swift */; };
 		231AF0C829BF8B09002D6CFD /* TMBScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C729BF8B09002D6CFD /* TMBScheme.swift */; };
 		231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CB29BF9305002D6CFD /* TMBValue.swift */; };
 		231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */; };
@@ -39,6 +38,8 @@
 		2365B7F729BE82E400A013E1 /* StoryboardMapViewExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2365B7F629BE82E400A013E1 /* StoryboardMapViewExample.storyboard */; };
 		2365B7FF29BE934D00A013E1 /* UIColor+AdditionalColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365B7FE29BE934D00A013E1 /* UIColor+AdditionalColors.m */; };
 		2365B80329BE9E9700A013E1 /* NSArray+HoF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365B80229BE9E9700A013E1 /* NSArray+HoF.m */; };
+		236E49A42A5DB47900C2CB77 /* LayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E49A32A5DB47900C2CB77 /* LayerType.swift */; };
+		236E49A62A5DB48900C2CB77 /* SourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E49A52A5DB48900C2CB77 /* SourceType.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		2379C78729FCB19800D0936D /* GeometryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2379C78629FCB19800D0936D /* GeometryHelper.swift */; };
 		2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382019C2A4BA5D400D3D1FF /* TMBGestureOptions.swift */; };
@@ -52,7 +53,6 @@
 		2396BE862A510A310085913F /* TMBViewport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE852A510A310085913F /* TMBViewport.swift */; };
 		2396BE882A510F980085913F /* TMBCancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE872A510F980085913F /* TMBCancelable.swift */; };
 		2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE8B2A51369B0085913F /* TMBMapboxMap.swift */; };
-		2396BE8E2A517D540085913F /* TMBLayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE8D2A517D540085913F /* TMBLayerType.swift */; };
 		2396BE902A5180DA0085913F /* TMBLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE8F2A5180DA0085913F /* TMBLayer.swift */; };
 		2396BE922A5186210085913F /* TMBSkyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE912A5186210085913F /* TMBSkyLayer.swift */; };
 		2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE932A5190610085913F /* TMBExpressionOptions.swift */; };
@@ -184,7 +184,6 @@
 /* Begin PBXFileReference section */
 		1008B44E2EF4C9A4066230E2 /* Pods-MapboxMapObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.release.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.release.xcconfig"; sourceTree = "<group>"; };
 		1C18D6659143F51DB92FF65C /* Pods-mapboxqs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.debug.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.debug.xcconfig"; sourceTree = "<group>"; };
-		231AF0C529BF8905002D6CFD /* TMBSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSourceType.swift; sourceTree = "<group>"; };
 		231AF0C729BF8B09002D6CFD /* TMBScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBScheme.swift; sourceTree = "<group>"; };
 		231AF0CB29BF9305002D6CFD /* TMBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBValue.swift; sourceTree = "<group>"; };
 		231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTerrain.swift; sourceTree = "<group>"; };
@@ -222,6 +221,8 @@
 		2365B80029BE944900A013E1 /* UIColor+AdditionalColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AdditionalColors.h"; sourceTree = "<group>"; };
 		2365B80129BE9E9700A013E1 /* NSArray+HoF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+HoF.h"; sourceTree = "<group>"; };
 		2365B80229BE9E9700A013E1 /* NSArray+HoF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HoF.m"; sourceTree = "<group>"; };
+		236E49A32A5DB47900C2CB77 /* LayerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerType.swift; sourceTree = "<group>"; };
+		236E49A52A5DB48900C2CB77 /* SourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceType.swift; sourceTree = "<group>"; };
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		2379C78629FCB19800D0936D /* GeometryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryHelper.swift; sourceTree = "<group>"; };
@@ -236,7 +237,6 @@
 		2396BE852A510A310085913F /* TMBViewport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewport.swift; sourceTree = "<group>"; };
 		2396BE872A510F980085913F /* TMBCancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCancelable.swift; sourceTree = "<group>"; };
 		2396BE8B2A51369B0085913F /* TMBMapboxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBMapboxMap.swift; sourceTree = "<group>"; };
-		2396BE8D2A517D540085913F /* TMBLayerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLayerType.swift; sourceTree = "<group>"; };
 		2396BE8F2A5180DA0085913F /* TMBLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLayer.swift; sourceTree = "<group>"; };
 		2396BE912A5186210085913F /* TMBSkyLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSkyLayer.swift; sourceTree = "<group>"; };
 		2396BE932A5190610085913F /* TMBExpressionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBExpressionOptions.swift; sourceTree = "<group>"; };
@@ -464,8 +464,8 @@
 		23251E2829CF0D4B0088065B /* layers */ = {
 			isa = PBXGroup;
 			children = (
+				236E49A32A5DB47900C2CB77 /* LayerType.swift */,
 				23251E1829CEE9250088065B /* TMBLayerPosition.swift */,
-				2396BE8D2A517D540085913F /* TMBLayerType.swift */,
 				2396BE8F2A5180DA0085913F /* TMBLayer.swift */,
 				23C021822A548076002229B5 /* TMBBackgroundLayer.swift */,
 				23C021842A54810A002229B5 /* TMBCircleLayer.swift */,
@@ -712,7 +712,7 @@
 		23B8326229CF4ED900FA94B2 /* sources */ = {
 			isa = PBXGroup;
 			children = (
-				231AF0C529BF8905002D6CFD /* TMBSourceType.swift */,
+				236E49A52A5DB48900C2CB77 /* SourceType.swift */,
 				2396BE972A5242210085913F /* TMBSource.swift */,
 				23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */,
 				23C021942A54E6AC002229B5 /* TMBImageSource.swift */,
@@ -1077,11 +1077,11 @@
 				2396BE802A4F3DE90085913F /* TMBCameraAnimationsManager.swift in Sources */,
 				23B88A6629CFFEE800F508B5 /* TMBPointAnnotation.swift in Sources */,
 				23251E1929CEE9250088065B /* TMBLayerPosition.swift in Sources */,
+				236E49A42A5DB47900C2CB77 /* LayerType.swift in Sources */,
 				2386379029C6D71F002282FF /* TMBResolvedImage.swift in Sources */,
 				23251E2029CEF3870088065B /* TMBPolygonAnnotation.swift in Sources */,
 				2379C78729FCB19800D0936D /* GeometryHelper.swift in Sources */,
 				2396BE842A5106080085913F /* TMBAnnotationOrchestrator.swift in Sources */,
-				231AF0C629BF8905002D6CFD /* TMBSourceType.swift in Sources */,
 				23C021872A548141002229B5 /* TMBFillExtrusionLayer.swift in Sources */,
 				23C0218B2A5481BB002229B5 /* TMBHeatmapLayer.swift in Sources */,
 				231AF0D229BFEDA8002D6CFD /* TMBStyleTransition.swift in Sources */,
@@ -1109,7 +1109,7 @@
 				2396BE902A5180DA0085913F /* TMBLayer.swift in Sources */,
 				2396BE862A510A310085913F /* TMBViewport.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
-				2396BE8E2A517D540085913F /* TMBLayerType.swift in Sources */,
+				236E49A62A5DB48900C2CB77 /* SourceType.swift in Sources */,
 				23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */,
 				23C021952A54E6AC002229B5 /* TMBImageSource.swift in Sources */,
 				23C021832A548076002229B5 /* TMBBackgroundLayer.swift in Sources */,
