@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.fillExtrusion)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,71 +18,71 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// Controls the intensity of shading near ground and concave angles between walls. Default value 0.0 disables ambient occlusion and values around 0.3 provide the most plausible results for buildings.
-    @objc public var fillExtrusionAmbientOcclusionIntensity : TMBValue?
+    @objc public var fillExtrusionAmbientOcclusionIntensity: TMBValue?
 
     /// Transition options for `fillExtrusionAmbientOcclusionIntensity`.
-    @objc public var fillExtrusionAmbientOcclusionIntensityTransition : TMBStyleTransition?
+    @objc public var fillExtrusionAmbientOcclusionIntensityTransition: TMBStyleTransition?
 
     /// Shades area near ground and concave angles between walls where the radius defines only vertical impact. Default value 3.0 corresponds to height of one floor and brings the most plausible results for buildings.
-    @objc public var fillExtrusionAmbientOcclusionRadius : TMBValue?
+    @objc public var fillExtrusionAmbientOcclusionRadius: TMBValue?
 
     /// Transition options for `fillExtrusionAmbientOcclusionRadius`.
-    @objc public var fillExtrusionAmbientOcclusionRadiusTransition : TMBStyleTransition?
+    @objc public var fillExtrusionAmbientOcclusionRadiusTransition: TMBStyleTransition?
 
     /// The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`.
-    @objc public var fillExtrusionBase : TMBValue?
+    @objc public var fillExtrusionBase: TMBValue?
 
     /// Transition options for `fillExtrusionBase`.
-    @objc public var fillExtrusionBaseTransition : TMBStyleTransition?
+    @objc public var fillExtrusionBaseTransition: TMBStyleTransition?
 
     /// The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-opacity` to set layer opacity.
-    @objc public var fillExtrusionColor : TMBValue?
+    @objc public var fillExtrusionColor: TMBValue?
 
     /// Transition options for `fillExtrusionColor`.
-    @objc public var fillExtrusionColorTransition : TMBStyleTransition?
+    @objc public var fillExtrusionColorTransition: TMBStyleTransition?
 
     /// The height with which to extrude this layer.
-    @objc public var fillExtrusionHeight : TMBValue?
+    @objc public var fillExtrusionHeight: TMBValue?
 
     /// Transition options for `fillExtrusionHeight`.
-    @objc public var fillExtrusionHeightTransition : TMBStyleTransition?
+    @objc public var fillExtrusionHeightTransition: TMBStyleTransition?
 
     /// The opacity of the entire fill extrusion layer. This is rendered on a per-layer, not per-feature, basis, and data-driven styling is not available.
-    @objc public var fillExtrusionOpacity : TMBValue?
+    @objc public var fillExtrusionOpacity: TMBValue?
 
     /// Transition options for `fillExtrusionOpacity`.
-    @objc public var fillExtrusionOpacityTransition : TMBStyleTransition?
+    @objc public var fillExtrusionOpacityTransition: TMBStyleTransition?
 
     /// Name of image in sprite to use for drawing images on extruded fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc public var fillExtrusionPattern : TMBValue?
+    @objc public var fillExtrusionPattern: TMBValue?
 
     /// Transition options for `fillExtrusionPattern`.
     @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
-    @objc public var fillExtrusionPatternTransition : TMBStyleTransition?
+    @objc public var fillExtrusionPatternTransition: TMBStyleTransition?
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up (on the flat plane), respectively.
-    @objc public var fillExtrusionTranslate : TMBValue?
+    @objc public var fillExtrusionTranslate: TMBValue?
 
     /// Transition options for `fillExtrusionTranslate`.
-    @objc public var fillExtrusionTranslateTransition : TMBStyleTransition?
+    @objc public var fillExtrusionTranslateTransition: TMBStyleTransition?
 
     /// Controls the frame of reference for `fill-extrusion-translate`.
-    @objc public var fillExtrusionTranslateAnchor : TMBValue?
+    @objc public var fillExtrusionTranslateAnchor: TMBValue?
 
     /// Whether to apply a vertical gradient to the sides of a fill-extrusion layer. If true, sides will be shaded slightly darker farther down.
-    @objc public var fillExtrusionVerticalGradient : TMBValue?
+    @objc public var fillExtrusionVerticalGradient: TMBValue?
 
 }
 

@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.line)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,96 +18,96 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// The display of line endings.
-    @objc public var lineCap : TMBValue?
+    @objc public var lineCap: TMBValue?
 
     /// The display of lines when joining.
-    @objc public var lineJoin : TMBValue?
+    @objc public var lineJoin: TMBValue?
 
     /// Used to automatically convert miter joins to bevel joins for sharp angles.
-    @objc public var lineMiterLimit : TMBValue?
+    @objc public var lineMiterLimit: TMBValue?
 
     /// Used to automatically convert round joins to miter joins for shallow angles.
-    @objc public var lineRoundLimit : TMBValue?
+    @objc public var lineRoundLimit: TMBValue?
 
     /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
-    @objc public var lineSortKey : TMBValue?
+    @objc public var lineSortKey: TMBValue?
 
     /// Blur applied to the line, in pixels.
-    @objc public var lineBlur : TMBValue?
+    @objc public var lineBlur: TMBValue?
 
     /// Transition options for `lineBlur`.
-    @objc public var lineBlurTransition : TMBStyleTransition?
+    @objc public var lineBlurTransition: TMBStyleTransition?
 
     /// The color with which the line will be drawn.
-    @objc public var lineColor : TMBValue?
+    @objc public var lineColor: TMBValue?
 
     /// Transition options for `lineColor`.
-    @objc public var lineColorTransition : TMBStyleTransition?
+    @objc public var lineColorTransition: TMBStyleTransition?
 
     /// Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. Note that GeoJSON sources with `lineMetrics: true` specified won't render dashed lines to the expected scale. Also note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc public var lineDasharray : TMBValue?
+    @objc public var lineDasharray: TMBValue?
 
     /// Transition options for `lineDasharray`.
     @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
-    @objc public var lineDasharrayTransition : TMBStyleTransition?
+    @objc public var lineDasharrayTransition: TMBStyleTransition?
 
     /// Draws a line casing outside of a line's actual path. Value indicates the width of the inner gap.
-    @objc public var lineGapWidth : TMBValue?
+    @objc public var lineGapWidth: TMBValue?
 
     /// Transition options for `lineGapWidth`.
-    @objc public var lineGapWidthTransition : TMBStyleTransition?
+    @objc public var lineGapWidthTransition: TMBStyleTransition?
 
     /// Defines a gradient with which to color a line feature. Can only be used with GeoJSON sources that specify `"lineMetrics": true`.
-    @objc public var lineGradient : TMBValue?
+    @objc public var lineGradient: TMBValue?
 
     /// The line's offset. For linear features, a positive value offsets the line to the right, relative to the direction of the line, and a negative value to the left. For polygon features, a positive value results in an inset, and a negative value results in an outset.
-    @objc public var lineOffset : TMBValue?
+    @objc public var lineOffset: TMBValue?
 
     /// Transition options for `lineOffset`.
-    @objc public var lineOffsetTransition : TMBStyleTransition?
+    @objc public var lineOffsetTransition: TMBStyleTransition?
 
     /// The opacity at which the line will be drawn.
-    @objc public var lineOpacity : TMBValue?
+    @objc public var lineOpacity: TMBValue?
 
     /// Transition options for `lineOpacity`.
-    @objc public var lineOpacityTransition : TMBStyleTransition?
+    @objc public var lineOpacityTransition: TMBStyleTransition?
 
     /// Name of image in sprite to use for drawing image lines. For seamless patterns, image width must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc public var linePattern : TMBValue?
+    @objc public var linePattern: TMBValue?
 
     /// Transition options for `linePattern`.
     @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
-    @objc public var linePatternTransition : TMBStyleTransition?
+    @objc public var linePatternTransition: TMBStyleTransition?
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
-    @objc public var lineTranslate : TMBValue?
+    @objc public var lineTranslate: TMBValue?
 
     /// Transition options for `lineTranslate`.
-    @objc public var lineTranslateTransition : TMBStyleTransition?
+    @objc public var lineTranslateTransition: TMBStyleTransition?
 
     /// Controls the frame of reference for `line-translate`.
-    @objc public var lineTranslateAnchor : TMBValue?
+    @objc public var lineTranslateAnchor: TMBValue?
 
     /// The line part between [trim-start, trim-end] will be marked as transparent to make a route vanishing effect. The line trim-off offset is based on the whole line range [0.0, 1.0].
-    @objc public var lineTrimOffset : TMBValue?
+    @objc public var lineTrimOffset: TMBValue?
 
     /// Stroke thickness.
-    @objc public var lineWidth : TMBValue?
+    @objc public var lineWidth: TMBValue?
 
     /// Transition options for `lineWidth`.
-    @objc public var lineWidthTransition : TMBStyleTransition?
+    @objc public var lineWidthTransition: TMBStyleTransition?
 
 }
 

@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.background)
         
-        self.visibility = TMBValue.visibility(TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,35 +18,35 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// The color with which the background will be drawn.
-    @objc public var backgroundColor : TMBValue?
+    @objc public var backgroundColor: TMBValue?
 
     /// Transition options for `backgroundColor`.
-    @objc public var backgroundColorTransition : TMBStyleTransition?
+    @objc public var backgroundColorTransition: TMBStyleTransition?
 
     /// The opacity at which the background will be drawn.
-    @objc public var backgroundOpacity : TMBValue?
+    @objc public var backgroundOpacity: TMBValue?
 
     /// Transition options for `backgroundOpacity`.
-    @objc public var backgroundOpacityTransition : TMBStyleTransition?
+    @objc public var backgroundOpacityTransition: TMBStyleTransition?
 
     /// Name of image in sprite to use for drawing an image background. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc public var backgroundPattern : TMBValue?
+    @objc public var backgroundPattern: TMBValue?
 
     /// Transition options for `backgroundPattern`.
     @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
-    @objc public var backgroundPatternTransition : TMBStyleTransition?
+    @objc public var backgroundPatternTransition: TMBStyleTransition?
 
 }
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2309802E29D3A403008EF30C /* MapboxMapObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 236010BF282487FF00DAC76A /* MapboxMapObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		231AF0C829BF8B09002D6CFD /* TMBScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0C729BF8B09002D6CFD /* TMBScheme.swift */; };
 		231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CB29BF9305002D6CFD /* TMBValue.swift */; };
 		231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */; };
 		231AF0D229BFEDA8002D6CFD /* TMBStyleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D129BFEDA8002D6CFD /* TMBStyleTransition.swift */; };
@@ -40,6 +39,7 @@
 		2365B80329BE9E9700A013E1 /* NSArray+HoF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365B80229BE9E9700A013E1 /* NSArray+HoF.m */; };
 		236E49A42A5DB47900C2CB77 /* LayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E49A32A5DB47900C2CB77 /* LayerType.swift */; };
 		236E49A62A5DB48900C2CB77 /* SourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E49A52A5DB48900C2CB77 /* SourceType.swift */; };
+		236E49A82A5DB8B700C2CB77 /* SourceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236E49A72A5DB8B700C2CB77 /* SourceProperties.swift */; };
 		236F6CA529AEB46D002D1CED /* ExampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 236F6CA429AEB46D002D1CED /* ExampleModel.m */; };
 		2379C78729FCB19800D0936D /* GeometryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2379C78629FCB19800D0936D /* GeometryHelper.swift */; };
 		2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382019C2A4BA5D400D3D1FF /* TMBGestureOptions.swift */; };
@@ -184,7 +184,6 @@
 /* Begin PBXFileReference section */
 		1008B44E2EF4C9A4066230E2 /* Pods-MapboxMapObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.release.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.release.xcconfig"; sourceTree = "<group>"; };
 		1C18D6659143F51DB92FF65C /* Pods-mapboxqs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.debug.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.debug.xcconfig"; sourceTree = "<group>"; };
-		231AF0C729BF8B09002D6CFD /* TMBScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBScheme.swift; sourceTree = "<group>"; };
 		231AF0CB29BF9305002D6CFD /* TMBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBValue.swift; sourceTree = "<group>"; };
 		231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTerrain.swift; sourceTree = "<group>"; };
 		231AF0D129BFEDA8002D6CFD /* TMBStyleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBStyleTransition.swift; sourceTree = "<group>"; };
@@ -223,6 +222,7 @@
 		2365B80229BE9E9700A013E1 /* NSArray+HoF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+HoF.m"; sourceTree = "<group>"; };
 		236E49A32A5DB47900C2CB77 /* LayerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerType.swift; sourceTree = "<group>"; };
 		236E49A52A5DB48900C2CB77 /* SourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceType.swift; sourceTree = "<group>"; };
+		236E49A72A5DB8B700C2CB77 /* SourceProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceProperties.swift; sourceTree = "<group>"; };
 		236F6CA329AEB46D002D1CED /* ExampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleModel.h; sourceTree = "<group>"; };
 		236F6CA429AEB46D002D1CED /* ExampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleModel.m; sourceTree = "<group>"; };
 		2379C78629FCB19800D0936D /* GeometryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryHelper.swift; sourceTree = "<group>"; };
@@ -712,6 +712,7 @@
 		23B8326229CF4ED900FA94B2 /* sources */ = {
 			isa = PBXGroup;
 			children = (
+				236E49A72A5DB8B700C2CB77 /* SourceProperties.swift */,
 				236E49A52A5DB48900C2CB77 /* SourceType.swift */,
 				2396BE972A5242210085913F /* TMBSource.swift */,
 				23C021802A547EDB002229B5 /* TMBRasterDemSource.swift */,
@@ -735,7 +736,6 @@
 			isa = PBXGroup;
 			children = (
 				234C790A2A5CDFA9001F58FD /* Enums.swift */,
-				231AF0C729BF8B09002D6CFD /* TMBScheme.swift */,
 				231AF0D529BFF042002D6CFD /* TMBOperator.swift */,
 				23FC867B29F206C800C07BF6 /* NamedString.swift */,
 			);
@@ -1065,6 +1065,7 @@
 				23251E2729CF02690088065B /* TMBStyle.swift in Sources */,
 				23C021992A54E77F002229B5 /* TMBVectorSource.swift in Sources */,
 				23C0217F2A54748D002229B5 /* TMBSymbolLayer.swift in Sources */,
+				236E49A82A5DB8B700C2CB77 /* SourceProperties.swift in Sources */,
 				23BA6DD32826C9FB00D2D03A /* CameraOptionsExtensions.swift in Sources */,
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
@@ -1093,7 +1094,6 @@
 				2396BE982A5242210085913F /* TMBSource.swift in Sources */,
 				23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */,
 				2396BE962A5198080085913F /* NSNumberExtensions.swift in Sources */,
-				231AF0C829BF8B09002D6CFD /* TMBScheme.swift in Sources */,
 				232E9F192A53827C00E87D0A /* TMBStyleProjection.swift in Sources */,
 				234C790B2A5CDFAA001F58FD /* Enums.swift in Sources */,
 				23C0218F2A548224002229B5 /* TMBLineLayer.swift in Sources */,

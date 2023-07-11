@@ -44,7 +44,7 @@ async function generateLayer(dir, output, layerName) {
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.${layerName.substring(0,1).toLowerCase() + layerName.replace(/Layer$/, '').substring(1)})
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -79,20 +79,20 @@ async function generateLayer(dir, output, layerName) {
             var nullable = matches[4];
 
             if (isValueObject) {            
-                return `    @objc public ${readonly} ${propName} : TMBValue${nullable}`;
+                return `    @objc public ${readonly} ${propName}: TMBValue${nullable}`;
             }
 
             if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
                 return nullable 
-                    ? `    @objc public ${readonly} ${propName} : NSNumber?`
-                    : `    @objc public ${readonly} ${propName} : ${propType}`;
+                    ? `    @objc public ${readonly} ${propName}: NSNumber?`
+                    : `    @objc public ${readonly} ${propName}: ${propType}`;
             }
 
             if (!isValueObject && /^(String)$/.test(propType)) {
-                return `    @objc public ${readonly} ${propName} : String${nullable}`;
+                return `    @objc public ${readonly} ${propName}: String${nullable}`;
             }
 
-            return `    @objc public ${readonly} ${propName} : TMB${propType}${nullable}`;
+            return `    @objc public ${readonly} ${propName}: TMB${propType}${nullable}`;
         }).filter(x => x != '__NONE__');
     
         var mapToSwiftPropertyLines = [`

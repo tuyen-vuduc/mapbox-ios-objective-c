@@ -1,4 +1,26 @@
 {
-    "input": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO/Sources/MapboxMaps/Style/Generated/Enums/Enums.swift",
-    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/MapboxMapObjC/enums"
+    "mapboxRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO",
+    "mapboxObjcRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO",
+    "enums": [
+        {
+            "input": "Sources/MapboxMaps/Style/Generated/Enums",
+            "output": "MapboxMapObjC/enums",
+            "name": "Enums.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style",
+            "output": "MapboxMapObjC/sources",
+            "name": "SourceType.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style",
+            "output": "MapboxMapObjC/layers",
+            "name": "LayerType.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style/Generated/Sources",
+            "output": "MapboxMapObjC/sources",
+            "name": "SourceProperties.swift"
+        }
+    ]
 }

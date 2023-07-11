@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.hillshade)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,46 +18,46 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// The shading color used to accentuate rugged terrain like sharp cliffs and gorges.
-    @objc public var hillshadeAccentColor : TMBValue?
+    @objc public var hillshadeAccentColor: TMBValue?
 
     /// Transition options for `hillshadeAccentColor`.
-    @objc public var hillshadeAccentColorTransition : TMBStyleTransition?
+    @objc public var hillshadeAccentColorTransition: TMBStyleTransition?
 
     /// Intensity of the hillshade
-    @objc public var hillshadeExaggeration : TMBValue?
+    @objc public var hillshadeExaggeration: TMBValue?
 
     /// Transition options for `hillshadeExaggeration`.
-    @objc public var hillshadeExaggerationTransition : TMBStyleTransition?
+    @objc public var hillshadeExaggerationTransition: TMBStyleTransition?
 
     /// The shading color of areas that faces towards the light source.
-    @objc public var hillshadeHighlightColor : TMBValue?
+    @objc public var hillshadeHighlightColor: TMBValue?
 
     /// Transition options for `hillshadeHighlightColor`.
-    @objc public var hillshadeHighlightColorTransition : TMBStyleTransition?
+    @objc public var hillshadeHighlightColorTransition: TMBStyleTransition?
 
     /// Direction of light source when map is rotated.
-    @objc public var hillshadeIlluminationAnchor : TMBValue?
+    @objc public var hillshadeIlluminationAnchor: TMBValue?
 
     /// The direction of the light source used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`.
-    @objc public var hillshadeIlluminationDirection : TMBValue?
+    @objc public var hillshadeIlluminationDirection: TMBValue?
 
     /// The shading color of areas that face away from the light source.
-    @objc public var hillshadeShadowColor : TMBValue?
+    @objc public var hillshadeShadowColor: TMBValue?
 
     /// Transition options for `hillshadeShadowColor`.
-    @objc public var hillshadeShadowColorTransition : TMBStyleTransition?
+    @objc public var hillshadeShadowColorTransition: TMBStyleTransition?
 
 }
 

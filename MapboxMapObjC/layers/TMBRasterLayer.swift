@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.raster)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,58 +18,58 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// Increase or reduce the brightness of the image. The value is the maximum brightness.
-    @objc public var rasterBrightnessMax : TMBValue?
+    @objc public var rasterBrightnessMax: TMBValue?
 
     /// Transition options for `rasterBrightnessMax`.
-    @objc public var rasterBrightnessMaxTransition : TMBStyleTransition?
+    @objc public var rasterBrightnessMaxTransition: TMBStyleTransition?
 
     /// Increase or reduce the brightness of the image. The value is the minimum brightness.
-    @objc public var rasterBrightnessMin : TMBValue?
+    @objc public var rasterBrightnessMin: TMBValue?
 
     /// Transition options for `rasterBrightnessMin`.
-    @objc public var rasterBrightnessMinTransition : TMBStyleTransition?
+    @objc public var rasterBrightnessMinTransition: TMBStyleTransition?
 
     /// Increase or reduce the contrast of the image.
-    @objc public var rasterContrast : TMBValue?
+    @objc public var rasterContrast: TMBValue?
 
     /// Transition options for `rasterContrast`.
-    @objc public var rasterContrastTransition : TMBStyleTransition?
+    @objc public var rasterContrastTransition: TMBStyleTransition?
 
     /// Fade duration when a new tile is added.
-    @objc public var rasterFadeDuration : TMBValue?
+    @objc public var rasterFadeDuration: TMBValue?
 
     /// Rotates hues around the color wheel.
-    @objc public var rasterHueRotate : TMBValue?
+    @objc public var rasterHueRotate: TMBValue?
 
     /// Transition options for `rasterHueRotate`.
-    @objc public var rasterHueRotateTransition : TMBStyleTransition?
+    @objc public var rasterHueRotateTransition: TMBStyleTransition?
 
     /// The opacity at which the image will be drawn.
-    @objc public var rasterOpacity : TMBValue?
+    @objc public var rasterOpacity: TMBValue?
 
     /// Transition options for `rasterOpacity`.
-    @objc public var rasterOpacityTransition : TMBStyleTransition?
+    @objc public var rasterOpacityTransition: TMBStyleTransition?
 
     /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
-    @objc public var rasterResampling : TMBValue?
+    @objc public var rasterResampling: TMBValue?
 
     /// Increase or reduce the saturation of the image.
-    @objc public var rasterSaturation : TMBValue?
+    @objc public var rasterSaturation: TMBValue?
 
     /// Transition options for `rasterSaturation`.
-    @objc public var rasterSaturationTransition : TMBStyleTransition?
+    @objc public var rasterSaturationTransition: TMBStyleTransition?
 
 }
 

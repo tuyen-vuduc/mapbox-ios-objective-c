@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.locationIndicator)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,97 +18,97 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// Name of image in sprite to use as the middle of the location indicator.
-    @objc public var bearingImage : TMBValue?
+    @objc public var bearingImage: TMBValue?
 
     /// Name of image in sprite to use as the background of the location indicator.
-    @objc public var shadowImage : TMBValue?
+    @objc public var shadowImage: TMBValue?
 
     /// Name of image in sprite to use as the top of the location indicator.
-    @objc public var topImage : TMBValue?
+    @objc public var topImage: TMBValue?
 
     /// The accuracy, in meters, of the position source used to retrieve the position of the location indicator.
-    @objc public var accuracyRadius : TMBValue?
+    @objc public var accuracyRadius: TMBValue?
 
     /// Transition options for `accuracyRadius`.
-    @objc public var accuracyRadiusTransition : TMBStyleTransition?
+    @objc public var accuracyRadiusTransition: TMBStyleTransition?
 
     /// The color for drawing the accuracy radius border. To adjust transparency, set the alpha component of the color accordingly.
-    @objc public var accuracyRadiusBorderColor : TMBValue?
+    @objc public var accuracyRadiusBorderColor: TMBValue?
 
     /// Transition options for `accuracyRadiusBorderColor`.
-    @objc public var accuracyRadiusBorderColorTransition : TMBStyleTransition?
+    @objc public var accuracyRadiusBorderColorTransition: TMBStyleTransition?
 
     /// The color for drawing the accuracy radius, as a circle. To adjust transparency, set the alpha component of the color accordingly.
-    @objc public var accuracyRadiusColor : TMBValue?
+    @objc public var accuracyRadiusColor: TMBValue?
 
     /// Transition options for `accuracyRadiusColor`.
-    @objc public var accuracyRadiusColorTransition : TMBStyleTransition?
+    @objc public var accuracyRadiusColorTransition: TMBStyleTransition?
 
     /// The bearing of the location indicator.
-    @objc public var bearing : TMBValue?
+    @objc public var bearing: TMBValue?
 
     /// Transition options for `bearing`.
-    @objc public var bearingTransition : TMBStyleTransition?
+    @objc public var bearingTransition: TMBStyleTransition?
 
     /// The size of the bearing image, as a scale factor applied to the size of the specified image.
-    @objc public var bearingImageSize : TMBValue?
+    @objc public var bearingImageSize: TMBValue?
 
     /// Transition options for `bearingImageSize`.
-    @objc public var bearingImageSizeTransition : TMBStyleTransition?
+    @objc public var bearingImageSizeTransition: TMBStyleTransition?
 
     /// The color of the circle emphasizing the indicator. To adjust transparency, set the alpha component of the color accordingly.
-    @objc public var emphasisCircleColor : TMBValue?
+    @objc public var emphasisCircleColor: TMBValue?
 
     /// Transition options for `emphasisCircleColor`.
-    @objc public var emphasisCircleColorTransition : TMBStyleTransition?
+    @objc public var emphasisCircleColorTransition: TMBStyleTransition?
 
     /// The radius, in pixel, of the circle emphasizing the indicator, drawn between the accuracy radius and the indicator shadow.
-    @objc public var emphasisCircleRadius : TMBValue?
+    @objc public var emphasisCircleRadius: TMBValue?
 
     /// Transition options for `emphasisCircleRadius`.
-    @objc public var emphasisCircleRadiusTransition : TMBStyleTransition?
+    @objc public var emphasisCircleRadiusTransition: TMBStyleTransition?
 
     /// The displacement off the center of the top image and the shadow image when the pitch of the map is greater than 0. This helps producing a three-dimensional appearence.
-    @objc public var imagePitchDisplacement : TMBValue?
+    @objc public var imagePitchDisplacement: TMBValue?
 
     /// An array of [latitude, longitude, altitude] position of the location indicator.
-    @objc public var location : TMBValue?
+    @objc public var location: TMBValue?
 
     /// Transition options for `location`.
-    @objc public var locationTransition : TMBStyleTransition?
+    @objc public var locationTransition: TMBStyleTransition?
 
     /// The opacity of the entire location indicator layer.
-    @objc public var locationIndicatorOpacity : TMBValue?
+    @objc public var locationIndicatorOpacity: TMBValue?
 
     /// Transition options for `locationIndicatorOpacity`.
-    @objc public var locationIndicatorOpacityTransition : TMBStyleTransition?
+    @objc public var locationIndicatorOpacityTransition: TMBStyleTransition?
 
     /// The amount of the perspective compensation, between 0 and 1. A value of 1 produces a location indicator of constant width across the screen. A value of 0 makes it scale naturally according to the viewing projection.
-    @objc public var perspectiveCompensation : TMBValue?
+    @objc public var perspectiveCompensation: TMBValue?
 
     /// The size of the shadow image, as a scale factor applied to the size of the specified image.
-    @objc public var shadowImageSize : TMBValue?
+    @objc public var shadowImageSize: TMBValue?
 
     /// Transition options for `shadowImageSize`.
-    @objc public var shadowImageSizeTransition : TMBStyleTransition?
+    @objc public var shadowImageSizeTransition: TMBStyleTransition?
 
     /// The size of the top image, as a scale factor applied to the size of the specified image.
-    @objc public var topImageSize : TMBValue?
+    @objc public var topImageSize: TMBValue?
 
     /// Transition options for `topImageSize`.
-    @objc public var topImageSizeTransition : TMBStyleTransition?
+    @objc public var topImageSizeTransition: TMBStyleTransition?
 
 }
 

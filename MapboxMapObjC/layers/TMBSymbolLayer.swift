@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.symbol)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,217 +18,217 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// If true, the icon will be visible even if it collides with other previously drawn symbols.
-    @objc public var iconAllowOverlap : TMBValue?
+    @objc public var iconAllowOverlap: TMBValue?
 
     /// Part of the icon placed closest to the anchor.
-    @objc public var iconAnchor : TMBValue?
+    @objc public var iconAnchor: TMBValue?
 
     /// If true, other symbols can be visible even if they collide with the icon.
-    @objc public var iconIgnorePlacement : TMBValue?
+    @objc public var iconIgnorePlacement: TMBValue?
 
     /// Name of image in sprite to use for drawing an image background.
-    @objc public var iconImage : TMBValue?
+    @objc public var iconImage: TMBValue?
 
     /// If true, the icon may be flipped to prevent it from being rendered upside-down.
-    @objc public var iconKeepUpright : TMBValue?
+    @objc public var iconKeepUpright: TMBValue?
 
     /// Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of `icon-size` to obtain the final offset in pixels. When combined with `icon-rotate` the offset will be as if the rotated direction was up.
-    @objc public var iconOffset : TMBValue?
+    @objc public var iconOffset: TMBValue?
 
     /// If true, text will display without their corresponding icons when the icon collides with other symbols and the text does not.
-    @objc public var iconOptional : TMBValue?
+    @objc public var iconOptional: TMBValue?
 
     /// Size of the additional area around the icon bounding box used for detecting symbol collisions.
-    @objc public var iconPadding : TMBValue?
+    @objc public var iconPadding: TMBValue?
 
     /// Orientation of icon when map is pitched.
-    @objc public var iconPitchAlignment : TMBValue?
+    @objc public var iconPitchAlignment: TMBValue?
 
     /// Rotates the icon clockwise.
-    @objc public var iconRotate : TMBValue?
+    @objc public var iconRotate: TMBValue?
 
     /// In combination with `symbol-placement`, determines the rotation behavior of icons.
-    @objc public var iconRotationAlignment : TMBValue?
+    @objc public var iconRotationAlignment: TMBValue?
 
     /// Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by `icon-size`. 1 is the original size; 3 triples the size of the image.
-    @objc public var iconSize : TMBValue?
+    @objc public var iconSize: TMBValue?
 
     /// Scales the icon to fit around the associated text.
-    @objc public var iconTextFit : TMBValue?
+    @objc public var iconTextFit: TMBValue?
 
     /// Size of the additional area added to dimensions determined by `icon-text-fit`, in clockwise order: top, right, bottom, left.
-    @objc public var iconTextFitPadding : TMBValue?
+    @objc public var iconTextFitPadding: TMBValue?
 
     /// If true, the symbols will not cross tile edges to avoid mutual collisions. Recommended in layers that don't have enough padding in the vector tile to prevent collisions, or if it is a point symbol layer placed after a line symbol layer. When using a client that supports global collision detection, like Mapbox GL JS version 0.42.0 or greater, enabling this property is not needed to prevent clipped labels at tile boundaries.
-    @objc public var symbolAvoidEdges : TMBValue?
+    @objc public var symbolAvoidEdges: TMBValue?
 
     /// Label placement relative to its geometry.
-    @objc public var symbolPlacement : TMBValue?
+    @objc public var symbolPlacement: TMBValue?
 
     /// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first.  When `icon-allow-overlap` or `text-allow-overlap` is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
-    @objc public var symbolSortKey : TMBValue?
+    @objc public var symbolSortKey: TMBValue?
 
     /// Distance between two symbol anchors.
-    @objc public var symbolSpacing : TMBValue?
+    @objc public var symbolSpacing: TMBValue?
 
     /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
-    @objc public var symbolZOrder : TMBValue?
+    @objc public var symbolZOrder: TMBValue?
 
     /// If true, the text will be visible even if it collides with other previously drawn symbols.
-    @objc public var textAllowOverlap : TMBValue?
+    @objc public var textAllowOverlap: TMBValue?
 
     /// Part of the text placed closest to the anchor.
-    @objc public var textAnchor : TMBValue?
+    @objc public var textAnchor: TMBValue?
 
     /// Value to use for a text label. If a plain `string` is provided, it will be treated as a `formatted` with default/inherited formatting options. SDF images are not supported in formatted text and will be ignored.
-    @objc public var textField : TMBValue?
+    @objc public var textField: TMBValue?
 
     /// Font stack to use for displaying text.
-    @objc public var textFont : TMBValue?
+    @objc public var textFont: TMBValue?
 
     /// If true, other symbols can be visible even if they collide with the text.
-    @objc public var textIgnorePlacement : TMBValue?
+    @objc public var textIgnorePlacement: TMBValue?
 
     /// Text justification options.
-    @objc public var textJustify : TMBValue?
+    @objc public var textJustify: TMBValue?
 
     /// If true, the text may be flipped vertically to prevent it from being rendered upside-down.
-    @objc public var textKeepUpright : TMBValue?
+    @objc public var textKeepUpright: TMBValue?
 
     /// Text tracking amount.
-    @objc public var textLetterSpacing : TMBValue?
+    @objc public var textLetterSpacing: TMBValue?
 
     /// Text leading value for multi-line text.
-    @objc public var textLineHeight : TMBValue?
+    @objc public var textLineHeight: TMBValue?
 
     /// Maximum angle change between adjacent characters.
-    @objc public var textMaxAngle : TMBValue?
+    @objc public var textMaxAngle: TMBValue?
 
     /// The maximum line width for text wrapping.
-    @objc public var textMaxWidth : TMBValue?
+    @objc public var textMaxWidth: TMBValue?
 
     /// Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.
-    @objc public var textOffset : TMBValue?
+    @objc public var textOffset: TMBValue?
 
     /// If true, icons will display without their corresponding text when the text collides with other symbols and the icon does not.
-    @objc public var textOptional : TMBValue?
+    @objc public var textOptional: TMBValue?
 
     /// Size of the additional area around the text bounding box used for detecting symbol collisions.
-    @objc public var textPadding : TMBValue?
+    @objc public var textPadding: TMBValue?
 
     /// Orientation of text when map is pitched.
-    @objc public var textPitchAlignment : TMBValue?
+    @objc public var textPitchAlignment: TMBValue?
 
     /// Radial offset of text, in the direction of the symbol's anchor. Useful in combination with `text-variable-anchor`, which defaults to using the two-dimensional `text-offset` if present.
-    @objc public var textRadialOffset : TMBValue?
+    @objc public var textRadialOffset: TMBValue?
 
     /// Rotates the text clockwise.
-    @objc public var textRotate : TMBValue?
+    @objc public var textRotate: TMBValue?
 
     /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
-    @objc public var textRotationAlignment : TMBValue?
+    @objc public var textRotationAlignment: TMBValue?
 
     /// Font size.
-    @objc public var textSize : TMBValue?
+    @objc public var textSize: TMBValue?
 
     /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
-    @objc public var textTransform : TMBValue?
+    @objc public var textTransform: TMBValue?
 
     /// To increase the chance of placing high-priority labels on the map, you can provide an array of `text-anchor` locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use `text-justify: auto` to choose justification based on anchor position. To apply an offset, use the `text-radial-offset` or the two-dimensional `text-offset`.
-    @objc public var textVariableAnchor : TMBValue?
+    @objc public var textVariableAnchor: TMBValue?
 
     /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
-    @objc public var textWritingMode : TMBValue?
+    @objc public var textWritingMode: TMBValue?
 
     /// The color of the icon. This can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
-    @objc public var iconColor : TMBValue?
+    @objc public var iconColor: TMBValue?
 
     /// Transition options for `iconColor`.
-    @objc public var iconColorTransition : TMBStyleTransition?
+    @objc public var iconColorTransition: TMBStyleTransition?
 
     /// Fade out the halo towards the outside.
-    @objc public var iconHaloBlur : TMBValue?
+    @objc public var iconHaloBlur: TMBValue?
 
     /// Transition options for `iconHaloBlur`.
-    @objc public var iconHaloBlurTransition : TMBStyleTransition?
+    @objc public var iconHaloBlurTransition: TMBStyleTransition?
 
     /// The color of the icon's halo. Icon halos can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
-    @objc public var iconHaloColor : TMBValue?
+    @objc public var iconHaloColor: TMBValue?
 
     /// Transition options for `iconHaloColor`.
-    @objc public var iconHaloColorTransition : TMBStyleTransition?
+    @objc public var iconHaloColorTransition: TMBStyleTransition?
 
     /// Distance of halo to the icon outline.
-    @objc public var iconHaloWidth : TMBValue?
+    @objc public var iconHaloWidth: TMBValue?
 
     /// Transition options for `iconHaloWidth`.
-    @objc public var iconHaloWidthTransition : TMBStyleTransition?
+    @objc public var iconHaloWidthTransition: TMBStyleTransition?
 
     /// The opacity at which the icon will be drawn.
-    @objc public var iconOpacity : TMBValue?
+    @objc public var iconOpacity: TMBValue?
 
     /// Transition options for `iconOpacity`.
-    @objc public var iconOpacityTransition : TMBStyleTransition?
+    @objc public var iconOpacityTransition: TMBStyleTransition?
 
     /// Distance that the icon's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
-    @objc public var iconTranslate : TMBValue?
+    @objc public var iconTranslate: TMBValue?
 
     /// Transition options for `iconTranslate`.
-    @objc public var iconTranslateTransition : TMBStyleTransition?
+    @objc public var iconTranslateTransition: TMBStyleTransition?
 
     /// Controls the frame of reference for `icon-translate`.
-    @objc public var iconTranslateAnchor : TMBValue?
+    @objc public var iconTranslateAnchor: TMBValue?
 
     /// The color with which the text will be drawn.
-    @objc public var textColor : TMBValue?
+    @objc public var textColor: TMBValue?
 
     /// Transition options for `textColor`.
-    @objc public var textColorTransition : TMBStyleTransition?
+    @objc public var textColorTransition: TMBStyleTransition?
 
     /// The halo's fadeout distance towards the outside.
-    @objc public var textHaloBlur : TMBValue?
+    @objc public var textHaloBlur: TMBValue?
 
     /// Transition options for `textHaloBlur`.
-    @objc public var textHaloBlurTransition : TMBStyleTransition?
+    @objc public var textHaloBlurTransition: TMBStyleTransition?
 
     /// The color of the text's halo, which helps it stand out from backgrounds.
-    @objc public var textHaloColor : TMBValue?
+    @objc public var textHaloColor: TMBValue?
 
     /// Transition options for `textHaloColor`.
-    @objc public var textHaloColorTransition : TMBStyleTransition?
+    @objc public var textHaloColorTransition: TMBStyleTransition?
 
     /// Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.
-    @objc public var textHaloWidth : TMBValue?
+    @objc public var textHaloWidth: TMBValue?
 
     /// Transition options for `textHaloWidth`.
-    @objc public var textHaloWidthTransition : TMBStyleTransition?
+    @objc public var textHaloWidthTransition: TMBStyleTransition?
 
     /// The opacity at which the text will be drawn.
-    @objc public var textOpacity : TMBValue?
+    @objc public var textOpacity: TMBValue?
 
     /// Transition options for `textOpacity`.
-    @objc public var textOpacityTransition : TMBStyleTransition?
+    @objc public var textOpacityTransition: TMBStyleTransition?
 
     /// Distance that the text's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.
-    @objc public var textTranslate : TMBValue?
+    @objc public var textTranslate: TMBValue?
 
     /// Transition options for `textTranslate`.
-    @objc public var textTranslateTransition : TMBStyleTransition?
+    @objc public var textTranslateTransition: TMBStyleTransition?
 
     /// Controls the frame of reference for `text-translate`.
-    @objc public var textTranslateAnchor : TMBValue?
+    @objc public var textTranslateAnchor: TMBValue?
 
 }
 

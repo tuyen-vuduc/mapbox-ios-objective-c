@@ -9,7 +9,7 @@ import MapboxMaps
     @objc public convenience init(id: String = UUID().uuidString) {
         self.init(id, type: TMBLayerType.circle)
         
-        self.visibility = TMBValue(constant: TMBVisibility.visible)
+        self.visibility = TMBValue.visibility(.visible)
     }
     
     private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
@@ -18,76 +18,76 @@ import MapboxMaps
     }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id : String
-    @objc public let type : TMBLayerType
-    @objc public var filter : TMBExpression?
-    @objc public var source : String?
-    @objc public var sourceLayer : String?
-    @objc public var minZoom : NSNumber?
-    @objc public var maxZoom : NSNumber?
+    @objc public var id: String
+    @objc public let type: TMBLayerType
+    @objc public var filter: TMBExpression?
+    @objc public var source: String?
+    @objc public var sourceLayer: String?
+    @objc public var minZoom: NSNumber?
+    @objc public var maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility : TMBValue?
+    @objc public var visibility: TMBValue?
 
     /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
-    @objc public var circleSortKey : TMBValue?
+    @objc public var circleSortKey: TMBValue?
 
     /// Amount to blur the circle. 1 blurs the circle such that only the centerpoint is full opacity.
-    @objc public var circleBlur : TMBValue?
+    @objc public var circleBlur: TMBValue?
 
     /// Transition options for `circleBlur`.
-    @objc public var circleBlurTransition : TMBStyleTransition?
+    @objc public var circleBlurTransition: TMBStyleTransition?
 
     /// The fill color of the circle.
-    @objc public var circleColor : TMBValue?
+    @objc public var circleColor: TMBValue?
 
     /// Transition options for `circleColor`.
-    @objc public var circleColorTransition : TMBStyleTransition?
+    @objc public var circleColorTransition: TMBStyleTransition?
 
     /// The opacity at which the circle will be drawn.
-    @objc public var circleOpacity : TMBValue?
+    @objc public var circleOpacity: TMBValue?
 
     /// Transition options for `circleOpacity`.
-    @objc public var circleOpacityTransition : TMBStyleTransition?
+    @objc public var circleOpacityTransition: TMBStyleTransition?
 
     /// Orientation of circle when map is pitched.
-    @objc public var circlePitchAlignment : TMBValue?
+    @objc public var circlePitchAlignment: TMBValue?
 
     /// Controls the scaling behavior of the circle when the map is pitched.
-    @objc public var circlePitchScale : TMBValue?
+    @objc public var circlePitchScale: TMBValue?
 
     /// Circle radius.
-    @objc public var circleRadius : TMBValue?
+    @objc public var circleRadius: TMBValue?
 
     /// Transition options for `circleRadius`.
-    @objc public var circleRadiusTransition : TMBStyleTransition?
+    @objc public var circleRadiusTransition: TMBStyleTransition?
 
     /// The stroke color of the circle.
-    @objc public var circleStrokeColor : TMBValue?
+    @objc public var circleStrokeColor: TMBValue?
 
     /// Transition options for `circleStrokeColor`.
-    @objc public var circleStrokeColorTransition : TMBStyleTransition?
+    @objc public var circleStrokeColorTransition: TMBStyleTransition?
 
     /// The opacity of the circle's stroke.
-    @objc public var circleStrokeOpacity : TMBValue?
+    @objc public var circleStrokeOpacity: TMBValue?
 
     /// Transition options for `circleStrokeOpacity`.
-    @objc public var circleStrokeOpacityTransition : TMBStyleTransition?
+    @objc public var circleStrokeOpacityTransition: TMBStyleTransition?
 
     /// The width of the circle's stroke. Strokes are placed outside of the `circle-radius`.
-    @objc public var circleStrokeWidth : TMBValue?
+    @objc public var circleStrokeWidth: TMBValue?
 
     /// Transition options for `circleStrokeWidth`.
-    @objc public var circleStrokeWidthTransition : TMBStyleTransition?
+    @objc public var circleStrokeWidthTransition: TMBStyleTransition?
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
-    @objc public var circleTranslate : TMBValue?
+    @objc public var circleTranslate: TMBValue?
 
     /// Transition options for `circleTranslate`.
-    @objc public var circleTranslateTransition : TMBStyleTransition?
+    @objc public var circleTranslateTransition: TMBStyleTransition?
 
     /// Controls the frame of reference for `circle-translate`.
-    @objc public var circleTranslateAnchor : TMBValue?
+    @objc public var circleTranslateAnchor: TMBValue?
 
 }
 
