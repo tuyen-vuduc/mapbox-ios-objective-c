@@ -94,17 +94,17 @@ extension SkyLayer {
         layer.sourceLayer = self.sourceLayer
         layer.minZoom = self.minZoom?.asNumber()
         layer.maxZoom = self.maxZoom?.asNumber()
-        layer.visibility = TMBValue.fromSwiftValue(self.visibility)
-        layer.skyAtmosphereColor = TMBValue.fromSwiftValue(self.skyAtmosphereColor)
-        layer.skyAtmosphereHaloColor = TMBValue.fromSwiftValue(self.skyAtmosphereHaloColor)
-        layer.skyAtmosphereSun = TMBValue.fromSwiftValue(self.skyAtmosphereSun)
-        layer.skyAtmosphereSunIntensity = TMBValue.fromSwiftValue(self.skyAtmosphereSunIntensity)
-        layer.skyGradient = TMBValue.fromSwiftValue(self.skyGradient)
-        layer.skyGradientCenter = TMBValue.fromSwiftValue(self.skyGradientCenter)
-        layer.skyGradientRadius = TMBValue.fromSwiftValue(self.skyGradientRadius)
-        layer.skyOpacity = TMBValue.fromSwiftValue(self.skyOpacity)
+        layer.visibility = self.visibility?.visibility()
+        layer.skyAtmosphereColor = self.skyAtmosphereColor?.styleColor()
+        layer.skyAtmosphereHaloColor = self.skyAtmosphereHaloColor?.styleColor()
+        layer.skyAtmosphereSun = self.skyAtmosphereSun?.arrayOfDouble()
+        layer.skyAtmosphereSunIntensity = self.skyAtmosphereSunIntensity?.double()
+        layer.skyGradient = self.skyGradient?.styleColor()
+        layer.skyGradientCenter = self.skyGradientCenter?.arrayOfDouble()
+        layer.skyGradientRadius = self.skyGradientRadius?.double()
+        layer.skyOpacity = self.skyOpacity?.double()
         layer.skyOpacityTransition = self.skyOpacityTransition?.objcValue()
-        layer.skyType = TMBValue.fromSwiftValue(self.skyType)
+        layer.skyType = self.skyType?.skyType()
     }
 }
 

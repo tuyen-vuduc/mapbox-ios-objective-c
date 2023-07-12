@@ -85,15 +85,15 @@ extension HeatmapLayer {
         layer.sourceLayer = self.sourceLayer
         layer.minZoom = self.minZoom?.asNumber()
         layer.maxZoom = self.maxZoom?.asNumber()
-        layer.visibility = TMBValue.fromSwiftValue(self.visibility)
-        layer.heatmapColor = TMBValue.fromSwiftValue(self.heatmapColor)
-        layer.heatmapIntensity = TMBValue.fromSwiftValue(self.heatmapIntensity)
+        layer.visibility = self.visibility?.visibility()
+        layer.heatmapColor = self.heatmapColor?.styleColor()
+        layer.heatmapIntensity = self.heatmapIntensity?.double()
         layer.heatmapIntensityTransition = self.heatmapIntensityTransition?.objcValue()
-        layer.heatmapOpacity = TMBValue.fromSwiftValue(self.heatmapOpacity)
+        layer.heatmapOpacity = self.heatmapOpacity?.double()
         layer.heatmapOpacityTransition = self.heatmapOpacityTransition?.objcValue()
-        layer.heatmapRadius = TMBValue.fromSwiftValue(self.heatmapRadius)
+        layer.heatmapRadius = self.heatmapRadius?.double()
         layer.heatmapRadiusTransition = self.heatmapRadiusTransition?.objcValue()
-        layer.heatmapWeight = TMBValue.fromSwiftValue(self.heatmapWeight)
+        layer.heatmapWeight = self.heatmapWeight?.double()
     }
 }
 

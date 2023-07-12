@@ -29,10 +29,10 @@ import MapboxMaps
     /// The type of the layer
     @objc public var type: TMBSourceType {
         get {
-            return TMBSourceType(_self.type)
+            return _self.type.objcValue()
         }
         set {
-            _self.type = newValue.rawValue
+            _self.type = newValue.swiftValue()
         }
     }
 }
@@ -72,6 +72,20 @@ import MapboxMaps
 extension PromoteId: ObjcConvertible {
     public func objcValue() -> TMBPromoteId {
         return TMBPromoteId(self)
+    }
+    
+    public func promoteId() -> TMBPromoteId {
+        return TMBPromoteId(self)
+    }
+}
+
+extension TMBPromoteId: SwiftValueConvertible {
+    public func swiftValue() -> PromoteId {
+        return self.rawValue
+    }
+    
+    public func promoteId() -> PromoteId {
+        return swiftValue()
     }
 }
 
@@ -143,5 +157,17 @@ extension PromoteId: ObjcConvertible {
 extension GeoJSONSourceData: ObjcConvertible {
     public func objcValue() -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(self)
+    }
+    public func geoJSONSourceData() -> TMBGeoJSONSourceData {
+        return objcValue()
+    }
+}
+
+extension TMBGeoJSONSourceData: SwiftValueConvertible {
+    public func swiftValue() -> GeoJSONSourceData {
+        return self.rawValue
+    }
+    public func geoJSONSourceData() -> GeoJSONSourceData {
+        return swiftValue()
     }
 }

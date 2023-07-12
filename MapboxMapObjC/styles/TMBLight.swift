@@ -14,12 +14,12 @@ import MapboxMaps
     }
     
     /// Whether extruded geometries are lit relative to the map or viewport.
-    @objc public var anchor: TMBAnchor? {
+    @objc public var anchor: NSNumber? {
         get {
-            _self.anchor?.objcValue()
+            return _self.anchor?.asNumber()
         }
         set {
-            _self.anchor = newValue?.swiftValue()
+            _self.anchor = newValue?.Anchor
         }
     }
 

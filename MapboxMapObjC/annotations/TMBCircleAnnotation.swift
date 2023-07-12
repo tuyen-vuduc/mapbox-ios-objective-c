@@ -261,26 +261,23 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
 
     /// Orientation of circle when map is pitched.
     @objc
-    public var circlePitchAlignment: TMBCirclePitchAlignment? {
+    public var circlePitchAlignment: NSNumber? {
         get {
-            return _self.circlePitchAlignment?.objcValue()
+            return _self.circlePitchAlignment?.asNumber()
         }
         set {
-            _self.circlePitchAlignment = newValue?.swiftValue()
+            _self.circlePitchAlignment = newValue?.CirclePitchAlignment
         }
     }
 
     /// Controls the scaling behavior of the circle when the map is pitched.
     @objc
-    public var circlePitchScale: TMBCirclePitchScale? {
+    public var circlePitchScale: NSNumber? {
         get {
-            guard let circlePitchScale = _self.circlePitchScale else {
-                return nil
-            }
-            return TMBCirclePitchScale(value: circlePitchScale)
+            return _self.circlePitchScale?.asNumber()
         }
         set {
-            _self.circlePitchScale = newValue?.swiftValue()
+            _self.circlePitchScale = newValue?.CirclePitchScale
         }
     }
 
@@ -297,15 +294,12 @@ open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, Annotati
 
     /// Controls the frame of reference for `circle-translate`.
     @objc
-    public var circleTranslateAnchor: TMBCircleTranslateAnchor? {
+    public var circleTranslateAnchor: NSNumber? {
         get {
-            guard let circleTranslateAnchor = _self.circleTranslateAnchor else {
-                return nil
-            }
-            return TMBCircleTranslateAnchor(value: circleTranslateAnchor)
+            return _self.circleTranslateAnchor?.asNumber()
         }
         set {
-            _self.circleTranslateAnchor = newValue?.swiftValue()
+            _self.circleTranslateAnchor = newValue?.CircleTranslateAnchor
         }
     }
 }

@@ -93,16 +93,16 @@ extension HillshadeLayer {
         layer.sourceLayer = self.sourceLayer
         layer.minZoom = self.minZoom?.asNumber()
         layer.maxZoom = self.maxZoom?.asNumber()
-        layer.visibility = TMBValue.fromSwiftValue(self.visibility)
-        layer.hillshadeAccentColor = TMBValue.fromSwiftValue(self.hillshadeAccentColor)
+        layer.visibility = self.visibility?.visibility()
+        layer.hillshadeAccentColor = self.hillshadeAccentColor?.styleColor()
         layer.hillshadeAccentColorTransition = self.hillshadeAccentColorTransition?.objcValue()
-        layer.hillshadeExaggeration = TMBValue.fromSwiftValue(self.hillshadeExaggeration)
+        layer.hillshadeExaggeration = self.hillshadeExaggeration?.double()
         layer.hillshadeExaggerationTransition = self.hillshadeExaggerationTransition?.objcValue()
-        layer.hillshadeHighlightColor = TMBValue.fromSwiftValue(self.hillshadeHighlightColor)
+        layer.hillshadeHighlightColor = self.hillshadeHighlightColor?.styleColor()
         layer.hillshadeHighlightColorTransition = self.hillshadeHighlightColorTransition?.objcValue()
-        layer.hillshadeIlluminationAnchor = TMBValue.fromSwiftValue(self.hillshadeIlluminationAnchor)
-        layer.hillshadeIlluminationDirection = TMBValue.fromSwiftValue(self.hillshadeIlluminationDirection)
-        layer.hillshadeShadowColor = TMBValue.fromSwiftValue(self.hillshadeShadowColor)
+        layer.hillshadeIlluminationAnchor = self.hillshadeIlluminationAnchor?.hillshadeIlluminationAnchor()
+        layer.hillshadeIlluminationDirection = self.hillshadeIlluminationDirection?.double()
+        layer.hillshadeShadowColor = self.hillshadeShadowColor?.styleColor()
         layer.hillshadeShadowColorTransition = self.hillshadeShadowColorTransition?.objcValue()
     }
 }

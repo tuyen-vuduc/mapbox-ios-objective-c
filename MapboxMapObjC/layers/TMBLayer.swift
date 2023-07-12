@@ -55,10 +55,10 @@ public protocol SwiftValueConvertible<T> {
     /// The type of the layer
     @objc public var type: TMBLayerType {
         get {
-            return _self.type.objcValue()!
+            return _self.type.objcValue()
         }
         set {
-            _self.type = newValue.swiftValue()!
+            _self.type = newValue.swiftValue()
         }
     }
 }

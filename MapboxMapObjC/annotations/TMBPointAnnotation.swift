@@ -59,15 +59,12 @@ open class TMBPointAnnotation : NSObject, TMBAnnotation {
 
     /// Part of the icon placed closest to the anchor.
     @objc
-    public var iconAnchor: TMBIconAnchor? {
+    public var iconAnchor: NSNumber? {
         get {
-            guard let iconAnchor = self.swiftValue.iconAnchor else {
-                return nil
-            }
-            return TMBIconAnchor(value: iconAnchor)
+            return swiftValue.iconAnchor?.asNumber()
         }
         set {
-            self.swiftValue.iconAnchor = newValue?.swiftValue()
+            swiftValue.iconAnchor = newValue?.IconAnchor
         }
     }
 
@@ -140,15 +137,12 @@ open class TMBPointAnnotation : NSObject, TMBAnnotation {
 
     /// Part of the text placed closest to the anchor.
     @objc
-    public var textAnchor: TMBTextAnchor? {
+    public var textAnchor: NSNumber? {
         get {
-            guard let textAnchor = self.swiftValue.textAnchor else {
-                return nil
-            }
-            return TMBTextAnchor(value: textAnchor)
+            return swiftValue.textAnchor?.asNumber()
         }
         set {
-            self.swiftValue.textAnchor = newValue?.swiftValue()
+            swiftValue.textAnchor = newValue?.TextAnchor
         }
     }
 
@@ -165,15 +159,12 @@ open class TMBPointAnnotation : NSObject, TMBAnnotation {
 
     /// Text justification options.
     @objc
-    public var textJustify: TMBTextJustify? {
+    public var textJustify: NSNumber? {
         get {
-            guard let textJustify = self.swiftValue.textJustify else {
-                return nil
-            }
-            return TMBTextJustify(value: textJustify)
+            return swiftValue.textJustify?.asNumber()
         }
         set {
-            self.swiftValue.textJustify = newValue?.swiftValue()
+            swiftValue.textJustify = newValue?.TextJustify
         }
     }
 
@@ -280,15 +271,12 @@ open class TMBPointAnnotation : NSObject, TMBAnnotation {
 
     /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
     @objc
-    public var textTransform: TMBTextTransform? {
+    public var textTransform: NSNumber? {
         get {
-            guard let textTransform = self.swiftValue.textTransform else {
-                return nil
-            }
-            return TMBTextTransform(value: textTransform)
+            return swiftValue.textTransform?.asNumber()
         }
         set {
-            self.swiftValue.textTransform = newValue?.swiftValue()
+            swiftValue.textTransform = newValue?.TextTransform
         }
     }
 
@@ -628,43 +616,34 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Orientation of icon when map is pitched.
     @objc
-    public var iconPitchAlignment: TMBIconPitchAlignment? {
+    public var iconPitchAlignment: NSNumber? {
         get {
-            guard let iconPitchAlignment = _self.iconPitchAlignment else {
-                return nil
-            }
-            return TMBIconPitchAlignment(value: iconPitchAlignment)
+            return _self.iconPitchAlignment?.asNumber()
         }
         set {
-            _self.iconPitchAlignment = newValue?.swiftValue()
+            _self.iconPitchAlignment = newValue?.IconPitchAlignment
         }
     }
 
     /// In combination with `symbol-placement`, determines the rotation behavior of icons.
     @objc
-    public var iconRotationAlignment: TMBIconRotationAlignment? {
+    public var iconRotationAlignment: NSNumber? {
         get {
-            guard let iconRotationAlignment = _self.iconRotationAlignment else {
-                return nil
-            }
-            return TMBIconRotationAlignment(value: iconRotationAlignment)
+            return _self.iconRotationAlignment?.asNumber()
         }
         set {
-            _self.iconRotationAlignment = newValue?.swiftValue()
+            _self.iconRotationAlignment = newValue?.IconRotationAlignment
         }
     }
 
     /// Scales the icon to fit around the associated text.
     @objc
-    public var iconTextFit: TMBIconTextFit? {
+    public var iconTextFit: NSNumber? {
         get {
-            guard let iconTextFit = _self.iconTextFit else {
-                return nil
-            }
-            return TMBIconTextFit(value: iconTextFit)
+            return _self.iconTextFit?.asNumber()
         }
         set {
-            _self.iconTextFit = newValue?.swiftValue()
+            _self.iconTextFit = newValue?.IconTextFit
         }
     }
 
@@ -697,15 +676,12 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Label placement relative to its geometry.
     @objc
-    public var symbolPlacement: TMBSymbolPlacement? {
+    public var symbolPlacement: NSNumber? {
         get {
-            guard let symbolPlacement = _self.symbolPlacement else {
-                return nil
-            }
-            return TMBSymbolPlacement(value: symbolPlacement)
+            return _self.symbolPlacement?.asNumber()
         }
         set {
-            _self.symbolPlacement = newValue?.swiftValue()
+            _self.symbolPlacement = newValue?.SymbolPlacement
         }
     }
 
@@ -727,15 +703,12 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
     @objc
-    public var symbolZOrder: TMBSymbolZOrder? {
+    public var symbolZOrder: NSNumber? {
         get {
-            guard let symbolZOrder = _self.symbolZOrder else {
-                return nil
-            }
-            return TMBSymbolZOrder(value: symbolZOrder)
+            return _self.symbolZOrder?.asNumber()
         }
         set {
-            _self.symbolZOrder = newValue?.swiftValue()
+            _self.symbolZOrder = newValue?.SymbolZOrder
         }
     }
 
@@ -848,51 +821,45 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Orientation of text when map is pitched.
     @objc
-    public var textPitchAlignment: TMBTextPitchAlignment? {
+    public var textPitchAlignment: NSNumber? {
         get {
-            guard let textPitchAlignment = _self.textPitchAlignment else {
-                return nil
-            }
-            return TMBTextPitchAlignment(value: textPitchAlignment)
+            return _self.textPitchAlignment?.asNumber()
         }
         set {
-            _self.textPitchAlignment = newValue?.swiftValue()
+            _self.textPitchAlignment = newValue?.TextPitchAlignment
         }
     }
 
     /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
     @objc
-    public var textRotationAlignment: TMBTextRotationAlignment? {
+    public var textRotationAlignment: NSNumber? {
         get {
-            guard let textRotationAlignment = _self.textRotationAlignment else {
-                return nil
-            }
-            return TMBTextRotationAlignment(value: textRotationAlignment)
+            return _self.textRotationAlignment?.asNumber()
         }
         set {
-            _self.textRotationAlignment = newValue?.swiftValue()
+            _self.textRotationAlignment = newValue?.TextRotationAlignment
         }
     }
 
     /// To increase the chance of placing high-priority labels on the map, you can provide an array of `text-anchor` locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use `text-justify: auto` to choose justification based on anchor position. To apply an offset, use the `text-radial-offset` or the two-dimensional `text-offset`.
     @objc
-    public var textVariableAnchor: [TMBTextAnchor]? {
+    public var textVariableAnchor: [NSNumber]? {
         get {
-            return _self.textVariableAnchor?.map { TMBTextAnchor(value: $0) }
+            return _self.textVariableAnchor?.map { $0.asNumber() }
         }
         set {
-            _self.textVariableAnchor = newValue?.map { $0.swiftValue() }
+            _self.textVariableAnchor = newValue?.map { $0.TextAnchor }
         }
     }
 
     /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
     @objc
-    public var textWritingMode: [TMBTextWritingMode]? {
+    public var textWritingMode: [NSNumber]? {
         get {
-            return _self.textWritingMode?.map { TMBTextWritingMode(value: $0) }
+            return _self.textVariableAnchor?.map { $0.objcValue().asNumber() }
         }
         set {
-            _self.textWritingMode = newValue?.map { $0.swiftValue() }
+            _self.textWritingMode = newValue?.map { $0.textWritingMode().swiftValue() }
         }
     }
 
@@ -909,15 +876,12 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Controls the frame of reference for `icon-translate`.
     @objc
-    public var iconTranslateAnchor: TMBIconTranslateAnchor? {
+    public var iconTranslateAnchor: NSNumber? {
         get {
-            guard let iconTranslateAnchor = _self.iconTranslateAnchor else {
-                return nil
-            }
-            return TMBIconTranslateAnchor(value: iconTranslateAnchor)
+            return _self.iconTranslateAnchor?.asNumber()
         }
         set {
-            _self.iconTranslateAnchor = newValue?.swiftValue()
+            _self.iconTranslateAnchor = newValue?.IconTranslateAnchor
         }
     }
 
@@ -934,15 +898,12 @@ open class TMBPointAnnotationManager : NSObject, TMBAnnotationManager, Annotatio
 
     /// Controls the frame of reference for `text-translate`.
     @objc
-    public var textTranslateAnchor: TMBTextTranslateAnchor? {
+    public var textTranslateAnchor: NSNumber? {
         get {
-            guard let textTranslateAnchor = _self.textTranslateAnchor else {
-                return nil
-            }
-            return TMBTextTranslateAnchor(value: textTranslateAnchor)
+            return _self.textTranslateAnchor?.asNumber()
         }
         set {
-            _self.textTranslateAnchor = newValue?.swiftValue()
+            _self.textTranslateAnchor = newValue?.TextTranslateAnchor
         }
     }
 

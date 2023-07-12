@@ -69,6 +69,7 @@ async function generateEnum(repoInfo, enumInfo) {
                 return .${x}`).join('\n'); 
                 let nameCamelCase = enumUnderCheck[0].toLowerCase() + enumUnderCheck.substring(1);
                 let xlines = `}
+
 @objc extension TMBValue {
     @objc public class func ${nameCamelCase}(_ ${nameCamelCase}: TMB${enumUnderCheck}) -> TMBValue {
         return TMBValue(constant: NSNumber(value: ${nameCamelCase}.rawValue))
@@ -85,11 +86,21 @@ async function generateEnum(repoInfo, enumInfo) {
     }
 }
 
+extension NSNumber {
+    public var ${enumUnderCheck}: ${enumUnderCheck} {
+        return ${nameCamelCase}().swiftValue()
+    }
+}
+
 extension TMB${enumUnderCheck}: SwiftValueConvertible {
     public func swiftValue() -> ${enumUnderCheck} {
         switch(self) {
 ${xcases}
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -98,6 +109,50 @@ extension ${enumUnderCheck}: ObjcConvertible {
         switch(self) {
 ${xcases}
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == ${enumUnderCheck} {
+    func ${nameCamelCase}() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [${enumUnderCheck}] {
+    func arrayOf${enumUnderCheck}() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func ${nameCamelCase}() -> Value<${enumUnderCheck}>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.${enumUnderCheck})
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOf${enumUnderCheck}() -> Value<[${enumUnderCheck}]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.${enumUnderCheck} }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }`;
 

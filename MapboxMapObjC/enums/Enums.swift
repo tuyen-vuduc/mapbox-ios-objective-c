@@ -10,6 +10,7 @@ import MapboxMaps
     /// The layer is not shown.
     case none
 }
+
 @objc extension TMBValue {
     @objc public class func visibility(_ visibility: TMBVisibility) -> TMBValue {
         return TMBValue(constant: NSNumber(value: visibility.rawValue))
@@ -26,6 +27,12 @@ import MapboxMaps
     }
 }
 
+extension NSNumber {
+    public var Visibility: Visibility {
+        return visibility().swiftValue()
+    }
+}
+
 extension TMBVisibility: SwiftValueConvertible {
     public func swiftValue() -> Visibility {
         switch(self) {
@@ -34,6 +41,10 @@ extension TMBVisibility: SwiftValueConvertible {
             case .none:
                 return .none
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -45,6 +56,50 @@ extension Visibility: ObjcConvertible {
             case .none:
                 return .none
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == Visibility {
+    func visibility() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [Visibility] {
+    func arrayOfVisibility() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func visibility() -> Value<Visibility>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.Visibility)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfVisibility() -> Value<[Visibility]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.Visibility }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -63,6 +118,7 @@ extension Visibility: ObjcConvertible {
     case square
 
 }
+
 @objc extension TMBValue {
     @objc public class func lineCap(_ lineCap: TMBLineCap) -> TMBValue {
         return TMBValue(constant: NSNumber(value: lineCap.rawValue))
@@ -79,6 +135,12 @@ extension Visibility: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var LineCap: LineCap {
+        return lineCap().swiftValue()
+    }
+}
+
 extension TMBLineCap: SwiftValueConvertible {
     public func swiftValue() -> LineCap {
         switch(self) {
@@ -89,6 +151,10 @@ extension TMBLineCap: SwiftValueConvertible {
             case .square:
                 return .square
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -102,6 +168,50 @@ extension LineCap: ObjcConvertible {
             case .square:
                 return .square
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == LineCap {
+    func lineCap() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [LineCap] {
+    func arrayOfLineCap() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func lineCap() -> Value<LineCap>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.LineCap)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfLineCap() -> Value<[LineCap]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.LineCap }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -120,6 +230,7 @@ extension LineCap: ObjcConvertible {
     case miter
 
 }
+
 @objc extension TMBValue {
     @objc public class func lineJoin(_ lineJoin: TMBLineJoin) -> TMBValue {
         return TMBValue(constant: NSNumber(value: lineJoin.rawValue))
@@ -136,6 +247,12 @@ extension LineCap: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var LineJoin: LineJoin {
+        return lineJoin().swiftValue()
+    }
+}
+
 extension TMBLineJoin: SwiftValueConvertible {
     public func swiftValue() -> LineJoin {
         switch(self) {
@@ -146,6 +263,10 @@ extension TMBLineJoin: SwiftValueConvertible {
             case .miter:
                 return .miter
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -159,6 +280,50 @@ extension LineJoin: ObjcConvertible {
             case .miter:
                 return .miter
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == LineJoin {
+    func lineJoin() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [LineJoin] {
+    func arrayOfLineJoin() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func lineJoin() -> Value<LineJoin>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.LineJoin)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfLineJoin() -> Value<[LineJoin]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.LineJoin }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -195,6 +360,7 @@ extension LineJoin: ObjcConvertible {
     case bottomRight
 
 }
+
 @objc extension TMBValue {
     @objc public class func iconAnchor(_ iconAnchor: TMBIconAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: iconAnchor.rawValue))
@@ -208,6 +374,12 @@ extension LineJoin: ObjcConvertible {
     
     @objc public func iconAnchor() -> TMBIconAnchor {
         return TMBIconAnchor(rawValue: self.intValue)!
+    }
+}
+
+extension NSNumber {
+    public var IconAnchor: IconAnchor {
+        return iconAnchor().swiftValue()
     }
 }
 
@@ -234,6 +406,10 @@ extension TMBIconAnchor: SwiftValueConvertible {
                 return .bottomRight
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
+    }
 }
 
 extension IconAnchor: ObjcConvertible {
@@ -259,6 +435,50 @@ extension IconAnchor: ObjcConvertible {
                 return .bottomRight
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == IconAnchor {
+    func iconAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [IconAnchor] {
+    func arrayOfIconAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func iconAnchor() -> Value<IconAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.IconAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfIconAnchor() -> Value<[IconAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.IconAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
 }
 
 // MARK: ICON_PITCH_ALIGNMENT
@@ -276,6 +496,7 @@ extension IconAnchor: ObjcConvertible {
     case auto
 
 }
+
 @objc extension TMBValue {
     @objc public class func iconPitchAlignment(_ iconPitchAlignment: TMBIconPitchAlignment) -> TMBValue {
         return TMBValue(constant: NSNumber(value: iconPitchAlignment.rawValue))
@@ -292,6 +513,12 @@ extension IconAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var IconPitchAlignment: IconPitchAlignment {
+        return iconPitchAlignment().swiftValue()
+    }
+}
+
 extension TMBIconPitchAlignment: SwiftValueConvertible {
     public func swiftValue() -> IconPitchAlignment {
         switch(self) {
@@ -302,6 +529,10 @@ extension TMBIconPitchAlignment: SwiftValueConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -315,6 +546,50 @@ extension IconPitchAlignment: ObjcConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == IconPitchAlignment {
+    func iconPitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [IconPitchAlignment] {
+    func arrayOfIconPitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func iconPitchAlignment() -> Value<IconPitchAlignment>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.IconPitchAlignment)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfIconPitchAlignment() -> Value<[IconPitchAlignment]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.IconPitchAlignment }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -333,6 +608,7 @@ extension IconPitchAlignment: ObjcConvertible {
     case auto
 
 }
+
 @objc extension TMBValue {
     @objc public class func iconRotationAlignment(_ iconRotationAlignment: TMBIconRotationAlignment) -> TMBValue {
         return TMBValue(constant: NSNumber(value: iconRotationAlignment.rawValue))
@@ -349,6 +625,12 @@ extension IconPitchAlignment: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var IconRotationAlignment: IconRotationAlignment {
+        return iconRotationAlignment().swiftValue()
+    }
+}
+
 extension TMBIconRotationAlignment: SwiftValueConvertible {
     public func swiftValue() -> IconRotationAlignment {
         switch(self) {
@@ -359,6 +641,10 @@ extension TMBIconRotationAlignment: SwiftValueConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -372,6 +658,50 @@ extension IconRotationAlignment: ObjcConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == IconRotationAlignment {
+    func iconRotationAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [IconRotationAlignment] {
+    func arrayOfIconRotationAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func iconRotationAlignment() -> Value<IconRotationAlignment>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.IconRotationAlignment)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfIconRotationAlignment() -> Value<[IconRotationAlignment]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.IconRotationAlignment }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -393,6 +723,7 @@ extension IconRotationAlignment: ObjcConvertible {
     case both
 
 }
+
 @objc extension TMBValue {
     @objc public class func iconTextFit(_ iconTextFit: TMBIconTextFit) -> TMBValue {
         return TMBValue(constant: NSNumber(value: iconTextFit.rawValue))
@@ -409,6 +740,12 @@ extension IconRotationAlignment: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var IconTextFit: IconTextFit {
+        return iconTextFit().swiftValue()
+    }
+}
+
 extension TMBIconTextFit: SwiftValueConvertible {
     public func swiftValue() -> IconTextFit {
         switch(self) {
@@ -421,6 +758,10 @@ extension TMBIconTextFit: SwiftValueConvertible {
             case .both:
                 return .both
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -436,6 +777,50 @@ extension IconTextFit: ObjcConvertible {
             case .both:
                 return .both
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == IconTextFit {
+    func iconTextFit() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [IconTextFit] {
+    func arrayOfIconTextFit() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func iconTextFit() -> Value<IconTextFit>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.IconTextFit)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfIconTextFit() -> Value<[IconTextFit]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.IconTextFit }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -454,6 +839,7 @@ extension IconTextFit: ObjcConvertible {
     case lineCenter
 
 }
+
 @objc extension TMBValue {
     @objc public class func symbolPlacement(_ symbolPlacement: TMBSymbolPlacement) -> TMBValue {
         return TMBValue(constant: NSNumber(value: symbolPlacement.rawValue))
@@ -470,6 +856,12 @@ extension IconTextFit: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var SymbolPlacement: SymbolPlacement {
+        return symbolPlacement().swiftValue()
+    }
+}
+
 extension TMBSymbolPlacement: SwiftValueConvertible {
     public func swiftValue() -> SymbolPlacement {
         switch(self) {
@@ -480,6 +872,10 @@ extension TMBSymbolPlacement: SwiftValueConvertible {
             case .lineCenter:
                 return .lineCenter
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -493,6 +889,50 @@ extension SymbolPlacement: ObjcConvertible {
             case .lineCenter:
                 return .lineCenter
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == SymbolPlacement {
+    func symbolPlacement() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [SymbolPlacement] {
+    func arrayOfSymbolPlacement() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func symbolPlacement() -> Value<SymbolPlacement>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.SymbolPlacement)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfSymbolPlacement() -> Value<[SymbolPlacement]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.SymbolPlacement }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -511,6 +951,7 @@ extension SymbolPlacement: ObjcConvertible {
     case source
 
 }
+
 @objc extension TMBValue {
     @objc public class func symbolZOrder(_ symbolZOrder: TMBSymbolZOrder) -> TMBValue {
         return TMBValue(constant: NSNumber(value: symbolZOrder.rawValue))
@@ -527,6 +968,12 @@ extension SymbolPlacement: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var SymbolZOrder: SymbolZOrder {
+        return symbolZOrder().swiftValue()
+    }
+}
+
 extension TMBSymbolZOrder: SwiftValueConvertible {
     public func swiftValue() -> SymbolZOrder {
         switch(self) {
@@ -537,6 +984,10 @@ extension TMBSymbolZOrder: SwiftValueConvertible {
             case .source:
                 return .source
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -550,6 +1001,50 @@ extension SymbolZOrder: ObjcConvertible {
             case .source:
                 return .source
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == SymbolZOrder {
+    func symbolZOrder() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [SymbolZOrder] {
+    func arrayOfSymbolZOrder() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func symbolZOrder() -> Value<SymbolZOrder>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.SymbolZOrder)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfSymbolZOrder() -> Value<[SymbolZOrder]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.SymbolZOrder }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -586,6 +1081,7 @@ extension SymbolZOrder: ObjcConvertible {
     case bottomRight
 
 }
+
 @objc extension TMBValue {
     @objc public class func textAnchor(_ textAnchor: TMBTextAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textAnchor.rawValue))
@@ -599,6 +1095,12 @@ extension SymbolZOrder: ObjcConvertible {
     
     @objc public func textAnchor() -> TMBTextAnchor {
         return TMBTextAnchor(rawValue: self.intValue)!
+    }
+}
+
+extension NSNumber {
+    public var TextAnchor: TextAnchor {
+        return textAnchor().swiftValue()
     }
 }
 
@@ -625,6 +1127,10 @@ extension TMBTextAnchor: SwiftValueConvertible {
                 return .bottomRight
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
+    }
 }
 
 extension TextAnchor: ObjcConvertible {
@@ -650,6 +1156,50 @@ extension TextAnchor: ObjcConvertible {
                 return .bottomRight
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextAnchor {
+    func textAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextAnchor] {
+    func arrayOfTextAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textAnchor() -> Value<TextAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextAnchor() -> Value<[TextAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
 }
 
 // MARK: TEXT_JUSTIFY
@@ -670,6 +1220,7 @@ extension TextAnchor: ObjcConvertible {
     case right
 
 }
+
 @objc extension TMBValue {
     @objc public class func textJustify(_ textJustify: TMBTextJustify) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textJustify.rawValue))
@@ -686,6 +1237,12 @@ extension TextAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextJustify: TextJustify {
+        return textJustify().swiftValue()
+    }
+}
+
 extension TMBTextJustify: SwiftValueConvertible {
     public func swiftValue() -> TextJustify {
         switch(self) {
@@ -698,6 +1255,10 @@ extension TMBTextJustify: SwiftValueConvertible {
             case .right:
                 return .right
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -713,6 +1274,50 @@ extension TextJustify: ObjcConvertible {
             case .right:
                 return .right
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextJustify {
+    func textJustify() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextJustify] {
+    func arrayOfTextJustify() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textJustify() -> Value<TextJustify>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextJustify)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextJustify() -> Value<[TextJustify]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextJustify }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -731,6 +1336,7 @@ extension TextJustify: ObjcConvertible {
     case auto
 
 }
+
 @objc extension TMBValue {
     @objc public class func textPitchAlignment(_ textPitchAlignment: TMBTextPitchAlignment) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textPitchAlignment.rawValue))
@@ -747,6 +1353,12 @@ extension TextJustify: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextPitchAlignment: TextPitchAlignment {
+        return textPitchAlignment().swiftValue()
+    }
+}
+
 extension TMBTextPitchAlignment: SwiftValueConvertible {
     public func swiftValue() -> TextPitchAlignment {
         switch(self) {
@@ -757,6 +1369,10 @@ extension TMBTextPitchAlignment: SwiftValueConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -770,6 +1386,50 @@ extension TextPitchAlignment: ObjcConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextPitchAlignment {
+    func textPitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextPitchAlignment] {
+    func arrayOfTextPitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textPitchAlignment() -> Value<TextPitchAlignment>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextPitchAlignment)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextPitchAlignment() -> Value<[TextPitchAlignment]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextPitchAlignment }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -788,6 +1448,7 @@ extension TextPitchAlignment: ObjcConvertible {
     case auto
 
 }
+
 @objc extension TMBValue {
     @objc public class func textRotationAlignment(_ textRotationAlignment: TMBTextRotationAlignment) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textRotationAlignment.rawValue))
@@ -804,6 +1465,12 @@ extension TextPitchAlignment: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextRotationAlignment: TextRotationAlignment {
+        return textRotationAlignment().swiftValue()
+    }
+}
+
 extension TMBTextRotationAlignment: SwiftValueConvertible {
     public func swiftValue() -> TextRotationAlignment {
         switch(self) {
@@ -814,6 +1481,10 @@ extension TMBTextRotationAlignment: SwiftValueConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -827,6 +1498,50 @@ extension TextRotationAlignment: ObjcConvertible {
             case .auto:
                 return .auto
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextRotationAlignment {
+    func textRotationAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextRotationAlignment] {
+    func arrayOfTextRotationAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textRotationAlignment() -> Value<TextRotationAlignment>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextRotationAlignment)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextRotationAlignment() -> Value<[TextRotationAlignment]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextRotationAlignment }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -845,6 +1560,7 @@ extension TextRotationAlignment: ObjcConvertible {
     case lowercase
 
 }
+
 @objc extension TMBValue {
     @objc public class func textTransform(_ textTransform: TMBTextTransform) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textTransform.rawValue))
@@ -861,6 +1577,12 @@ extension TextRotationAlignment: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextTransform: TextTransform {
+        return textTransform().swiftValue()
+    }
+}
+
 extension TMBTextTransform: SwiftValueConvertible {
     public func swiftValue() -> TextTransform {
         switch(self) {
@@ -871,6 +1593,10 @@ extension TMBTextTransform: SwiftValueConvertible {
             case .lowercase:
                 return .lowercase
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -884,6 +1610,50 @@ extension TextTransform: ObjcConvertible {
             case .lowercase:
                 return .lowercase
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextTransform {
+    func textTransform() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextTransform] {
+    func arrayOfTextTransform() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textTransform() -> Value<TextTransform>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextTransform)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextTransform() -> Value<[TextTransform]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextTransform }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -899,6 +1669,7 @@ extension TextTransform: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func fillTranslateAnchor(_ fillTranslateAnchor: TMBFillTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: fillTranslateAnchor.rawValue))
@@ -915,6 +1686,12 @@ extension TextTransform: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var FillTranslateAnchor: FillTranslateAnchor {
+        return fillTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBFillTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> FillTranslateAnchor {
         switch(self) {
@@ -923,6 +1700,10 @@ extension TMBFillTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -934,6 +1715,50 @@ extension FillTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == FillTranslateAnchor {
+    func fillTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [FillTranslateAnchor] {
+    func arrayOfFillTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func fillTranslateAnchor() -> Value<FillTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.FillTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfFillTranslateAnchor() -> Value<[FillTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.FillTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -949,6 +1774,7 @@ extension FillTranslateAnchor: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func lineTranslateAnchor(_ lineTranslateAnchor: TMBLineTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: lineTranslateAnchor.rawValue))
@@ -965,6 +1791,12 @@ extension FillTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var LineTranslateAnchor: LineTranslateAnchor {
+        return lineTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBLineTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> LineTranslateAnchor {
         switch(self) {
@@ -973,6 +1805,10 @@ extension TMBLineTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -984,6 +1820,50 @@ extension LineTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == LineTranslateAnchor {
+    func lineTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [LineTranslateAnchor] {
+    func arrayOfLineTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func lineTranslateAnchor() -> Value<LineTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.LineTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfLineTranslateAnchor() -> Value<[LineTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.LineTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -999,6 +1879,7 @@ extension LineTranslateAnchor: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func iconTranslateAnchor(_ iconTranslateAnchor: TMBIconTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: iconTranslateAnchor.rawValue))
@@ -1015,6 +1896,12 @@ extension LineTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var IconTranslateAnchor: IconTranslateAnchor {
+        return iconTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBIconTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> IconTranslateAnchor {
         switch(self) {
@@ -1023,6 +1910,10 @@ extension TMBIconTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1034,6 +1925,50 @@ extension IconTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == IconTranslateAnchor {
+    func iconTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [IconTranslateAnchor] {
+    func arrayOfIconTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func iconTranslateAnchor() -> Value<IconTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.IconTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfIconTranslateAnchor() -> Value<[IconTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.IconTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1049,6 +1984,7 @@ extension IconTranslateAnchor: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func textTranslateAnchor(_ textTranslateAnchor: TMBTextTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textTranslateAnchor.rawValue))
@@ -1065,6 +2001,12 @@ extension IconTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextTranslateAnchor: TextTranslateAnchor {
+        return textTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBTextTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> TextTranslateAnchor {
         switch(self) {
@@ -1073,6 +2015,10 @@ extension TMBTextTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1084,6 +2030,50 @@ extension TextTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextTranslateAnchor {
+    func textTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextTranslateAnchor] {
+    func arrayOfTextTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textTranslateAnchor() -> Value<TextTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextTranslateAnchor() -> Value<[TextTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1099,6 +2089,7 @@ extension TextTranslateAnchor: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func circlePitchAlignment(_ circlePitchAlignment: TMBCirclePitchAlignment) -> TMBValue {
         return TMBValue(constant: NSNumber(value: circlePitchAlignment.rawValue))
@@ -1115,6 +2106,12 @@ extension TextTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var CirclePitchAlignment: CirclePitchAlignment {
+        return circlePitchAlignment().swiftValue()
+    }
+}
+
 extension TMBCirclePitchAlignment: SwiftValueConvertible {
     public func swiftValue() -> CirclePitchAlignment {
         switch(self) {
@@ -1123,6 +2120,10 @@ extension TMBCirclePitchAlignment: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1134,6 +2135,50 @@ extension CirclePitchAlignment: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == CirclePitchAlignment {
+    func circlePitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [CirclePitchAlignment] {
+    func arrayOfCirclePitchAlignment() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func circlePitchAlignment() -> Value<CirclePitchAlignment>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.CirclePitchAlignment)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfCirclePitchAlignment() -> Value<[CirclePitchAlignment]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.CirclePitchAlignment }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1149,6 +2194,7 @@ extension CirclePitchAlignment: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func circlePitchScale(_ circlePitchScale: TMBCirclePitchScale) -> TMBValue {
         return TMBValue(constant: NSNumber(value: circlePitchScale.rawValue))
@@ -1165,6 +2211,12 @@ extension CirclePitchAlignment: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var CirclePitchScale: CirclePitchScale {
+        return circlePitchScale().swiftValue()
+    }
+}
+
 extension TMBCirclePitchScale: SwiftValueConvertible {
     public func swiftValue() -> CirclePitchScale {
         switch(self) {
@@ -1173,6 +2225,10 @@ extension TMBCirclePitchScale: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1184,6 +2240,50 @@ extension CirclePitchScale: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == CirclePitchScale {
+    func circlePitchScale() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [CirclePitchScale] {
+    func arrayOfCirclePitchScale() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func circlePitchScale() -> Value<CirclePitchScale>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.CirclePitchScale)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfCirclePitchScale() -> Value<[CirclePitchScale]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.CirclePitchScale }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1199,6 +2299,7 @@ extension CirclePitchScale: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func circleTranslateAnchor(_ circleTranslateAnchor: TMBCircleTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: circleTranslateAnchor.rawValue))
@@ -1215,6 +2316,12 @@ extension CirclePitchScale: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var CircleTranslateAnchor: CircleTranslateAnchor {
+        return circleTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBCircleTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> CircleTranslateAnchor {
         switch(self) {
@@ -1223,6 +2330,10 @@ extension TMBCircleTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1234,6 +2345,50 @@ extension CircleTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == CircleTranslateAnchor {
+    func circleTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [CircleTranslateAnchor] {
+    func arrayOfCircleTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func circleTranslateAnchor() -> Value<CircleTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.CircleTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfCircleTranslateAnchor() -> Value<[CircleTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.CircleTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1249,6 +2404,7 @@ extension CircleTranslateAnchor: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func fillExtrusionTranslateAnchor(_ fillExtrusionTranslateAnchor: TMBFillExtrusionTranslateAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: fillExtrusionTranslateAnchor.rawValue))
@@ -1265,6 +2421,12 @@ extension CircleTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var FillExtrusionTranslateAnchor: FillExtrusionTranslateAnchor {
+        return fillExtrusionTranslateAnchor().swiftValue()
+    }
+}
+
 extension TMBFillExtrusionTranslateAnchor: SwiftValueConvertible {
     public func swiftValue() -> FillExtrusionTranslateAnchor {
         switch(self) {
@@ -1273,6 +2435,10 @@ extension TMBFillExtrusionTranslateAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1284,6 +2450,50 @@ extension FillExtrusionTranslateAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == FillExtrusionTranslateAnchor {
+    func fillExtrusionTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [FillExtrusionTranslateAnchor] {
+    func arrayOfFillExtrusionTranslateAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func fillExtrusionTranslateAnchor() -> Value<FillExtrusionTranslateAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.FillExtrusionTranslateAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfFillExtrusionTranslateAnchor() -> Value<[FillExtrusionTranslateAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.FillExtrusionTranslateAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1299,6 +2509,7 @@ extension FillExtrusionTranslateAnchor: ObjcConvertible {
     case nearest
 
 }
+
 @objc extension TMBValue {
     @objc public class func rasterResampling(_ rasterResampling: TMBRasterResampling) -> TMBValue {
         return TMBValue(constant: NSNumber(value: rasterResampling.rawValue))
@@ -1315,6 +2526,12 @@ extension FillExtrusionTranslateAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var RasterResampling: RasterResampling {
+        return rasterResampling().swiftValue()
+    }
+}
+
 extension TMBRasterResampling: SwiftValueConvertible {
     public func swiftValue() -> RasterResampling {
         switch(self) {
@@ -1323,6 +2540,10 @@ extension TMBRasterResampling: SwiftValueConvertible {
             case .nearest:
                 return .nearest
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1334,6 +2555,50 @@ extension RasterResampling: ObjcConvertible {
             case .nearest:
                 return .nearest
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == RasterResampling {
+    func rasterResampling() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [RasterResampling] {
+    func arrayOfRasterResampling() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func rasterResampling() -> Value<RasterResampling>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.RasterResampling)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfRasterResampling() -> Value<[RasterResampling]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.RasterResampling }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1349,6 +2614,7 @@ extension RasterResampling: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func hillshadeIlluminationAnchor(_ hillshadeIlluminationAnchor: TMBHillshadeIlluminationAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: hillshadeIlluminationAnchor.rawValue))
@@ -1365,6 +2631,12 @@ extension RasterResampling: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var HillshadeIlluminationAnchor: HillshadeIlluminationAnchor {
+        return hillshadeIlluminationAnchor().swiftValue()
+    }
+}
+
 extension TMBHillshadeIlluminationAnchor: SwiftValueConvertible {
     public func swiftValue() -> HillshadeIlluminationAnchor {
         switch(self) {
@@ -1373,6 +2645,10 @@ extension TMBHillshadeIlluminationAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1384,6 +2660,50 @@ extension HillshadeIlluminationAnchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == HillshadeIlluminationAnchor {
+    func hillshadeIlluminationAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [HillshadeIlluminationAnchor] {
+    func arrayOfHillshadeIlluminationAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func hillshadeIlluminationAnchor() -> Value<HillshadeIlluminationAnchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.HillshadeIlluminationAnchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfHillshadeIlluminationAnchor() -> Value<[HillshadeIlluminationAnchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.HillshadeIlluminationAnchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1399,6 +2719,7 @@ extension HillshadeIlluminationAnchor: ObjcConvertible {
     case atmosphere
 
 }
+
 @objc extension TMBValue {
     @objc public class func skyType(_ skyType: TMBSkyType) -> TMBValue {
         return TMBValue(constant: NSNumber(value: skyType.rawValue))
@@ -1415,6 +2736,12 @@ extension HillshadeIlluminationAnchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var SkyType: SkyType {
+        return skyType().swiftValue()
+    }
+}
+
 extension TMBSkyType: SwiftValueConvertible {
     public func swiftValue() -> SkyType {
         switch(self) {
@@ -1423,6 +2750,10 @@ extension TMBSkyType: SwiftValueConvertible {
             case .atmosphere:
                 return .atmosphere
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1434,6 +2765,50 @@ extension SkyType: ObjcConvertible {
             case .atmosphere:
                 return .atmosphere
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == SkyType {
+    func skyType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [SkyType] {
+    func arrayOfSkyType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func skyType() -> Value<SkyType>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.SkyType)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfSkyType() -> Value<[SkyType]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.SkyType }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1449,6 +2824,7 @@ extension SkyType: ObjcConvertible {
     case viewport
 
 }
+
 @objc extension TMBValue {
     @objc public class func anchor(_ anchor: TMBAnchor) -> TMBValue {
         return TMBValue(constant: NSNumber(value: anchor.rawValue))
@@ -1465,6 +2841,12 @@ extension SkyType: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var Anchor: Anchor {
+        return anchor().swiftValue()
+    }
+}
+
 extension TMBAnchor: SwiftValueConvertible {
     public func swiftValue() -> Anchor {
         switch(self) {
@@ -1473,6 +2855,10 @@ extension TMBAnchor: SwiftValueConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1484,6 +2870,50 @@ extension Anchor: ObjcConvertible {
             case .viewport:
                 return .viewport
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == Anchor {
+    func anchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [Anchor] {
+    func arrayOfAnchor() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func anchor() -> Value<Anchor>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.Anchor)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfAnchor() -> Value<[Anchor]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.Anchor }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1499,6 +2929,7 @@ extension Anchor: ObjcConvertible {
     case globe
 
 }
+
 @objc extension TMBValue {
     @objc public class func styleProjectionName(_ styleProjectionName: TMBStyleProjectionName) -> TMBValue {
         return TMBValue(constant: NSNumber(value: styleProjectionName.rawValue))
@@ -1515,6 +2946,12 @@ extension Anchor: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var StyleProjectionName: StyleProjectionName {
+        return styleProjectionName().swiftValue()
+    }
+}
+
 extension TMBStyleProjectionName: SwiftValueConvertible {
     public func swiftValue() -> StyleProjectionName {
         switch(self) {
@@ -1523,6 +2960,10 @@ extension TMBStyleProjectionName: SwiftValueConvertible {
             case .globe:
                 return .globe
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1534,6 +2975,50 @@ extension StyleProjectionName: ObjcConvertible {
             case .globe:
                 return .globe
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == StyleProjectionName {
+    func styleProjectionName() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [StyleProjectionName] {
+    func arrayOfStyleProjectionName() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func styleProjectionName() -> Value<StyleProjectionName>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.StyleProjectionName)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfStyleProjectionName() -> Value<[StyleProjectionName]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.StyleProjectionName }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -1549,6 +3034,7 @@ extension StyleProjectionName: ObjcConvertible {
     case vertical
 
 }
+
 @objc extension TMBValue {
     @objc public class func textWritingMode(_ textWritingMode: TMBTextWritingMode) -> TMBValue {
         return TMBValue(constant: NSNumber(value: textWritingMode.rawValue))
@@ -1565,6 +3051,12 @@ extension StyleProjectionName: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var TextWritingMode: TextWritingMode {
+        return textWritingMode().swiftValue()
+    }
+}
+
 extension TMBTextWritingMode: SwiftValueConvertible {
     public func swiftValue() -> TextWritingMode {
         switch(self) {
@@ -1573,6 +3065,10 @@ extension TMBTextWritingMode: SwiftValueConvertible {
             case .vertical:
                 return .vertical
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -1584,6 +3080,50 @@ extension TextWritingMode: ObjcConvertible {
             case .vertical:
                 return .vertical
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == TextWritingMode {
+    func textWritingMode() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [TextWritingMode] {
+    func arrayOfTextWritingMode() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func textWritingMode() -> Value<TextWritingMode>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.TextWritingMode)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfTextWritingMode() -> Value<[TextWritingMode]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.TextWritingMode }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 

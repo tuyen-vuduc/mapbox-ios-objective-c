@@ -62,7 +62,7 @@
 - (TMBSkyLayer*) createSkyLayer {
     TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    layer.skyType = [TMBValue constant: TMBSkyType.atmosphere];
+    layer.skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
     layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     

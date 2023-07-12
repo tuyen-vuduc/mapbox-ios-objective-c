@@ -50,9 +50,51 @@ extension TMBResolvedImage {
         let jsonDecoder = JSONDecoder()
         return try! jsonDecoder.decode(ResolvedImage.self, from: data);
     }
+    
+    func resolvedImage() -> ResolvedImage {
+        return swiftOnly()
+    }
 }
 
+extension ResolvedImage {
+    func resolvedImage() -> TMBResolvedImage {
+        switch(self) {
+        case .name(let name):
+            return TMBResolvedImage(name: name)
+        case .data(let data):
+            return TMBResolvedImage(name: data.name, available: data.available)
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == ResolvedImage {
+    func resolvedImage() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.resolvedImage())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [ResolvedImage] {
+    func arrayOfResolvedImage() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.resolvedImage() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
 extension TMBValue {
-    
+    func resolvedImage() -> Value<ResolvedImage>? {
+        if let constant = self.constant as? TMBResolvedImage {
+            return Value.constant(constant.swiftOnly())
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
 }
 

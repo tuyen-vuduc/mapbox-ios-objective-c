@@ -22,7 +22,7 @@ open class TMBTerrain : NSObject {
     /// Exaggerates the elevation of the terrain by multiplying the data from the DEM with this value.
     @objc public var exaggeration: TMBValue? {
         get {
-            TMBValue.fromSwiftValue(_self.exaggeration)
+            return _self.exaggeration?.double()
         }
         set {
             _self.exaggeration = newValue?.double()

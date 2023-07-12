@@ -1,8 +1,6 @@
 import fs from 'fs';
+import { commonTypeToConversionNameMapping } from './helpers/helpers.js';
 
-var commonTypeToConversionNameMapping = {
-    'bool': 'boolean',
-};
 generateLayers() ;
 
 async function generateLayers() {
@@ -120,10 +118,10 @@ extension TMB${layerName} {
             }
 
             if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return `        layer.${propName} = self.${propName}${nullable}.${propType.substring(0,1).toLowerCase() + propType.substring(1)}()`;
+                return `        layer.${propName} = self.${propName}${nullable}.${propType[0].toLowerCase() + propType.substring(1)}()`;
             }
 
-            var conversionName = propType.substring(0,1).toLowerCase() + propType.substring(1);
+            var conversionName = propType[0].toLowerCase() + propType.substring(1);
             if (commonTypeToConversionNameMapping[conversionName]) {
                 conversionName = commonTypeToConversionNameMapping[conversionName];
             } else if (/^\[/.test(propType)) {
@@ -166,7 +164,13 @@ extension ${layerName} {
             }
 
             if (isValueObject) {
-                return `        layer.${propName} = TMBValue.fromSwiftValue(self.${propName})`;
+                var conversionName = propType[0].toLowerCase() + propType.substring(1);
+                if (commonTypeToConversionNameMapping[conversionName]) {
+                    conversionName = commonTypeToConversionNameMapping[conversionName];
+                } else if (/^\[/.test(propType)) {
+                    conversionName = 'arrayOf' + propType.replace(/\[|\]/img, '');
+                }
+                return `        layer.${propName} = self.${propName}${nullable}.${conversionName}()`;
             }
 
             return  `        layer.${propName} = self.${propName}${nullable}.objcValue()`;

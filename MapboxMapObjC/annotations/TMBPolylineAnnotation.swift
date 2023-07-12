@@ -61,15 +61,12 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
 
     /// The display of lines when joining.
     @objc
-    public var lineJoin: TMBLineJoin? {
+    public var lineJoin: NSNumber? {
         get {
-            guard let lineJoin = self.swiftValue.lineJoin else {
-                return nil
-            }
-            return TMBLineJoin(value: lineJoin)
+            return self.swiftValue.lineJoin?.asNumber()
         }
         set {
-            self.swiftValue.lineJoin = newValue?.swiftValue()
+            self.swiftValue.lineJoin = newValue?.LineJoin
         }
     }
 
@@ -271,15 +268,12 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
 
     /// The display of line endings.
     @objc
-    public var lineCap: TMBLineCap? {
+    public var lineCap: NSNumber? {
         get {
-            guard let lineCap = _self.lineCap else {
-                return nil
-            }
-            return TMBLineCap(value: lineCap)
+            return _self.lineCap?.asNumber()
         }
         set {
-            _self.lineCap = newValue?.swiftValue()
+            _self.lineCap = newValue?.LineCap
         }
     }
 
@@ -337,15 +331,12 @@ open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, Annota
 
     /// Controls the frame of reference for `line-translate`.
     @objc
-    public var lineTranslateAnchor: TMBLineTranslateAnchor? {
+    public var lineTranslateAnchor: NSNumber? {
         get {
-            guard let lineTranslateAnchor = _self.lineTranslateAnchor else {
-                return nil
-            }
-            return TMBLineTranslateAnchor(value: lineTranslateAnchor)
+            return _self.lineTranslateAnchor?.asNumber()
         }
         set {
-            _self.lineTranslateAnchor = newValue?.swiftValue()
+            _self.lineTranslateAnchor = newValue?.LineTranslateAnchor
         }
     }
 

@@ -42,6 +42,7 @@ import MapboxMaps
     case model
 
 }
+
 @objc extension TMBValue {
     @objc public class func layerType(_ layerType: TMBLayerType) -> TMBValue {
         return TMBValue(constant: NSNumber(value: layerType.rawValue))
@@ -55,6 +56,12 @@ import MapboxMaps
     
     @objc public func layerType() -> TMBLayerType {
         return TMBLayerType(rawValue: self.intValue)!
+    }
+}
+
+extension NSNumber {
+    public var LayerType: LayerType {
+        return layerType().swiftValue()
     }
 }
 
@@ -87,6 +94,10 @@ extension TMBLayerType: SwiftValueConvertible {
                 return .model
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
+    }
 }
 
 extension LayerType: ObjcConvertible {
@@ -117,6 +128,50 @@ extension LayerType: ObjcConvertible {
             case .model:
                 return .model
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == LayerType {
+    func layerType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [LayerType] {
+    func arrayOfLayerType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func layerType() -> Value<LayerType>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.LayerType)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfLayerType() -> Value<[LayerType]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.LayerType }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 

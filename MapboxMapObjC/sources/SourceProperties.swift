@@ -12,6 +12,7 @@ import MapboxMaps
     case tms
 
 }
+
 @objc extension TMBValue {
     @objc public class func scheme(_ scheme: TMBScheme) -> TMBValue {
         return TMBValue(constant: NSNumber(value: scheme.rawValue))
@@ -28,6 +29,12 @@ import MapboxMaps
     }
 }
 
+extension NSNumber {
+    public var Scheme: Scheme {
+        return scheme().swiftValue()
+    }
+}
+
 extension TMBScheme: SwiftValueConvertible {
     public func swiftValue() -> Scheme {
         switch(self) {
@@ -36,6 +43,10 @@ extension TMBScheme: SwiftValueConvertible {
             case .tms:
                 return .tms
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -47,6 +58,50 @@ extension Scheme: ObjcConvertible {
             case .tms:
                 return .tms
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == Scheme {
+    func scheme() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [Scheme] {
+    func arrayOfScheme() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func scheme() -> Value<Scheme>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.Scheme)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfScheme() -> Value<[Scheme]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.Scheme }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 
@@ -60,6 +115,7 @@ extension Scheme: ObjcConvertible {
     case mapbox
 
 }
+
 @objc extension TMBValue {
     @objc public class func encoding(_ encoding: TMBEncoding) -> TMBValue {
         return TMBValue(constant: NSNumber(value: encoding.rawValue))
@@ -76,6 +132,12 @@ extension Scheme: ObjcConvertible {
     }
 }
 
+extension NSNumber {
+    public var Encoding: Encoding {
+        return encoding().swiftValue()
+    }
+}
+
 extension TMBEncoding: SwiftValueConvertible {
     public func swiftValue() -> Encoding {
         switch(self) {
@@ -84,6 +146,10 @@ extension TMBEncoding: SwiftValueConvertible {
             case .mapbox:
                 return .mapbox
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
     }
 }
 
@@ -95,6 +161,50 @@ extension Encoding: ObjcConvertible {
             case .mapbox:
                 return .mapbox
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == Encoding {
+    func encoding() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [Encoding] {
+    func arrayOfEncoding() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func encoding() -> Value<Encoding>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.Encoding)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfEncoding() -> Value<[Encoding]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.Encoding }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 

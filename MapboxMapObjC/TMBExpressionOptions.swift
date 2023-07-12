@@ -42,7 +42,7 @@ import MapboxMaps
     /// Applies a scaling factor on text-size as specified by the root layout property.
     @objc public var fontScaleValue: TMBValue? {
         get {
-            return TMBValue.fromSwiftValue(_self.fontScaleValue)
+            return _self.fontScaleValue?.double()
         }
         set {
             _self.fontScaleValue = newValue?.double()
@@ -57,7 +57,7 @@ import MapboxMaps
     /// Overrides the font stack specified by the root layout property.
     @objc public var textFontValue: TMBValue? {
         get {
-            return TMBValue.fromSwiftValue(_self.textFontValue)
+            return _self.textFontValue?.arrayOfString()
         }
         set {
             _self.textFontValue = newValue?.arrayOfString()
@@ -72,7 +72,7 @@ import MapboxMaps
     /// Overrides the color specified by the root paint property.
     @objc public var textColorValue: TMBValue? {
         get {
-            return TMBValue.fromSwiftValue(_self.textColorValue)
+            return _self.textColorValue?.styleColor()
         }
         set {
             _self.textColorValue = newValue?.styleColor()

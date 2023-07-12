@@ -23,6 +23,7 @@ import MapboxMaps
     case model
 
 }
+
 @objc extension TMBValue {
     @objc public class func sourceType(_ sourceType: TMBSourceType) -> TMBValue {
         return TMBValue(constant: NSNumber(value: sourceType.rawValue))
@@ -36,6 +37,12 @@ import MapboxMaps
     
     @objc public func sourceType() -> TMBSourceType {
         return TMBSourceType(rawValue: self.intValue)!
+    }
+}
+
+extension NSNumber {
+    public var SourceType: SourceType {
+        return sourceType().swiftValue()
     }
 }
 
@@ -56,6 +63,10 @@ extension TMBSourceType: SwiftValueConvertible {
                 return .model
         }
     }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: self.rawValue)
+    }
 }
 
 extension SourceType: ObjcConvertible {
@@ -74,6 +85,50 @@ extension SourceType: ObjcConvertible {
             case .model:
                 return .model
         }
+    }
+
+    func asNumber() -> NSNumber {
+        return NSNumber(value: objcValue().rawValue)
+    }
+}
+
+extension MapboxMaps.Value where T == SourceType {
+    func sourceType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.asNumber())
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension MapboxMaps.Value where T == [SourceType] {
+    func arrayOfSourceType() -> TMBValue {
+        switch(self) {
+        case .constant(let obj):
+            return TMBValue(constant: obj.map { $0.asNumber() })
+        case .expression(let expression):
+            return TMBValue(expression: TMBExpression(expression))
+        }
+    }
+}
+
+extension TMBValue {
+    func sourceType() -> Value<SourceType>? {
+        if let constant = self.constant as? NSNumber {
+            return Value.constant(constant.SourceType)
+        }
+        
+        return Value.expression(expression!.rawValue)
+    }
+    
+    func arrayOfSourceType() -> Value<[SourceType]>? {
+        if let constant = self.constant as? [NSNumber] {
+            return Value.constant(constant.map({ $0.SourceType }))
+        }
+        
+        return Value.expression(expression!.rawValue)
     }
 }
 

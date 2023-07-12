@@ -91,7 +91,7 @@
         
     layer.source = sourceId;
     layer.iconImage = [TMBValue constant:[TMBResolvedImage fromName:icon]];
-    layer.iconAnchor = [TMBValue constant: TMBIconAnchor.bottom];
+    layer.iconAnchor =[TMBValue iconAnchor:TMBIconAnchorBottom];
     
     return layer;
 }

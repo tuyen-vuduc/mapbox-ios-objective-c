@@ -158,6 +158,8 @@ import MapboxMaps
             var xlayer = TMBSkyLayer(id: id)
             layer.mapTo(&xlayer)
             return xlayer
+        case .model:
+            throw TMBError(message: "MobelLayer is deprecated.")
         }
     }
     
@@ -238,7 +240,7 @@ import MapboxMaps
         completion: ((TMBLayer?, Error?)->Void)? = nil
     ) {
         do {
-            var layer = try layerTypeToLayer(id, layerType: type)
+            let layer = try layerTypeToLayer(id, layerType: type)
             completion?(layer, nil)
         }
         catch {
@@ -262,8 +264,8 @@ import MapboxMaps
         completion: ((TMBLayer?, Error?)->Void)? = nil
     ) {
         do {
-            var layer = try _self.layer(withId: id)
-            var xlayer = layerToLayer(layer)
+            let layer = try _self.layer(withId: id)
+            let xlayer = layerToLayer(layer)
             
             if (xlayer == nil) {
                 completion?(nil, TMBError(message: "Invalid layer"))
@@ -297,81 +299,72 @@ import MapboxMaps
             switch(type) {
             case .fill:
                 try _self.updateLayer(withId: id, type: FillLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBFillLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBFillLayer
                     zlayer.mapTo(&layer)
                 }
             case .line:
                 try _self.updateLayer(withId: id, type: LineLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBLineLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBLineLayer
                     zlayer.mapTo(&layer)
                 }
             case .symbol:
                 try _self.updateLayer(withId: id, type: SymbolLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBSymbolLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBSymbolLayer
                     zlayer.mapTo(&layer)
                 }
             case .circle:
                 try _self.updateLayer(withId: id, type: CircleLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBCircleLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBCircleLayer
                     zlayer.mapTo(&layer)
                 }
             case .heatmap:
                 try _self.updateLayer(withId: id, type: HeatmapLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBHeatmapLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBHeatmapLayer
                     zlayer.mapTo(&layer)
                 }
             case .fillExtrusion:
                 try _self.updateLayer(withId: id, type: FillExtrusionLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBFillExtrusionLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBFillExtrusionLayer
                     zlayer.mapTo(&layer)
                 }
             case .raster:
                 try _self.updateLayer(withId: id, type: RasterLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBRasterLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBRasterLayer
                     zlayer.mapTo(&layer)
                 }
             case .hillshade:
                 try _self.updateLayer(withId: id, type: HillshadeLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBHillshadeLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBHillshadeLayer
                     zlayer.mapTo(&layer)
                 }
             case .background:
                 try _self.updateLayer(withId: id, type: BackgroundLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBBackgroundLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBBackgroundLayer
                     zlayer.mapTo(&layer)
                 }
             case .locationIndicator:
                 try _self.updateLayer(withId: id, type: LocationIndicatorLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBLocationIndicatorLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBLocationIndicatorLayer
                     zlayer.mapTo(&layer)
                 }
             case .sky:
                 try _self.updateLayer(withId: id, type: SkyLayer.self) { layer in
-                    var xlayer = layer.objcValue()
-                    
-                    var zlayer = update(xlayer) as! TMBSkyLayer
+                    let xlayer = layer.objcValue()
+                    let zlayer = update(xlayer) as! TMBSkyLayer
                     zlayer.mapTo(&layer)
                 }
+            case .model:
+                throw TMBError(message: "ModelLayer is deprecated.")
             }
             
             completion?(nil)
@@ -382,6 +375,39 @@ import MapboxMaps
     }
 
     // MARK: - Sources
+    
+    func sourceToSource(_ objc: TMBSource) throws -> Source {
+        switch(objc.type) {
+        case .vector:
+            return (objc as! TMBVectorSource).swiftValue()
+        case .raster:
+            return (objc as! TMBRasterSource).swiftValue()
+        case .rasterDem:
+            return (objc as! TMBRasterDemSource).swiftValue()
+        case .geoJson:
+            return (objc as! TMBGeoJSONSource).swiftValue()
+        case .image:
+            return (objc as! TMBImageSource).swiftValue()
+        case .model:
+            throw TMBError(message: "ModelSource is internal")
+        }
+    }
+    func sourceToSource(_ value: Source, id: String) throws -> TMBSource {
+        switch(value.type) {
+        case .vector:
+            return (value as! VectorSource).objcValue(id)
+        case .raster:
+            return (value as! RasterSource).objcValue(id)
+        case .rasterDem:
+            return (value as! RasterDemSource).objcValue(id)
+        case .geoJson:
+            return (value as! GeoJSONSource).objcValue(id)
+        case .image:
+            return (value as! ImageSource).objcValue(id)
+        case .model:
+            throw TMBError(message: "ModelSource is internal")
+        }
+    }
 
     /**
      Adds a `source` to the map
@@ -396,7 +422,8 @@ import MapboxMaps
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            try _self.addSource(source.rawValue, id: id)
+            let xsource = try sourceToSource(source)
+            try _self.addSource(xsource, id: id)
             
             completion?(nil)
         }
@@ -416,18 +443,33 @@ import MapboxMaps
         }
     }
     
-    private func sourceTypeToSource(_ id: String, sourceType: TMBSourceType) throws -> Source  {
-        switch(sourceType.rawValue) {
+    private func sourceTypeToSource(_ id: String, sourceType: TMBSourceType) throws -> TMBSource  {
+        switch(sourceType) {
         case .vector:
-            return try _self.source(withId: id, type: VectorSource.self)
+            let source = try _self.source(withId: id, type: VectorSource.self)
+            var xsource = TMBVectorSource(id: id)
+            source.mapTo(&xsource)
+            return xsource
         case .raster:
-            return try _self.source(withId: id, type: RasterSource.self)
+            let source = try _self.source(withId: id, type: RasterSource.self)
+            var xsource = TMBRasterSource(id: id)
+            source.mapTo(&xsource)
+            return xsource
         case .rasterDem:
-            return try _self.source(withId: id, type: RasterDemSource.self)
+            let source = try _self.source(withId: id, type: RasterDemSource.self)
+            var xsource = TMBRasterDemSource(id: id)
+            source.mapTo(&xsource)
+            return xsource
         case .geoJson:
-            return try _self.source(withId: id, type: GeoJSONSource.self)
+            let source = try _self.source(withId: id, type: GeoJSONSource.self)
+            var xsource = TMBGeoJSONSource(id: id)
+            source.mapTo(&xsource)
+            return xsource
         case .image:
-            return try _self.source(withId: id, type: ImageSource.self)
+            let source = try _self.source(withId: id, type: ImageSource.self)
+            var xsource = TMBImageSource(id: id)
+            source.mapTo(&xsource)
+            return xsource
         case .model:
             throw TMBError(message: "Internal use only")
         }
@@ -447,8 +489,7 @@ import MapboxMaps
         completion: ((TMBSource?, Error?)->Void)? = nil
     ) {
         do {
-            let source = try sourceTypeToSource(id, sourceType: type)
-            let result = TMBSource(source)
+            let result = try sourceTypeToSource(id, sourceType: type)
             
             completion?(result, nil)
         }
@@ -474,7 +515,7 @@ import MapboxMaps
     ) {
         do {
             let source = try _self.source(withId: id)
-            let result = TMBSource(source)
+            let result = try sourceToSource(source, id: id)
             
             completion?(result, nil)
         }
@@ -832,7 +873,7 @@ import MapboxMaps
         for layerType: TMBLayerType,
         property: String
     ) -> StylePropertyValue {
-        return Style.layerPropertyDefaultValue(for: layerType.swiftValue()!, property: property)
+        return Style.layerPropertyDefaultValue(for: layerType.swiftValue(), property: property)
     }
 
     /// Gets the properties for a style layer.

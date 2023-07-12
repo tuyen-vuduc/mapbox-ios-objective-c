@@ -72,7 +72,7 @@ typedef void (^RenderingWillEndHandler)(void);
 - (TMBSkyLayer *) createSkyLayer {
     TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    layer.skyType = [TMBValue constant: TMBSkyType.atmosphere];
+    layer.skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
     layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     
@@ -99,7 +99,7 @@ typedef void (^RenderingWillEndHandler)(void);
     }];
     
     NSString* sourceId = @"mapbox-dem";
-    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] init];
+    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] initWithId:sourceId];
     rasterDemSource.url = @"mapbox://mapbox.mapbox-terrain-dem-v1";
     rasterDemSource.tileSize = @514;
     rasterDemSource.maxzoom = @14.0;

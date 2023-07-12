@@ -134,7 +134,7 @@
 
 - (void) addTerrainLayer {
     NSString* sourceId = @"mapbox-dem";
-    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] init];
+    TMBRasterDemSource* rasterDemSource = [[TMBRasterDemSource alloc] initWithId:sourceId];
     rasterDemSource.url = @"mapbox://mapbox.mapbox-terrain-dem-v1";
     rasterDemSource.tileSize = @514;
     rasterDemSource.maxzoom = @14.0;

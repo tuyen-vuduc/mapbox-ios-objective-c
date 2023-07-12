@@ -78,12 +78,12 @@ extension BackgroundLayer {
         layer.sourceLayer = self.sourceLayer
         layer.minZoom = self.minZoom?.asNumber()
         layer.maxZoom = self.maxZoom?.asNumber()
-        layer.visibility = TMBValue.fromSwiftValue(self.visibility)
-        layer.backgroundColor = TMBValue.fromSwiftValue(self.backgroundColor)
+        layer.visibility = self.visibility?.visibility()
+        layer.backgroundColor = self.backgroundColor?.styleColor()
         layer.backgroundColorTransition = self.backgroundColorTransition?.objcValue()
-        layer.backgroundOpacity = TMBValue.fromSwiftValue(self.backgroundOpacity)
+        layer.backgroundOpacity = self.backgroundOpacity?.double()
         layer.backgroundOpacityTransition = self.backgroundOpacityTransition?.objcValue()
-        layer.backgroundPattern = TMBValue.fromSwiftValue(self.backgroundPattern)
+        layer.backgroundPattern = self.backgroundPattern?.resolvedImage()
         layer.backgroundPatternTransition = self.backgroundPatternTransition?.objcValue()
     }
 }
