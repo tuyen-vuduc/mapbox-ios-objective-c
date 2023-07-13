@@ -22,11 +22,17 @@ async function generateEnum(repoInfo, enumInfo) {
     var caseFound = false;
     var skipped = false;
     var processingStatement = false;    
+    var scopedName = '';
     var lines = content.split('\n')
         .map(line => {
             if (processingStatement) {
                 processingStatement = false;
                 return 'import MapboxMaps\n';
+            }
+
+            if (/public extension (\w+)/.test(line.trim())) {
+                scopedName = /public extension (\w+)/.exec(line.trim())[1] + '.';
+                return '__NA__';
             }
 
             if (/^\/\//.test(line.trim())
@@ -40,10 +46,10 @@ async function generateEnum(repoInfo, enumInfo) {
                 return line;
             }
 
-            if (/^public enum/.test(line.trim())) {
+            if (/^public enum/.test(line.trim()) || /^enum/.test(line.trim())) {
                 skipped = false;
                 caseFound = false
-                let matches = /public enum (\w+)/.exec(line.trim())
+                let matches = /enum (\w+)/.exec(line.trim())
                 enumUnderCheck = matches[1];
 
                 return `@objc public enum TMB${enumUnderCheck}: Int {`
@@ -68,6 +74,9 @@ async function generateEnum(repoInfo, enumInfo) {
                 let xcases = cases.map(x => `            case .${x}:
                 return .${x}`).join('\n'); 
                 let nameCamelCase = enumUnderCheck[0].toLowerCase() + enumUnderCheck.substring(1);
+                if (!!scopedName) {
+                    nameCamelCase = scopedName[0].toLowerCase() + scopedName.substring(1).replace('.', '') + enumUnderCheck;
+                }
                 let xlines = `}
 
 @objc extension TMBValue {
@@ -87,13 +96,13 @@ async function generateEnum(repoInfo, enumInfo) {
 }
 
 extension NSNumber {
-    public var ${enumUnderCheck}: ${enumUnderCheck} {
+    public var ${enumUnderCheck}: ${scopedName}${enumUnderCheck} {
         return ${nameCamelCase}().swiftValue()
     }
 }
 
 extension TMB${enumUnderCheck}: SwiftValueConvertible {
-    public func swiftValue() -> ${enumUnderCheck} {
+    public func swiftValue() -> ${scopedName}${enumUnderCheck} {
         switch(self) {
 ${xcases}
         }
@@ -104,7 +113,7 @@ ${xcases}
     }
 }
 
-extension ${enumUnderCheck}: ObjcConvertible {
+extension ${scopedName}${enumUnderCheck}: ObjcConvertible {
     public func objcValue() -> TMB${enumUnderCheck} {
         switch(self) {
 ${xcases}
@@ -116,7 +125,7 @@ ${xcases}
     }
 }
 
-extension MapboxMaps.Value where T == ${enumUnderCheck} {
+extension MapboxMaps.Value where T == ${scopedName}${enumUnderCheck} {
     func ${nameCamelCase}() -> TMBValue {
         switch(self) {
         case .constant(let obj):
@@ -127,8 +136,8 @@ extension MapboxMaps.Value where T == ${enumUnderCheck} {
     }
 }
 
-extension MapboxMaps.Value where T == [${enumUnderCheck}] {
-    func arrayOf${enumUnderCheck}() -> TMBValue {
+extension MapboxMaps.Value where T == [${scopedName}${enumUnderCheck}] {
+    func arrayOf${scopedName.replace('.', '')}${enumUnderCheck}() -> TMBValue {
         switch(self) {
         case .constant(let obj):
             return TMBValue(constant: obj.map { $0.asNumber() })
@@ -139,7 +148,7 @@ extension MapboxMaps.Value where T == [${enumUnderCheck}] {
 }
 
 extension TMBValue {
-    func ${nameCamelCase}() -> Value<${enumUnderCheck}>? {
+    func ${nameCamelCase}() -> Value<${scopedName}${enumUnderCheck}>? {
         if let constant = self.constant as? NSNumber {
             return Value.constant(constant.${enumUnderCheck})
         }
@@ -147,7 +156,7 @@ extension TMBValue {
         return Value.expression(expression!.rawValue)
     }
     
-    func arrayOf${enumUnderCheck}() -> Value<[${enumUnderCheck}]>? {
+    func arrayOf${scopedName.replace('.', '')}${enumUnderCheck}() -> Value<[${scopedName}${enumUnderCheck}]>? {
         if let constant = self.constant as? [NSNumber] {
             return Value.constant(constant.map({ $0.${enumUnderCheck} }))
         }
@@ -158,6 +167,7 @@ extension TMBValue {
 
                 enumUnderCheck = null;
                 cases = [];
+                scopedName = '';
 
                 return xlines
             }

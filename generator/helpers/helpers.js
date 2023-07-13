@@ -25,6 +25,6 @@ function getEnumNames(repoInfo, enumInfo) {
     var input = path.join(repoInfo.mapboxRepo, enumInfo.input, enumInfo.name);
     var content = fs.readFileSync(input, 'utf8');
     return content.split('\n')
-        .filter(x => /^public enum/.test(x.trim()))
-        .map(x => /^public enum (\w+)/.exec(x.trim())[1])
+        .filter(x => /^public enum/.test(x.trim()) || /^enum/.test(x.trim()))
+        .map(x => /enum (\w+)/.exec(x.trim())[1])
 }

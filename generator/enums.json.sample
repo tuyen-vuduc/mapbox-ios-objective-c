@@ -21,6 +21,11 @@
             "input": "Sources/MapboxMaps/Style/Generated/Sources",
             "output": "MapboxMapObjC/sources",
             "name": "SourceProperties.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style/Generated/Expressions",
+            "output": "MapboxMapObjC/expressions",
+            "name": "AllExpressions.swift"
         }
     ]
 }

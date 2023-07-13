@@ -77,14 +77,14 @@
     
     // Create expression to identify the max flow rate of one hydrant in the cluster
     // ["max", ["get", "FLOW"]]
-    TMBExpression* maxExpression = [TMBExpression createWithOperator:TMBOperator.max
+    TMBExpression* maxExpression = [TMBExpression createWithOperator:TMBOperatorMax
                                                            arguments: @[
         [TMBExpression createWithOperator:TMBOperator.get arguments:@[@"FLOW"]]
     ]];
     
     // Create expression to determine if a hydrant with EngineID E-9 is in the cluster
     // ["any", ["==", ["get", "ENGINEID"], "E-9"]]
-    TMBExpression* ine9Expression = [TMBExpression createWithOperator:TMBOperator.any arguments:@[
+    TMBExpression* ine9Expression = [TMBExpression createWithOperator:TMBOperatorAny arguments:@[
         [TMBExpression createWithOperator:TMBOperator.eq arguments:@[
             [TMBExpression createWithOperator:TMBOperator.get arguments:@[@"ENGINEID"]],
             @"E-9"
