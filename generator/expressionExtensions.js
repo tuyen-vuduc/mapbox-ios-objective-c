@@ -17,17 +17,16 @@ function generateExpressionExtensions() {
         .filter(x => /^case (\w+)/.test(x.trim()))
         .map(x => {
             var matches = /case (\w+)/.exec(x.trim());
-            return `@objc extension TMBExpression {
-    public class func ${matches[1]}() -> TMBExpression {
+            return `    public class func ${matches[1]}() -> TMBExpression {
         return TMBExpression.create(withOperator: .${matches[1]})
     }
     public class func ${matches[1]}(_ arguments: [Any]) -> TMBExpression {
         return TMBExpression.create(withOperator: .${matches[1]}, arguments: arguments)
-    }
-}`;
+    }`;
         });
     
     fs.writeFileSync(
         path.join(output, "TMBExpressionExtensions.swift"), 
-        ['// This file is generated.'].concat(lines).join('\n'));
+        [`// This file is generated.
+@objc extension TMBExpression {`].concat(lines).concat('}').join('\n'));
 }
