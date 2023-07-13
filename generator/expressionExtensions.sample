@@ -1,0 +1,7 @@
+{
+    "mapboxRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO",
+    "mapboxObjcRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO",
+    "input": "Sources/MapboxMaps/Style/Generated/Expressions",
+    "output": "MapboxMapObjC/expressions",
+    "name": "AllExpressions.swift"
+}

@@ -58,6 +58,7 @@
 		2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE932A5190610085913F /* TMBExpressionOptions.swift */; };
 		2396BE962A5198080085913F /* NSNumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE952A5198080085913F /* NSNumberExtensions.swift */; };
 		2396BE982A5242210085913F /* TMBSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE972A5242210085913F /* TMBSource.swift */; };
+		2399EB912A60BBF900C76D5C /* TMBExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */; };
 		239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */; };
 		23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */; };
 		23B8326829CF61D700FA94B2 /* OfflineManagerExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */; };
@@ -242,6 +243,7 @@
 		2396BE932A5190610085913F /* TMBExpressionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBExpressionOptions.swift; sourceTree = "<group>"; };
 		2396BE952A5198080085913F /* NSNumberExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNumberExtensions.swift; sourceTree = "<group>"; };
 		2396BE972A5242210085913F /* TMBSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSource.swift; sourceTree = "<group>"; };
+		2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBExpressionExtensions.swift; sourceTree = "<group>"; };
 		239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.Extensions.swift; sourceTree = "<group>"; };
 		23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCircleAnnotation.swift; sourceTree = "<group>"; };
 		23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineManagerExample.storyboard; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 		2378BC9E2A5F65E300DA0EBB /* expressions */ = {
 			isa = PBXGroup;
 			children = (
+				2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */,
 				231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */,
 				2378BC9F2A5F65F700DA0EBB /* AllExpressions.swift */,
 			);
@@ -1117,6 +1120,7 @@
 				2396BE902A5180DA0085913F /* TMBLayer.swift in Sources */,
 				2396BE862A510A310085913F /* TMBViewport.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
+				2399EB912A60BBF900C76D5C /* TMBExpressionExtensions.swift in Sources */,
 				236E49A62A5DB48900C2CB77 /* SourceType.swift in Sources */,
 				23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */,
 				23C021952A54E6AC002229B5 /* TMBImageSource.swift in Sources */,

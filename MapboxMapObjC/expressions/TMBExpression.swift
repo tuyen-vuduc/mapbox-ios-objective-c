@@ -107,7 +107,7 @@ import MapboxMaps
         })
     }
     
-    @objc class public func create(arguments: [Any]) -> TMBExpression{
+    @objc class public func args(_ arguments: [Any]) -> TMBExpression{
         return TMBExpression(Expression(arguments: getSwiftArguments(arguments)))
     }
 }
