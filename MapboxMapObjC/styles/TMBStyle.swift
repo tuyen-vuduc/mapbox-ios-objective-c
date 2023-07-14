@@ -1261,7 +1261,9 @@ import MapboxMaps
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            try _self.setLight(light.rawValue)
+            var xlight = Light()
+            light.mapTo(&xlight)
+            try _self.setLight(xlight)
             completion?(nil)
         }
         catch {
@@ -1344,7 +1346,9 @@ import MapboxMaps
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            try _self.setTerrain(terrain.rawValue)
+            var xterrain = Terrain(sourceId: terrain.source)
+            terrain.mapTo(&xterrain)
+            try _self.setTerrain(xterrain)
             completion?(nil)
         }
         catch {
@@ -1428,7 +1432,9 @@ import MapboxMaps
         completion: ((Error?)->Void)? = nil
     ) {
         do {
-            try _self.setAtmosphere(atmosphere.rawValue)
+            var xatmosphere = Atmosphere()
+            atmosphere.mapTo(&xatmosphere)           
+            try _self.setAtmosphere(xatmosphere)
             completion?(nil)
         }
         catch {

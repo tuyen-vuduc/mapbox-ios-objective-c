@@ -151,7 +151,7 @@ extension ${layerName} {
                 return;
             }
 
-            if (!isValueObject && propType == 'String' || !nullable){
+            if (!isValueObject && (propType == 'String' || !nullable)){
                 return `        layer.${propName} = self.${propName}`;
             }
 

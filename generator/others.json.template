@@ -1,0 +1,21 @@
+{
+    "mapboxRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO",
+    "mapboxObjcRepo": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO",
+    "files": [
+        {
+            "input": "Sources/MapboxMaps/Style/Generated/Light",
+            "output": "MapboxMapObjC/styles",
+            "name": "Light.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style/Generated",
+            "output": "MapboxMapObjC/styles",
+            "name": "Terrain.swift"
+        },
+        {
+            "input": "Sources/MapboxMaps/Style/Generated",
+            "output": "MapboxMapObjC/styles",
+            "name": "Atmosphere.swift"
+        }
+    ]
+}

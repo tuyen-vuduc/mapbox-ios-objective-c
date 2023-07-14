@@ -1,28 +1,29 @@
 import fs from 'fs';
+import * as path from 'path';
 import { getEnums, commonTypeToConversionNameMapping, sourceTypeMapping } from './helpers/helpers.js';
 
 var enums = getEnums();
 
-generateSources() ;
+generateFiles() ;
 
-async function generateSources() {
-    var info = JSON.parse(fs.readFileSync('sources.json', 'utf8'));    
-    if (!fs.existsSync(info.output)) {        
-        fs.mkdirSync(info.output)
-    }
-
+function generateFiles() {
+    var info = JSON.parse(fs.readFileSync('others.json', 'utf8'));   
     
-    await fs.readdirSync(info.input)
-        .filter(x => !info.ignored.some(y => x.endsWith(y + '.swift')))
-        .map(x => /(\w+)\.swift/.exec(x)[1])
-        .forEach(x => generateSource(info.input, info.output, x));    
+    info.files.map(x => generateFile(info, x));
 }
 
-async function generateSource(dir, output, sourceName) {
-    var content = fs.readFileSync(`${dir}/${sourceName}.swift`, 'utf8');
+async function generateFile(repoInfo, enumInfo) {
+    var output = path.join(repoInfo.mapboxObjcRepo, enumInfo.output);
+    if (!fs.existsSync(output)) {        
+        fs.mkdirSync(output);
+    }
+
+    var input = path.join(repoInfo.mapboxRepo, enumInfo.input, enumInfo.name);
+    var content = fs.readFileSync(input, 'utf8');
     var processingStatement = false;
     var initReached = false;
-    var propertyLines = []
+    var propertyLines = [];
+    var sourceName = '';
     var lines = content.split('\n')
         .map(x => {
             if (initReached) {
@@ -40,21 +41,9 @@ async function generateSource(dir, output, sourceName) {
             }
 
             if (/^public struct/.test(x.trim())) {
-                var sourceType = sourceName.substring(0,1).toLowerCase() + sourceName.replace(/Source$/, '').substring(1);
-                if (sourceTypeMapping[sourceType]) {
-                    sourceType = sourceTypeMapping[sourceType];
-                }
-                return `@objc open class TMB${sourceName}: NSObject, TMBSource {
-    @objc public convenience init(id: String) {
-        self.init(id, type: TMBSourceType.${sourceType})
-    }
-    
-    private init(_ id: String, type: TMBSourceType) {
-        self.id = id
-        self.type = type
-    }
-    
-    let id: String`;
+                let matches = /struct (\w+)/.exec(x.trim())
+                sourceName = matches[1]
+                return `@objc open class TMB${sourceName}: NSObject {`;
             }
 
             if (/^public init/.test(x.trim())) {
@@ -143,7 +132,17 @@ extension TMB${sourceName} {
                 return `        source.${propName} = self.${propName}${nullable}.${propType.substring(0,1).toLowerCase() + propType.substring(1)}().swiftValue()`;
             }
 
-            var conversionName = propType.substring(0,1).toLowerCase() + propType.substring(1);
+            if (isValueObject) {
+                let conversionName = propType[0].toLowerCase() + propType.substring(1);
+                if (commonTypeToConversionNameMapping[conversionName]) {
+                    conversionName = commonTypeToConversionNameMapping[conversionName];
+                } else if (/^\[/.test(propType)) {
+                    conversionName = 'arrayOf' + propType.replace(/\[|\]/img, '');
+                }
+                return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
+            }
+
+            var conversionName = propType[0].toLowerCase() + propType.substring(1);
             if (commonTypeToConversionNameMapping[conversionName]) {
                 conversionName = commonTypeToConversionNameMapping[conversionName];
             } else if (/^\[/.test(propType)) {
@@ -226,8 +225,8 @@ extension TMB${sourceName}: SwiftValueConvertible {
 }
 
 extension ${sourceName} {
-    public func objcValue(_ id: String) ->  TMB${sourceName} {
-        var source = TMB${sourceName}(id: id)
+    public func objcValue() ->  TMB${sourceName} {
+        var source = TMB${sourceName}()
         
         self.mapTo(&source)
         
