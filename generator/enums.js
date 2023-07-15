@@ -17,7 +17,8 @@ async function generateEnum(repoInfo, enumInfo) {
 
     var input = path.join(repoInfo.mapboxRepo, enumInfo.input, enumInfo.name);
     var content = fs.readFileSync(input, 'utf8');
-    var enumUnderCheck;
+    var objcName;
+    var swiftName = '';
     var cases = [];
     var caseFound = false;
     var skipped = false;
@@ -50,9 +51,11 @@ async function generateEnum(repoInfo, enumInfo) {
                 skipped = false;
                 caseFound = false
                 let matches = /enum (\w+)/.exec(line.trim())
-                enumUnderCheck = matches[1];
+                let enumUnderCheck = matches[1];
+                swiftName = scopedName + enumUnderCheck;
+                objcName = scopedName.replace('.', '') + enumUnderCheck;
 
-                return `@objc public enum TMB${enumUnderCheck}: Int {`
+                return `@objc public enum TMB${objcName}: Int {`
             }
 
             if (skipped) {
@@ -73,36 +76,33 @@ async function generateEnum(repoInfo, enumInfo) {
                 caseFound = false;          
                 let xcases = cases.map(x => `            case .${x}:
                 return .${x}`).join('\n'); 
-                let nameCamelCase = enumUnderCheck[0].toLowerCase() + enumUnderCheck.substring(1);
-                if (!!scopedName) {
-                    nameCamelCase = scopedName[0].toLowerCase() + scopedName.substring(1).replace('.', '') + enumUnderCheck;
-                }
+                let nameCamelCase = objcName[0].toLowerCase() + objcName.substring(1);
                 let xlines = `}
 
 @objc extension TMBValue {
-    @objc public class func ${nameCamelCase}(_ ${nameCamelCase}: TMB${enumUnderCheck}) -> TMBValue {
+    @objc public class func ${nameCamelCase}(_ ${nameCamelCase}: TMB${objcName}) -> TMBValue {
         return TMBValue(constant: NSNumber(value: ${nameCamelCase}.rawValue))
     }
 }
 
 @objc extension NSNumber {
-    @objc public class func value(with${enumUnderCheck} ${nameCamelCase}: TMB${enumUnderCheck}) -> NSNumber {
+    @objc public class func value(with${objcName} ${nameCamelCase}: TMB${objcName}) -> NSNumber {
         return NSNumber(value: ${nameCamelCase}.rawValue)
     }
     
-    @objc public func ${nameCamelCase}() -> TMB${enumUnderCheck} {
-        return TMB${enumUnderCheck}(rawValue: self.intValue)!
+    @objc public func ${nameCamelCase}() -> TMB${objcName} {
+        return TMB${objcName}(rawValue: self.intValue)!
     }
 }
 
 extension NSNumber {
-    public var ${enumUnderCheck}: ${scopedName}${enumUnderCheck} {
+    public var ${objcName}: ${swiftName} {
         return ${nameCamelCase}().swiftValue()
     }
 }
 
-extension TMB${enumUnderCheck}: SwiftValueConvertible {
-    public func swiftValue() -> ${scopedName}${enumUnderCheck} {
+extension TMB${objcName}: SwiftValueConvertible {
+    public func swiftValue() -> ${swiftName} {
         switch(self) {
 ${xcases}
         }
@@ -113,8 +113,8 @@ ${xcases}
     }
 }
 
-extension ${scopedName}${enumUnderCheck}: ObjcConvertible {
-    public func objcValue() -> TMB${enumUnderCheck} {
+extension ${swiftName}: ObjcConvertible {
+    public func objcValue() -> TMB${objcName} {
         switch(self) {
 ${xcases}
         }
@@ -125,7 +125,7 @@ ${xcases}
     }
 }
 
-extension MapboxMaps.Value where T == ${scopedName}${enumUnderCheck} {
+extension MapboxMaps.Value where T == ${swiftName} {
     func ${nameCamelCase}() -> TMBValue {
         switch(self) {
         case .constant(let obj):
@@ -136,8 +136,8 @@ extension MapboxMaps.Value where T == ${scopedName}${enumUnderCheck} {
     }
 }
 
-extension MapboxMaps.Value where T == [${scopedName}${enumUnderCheck}] {
-    func arrayOf${scopedName.replace('.', '')}${enumUnderCheck}() -> TMBValue {
+extension MapboxMaps.Value where T == [${swiftName}] {
+    func arrayOf${objcName}() -> TMBValue {
         switch(self) {
         case .constant(let obj):
             return TMBValue(constant: obj.map { $0.asNumber() })
@@ -148,24 +148,24 @@ extension MapboxMaps.Value where T == [${scopedName}${enumUnderCheck}] {
 }
 
 extension TMBValue {
-    func ${nameCamelCase}() -> Value<${scopedName}${enumUnderCheck}>? {
+    func ${nameCamelCase}() -> Value<${swiftName}>? {
         if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.${enumUnderCheck})
+            return Value.constant(constant.${objcName})
         }
         
         return Value.expression(expression!.rawValue)
     }
     
-    func arrayOf${scopedName.replace('.', '')}${enumUnderCheck}() -> Value<[${scopedName}${enumUnderCheck}]>? {
+    func arrayOf${scopedName.replace('.', '')}${objcName}() -> Value<[${swiftName}]>? {
         if let constant = self.constant as? [NSNumber] {
-            return Value.constant(constant.map({ $0.${enumUnderCheck} }))
+            return Value.constant(constant.map({ $0.${objcName} }))
         }
         
         return Value.expression(expression!.rawValue)
     }
 }`;
 
-                enumUnderCheck = null;
+                objcName = null;
                 cases = [];
                 scopedName = '';
 

@@ -53,7 +53,7 @@ extension MapInitOptions {
         resourceOptions: MapboxCoreMaps.ResourceOptions? = nil,
         mapOptions: MapOptions? = nil,
         cameraOptions: MapboxCoreMaps.CameraOptions? = nil,
-        styleURI: String?,
+        styleURI: String? = nil,
         styleJSON: String? = nil
     ) -> MapInitOptions {
         let xresourceOptions = resourceOptions != nil

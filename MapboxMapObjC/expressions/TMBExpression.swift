@@ -10,7 +10,7 @@ import MapboxMaps
     }
     
     /// Time allotted for transitions to complete in seconds.
-    @objc public var `operator`: TMBOperator {
+    @objc public var expressionOperator: TMBExpressionOperator {
         return _self.`operator`.objcValue()
     }
     
@@ -19,11 +19,11 @@ import MapboxMaps
         return TMBExpression.getObjcArguments(_self.arguments)
     }
     
-    @objc class public func create(withOperator `operator`: TMBOperator) -> TMBExpression{
+    @objc class public func create(withOperator `operator`: TMBExpressionOperator) -> TMBExpression{
         return TMBExpression(Expression(`operator`.swiftValue()))
     }
     
-    @objc class public func create(withOperator `operator`: TMBOperator, arguments: [Any]) -> TMBExpression{
+    @objc class public func create(withOperator `operator`: TMBExpressionOperator, arguments: [Any]) -> TMBExpression{
         return TMBExpression(Expression(operator: `operator`.swiftValue(), arguments: getSwiftArguments(arguments)))
     }
     

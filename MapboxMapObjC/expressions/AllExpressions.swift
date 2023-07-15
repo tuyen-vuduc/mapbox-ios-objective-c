@@ -2,7 +2,7 @@
 import Foundation
 import MapboxMaps
 
-@objc public enum TMBOperator: Int {
+@objc public enum TMBExpressionOperator: Int {
 
         /// For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.
     case subtract
@@ -287,28 +287,28 @@ import MapboxMaps
 }
 
 @objc extension TMBValue {
-    @objc public class func expressionOperator(_ expressionOperator: TMBOperator) -> TMBValue {
+    @objc public class func expressionOperator(_ expressionOperator: TMBExpressionOperator) -> TMBValue {
         return TMBValue(constant: NSNumber(value: expressionOperator.rawValue))
     }
 }
 
 @objc extension NSNumber {
-    @objc public class func value(withOperator expressionOperator: TMBOperator) -> NSNumber {
+    @objc public class func value(withExpressionOperator expressionOperator: TMBExpressionOperator) -> NSNumber {
         return NSNumber(value: expressionOperator.rawValue)
     }
     
-    @objc public func expressionOperator() -> TMBOperator {
-        return TMBOperator(rawValue: self.intValue)!
+    @objc public func expressionOperator() -> TMBExpressionOperator {
+        return TMBExpressionOperator(rawValue: self.intValue)!
     }
 }
 
 extension NSNumber {
-    public var Operator: Expression.Operator {
+    public var ExpressionOperator: Expression.Operator {
         return expressionOperator().swiftValue()
     }
 }
 
-extension TMBOperator: SwiftValueConvertible {
+extension TMBExpressionOperator: SwiftValueConvertible {
     public func swiftValue() -> Expression.Operator {
         switch(self) {
             case .subtract:
@@ -494,7 +494,7 @@ extension TMBOperator: SwiftValueConvertible {
 }
 
 extension Expression.Operator: ObjcConvertible {
-    public func objcValue() -> TMBOperator {
+    public func objcValue() -> TMBExpressionOperator {
         switch(self) {
             case .subtract:
                 return .subtract
@@ -703,15 +703,15 @@ extension MapboxMaps.Value where T == [Expression.Operator] {
 extension TMBValue {
     func expressionOperator() -> Value<Expression.Operator>? {
         if let constant = self.constant as? NSNumber {
-            return Value.constant(constant.Operator)
+            return Value.constant(constant.ExpressionOperator)
         }
         
         return Value.expression(expression!.rawValue)
     }
     
-    func arrayOfExpressionOperator() -> Value<[Expression.Operator]>? {
+    func arrayOfExpressionExpressionOperator() -> Value<[Expression.Operator]>? {
         if let constant = self.constant as? [NSNumber] {
-            return Value.constant(constant.map({ $0.Operator }))
+            return Value.constant(constant.map({ $0.ExpressionOperator }))
         }
         
         return Value.expression(expression!.rawValue)
