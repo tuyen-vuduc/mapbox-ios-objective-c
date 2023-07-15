@@ -1,9 +1,10 @@
 # Mapbox in Objective-C
 
-Mapbox iOS SDK is built entirely in Swift and not fully compatible with Objective-C.
+Mapbox is a well-known service which provide mapping and navigation services across platforms from iOS/Android and Web.
+Their SDK for iOS was migrated to Swift entirely and no longer fully compatible with Objective-C, if not say very little.
 
-This library is a part of a QuickStart to work with Mapbox in Objective-C.
-It provides convenient methods to intialize Mapview instance.
+This library is to provide Objective-C compabatible APIs to work with Mapbox fully in Objective-C and other cross platform frameworks like Xamarin.
+This repo is built as an input for the libaray [Xamarin.iOS for Mapbox.iOS](https://github.com/tuyen-vuduc/mapbox-ios-binding.git).
 
 # Usage
 
@@ -15,12 +16,12 @@ MBMResourceOptions* myResourceOptions = [[MBMResourceOptions alloc]
                                                       assetPath: nil
                                                       tileStore: nil];
     
-    
 MapInitOptions* mapInitOptions = [MapInitOptionsFactory 
                                     createWithResourceOptions: myResourceOptions 
                                                    mapOptions: nil 
                                                 cameraOptions: nil 
-                                                     styleURI: nil];
+                                                     styleURI: nil
+                                                    styleJSON: nil];
 
 self.mapView = [MapViewFactory 
                     createWithFrame: self.view.bounds 
@@ -35,7 +36,7 @@ self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
 # Installation
 
 ```
-pod 'MapboxMapObjC', '10.5.0'
+pod 'MapboxMapObjC', '10.11.1'
 ```
 
 # Ported Examples
@@ -108,6 +109,13 @@ pod 'MapboxMapObjC', '10.5.0'
 | 64 | [ViewAnnotationWithPointAnnotationExample](./mapboxqs/ViewAnnotationWithPointAnnotationExample.m) |  |
 | 65 | [ViewportExample](./mapboxqs/ViewportExample.m) |  |
 | 66 | [VoiceOverAccessibilityExample](./mapboxqs/VoiceOverAccessibilityExample.m) |  |
+
+## Maintainer
+This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
+
+If you find this project is helpful, please give it a star, become a sponsor of the project and/or buy him a coffee.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tuyen.vuduc)
 
 # LICENSE
 This library is release under The BSD 3-Clause License. You are freely to use and make changes. 
