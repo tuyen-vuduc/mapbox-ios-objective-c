@@ -98,14 +98,15 @@ extension MapView {
     @objc public func makeAnimator(duration: TimeInterval,
                              timingParameters: UITimingCurveProvider,
                              animationOwner: TMBAnimationOwner?,
-                             animations: @escaping (TMBCameraTransition) -> Void) -> BasicCameraAnimator {
-        return _self.makeAnimator(
+                             animations: @escaping (TMBCameraTransition) -> Void) -> TMBBasicCameraAnimator {
+        let animator = _self.makeAnimator(
             duration: duration,
             timingParameters: timingParameters,
-            animationOwner: animationOwner?.swiftValue() ?? .unspecified,
+            animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
+        return animator.wrap()
     }
 
     /// Creates a ``BasicCameraAnimator``.
@@ -124,14 +125,15 @@ extension MapView {
     @objc public func makeAnimator(duration: TimeInterval,
                              curve: UIView.AnimationCurve,
                              animationOwner: TMBAnimationOwner?,
-                             animations: @escaping (TMBCameraTransition) -> Void) -> BasicCameraAnimator {
-        return _self.makeAnimator(
+                             animations: @escaping (TMBCameraTransition) -> Void) -> TMBBasicCameraAnimator {
+        let animator = _self.makeAnimator(
             duration: duration,
             curve: curve,
             animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
+        return animator.wrap()
     }
 
     /// Creates a ``BasicCameraAnimator``.
@@ -152,8 +154,8 @@ extension MapView {
                              controlPoint1: CGPoint,
                              controlPoint2: CGPoint,
                              animationOwner: TMBAnimationOwner?,
-                             animations: @escaping (TMBCameraTransition) -> Void) -> BasicCameraAnimator {
-        return _self.makeAnimator(
+                             animations: @escaping (TMBCameraTransition) -> Void) -> TMBBasicCameraAnimator {
+        let animator = _self.makeAnimator(
             duration: duration,
             controlPoint1: controlPoint1,
             controlPoint2: controlPoint2,
@@ -161,6 +163,7 @@ extension MapView {
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
+        return animator.wrap()
     }
 
     /// Creates a ``BasicCameraAnimator``.
@@ -181,13 +184,14 @@ extension MapView {
     @objc public func makeAnimator(duration: TimeInterval,
                              dampingRatio: CGFloat,
                              animationOwner: TMBAnimationOwner?,
-                             animations: @escaping (TMBCameraTransition) -> Void) -> BasicCameraAnimator {
-        return _self.makeAnimator(
+                             animations: @escaping (TMBCameraTransition) -> Void) -> TMBBasicCameraAnimator {
+        let animator = _self.makeAnimator(
             duration: duration,
             dampingRatio: dampingRatio,
             animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
+        return animator.wrap()
     }
 }

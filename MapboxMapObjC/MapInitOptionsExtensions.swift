@@ -7,11 +7,6 @@ import MapboxMaps
 /// that are required to initialize a `MapView`.
 @objc
 extension MapInitOptions {
-    /// Associated `ResourceOptions`
-    @objc public func getResourceOptions() -> MapboxCoreMaps.ResourceOptions {
-        return MapboxCoreMaps.ResourceOptions(self.resourceOptions)
-    }
-    
     /// Associated `MapOptions`
     @objc public func getMapOptions() -> MapOptions {
         return self.mapOptions
@@ -28,10 +23,12 @@ extension MapInitOptions {
     }
     
     /// Camera options for initializing the map. CameraOptions default to 0.0 for each value.
-    @objc public func getCameraOptions() -> MapboxCoreMaps.CameraOptions? {
-        return self.cameraOptions != nil
-        ? MapboxCoreMaps.CameraOptions(self.cameraOptions!)
-        : nil
+    @objc public func getCameraOptions() -> TMBCameraOptions {
+        return TMBCameraOptions(self.cameraOptions)
+    }
+    
+    @objc public func getAntialiasingSampleCount() -> Int {
+        return self.antialiasingSampleCount
     }
 }
 
@@ -50,25 +47,21 @@ extension MapInitOptions {
     ///         can be `nil`.
     ///   - styleJSON: Style JSON in String representation. Has precedence over ``styleURI``.
     @objc public static func create(
-        resourceOptions: MapboxCoreMaps.ResourceOptions? = nil,
         mapOptions: MapOptions? = nil,
-        cameraOptions: MapboxCoreMaps.CameraOptions? = nil,
+        cameraOptions: TMBCameraOptions? = nil,
         styleURI: String? = nil,
-        styleJSON: String? = nil
+        styleJSON: String? = nil,
+        antialiasingSampleCount: Int = 1
     ) -> MapInitOptions {
-        let xresourceOptions = resourceOptions != nil
-            ? ResourceOptions(resourceOptions!)
-            : ResourceOptionsManager.default.resourceOptions
         let xstyleUri = styleURI != nil
             ? StyleURI(rawValue: styleURI!)
             : .streets
-        let xcameraOptions = cameraOptions?.swiftValue()
         
         return MapInitOptions(
-            resourceOptions: xresourceOptions,
             mapOptions: mapOptions ?? MapOptions(),
-            cameraOptions: xcameraOptions,
+            cameraOptions: CameraOptions(cameraOptions),
             styleURI: xstyleUri,
-            styleJSON: styleJSON)
+            styleJSON: styleJSON,
+            antialiasingSampleCount: antialiasingSampleCount)
     }
 }

@@ -1,28 +1,6 @@
 import Foundation
 import MapboxMaps
 
-extension MapboxCoreMaps.CameraOptions {
-    internal convenience init(_ swiftValue: MapboxMaps.CameraOptions) {
-        self.init(
-            __center: swiftValue.center?.location,
-            padding: swiftValue.padding?.toMBXEdgeInsetsValue(),
-            anchor: swiftValue.anchor?.screenCoordinate,
-            zoom: swiftValue.zoom?.NSNumber,
-            bearing: swiftValue.bearing?.NSNumber,
-            pitch: swiftValue.pitch?.NSNumber)
-    }
-    
-    func swiftValue() -> MapboxMaps.CameraOptions {
-        return MapboxMaps.CameraOptions(
-            center: self.__center?.coordinate,
-            padding: self.__padding?.toUIEdgeInsetsValue(),
-            anchor: self.__anchor?.point,
-            zoom: self.__zoom?.CGFloat,
-            bearing: self.__bearing?.CLLocationDirection,
-            pitch: self.__pitch?.CGFloat)
-    }
-}
-
 // MARK: - CLLocationCoordinate2D
 extension CLLocationCoordinate2D {
 
@@ -113,23 +91,6 @@ internal struct Utils {
     }
 }
 
-internal extension EdgeInsets {
-    func toUIEdgeInsetsValue() -> UIEdgeInsets {
-        return UIEdgeInsets(top: CGFloat(self.top),
-                            left: CGFloat(self.left),
-                            bottom: CGFloat(self.bottom),
-                            right: CGFloat(self.right))
-    }
-}
-
-extension UIEdgeInsets {
-    func toMBXEdgeInsetsValue() -> EdgeInsets {
-        return EdgeInsets(top: Double(self.top),
-                          left: Double(self.left),
-                          bottom: Double(self.bottom),
-                          right: Double(self.right))
-    }
-}
 // MARK: - CLLocationDirection
 extension CLLocationDirection {
 
@@ -141,12 +102,6 @@ extension CLLocationDirection {
 
 // MARK: - CGPoint
 extension CGPoint {
-
-    /// Converts a `CGPoint` to an internal `ScreenCoordinate` type.
-    internal var screenCoordinate: ScreenCoordinate {
-        ScreenCoordinate(x: Double(x), y: Double(y))
-    }
-
     /// Interpolate a point along a fraction of a line between two points.
     /// - Parameters:
     ///   - origin: The starting point for the interpolation.
@@ -168,25 +123,5 @@ extension CGFloat {
     /// Converts a `CGFloat` to a `NSValue` which wraps a `Double`.
     internal var NSNumber: NSNumber {
         Foundation.NSNumber(value: Double(self))
-    }
-}
-
-extension MapboxMaps.CameraOptions {
-    internal init(_ objcValue: MapboxCoreMaps.CameraOptions) {
-        self.init(
-            center: objcValue.__center?.coordinate,
-            padding: objcValue.__padding?.toUIEdgeInsetsValue(),
-            anchor: objcValue.__anchor?.point,
-            zoom: objcValue.__zoom?.CGFloat,
-            bearing: objcValue.__bearing?.CLLocationDirection,
-            pitch: objcValue.__pitch?.CGFloat)
-    }
-}
-
-extension MapboxCoreMaps.ScreenCoordinate {
-    var point: CGPoint {
-        get {
-            return CGPoint(x: self.x, y: self.y)
-        }
     }
 }

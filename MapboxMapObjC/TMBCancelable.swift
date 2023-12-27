@@ -8,10 +8,6 @@ open class TMBCancelable : NSObject {
         self.cancelable = cancelable
     }
     
-    init(cancelable: MapboxCommon.Cancelable) {
-        self.cancelable = cancelable.asCancelable()
-    }
-    
     @objc public func cancel() {
         cancelable.cancel()
     }

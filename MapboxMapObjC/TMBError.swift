@@ -49,5 +49,5 @@ internal extension Encodable {
 public protocol ObjcConvertible {
     associatedtype T //: NSObjectProtocol
     
-    func objcValue() -> T
+    func wrap() -> T
 }

@@ -11,15 +11,15 @@ import MapboxMaps
         self.arguments = arguments
     }
     
-    @objc public static func format(options: TMBFormatOptions) -> TMBExpressionOptions {
+    @objc public static func format(_ options: TMBFormatOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.format, options: options, arguments: options.expressionArguments)
     }
     
-    @objc public static func numberFormat(options: TMBNumberFormatOptions) -> TMBExpressionOptions {
+    @objc public static func numberFormat(_ options: TMBNumberFormatOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.numberFormat, options: options, arguments: options.expressionArguments)
     }
     
-    @objc public static func collator(options: TMBCollatorOptions) -> TMBExpressionOptions {
+    @objc public static func collator(_ options: TMBCollatorOptions) -> TMBExpressionOptions {
         return TMBExpressionOptions(.collator, options: options, arguments: options.expressionArguments)
     }
 }
@@ -40,54 +40,22 @@ import MapboxMaps
     }
 
     /// Applies a scaling factor on text-size as specified by the root layout property.
-    @objc public var fontScaleValue: TMBValue? {
-        get {
-            return _self.fontScaleValue?.double()
-        }
-        set {
-            _self.fontScaleValue = newValue?.double()
-        }
-    }
-    /// Applies a scaling factor on text-size as specified by the root layout property.
-    @objc public var fontScale: NSNumber? {
-        get { _self.fontScale?.NSNumber }
-        set { _self.fontScale = newValue?.doubleValue }
+    @objc public var fontScale: TMBValue? {
+        get { _self.fontScale?.double() }
+        set { _self.fontScale = newValue?.double() }
     }
 
     /// Overrides the font stack specified by the root layout property.
-    @objc public var textFontValue: TMBValue? {
-        get {
-            return _self.textFontValue?.arrayOfString()
-        }
-        set {
-            _self.textFontValue = newValue?.arrayOfString()
-        }
-    }
-    /// Overrides the font stack specified by the root layout property.
-    @objc public var textFont: [String]? {
-        get { _self.textFont }
-        set { _self.textFont = newValue }
+    @objc public var textFont: TMBValue? {
+        get { _self.textFont?.arrayOfString() }
+        set { _self.textFont = newValue?.arrayOfString() }
     }
 
     /// Overrides the color specified by the root paint property.
-    @objc public var textColorValue: TMBValue? {
-        get {
-            return _self.textColorValue?.styleColor()
-        }
+    @objc public var textColor: TMBValue? {
+        get { _self.textColor?.styleColor() }
         set {
-            _self.textColorValue = newValue?.styleColor()
-        }
-    }
-    /// Overrides the color specified by the root paint property.
-    @objc public var textColor: UIColor? {
-        get { _self.textColor?.uiColor() }
-        set {
-            guard let color = newValue else {
-                _self.textColor = nil
-                return
-            }
-            
-            _self.textColor = StyleColor(color)
+            _self.textColor = newValue?.styleColor()
         }
     }
     
@@ -100,10 +68,6 @@ import MapboxMaps
             fontScale: fontScale?.double(),
             textFont: textFont?.arrayOfString(),
             textColor: textColor?.styleColor())
-    }
-
-    public init(fontScale: Double? = nil, textFont: [String]? = nil, textColor: UIColor? = nil) {
-        _self = FormatOptions(fontScale: fontScale, textFont: textFont, textColor: textColor)
     }
 }
 

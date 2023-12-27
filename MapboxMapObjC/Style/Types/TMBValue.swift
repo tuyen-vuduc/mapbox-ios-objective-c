@@ -46,7 +46,7 @@ extension MapboxMaps.Value where T == StyleColor {
     func styleColor() -> TMBValue {
         switch(self) {
         case .constant(let obj):
-            return TMBValue(constant: obj.objcValue())
+            return TMBValue(constant: obj.wrap())
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))
         }
@@ -168,7 +168,7 @@ extension TMBValue {
 }
 
 extension StyleColor: ObjcConvertible {
-    public func objcValue() -> UIColor {
+    public func wrap() -> UIColor {
         return UIColor.fromString(string: self.rawValue)
     }
 }

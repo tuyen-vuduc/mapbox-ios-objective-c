@@ -15,7 +15,7 @@ import MapboxMaps
         self.type = type
     }
     
-    let id: String
+    @objc public let id: String
 
     @objc public let type: TMBSourceType
 
@@ -108,8 +108,8 @@ extension GeoJSONSource {
 }
 
 extension TMBGeoJSONSource: SwiftValueConvertible {
-    public func swiftValue() -> GeoJSONSource {
-        var source = GeoJSONSource()
+    public func unwrap() -> GeoJSONSource {
+        var source = GeoJSONSource(id: self.id)
         
         self.mapTo(&source)
         
@@ -118,7 +118,7 @@ extension TMBGeoJSONSource: SwiftValueConvertible {
 }
 
 extension GeoJSONSource {
-    public func objcValue(_ id: String) ->  TMBGeoJSONSource {
+    public func wrap(_ id: String) ->  TMBGeoJSONSource {
         var source = TMBGeoJSONSource(id: id)
         
         self.mapTo(&source)

@@ -1,6 +1,6 @@
 import MapboxMaps
-import MapboxMobileEvents
 import Turf
+@_implementationOnly import MapboxCoreMaps_Private
 
 @objc
 extension MapView {
@@ -43,12 +43,8 @@ extension MapView {
         self.preferredFrameRateRange = value
     }
     
-    @objc public func getCameraState() -> MapboxCoreMaps.CameraState {
-        return MapboxCoreMaps.CameraState(self.cameraState)
-    }
-    
-    @objc public func getAnchor() -> CGPoint {
-        return self.anchor
+    @objc public func getCameraState() -> TMBCameraState {
+        return TMBCameraState(self.mapboxMap.cameraState)
     }
 }
 

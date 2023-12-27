@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|  
-    maps_version = '10.11.1'
+    maps_version = '11.0.0'
 
     s.name              = 'MapboxMapObjC' # Name for your pod
     s.version           = maps_version
@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
     s.license = { :type => "MIT", :text => "MIT License" }
 
     s.platform          = :ios
-    s.ios.deployment_target = '13.0'
-    s.swift_version = '5.3'
+    s.ios.deployment_target = '14.0'
+    s.swift_version = '5.8'
     # change the source location
     s.source = { :git => 'https://github.com/tuyen-vuduc/mapbox-ios-objective-c.git', :tag => "v#{maps_version}" }
 
