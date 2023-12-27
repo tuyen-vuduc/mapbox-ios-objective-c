@@ -89,7 +89,7 @@ extension BackgroundLayer {
 }
 
 extension TMBBackgroundLayer: SwiftValueConvertible {
-    public func swiftValue() -> BackgroundLayer {
+    public func unwrap() -> BackgroundLayer {
         var layer = BackgroundLayer(id: id)
         
         self.mapTo(&layer)
@@ -99,7 +99,7 @@ extension TMBBackgroundLayer: SwiftValueConvertible {
 }
 
 extension BackgroundLayer: ObjcConvertible {
-    public func objcValue() ->  TMBBackgroundLayer {
+    public func wrap() ->  TMBBackgroundLayer {
         var layer = TMBBackgroundLayer(id: id)
         
         self.mapTo(&layer)

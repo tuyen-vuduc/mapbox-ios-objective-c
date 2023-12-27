@@ -8,16 +8,18 @@ extension MapView {
         self.preferredFrameRateRange = value
     }
     @objc public func mapboxMapDebugOptions() -> [NSNumber] {
-        return self.mapboxMap.debugOptions.map{
+        return self.debugOptions.options().map {
             return NSNumber(value: $0.rawValue)
         }
     }
     @objc public func mapboxMapDebugOptions(_ value: [NSNumber]) {
         let debugOptions = value.map {
-            return MapDebugOptions(rawValue: $0.intValue)!
+            return MapViewDebugOptions(rawValue: $0.intValue)
         }
         
-        self.mapboxMap.debugOptions = debugOptions;
+        for option in debugOptions {
+            self.debugOptions.insert(option)
+        }
     }
     
     @objc public func getPresentsWithTransaction() -> Bool {
@@ -27,9 +29,16 @@ extension MapView {
         self.presentsWithTransaction = value
     }
     
+    /// The preferred frames per second used for map rendering.
+    /// - Note: ``preferredFrameRateRange`` is available for iOS 15.0 and above.
+    @available(iOS, deprecated: 15, message: "Use preferredFrameRateRange instead.")
     @objc public func getPreferredFramesPerSecond() -> Int {
         return self.preferredFramesPerSecond
     }
+    
+    /// The preferred frames per second used for map rendering.
+    /// - Note: ``preferredFrameRateRange`` is available for iOS 15.0 and above.
+    @available(iOS, deprecated: 15, message: "Use preferredFrameRateRange instead.")
     @objc public func setPreferredFramesPerSecond(_ value: Int) {
         self.preferredFramesPerSecond = value
     }
@@ -44,7 +53,7 @@ extension MapView {
     }
     
     @objc public func getCameraState() -> TMBCameraState {
-        return TMBCameraState(self.mapboxMap.cameraState)
+        return self.mapboxMap.cameraState.wrap()
     }
 }
 

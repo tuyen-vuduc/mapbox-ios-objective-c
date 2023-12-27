@@ -615,8 +615,8 @@ import MapboxMaps
     /// - [pitch](https://docs.mapbox.com/mapbox-gl-js/style-spec/#root-pitch)
     ///
     /// The `style` default camera is re-evaluated when a new `style` is loaded. Values default to 0.0 if they are not defined in the `style`.
-    @objc public var defaultCamera: MapboxCoreMaps.CameraOptions {
-        return MapboxCoreMaps.CameraOptions(_self.defaultCamera)
+    @objc public var defaultCamera: TMBCameraOptions {
+        return _self.defaultCamera.wrap()
     }
 
     /// Get or set the map `style`'s transition options.
@@ -807,7 +807,7 @@ import MapboxMaps
 
     /// The ordered list of the current style layers' identifiers and types
     @objc public var allLayerIdentifiers: [TMBLayerInfo] {
-        return _self.allLayerIdentifiers.map{ TMBLayerInfo($0) }
+        return _self.allLayerIdentifiers.map{ $0.wrap() }
     }
 
     // MARK: - Layer Properties

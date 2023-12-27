@@ -1,17 +1,6 @@
 import MapboxMaps
 
 @objc
-open class TMBResolvedImageData : NSObject {
-    public let available: Bool
-    public let name: String
-    
-    init(available: Bool, name: String) {
-        self.available = available
-        self.name = name
-    }
-}
-
-@objc
 open class TMBResolvedImage : NSObject, Codable {
     public let available: Bool?
     public let name: String
@@ -38,7 +27,7 @@ extension TMBResolvedImage {
         TMBResolvedImage(name: name, available: available)
     }
     
-    func swiftOnly() -> ResolvedImage {
+    func unwrap() -> ResolvedImage {
         var data: Data!
         let jsonEncoder = JSONEncoder()
         if self.available != nil {
@@ -52,12 +41,15 @@ extension TMBResolvedImage {
     }
     
     func resolvedImage() -> ResolvedImage {
-        return swiftOnly()
+        return unwrap()
     }
 }
 
 extension ResolvedImage {
     func resolvedImage() -> TMBResolvedImage {
+        wrap()
+    }
+    func wrap() -> TMBResolvedImage {
         switch(self) {
         case .name(let name):
             return TMBResolvedImage(name: name)
@@ -91,7 +83,7 @@ extension MapboxMaps.Value where T == [ResolvedImage] {
 extension TMBValue {
     func resolvedImage() -> Value<ResolvedImage>? {
         if let constant = self.constant as? TMBResolvedImage {
-            return Value.constant(constant.swiftOnly())
+            return Value.constant(constant.unwrap())
         }
         
         return Value.expression(expression!.rawValue)

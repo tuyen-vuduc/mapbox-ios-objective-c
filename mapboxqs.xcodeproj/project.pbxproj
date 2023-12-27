@@ -42,6 +42,10 @@
 		23468FBE2B3BA38B00BE92EA /* TMBSourceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FBD2B3BA38B00BE92EA /* TMBSourceProperties.swift */; };
 		23468FC02B3BA5DC00BE92EA /* TMBGeoJSONSourceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FBF2B3BA5DC00BE92EA /* TMBGeoJSONSourceData.swift */; };
 		23468FC22B3BA67C00BE92EA /* TMBPromoteId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FC12B3BA67C00BE92EA /* TMBPromoteId.swift */; };
+		23468FC92B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FC82B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift */; };
+		23468FCC2B3CD5E800BE92EA /* TMBGestureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FCB2B3CD5E800BE92EA /* TMBGestureType.swift */; };
+		23468FCE2B3CD64F00BE92EA /* TMBGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FCD2B3CD64F00BE92EA /* TMBGestureManager.swift */; };
+		23468FD02B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23468FCF2B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift */; };
 		235BEDA92A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235BEDA82A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift */; };
 		2360108F2824796B00DAC76A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360108E2824796B00DAC76A /* AppDelegate.m */; };
 		236010922824796B00DAC76A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 236010912824796B00DAC76A /* SceneDelegate.m */; };
@@ -234,6 +238,10 @@
 		23468FBD2B3BA38B00BE92EA /* TMBSourceProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBSourceProperties.swift; sourceTree = "<group>"; };
 		23468FBF2B3BA5DC00BE92EA /* TMBGeoJSONSourceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBGeoJSONSourceData.swift; sourceTree = "<group>"; };
 		23468FC12B3BA67C00BE92EA /* TMBPromoteId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPromoteId.swift; sourceTree = "<group>"; };
+		23468FC82B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBMapViewDebugOptions.swift; sourceTree = "<group>"; };
+		23468FCB2B3CD5E800BE92EA /* TMBGestureType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBGestureType.swift; sourceTree = "<group>"; };
+		23468FCD2B3CD64F00BE92EA /* TMBGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBGestureManager.swift; sourceTree = "<group>"; };
+		23468FCF2B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBFlyToCameraAnimator.swift; sourceTree = "<group>"; };
 		235BEDA82A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraBoundsOptionsExtensions.swift; sourceTree = "<group>"; };
 		2360108A2824796B00DAC76A /* mapboxqs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapboxqs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2360108D2824796B00DAC76A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -536,6 +544,7 @@
 		23468F952B38FF6700BE92EA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				23468FC72B3CCE1800BE92EA /* Utils */,
 				23468F9F2B3A49FB00BE92EA /* Extensions */,
 				23468F982B3A36AB00BE92EA /* TMBCameraState.swift */,
 				23468F962B38FF9500BE92EA /* TMBCameraOptions.swift */,
@@ -581,6 +590,7 @@
 		23468FAF2B3A531700BE92EA /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				2386378F29C6D71F002282FF /* TMBResolvedImage.swift */,
 				2396BE932A5190610085913F /* TMBExpressionOptions.swift */,
 				231AF0CB29BF9305002D6CFD /* TMBValue.swift */,
 				231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */,
@@ -593,6 +603,7 @@
 		23468FB02B3B8DFB00BE92EA /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				23468FCF2B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift */,
 				23468FB92B3B9B3800BE92EA /* TMBBasicCameraAnimator.swift */,
 				2396BE7F2A4F3DE90085913F /* TMBCameraAnimationsManager.swift */,
 				23468FB32B3B8F7C00BE92EA /* TMBCameraTransition.swift */,
@@ -600,6 +611,24 @@
 				23468FB52B3B926500BE92EA /* TMBCameraAnimator.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		23468FC72B3CCE1800BE92EA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				23468FC82B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		23468FCA2B3CD5C100BE92EA /* Gestures */ = {
+			isa = PBXGroup;
+			children = (
+				2382019C2A4BA5D400D3D1FF /* TMBGestureOptions.swift */,
+				23468FCB2B3CD5E800BE92EA /* TMBGestureType.swift */,
+				23468FCD2B3CD64F00BE92EA /* TMBGestureManager.swift */,
+			);
+			path = Gestures;
 			sourceTree = "<group>";
 		};
 		236010812824796B00DAC76A = {
@@ -790,6 +819,7 @@
 			children = (
 				23468FB02B3B8DFB00BE92EA /* Camera */,
 				23468F952B38FF6700BE92EA /* Foundation */,
+				23468FCA2B3CD5C100BE92EA /* Gestures */,
 				2378BC9E2A5F65E300DA0EBB /* Expressions */,
 				23B8326929CF656F00FA94B2 /* Offline */,
 				23B8325C29CF4CA600FA94B2 /* Geojson */,
@@ -800,8 +830,6 @@
 				23BA6DD22826C9FB00D2D03A /* CameraOptionsExtensions.swift */,
 				23BA6DD62826CA5A00D2D03A /* ResourceOptionsExtensions.swift */,
 				23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */,
-				2386378F29C6D71F002282FF /* TMBResolvedImage.swift */,
-				2382019C2A4BA5D400D3D1FF /* TMBGestureOptions.swift */,
 				235BEDA82A4C961B001AB0AB /* CameraBoundsOptionsExtensions.swift */,
 				2396BE7D2A4F33B90085913F /* TMBOrnamentsManager.swift */,
 				2396BE812A50409C0085913F /* TMBLocationManager.swift */,
@@ -1171,12 +1199,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23468FCC2B3CD5E800BE92EA /* TMBGestureType.swift in Sources */,
 				232E9F172A537F8C00E87D0A /* TMBAtmosphere.swift in Sources */,
 				23468FAE2B3A529800BE92EA /* TMBStyleURI.swift in Sources */,
 				23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */,
 				23C021892A548183002229B5 /* TMBFillLayer.swift in Sources */,
 				233F2F622B310BCA00B885C0 /* UIColorExtensions.swift in Sources */,
 				23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */,
+				23468FC92B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift in Sources */,
 				2396BE822A50409C0085913F /* TMBLocationManager.swift in Sources */,
 				23468FB42B3B8F7C00BE92EA /* TMBCameraTransition.swift in Sources */,
 				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
@@ -1222,6 +1252,7 @@
 				2396BE7C2A4F2E310085913F /* TMBViewAnnotationManager.swift in Sources */,
 				239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */,
 				2396BE922A5186210085913F /* TMBSkyLayer.swift in Sources */,
+				23468FCE2B3CD64F00BE92EA /* TMBGestureManager.swift in Sources */,
 				2396BE982A5242210085913F /* TMBSource.swift in Sources */,
 				23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */,
 				2378BCA02A5F65F700DA0EBB /* TMBAllExpressions.swift in Sources */,
@@ -1249,6 +1280,7 @@
 				23468FC22B3BA67C00BE92EA /* TMBPromoteId.swift in Sources */,
 				23468F992B3A36AB00BE92EA /* TMBCameraState.swift in Sources */,
 				23468FA62B3A4C5800BE92EA /* TMBLightType.swift in Sources */,
+				23468FD02B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift in Sources */,
 				23C021832A548076002229B5 /* TMBBackgroundLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
