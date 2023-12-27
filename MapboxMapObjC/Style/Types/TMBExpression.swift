@@ -11,7 +11,7 @@ import MapboxMaps
     
     /// Time allotted for transitions to complete in seconds.
     @objc public var expressionOperator: TMBExpressionOperator {
-        return _self.`operator`.objcValue()
+        return _self.`operator`.wrap()
     }
     
     /// Length of time before a transition begins in seconds.
@@ -20,11 +20,11 @@ import MapboxMaps
     }
     
     @objc class public func create(withOperator `operator`: TMBExpressionOperator) -> TMBExpression{
-        return TMBExpression(Expression(`operator`.swiftValue()))
+        return TMBExpression(Expression(`operator`.unwrap()))
     }
     
     @objc class public func create(withOperator `operator`: TMBExpressionOperator, arguments: [Any]) -> TMBExpression{
-        return TMBExpression(Expression(operator: `operator`.swiftValue(), arguments: getSwiftArguments(arguments)))
+        return TMBExpression(Expression(operator: `operator`.unwrap(), arguments: getSwiftArguments(arguments)))
     }
     
     class func getSwiftArguments(_ arguments: [Any]) -> [Expression.Argument] {

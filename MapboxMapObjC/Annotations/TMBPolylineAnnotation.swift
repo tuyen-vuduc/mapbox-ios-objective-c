@@ -104,14 +104,7 @@ open class TMBPolylineAnnotation : NSObject, TMBAnnotation {
     @objc
     public var lineColor: UIColor? {
         get {
-            guard let lineColor = self.swiftValue.lineColor else {
-                return nil
-            }
-            return UIColor(
-                red: lineColor.red,
-                green: lineColor.green,
-                blue: lineColor.blue,
-                alpha: lineColor.alpha)
+            return self.swiftValue.lineColor?.objcValue()
         }
         set {
             guard let lineColor = newValue else {

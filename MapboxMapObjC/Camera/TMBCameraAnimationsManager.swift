@@ -18,7 +18,7 @@ extension MapView {
 
     /// List of animators currently alive
     @objc public var cameraAnimators: [TMBCameraAnimator] {
-        return _self.cameraAnimators.map { TMBCameraAnimator(_swiftValue: $0) }
+        return _self.cameraAnimators.map { $0.wrap() }
     }
 
     /// Interrupts all `active` animation.
@@ -44,15 +44,13 @@ extension MapView {
     ///   - completion: Completion handler called when the animation stops
     /// - Returns: An instance of `Cancelable` which can be canceled if necessary
     @discardableResult
-    @objc public func fly(to: MapboxCoreMaps.CameraOptions,
+    @objc public func fly(to: TMBCameraOptions,
                     duration: NSNumber?,
-                    completion: AnimationCompletion? = nil) -> TMBCancelable? {
-        guard let cancelable = _self.fly(
-            to: to.swiftValue(),
+                    completion: AnimationCompletion? = nil) -> TMBCancelable {
+        let cancelable = _self.fly(
+            to: to.unwrap(),
             duration: duration?.doubleValue,
-            completion: completion) else {
-            return nil
-        }
+            completion: completion)
         
         return TMBCancelable(cancelable: cancelable)
     }
@@ -68,17 +66,15 @@ extension MapView {
     ///   - completion: completion to be called after animation
     /// - Returns: An instance of `Cancelable` which can be canceled if necessary
     @discardableResult
-    @objc public func ease(to: MapboxCoreMaps.CameraOptions,
+    @objc public func ease(to: TMBCameraOptions,
                      duration: TimeInterval,
                      curve: UIView.AnimationCurve = .easeOut,
-                     completion: AnimationCompletion? = nil) -> TMBCancelable? {
-        guard let cancelable = _self.ease(
-            to: to.swiftValue(),
+                     completion: AnimationCompletion? = nil) -> TMBCancelable {
+        let cancelable = _self.ease(
+            to: to.unwrap(),
             duration: duration,
             curve: curve,
-            completion: completion) else {
-            return nil
-        }
+            completion: completion)
         
         return TMBCancelable(cancelable: cancelable)
     }
@@ -132,7 +128,7 @@ extension MapView {
         return _self.makeAnimator(
             duration: duration,
             curve: curve,
-            animationOwner: animationOwner?.swiftValue() ?? .unspecified,
+            animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
@@ -161,7 +157,7 @@ extension MapView {
             duration: duration,
             controlPoint1: controlPoint1,
             controlPoint2: controlPoint2,
-            animationOwner: animationOwner?.swiftValue() ?? .unspecified,
+            animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
@@ -189,178 +185,9 @@ extension MapView {
         return _self.makeAnimator(
             duration: duration,
             dampingRatio: dampingRatio,
-            animationOwner: animationOwner?.swiftValue() ?? .unspecified,
+            animationOwner: animationOwner?.unwrap() ?? .unspecified,
             animations: { cameraTransition in
                 animations(TMBCameraTransition(cameraTransition))
             })
-    }
-}
-
-@objc
-open class TMBCameraAnimator : NSObject {
-    @objc
-    func stopAnimation() {
-        _swiftValue.stopAnimation()
-    }
-    
-    @objc public var state: UIViewAnimatingState {
-        get {
-            _swiftValue.state
-        }
-    }
-    
-    @objc public func cancel() {
-        _swiftValue.cancel()
-    }
-    
-    private let _swiftValue: CameraAnimator
-    
-    init(_swiftValue: CameraAnimator) {
-        self._swiftValue = _swiftValue
-    }
-}
-
-@objc open class TMBAnimationOwner: NSObject, NamedString {
-    @objc public func stringValue() -> String {
-        rawValue
-    }
-    
-    func swiftValue() -> AnimationOwner {
-        AnimationOwner(rawValue: rawValue)
-    }
-    
-    private let rawValue: String
-
-    @objc public init(rawValue: String) {
-        self.rawValue = rawValue
-    }
-
-    @objc public static let gestures = TMBAnimationOwner(rawValue: "com.mapbox.maps.gestures")
-
-    @objc public static let unspecified = TMBAnimationOwner(rawValue: "com.mapbox.maps.unspecified")
-
-    internal static let cameraAnimationsManager = TMBAnimationOwner(rawValue: "com.mapbox.maps.cameraAnimationsManager")
-
-    internal static let defaultViewportTransition = TMBAnimationOwner(rawValue: "com.mapbox.maps.viewport.defaultTransition")
-}
-
-
-/// Structure used to represent a desired change to the map's camera
-@objc open class TMBCameraTransition: NSObject {
-    private var rawValue: CameraTransition
-    init(_ rawValue: CameraTransition) {
-        self.rawValue = rawValue
-    }
-    
-    /// Represents a change to the center coordinate of the map.
-    /// NOTE: Setting the `toValue` of `center` overrides any `anchor` animations
-    @objc public var center: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-    
-    /// Represents a change to the zoom of the map.
-    @objc public var zoom: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-    
-    /// Represents a change to the padding of the map.
-    @objc public var padding: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-    
-    /// Represents a change to the anchor of the map
-    /// NOTE: Incompatible with concurrent center animations
-    @objc public var anchor: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-    
-    /// Represents a change to the bearing of the map.
-    @objc public var bearing: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-    
-    /// Ensures that bearing transitions are optimized to take the shortest path. Defaults to `true`.
-    @objc public var shouldOptimizeBearingPath: Bool  {
-        get {
-            rawValue.shouldOptimizeBearingPath
-        }
-        set {
-            rawValue.shouldOptimizeBearingPath = newValue
-        }
-    }
-    
-    /// Represents a change to the pitch of the map.
-    @objc public var pitch: TMBCameraTransitionChange {
-        TMBCameraTransitionChange.fromCoordinate(rawValue.center)
-    }
-}
-
-/// Generic struct used to represent a change in a value from a starting point (i.e. `fromValue`) to an end point (i.e. `toValue`).
-@objc open class TMBCameraTransitionChange : NSObject {
-    @objc public var fromValue: NSValue
-    @objc public var toValue: NSValue?
-    
-    @objc init(fromValue: NSValue, toValue: NSValue? = nil) {
-        self.fromValue = fromValue
-        self.toValue = toValue
-    }
-    
-    public static func fromChange(_ change: CameraTransition.Change<CLLocationCoordinate2D>)
-        -> TMBCameraTransitionChange {
-            TMBCameraTransitionChange(
-                fromValue: NSValue(mkCoordinate: change.fromValue),
-                toValue: change.toValue != nil
-                    ? NSValue(mkCoordinate: change.toValue!)
-                    : nil)
-    }
-    
-    public static func fromCoordinate(_ change: CameraTransition.Change<CLLocationCoordinate2D>)
-        -> TMBCameraTransitionChange {
-            TMBCameraTransitionChange(
-                fromValue: NSValue(mkCoordinate: change.fromValue),
-                toValue: change.toValue != nil
-                    ? NSValue(mkCoordinate: change.toValue!)
-                    : nil)
-    }
-    
-    public static func fromEdgeInsets(_ change: CameraTransition.Change<UIEdgeInsets>)
-        -> TMBCameraTransitionChange {
-            TMBCameraTransitionChange(
-                fromValue: NSValue(uiEdgeInsets: change.fromValue),
-                toValue: change.toValue != nil
-                    ? NSValue(uiEdgeInsets: change.toValue!)
-                    : nil)
-    }
-    
-    public static func fromCGFloat(_ change: CameraTransition.Change<CGFloat>)
-        -> TMBCameraTransitionChange {
-            TMBCameraTransitionChange(
-                fromValue: NSNumber(value: change.fromValue),
-                toValue: change.toValue != nil
-                ? NSNumber(value: change.toValue!)
-                    : nil)
-    }
-    
-    public func change(_ change: inout CameraTransition.Change<CLLocationCoordinate2D>) {
-        change.fromValue = fromValue.coordinateValue()
-        change.toValue = toValue?.coordinateValue()
-    }
-    
-    public func change(_ change: inout CameraTransition.Change<UIEdgeInsets>) {
-        change.fromValue = fromValue.uiEdgeInsetsValue
-        change.toValue = toValue?.uiEdgeInsetsValue
-    }
-    
-    public func change(_ change: inout CameraTransition.Change<CGFloat>) {
-        if let fromValue = fromValue as? NSNumber {
-            change.fromValue = fromValue.CGFloat
-        }
-        
-        if toValue == nil {
-            change.toValue = nil
-        }
-        else if let toValue = toValue as? NSNumber {
-            change.toValue = toValue.CGFloat
-        }
     }
 }

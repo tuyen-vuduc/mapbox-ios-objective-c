@@ -38,7 +38,7 @@ extension UIColor {
     }
     
     class func fromStyleColor(_ color: StyleColor) -> UIColor {
-        return UIColor(red: color.red, green: color.green, blue: color.blue, alpha: color.alpha)
+        return UIColor.fromString(string: color.rawValue)
     }
 }
 
@@ -46,7 +46,7 @@ extension MapboxMaps.Value where T == StyleColor {
     func styleColor() -> TMBValue {
         switch(self) {
         case .constant(let obj):
-            return TMBValue(constant: obj.uiColor())
+            return TMBValue(constant: obj.objcValue())
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))
         }
@@ -169,14 +169,6 @@ extension TMBValue {
 
 extension StyleColor: ObjcConvertible {
     public func objcValue() -> UIColor {
-        return uiColor()
-    }
-    
-    func uiColor() -> UIColor {
-        return UIColor(
-            red: self.red/255.0,
-            green: self.green/255.0,
-            blue: self.blue/255.0,
-            alpha: self.alpha)
+        return UIColor.fromString(string: self.rawValue)
     }
 }
