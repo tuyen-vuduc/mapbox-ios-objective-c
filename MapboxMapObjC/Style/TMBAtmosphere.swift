@@ -49,39 +49,39 @@ import MapboxMaps
 extension TMBAtmosphere {
     public func mapTo(_ source: inout Atmosphere) {
         source.color = self.color?.styleColor()
-        source.colorTransition = self.colorTransition?.styleTransition()
+        source.colorTransition = self.colorTransition?.unwrap()
         source.highColor = self.highColor?.styleColor()
-        source.highColorTransition = self.highColorTransition?.styleTransition()
+        source.highColorTransition = self.highColorTransition?.unwrap()
         source.horizonBlend = self.horizonBlend?.double()
-        source.horizonBlendTransition = self.horizonBlendTransition?.styleTransition()
+        source.horizonBlendTransition = self.horizonBlendTransition?.unwrap()
         source.range = self.range?.arrayOfDouble()
-        source.rangeTransition = self.rangeTransition?.styleTransition()
+        source.rangeTransition = self.rangeTransition?.unwrap()
         source.spaceColor = self.spaceColor?.styleColor()
-        source.spaceColorTransition = self.spaceColorTransition?.styleTransition()
+        source.spaceColorTransition = self.spaceColorTransition?.unwrap()
         source.starIntensity = self.starIntensity?.double()
-        source.starIntensityTransition = self.starIntensityTransition?.styleTransition()
+        source.starIntensityTransition = self.starIntensityTransition?.unwrap()
     }
 }
 
 extension Atmosphere {
     public func mapTo(_ source:inout TMBAtmosphere) {
         source.color = self.color?.styleColor()
-        source.colorTransition = self.colorTransition?.objcValue()
+        source.colorTransition = self.colorTransition?.wrap()
         source.highColor = self.highColor?.styleColor()
-        source.highColorTransition = self.highColorTransition?.objcValue()
+        source.highColorTransition = self.highColorTransition?.wrap()
         source.horizonBlend = self.horizonBlend?.double()
-        source.horizonBlendTransition = self.horizonBlendTransition?.objcValue()
+        source.horizonBlendTransition = self.horizonBlendTransition?.wrap()
         source.range = self.range?.arrayOfDouble()
-        source.rangeTransition = self.rangeTransition?.objcValue()
+        source.rangeTransition = self.rangeTransition?.wrap()
         source.spaceColor = self.spaceColor?.styleColor()
-        source.spaceColorTransition = self.spaceColorTransition?.objcValue()
+        source.spaceColorTransition = self.spaceColorTransition?.wrap()
         source.starIntensity = self.starIntensity?.double()
-        source.starIntensityTransition = self.starIntensityTransition?.objcValue()
+        source.starIntensityTransition = self.starIntensityTransition?.wrap()
     }
 }
 
 extension TMBAtmosphere: SwiftValueConvertible {
-    public func swiftValue() -> Atmosphere {
+    public func unwrap() -> Atmosphere {
         var source = Atmosphere()
         
         self.mapTo(&source)
@@ -91,7 +91,7 @@ extension TMBAtmosphere: SwiftValueConvertible {
 }
 
 extension Atmosphere {
-    public func objcValue() ->  TMBAtmosphere {
+    public func wrap() ->  TMBAtmosphere {
         var source = TMBAtmosphere()
         
         self.mapTo(&source)

@@ -113,15 +113,18 @@ import MapboxMaps
 }
 
 extension Expression: ObjcConvertible {
-    public func objcValue() -> TMBExpression {
+    public func wrap() -> TMBExpression {
         return TMBExpression(self)
     }
     public func expression() -> TMBExpression {
-        return objcValue()
+        return wrap()
     }
 }
 
-extension TMBExpression {
+extension TMBExpression : SwiftValueConvertible {
+    public func unwrap() -> Expression {
+        return rawValue
+    }
     public func expression() -> Expression {
         return rawValue
     }

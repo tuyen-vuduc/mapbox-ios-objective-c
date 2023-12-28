@@ -1,32 +1,23 @@
 import MapboxMaps
+
 /// Describes the projection used to render the map.
 @objc open class TMBStyleProjection: NSObject {
-    private var _self: StyleProjection
-    init(_ _self: StyleProjection) {
-        self._self = _self
-    }
-    public var rawValue: StyleProjection {
-        return _self
-    }
 
     /// The name of the projection.
-    @objc public var name: TMBStyleProjectionName {
-        get {
-            _self.name.objcValue()
-        }
-        set {
-            _self.name = newValue.swiftValue()
-        }
-    }
+    @objc public var name: TMBStyleProjectionName
 
     /// Initializes a projection
-    @objc public init(name: TMBStyleProjectionName) {
-        self._self = StyleProjection(name: name.swiftValue())
+    @objc public init(name : TMBStyleProjectionName){
+        self.name = name
     }
 }
-
-extension StyleProjection: ObjcConvertible {
-    public func objcValue() -> TMBStyleProjection {
-        return TMBStyleProjection(self)
+extension TMBStyleProjection {
+    func unwrap() -> StyleProjection {
+        StyleProjection(name: (self.name).unwrap())
+    }
+}
+extension StyleProjection {
+    func wrap() -> TMBStyleProjection {
+        TMBStyleProjection(name: (self.name).wrap())
     }
 }

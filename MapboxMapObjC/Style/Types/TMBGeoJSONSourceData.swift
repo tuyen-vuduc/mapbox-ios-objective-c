@@ -47,6 +47,10 @@ import MapboxMaps
         return TMBGeoJSONSourceData(.url(url))
     }
     
+    @objc public class func string(string: String) -> TMBGeoJSONSourceData {
+        return TMBGeoJSONSourceData(.string(string))
+    }
+    
     @objc public class func feature(feature: MapboxCommon.Feature) -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(.feature(Turf.Feature(feature)))
     }

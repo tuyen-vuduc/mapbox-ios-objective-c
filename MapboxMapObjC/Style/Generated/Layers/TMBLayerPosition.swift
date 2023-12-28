@@ -19,16 +19,21 @@ import MapboxMaps
     @objc public static func above(layerId: String) -> TMBLayerPosition {
         return TMBLayerPosition(.above, arg:layerId as AnyObject)
     }
+    
+    @objc public static func `default`() -> TMBLayerPosition {
+        return TMBLayerPosition(.default, arg: "\(TMBLayerPositionType.default)" as AnyObject)
+    }
 }
 
 @objc public enum TMBLayerPositionType : Int {
     case at
     case above
     case below
+    case `default`
 }
 
 extension TMBLayerPosition {
-    public func swiftValue() -> LayerPosition {
+    public func unwrap() -> LayerPosition {
         switch self.type {
         case .at:
             if let index = self.arg as? Int {
@@ -46,5 +51,19 @@ extension TMBLayerPosition {
             break
         }
         return .default
+    }
+}
+extension LayerPosition {
+    public func wrap() -> TMBLayerPosition? {
+        switch(self) {
+        case .above(let name):
+            return TMBLayerPosition.above(layerId: name)
+        case .below(let name):
+            return TMBLayerPosition.below(layerId: name)
+        case .at(let index):
+            return TMBLayerPosition.at(index: index)
+        case .default:
+            return TMBLayerPosition.default()
+        }
     }
 }

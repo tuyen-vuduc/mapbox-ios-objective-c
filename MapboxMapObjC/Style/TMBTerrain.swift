@@ -29,7 +29,7 @@ extension Terrain {
 }
 
 extension TMBTerrain: SwiftValueConvertible {
-    public func swiftValue() -> Terrain {
+    public func unwrap() -> Terrain {
         var source = Terrain(sourceId: self.source)
         
         self.mapTo(&source)
@@ -39,7 +39,7 @@ extension TMBTerrain: SwiftValueConvertible {
 }
 
 extension Terrain {
-    public func objcValue() ->  TMBTerrain {
+    public func wrap() ->  TMBTerrain {
         var source = TMBTerrain(sourceId: self.source)
         
         self.mapTo(&source)
