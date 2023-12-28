@@ -12,7 +12,7 @@ import MapboxMaps
     @objc public var id: String
 
     /// Type of the light.
-    @objc public var type: TMBLightType
+    @objc public let type: TMBLightType = .directional
 
     /// Enable/Disable shadow casting for this light
     @objc public var castShadows: TMBValue?
@@ -45,66 +45,34 @@ import MapboxMaps
     @objc public init(id : String){
         self.id = id
     }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: RootCodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(type, forKey: .type)
-
-        var propertiesContainer = container.nestedContainer(keyedBy: PropertiesCodingKeys.self, forKey: .properties)
-        try propertiesContainer.encodeIfPresent(castShadows, forKey: .castShadows)
-        try propertiesContainer.encodeIfPresent(color, forKey: .color)
-        try propertiesContainer.encodeIfPresent(colorTransition, forKey: .colorTransition)
-        try propertiesContainer.encodeIfPresent(direction, forKey: .direction)
-        try propertiesContainer.encodeIfPresent(directionTransition, forKey: .directionTransition)
-        try propertiesContainer.encodeIfPresent(intensity, forKey: .intensity)
-        try propertiesContainer.encodeIfPresent(intensityTransition, forKey: .intensityTransition)
-        try propertiesContainer.encodeIfPresent(shadowIntensity, forKey: .shadowIntensity)
-        try propertiesContainer.encodeIfPresent(shadowIntensityTransition, forKey: .shadowIntensityTransition)
-    }
-
-    @objc public init(from  decoder: TMBDecoder){
-        let container = try decoder.container(keyedBy: RootCodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-
-        if let propertiesContainer = try? container.nestedContainer(keyedBy: PropertiesCodingKeys.self, forKey: .properties) {
-            self.castShadows = try propertiesContainer.decodeIfPresent(Value<Bool>.self, forKey: .castShadows)
-            self.color = try propertiesContainer.decodeIfPresent(Value<StyleColor>.self, forKey: .color)
-            self.colorTransition = try propertiesContainer.decodeIfPresent(StyleTransition.self, forKey: .colorTransition)
-            self.direction = try propertiesContainer.decodeIfPresent(Value<[Double]>.self, forKey: .direction)
-            self.directionTransition = try propertiesContainer.decodeIfPresent(StyleTransition.self, forKey: .directionTransition)
-            self.intensity = try propertiesContainer.decodeIfPresent(Value<Double>.self, forKey: .intensity)
-            self.intensityTransition = try propertiesContainer.decodeIfPresent(StyleTransition.self, forKey: .intensityTransition)
-            self.shadowIntensity = try propertiesContainer.decodeIfPresent(Value<Double>.self, forKey: .shadowIntensity)
-            self.shadowIntensityTransition = try propertiesContainer.decodeIfPresent(StyleTransition.self, forKey: .shadowIntensityTransition)
-        }
-    }
-
-    enum RootCodingKeys: String, CodingKey {
-        case id = "id"
-        case type = "type"
-        case properties = "properties"
-    }
-
-    enum PropertiesCodingKeys: String, CodingKey {
-        case castShadows = "cast-shadows"
-        case color = "color"
-        case colorTransition = "color-transition"
-        case direction = "direction"
-        case directionTransition = "direction-transition"
-        case intensity = "intensity"
-        case intensityTransition = "intensity-transition"
-        case shadowIntensity = "shadow-intensity"
-        case shadowIntensityTransition = "shadow-intensity-transition"
-    }
 }
 extension TMBDirectionalLight {
     func unwrap() -> DirectionalLight {
-        DirectionalLight(id: self.id)
+        var result = DirectionalLight(id: self.id)
+        result.castShadows = self.castShadows?.boolean()
+        result.color = self.color?.styleColor()
+        result.colorTransition = self.colorTransition?.unwrap()
+        result.direction = self.direction?.arrayOfDouble()
+        result.directionTransition = self.directionTransition?.unwrap()
+        result.intensity = self.intensity?.double()
+        result.intensityTransition = self.intensityTransition?.unwrap()
+        result.shadowIntensity = self.shadowIntensity?.double()
+        result.shadowIntensityTransition = self.shadowIntensityTransition?.unwrap()
+        return result
     }
 }
 extension DirectionalLight {
     func wrap() -> TMBDirectionalLight {
-        TMBDirectionalLight(id: self.id)
+        var result = TMBDirectionalLight(id: self.id)
+        result.castShadows = self.castShadows?.boolean()
+        result.color = self.color?.styleColor()
+        result.colorTransition = self.colorTransition?.wrap()
+        result.direction = self.direction?.arrayOfDouble()
+        result.directionTransition = self.directionTransition?.wrap()
+        result.intensity = self.intensity?.double()
+        result.intensityTransition = self.intensityTransition?.wrap()
+        result.shadowIntensity = self.shadowIntensity?.double()
+        result.shadowIntensityTransition = self.shadowIntensityTransition?.wrap()
+        return result
     }
 }

@@ -89,7 +89,7 @@ import Turf
     /// the current viewport size.
     /// - Parameter tileCacheBudget: The tile cache budget hint to be used by the Map.
     @objc public func setTileCacheBudget(_ tileCacheBudget: TileCacheBudget?) {
-        self.setTileCacheBudget(tileCacheBudget)
+        origin.setTileCacheBudget(tileCacheBudget)
     }
 
     /// Defines whether multiple copies of the world will be rendered side by side beyond -180 and 180 degrees longitude.
