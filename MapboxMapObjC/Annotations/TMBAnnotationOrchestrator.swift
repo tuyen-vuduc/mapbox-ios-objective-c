@@ -49,7 +49,7 @@ open class TMBAnnotationOrchestrator : NSObject {
     ) -> TMBPointAnnotationManager {
         let swiftValue = _self.makePointAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition?.swiftValue() ?? .default,
+            layerPosition: layerPosition?.unwrap() ?? .default,
             clusterOptions: clusterOptions?.swiftValue()
         )
         return TMBPointAnnotationManager(swiftValue)
@@ -70,7 +70,7 @@ open class TMBAnnotationOrchestrator : NSObject {
     ) -> TMBPolygonAnnotationManager {
         let swiftValue = _self.makePolygonAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition?.swiftValue() ?? .default
+            layerPosition: layerPosition?.unwrap() ?? .default
         )
         return TMBPolygonAnnotationManager(swiftValue)
     }
@@ -90,7 +90,7 @@ open class TMBAnnotationOrchestrator : NSObject {
     ) -> TMBPolylineAnnotationManager {
         let swiftValue = _self.makePolylineAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition?.swiftValue() ?? .default
+            layerPosition: layerPosition?.unwrap() ?? .default
         )
         return TMBPolylineAnnotationManager(swiftValue)
     }
@@ -110,7 +110,7 @@ open class TMBAnnotationOrchestrator : NSObject {
     ) -> TMBCircleAnnotationManager {
         let swiftValue = _self.makeCircleAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
-            layerPosition: layerPosition?.swiftValue() ?? .default
+            layerPosition: layerPosition?.unwrap() ?? .default
         )
         return TMBCircleAnnotationManager(swiftValue)
     }

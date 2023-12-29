@@ -2,108 +2,66 @@
 import Foundation
 import MapboxMaps
 
+
 /// The background color or pattern of the map.
 ///
 /// - SeeAlso: [Mapbox Style Specification](https://www.mapbox.com/mapbox-gl-style-spec/#layers-background)
 @objc open class TMBBackgroundLayer: NSObject, TMBLayer {
-    @objc public convenience init(id: String = UUID().uuidString) {
-        self.init(id, type: TMBLayerType.background)
-        
-        self.visibility = TMBValue.visibility(.visible)
-    }
-    
-    private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
-        self.id = id
-        self.type = type
-    }
 
     // MARK: - Conformance to `Layer` protocol
-    @objc public var id: String
-    @objc public let type: TMBLayerType
-    @objc public var filter: TMBExpression?
-    @objc public var source: String?
-    @objc public var sourceLayer: String?
-    @objc public var minZoom: NSNumber?
-    @objc public var maxZoom: NSNumber?
+    /// Unique layer name
+    @objc public var  id: String
+
+    /// Rendering type of this layer.
+    @objc public let  type: TMBLayerType
+
+    /// The slot this layer is assigned to. If specified, and a slot with that name exists, it will be placed at that position in the layer order.
+    @objc public var  slot: TMBSlot?
+
+    /// The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden.
+    @objc public var  minZoom: NSNumber?
+
+    /// The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden.
+    @objc public var  maxZoom: NSNumber?
 
     /// Whether this layer is displayed.
-    @objc public var visibility: TMBValue?
+    @objc public var  visibility: TMBValue
 
     /// The color with which the background will be drawn.
-    @objc public var backgroundColor: TMBValue?
+    @objc public var  backgroundColor: TMBValue?
 
     /// Transition options for `backgroundColor`.
-    @objc public var backgroundColorTransition: TMBStyleTransition?
+    @objc public var  backgroundColorTransition: TMBStyleTransition?
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var  backgroundEmissiveStrength: TMBValue?
+
+    /// Transition options for `backgroundEmissiveStrength`.
+    @objc public var  backgroundEmissiveStrengthTransition: TMBStyleTransition?
 
     /// The opacity at which the background will be drawn.
-    @objc public var backgroundOpacity: TMBValue?
+    @objc public var  backgroundOpacity: TMBValue?
 
     /// Transition options for `backgroundOpacity`.
-    @objc public var backgroundOpacityTransition: TMBStyleTransition?
+    @objc public var  backgroundOpacityTransition: TMBStyleTransition?
 
     /// Name of image in sprite to use for drawing an image background. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc public var backgroundPattern: TMBValue?
+    @objc public var  backgroundPattern: TMBValue?
 
-    /// Transition options for `backgroundPattern`.
-    @available(*, deprecated, message: "This property is deprecated and will be removed in the future. Setting this will have no effect.")
-    @objc public var backgroundPatternTransition: TMBStyleTransition?
-
+    
+    @objc public init(id : String) {
+        self.id = id
+        self.type = TMBLayerType.background
+        self.visibility = .visibility(.visible)
+    }
 }
-
 extension TMBBackgroundLayer {
-    public func mapTo(_ layer: inout BackgroundLayer) {
-        layer.id = self.id
-
-        layer.filter = self.filter?.expression()
-        layer.source = self.source
-        layer.sourceLayer = self.sourceLayer
-        layer.minZoom = self.minZoom?.double()
-        layer.maxZoom = self.maxZoom?.double()
-        layer.visibility = self.visibility?.visibility()
-        layer.backgroundColor = self.backgroundColor?.styleColor()
-        layer.backgroundColorTransition = self.backgroundColorTransition?.styleTransition()
-        layer.backgroundOpacity = self.backgroundOpacity?.double()
-        layer.backgroundOpacityTransition = self.backgroundOpacityTransition?.styleTransition()
-        layer.backgroundPattern = self.backgroundPattern?.resolvedImage()
-        layer.backgroundPatternTransition = self.backgroundPatternTransition?.styleTransition()
+    func unwrap() -> BackgroundLayer {
+        BackgroundLayer(id: self.id)
     }
 }
-
 extension BackgroundLayer {
-    public func mapTo(_ layer:inout TMBBackgroundLayer) {
-        layer.id = self.id
-
-        layer.filter = self.filter?.objcValue()
-        layer.source = self.source
-        layer.sourceLayer = self.sourceLayer
-        layer.minZoom = self.minZoom?.asNumber()
-        layer.maxZoom = self.maxZoom?.asNumber()
-        layer.visibility = self.visibility?.visibility()
-        layer.backgroundColor = self.backgroundColor?.styleColor()
-        layer.backgroundColorTransition = self.backgroundColorTransition?.objcValue()
-        layer.backgroundOpacity = self.backgroundOpacity?.double()
-        layer.backgroundOpacityTransition = self.backgroundOpacityTransition?.objcValue()
-        layer.backgroundPattern = self.backgroundPattern?.resolvedImage()
-        layer.backgroundPatternTransition = self.backgroundPatternTransition?.objcValue()
-    }
-}
-
-extension TMBBackgroundLayer: SwiftValueConvertible {
-    public func unwrap() -> BackgroundLayer {
-        var layer = BackgroundLayer(id: id)
-        
-        self.mapTo(&layer)
-        
-        return layer
-    }
-}
-
-extension BackgroundLayer: ObjcConvertible {
-    public func wrap() ->  TMBBackgroundLayer {
-        var layer = TMBBackgroundLayer(id: id)
-        
-        self.mapTo(&layer)
-        
-        return layer
+    func wrap() -> TMBBackgroundLayer {
+        TMBBackgroundLayer(id: self.id)
     }
 }

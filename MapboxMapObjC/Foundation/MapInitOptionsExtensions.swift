@@ -23,8 +23,8 @@ extension MapInitOptions {
     }
     
     /// Camera options for initializing the map. CameraOptions default to 0.0 for each value.
-    @objc public func getCameraOptions() -> TMBCameraOptions {
-        return TMBCameraOptions(self.cameraOptions)
+    @objc public func getCameraOptions() -> TMBCameraOptions? {
+        return self.cameraOptions?.wrap()
     }
     
     @objc public func getAntialiasingSampleCount() -> Int {
@@ -59,7 +59,7 @@ extension MapInitOptions {
         
         return MapInitOptions(
             mapOptions: mapOptions ?? MapOptions(),
-            cameraOptions: CameraOptions(cameraOptions),
+            cameraOptions: cameraOptions?.unwrap(),
             styleURI: xstyleUri,
             styleJSON: styleJSON,
             antialiasingSampleCount: antialiasingSampleCount)
