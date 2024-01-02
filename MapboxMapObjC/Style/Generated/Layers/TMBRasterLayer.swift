@@ -108,13 +108,79 @@ import MapboxMaps
 }
 extension TMBRasterLayer {
     func unwrap() -> RasterLayer {
-        RasterLayer(id: self.id,
+        var result = RasterLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout RasterLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.rasterBrightnessMax = self.rasterBrightnessMax?.unwrap()
+        dest.rasterBrightnessMaxTransition = self.rasterBrightnessMaxTransition?.unwrap()
+        dest.rasterBrightnessMin = self.rasterBrightnessMin?.unwrap()
+        dest.rasterBrightnessMinTransition = self.rasterBrightnessMinTransition?.unwrap()
+        dest.rasterColor = self.rasterColor?.unwrap()
+        dest.rasterColorMix = self.rasterColorMix?.unwrap()
+        dest.rasterColorMixTransition = self.rasterColorMixTransition?.unwrap()
+        dest.rasterColorRange = self.rasterColorRange?.unwrap()
+        dest.rasterColorRangeTransition = self.rasterColorRangeTransition?.unwrap()
+        dest.rasterContrast = self.rasterContrast?.unwrap()
+        dest.rasterContrastTransition = self.rasterContrastTransition?.unwrap()
+        dest.rasterFadeDuration = self.rasterFadeDuration?.unwrap()
+        dest.rasterHueRotate = self.rasterHueRotate?.unwrap()
+        dest.rasterHueRotateTransition = self.rasterHueRotateTransition?.unwrap()
+        dest.rasterOpacity = self.rasterOpacity?.unwrap()
+        dest.rasterOpacityTransition = self.rasterOpacityTransition?.unwrap()
+        dest.rasterResampling = self.rasterResampling?.unwrap()
+        dest.rasterSaturation = self.rasterSaturation?.unwrap()
+        dest.rasterSaturationTransition = self.rasterSaturationTransition?.unwrap()
     }
 }
 extension RasterLayer {
     func wrap() -> TMBRasterLayer {
-        TMBRasterLayer(id: self.id,
+        var result = TMBRasterLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBRasterLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.rasterBrightnessMax = self.rasterBrightnessMax?.wrap()
+        dest.rasterBrightnessMaxTransition = self.rasterBrightnessMaxTransition?.wrap()
+        dest.rasterBrightnessMin = self.rasterBrightnessMin?.wrap()
+        dest.rasterBrightnessMinTransition = self.rasterBrightnessMinTransition?.wrap()
+        dest.rasterColor = self.rasterColor?.wrap()
+        dest.rasterColorMix = self.rasterColorMix?.wrap()
+        dest.rasterColorMixTransition = self.rasterColorMixTransition?.wrap()
+        dest.rasterColorRange = self.rasterColorRange?.wrap()
+        dest.rasterColorRangeTransition = self.rasterColorRangeTransition?.wrap()
+        dest.rasterContrast = self.rasterContrast?.wrap()
+        dest.rasterContrastTransition = self.rasterContrastTransition?.wrap()
+        dest.rasterFadeDuration = self.rasterFadeDuration?.wrap()
+        dest.rasterHueRotate = self.rasterHueRotate?.wrap()
+        dest.rasterHueRotateTransition = self.rasterHueRotateTransition?.wrap()
+        dest.rasterOpacity = self.rasterOpacity?.wrap()
+        dest.rasterOpacityTransition = self.rasterOpacityTransition?.wrap()
+        dest.rasterResampling = self.rasterResampling?.wrap()
+        dest.rasterSaturation = self.rasterSaturation?.wrap()
+        dest.rasterSaturationTransition = self.rasterSaturationTransition?.wrap()
     }
 }

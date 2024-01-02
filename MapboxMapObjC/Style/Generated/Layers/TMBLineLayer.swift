@@ -147,13 +147,105 @@ import MapboxMaps
 }
 extension TMBLineLayer {
     func unwrap() -> LineLayer {
-        LineLayer(id: self.id,
+        var result = LineLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout LineLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.lineCap = self.lineCap?.unwrap()
+        dest.lineJoin = self.lineJoin?.unwrap()
+        dest.lineMiterLimit = self.lineMiterLimit?.unwrap()
+        dest.lineRoundLimit = self.lineRoundLimit?.unwrap()
+        dest.lineSortKey = self.lineSortKey?.unwrap()
+        dest.lineBlur = self.lineBlur?.unwrap()
+        dest.lineBlurTransition = self.lineBlurTransition?.unwrap()
+        dest.lineBorderColor = self.lineBorderColor?.unwrap()
+        dest.lineBorderColorTransition = self.lineBorderColorTransition?.unwrap()
+        dest.lineBorderWidth = self.lineBorderWidth?.unwrap()
+        dest.lineBorderWidthTransition = self.lineBorderWidthTransition?.unwrap()
+        dest.lineColor = self.lineColor?.unwrap()
+        dest.lineColorTransition = self.lineColorTransition?.unwrap()
+        dest.lineDasharray = self.lineDasharray?.unwrap()
+        dest.lineDepthOcclusionFactor = self.lineDepthOcclusionFactor?.unwrap()
+        dest.lineDepthOcclusionFactorTransition = self.lineDepthOcclusionFactorTransition?.unwrap()
+        dest.lineEmissiveStrength = self.lineEmissiveStrength?.unwrap()
+        dest.lineEmissiveStrengthTransition = self.lineEmissiveStrengthTransition?.unwrap()
+        dest.lineGapWidth = self.lineGapWidth?.unwrap()
+        dest.lineGapWidthTransition = self.lineGapWidthTransition?.unwrap()
+        dest.lineGradient = self.lineGradient?.unwrap()
+        dest.lineOffset = self.lineOffset?.unwrap()
+        dest.lineOffsetTransition = self.lineOffsetTransition?.unwrap()
+        dest.lineOpacity = self.lineOpacity?.unwrap()
+        dest.lineOpacityTransition = self.lineOpacityTransition?.unwrap()
+        dest.linePattern = self.linePattern?.unwrap()
+        dest.lineTranslate = self.lineTranslate?.unwrap()
+        dest.lineTranslateTransition = self.lineTranslateTransition?.unwrap()
+        dest.lineTranslateAnchor = self.lineTranslateAnchor?.unwrap()
+        dest.lineTrimOffset = self.lineTrimOffset?.unwrap()
+        dest.lineWidth = self.lineWidth?.unwrap()
+        dest.lineWidthTransition = self.lineWidthTransition?.unwrap()
     }
 }
 extension LineLayer {
     func wrap() -> TMBLineLayer {
-        TMBLineLayer(id: self.id,
+        var result = TMBLineLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBLineLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.lineCap = self.lineCap?.wrap()
+        dest.lineJoin = self.lineJoin?.wrap()
+        dest.lineMiterLimit = self.lineMiterLimit?.wrap()
+        dest.lineRoundLimit = self.lineRoundLimit?.wrap()
+        dest.lineSortKey = self.lineSortKey?.wrap()
+        dest.lineBlur = self.lineBlur?.wrap()
+        dest.lineBlurTransition = self.lineBlurTransition?.wrap()
+        dest.lineBorderColor = self.lineBorderColor?.wrap()
+        dest.lineBorderColorTransition = self.lineBorderColorTransition?.wrap()
+        dest.lineBorderWidth = self.lineBorderWidth?.wrap()
+        dest.lineBorderWidthTransition = self.lineBorderWidthTransition?.wrap()
+        dest.lineColor = self.lineColor?.wrap()
+        dest.lineColorTransition = self.lineColorTransition?.wrap()
+        dest.lineDasharray = self.lineDasharray?.wrap()
+        dest.lineDepthOcclusionFactor = self.lineDepthOcclusionFactor?.wrap()
+        dest.lineDepthOcclusionFactorTransition = self.lineDepthOcclusionFactorTransition?.wrap()
+        dest.lineEmissiveStrength = self.lineEmissiveStrength?.wrap()
+        dest.lineEmissiveStrengthTransition = self.lineEmissiveStrengthTransition?.wrap()
+        dest.lineGapWidth = self.lineGapWidth?.wrap()
+        dest.lineGapWidthTransition = self.lineGapWidthTransition?.wrap()
+        dest.lineGradient = self.lineGradient?.wrap()
+        dest.lineOffset = self.lineOffset?.wrap()
+        dest.lineOffsetTransition = self.lineOffsetTransition?.wrap()
+        dest.lineOpacity = self.lineOpacity?.wrap()
+        dest.lineOpacityTransition = self.lineOpacityTransition?.wrap()
+        dest.linePattern = self.linePattern?.wrap()
+        dest.lineTranslate = self.lineTranslate?.wrap()
+        dest.lineTranslateTransition = self.lineTranslateTransition?.wrap()
+        dest.lineTranslateAnchor = self.lineTranslateAnchor?.wrap()
+        dest.lineTrimOffset = self.lineTrimOffset?.wrap()
+        dest.lineWidth = self.lineWidth?.wrap()
+        dest.lineWidthTransition = self.lineWidthTransition?.wrap()
     }
 }

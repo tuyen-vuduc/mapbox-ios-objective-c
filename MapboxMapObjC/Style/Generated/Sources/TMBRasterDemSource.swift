@@ -61,11 +61,53 @@ import MapboxMaps
 }
 extension TMBRasterDemSource {
     func unwrap() -> RasterDemSource {
-        RasterDemSource(id: self.id)
+        var result = RasterDemSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout RasterDemSource) {
+        dest.url = self.url
+        dest.tiles = self.tiles?.map { $0 }
+        dest.bounds = self.bounds?.map { $0 }
+        dest.minzoom = self.minzoom?.double()
+        dest.maxzoom = self.maxzoom?.double()
+        dest.tileSize = self.tileSize?.double()
+        dest.attribution = self.attribution
+        dest.encoding = self.encoding?.unwrap()
+        dest.volatile = self.volatile?.bool()
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
+        dest.minimumTileUpdateInterval = self.minimumTileUpdateInterval?.double()
+        dest.maxOverscaleFactorForParentTiles = self.maxOverscaleFactorForParentTiles?.double()
+        dest.tileRequestsDelay = self.tileRequestsDelay?.double()
+        dest.tileNetworkRequestsDelay = self.tileNetworkRequestsDelay?.double()
     }
 }
 extension RasterDemSource {
     func wrap() -> TMBRasterDemSource {
-        TMBRasterDemSource(id: self.id)
+        var result = TMBRasterDemSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBRasterDemSource)  {
+        dest.url = self.url
+        dest.tiles = self.tiles?.map { $0 }
+        dest.bounds = self.bounds?.map { $0 }
+        dest.minzoom = self.minzoom?.double()
+        dest.maxzoom = self.maxzoom?.double()
+        dest.tileSize = self.tileSize?.double()
+        dest.attribution = self.attribution
+        dest.encoding = self.encoding?.wrap()
+        dest.volatile = self.volatile?.bool()
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
+        dest.minimumTileUpdateInterval = self.minimumTileUpdateInterval?.double()
+        dest.maxOverscaleFactorForParentTiles = self.maxOverscaleFactorForParentTiles?.double()
+        dest.tileRequestsDelay = self.tileRequestsDelay?.double()
+        dest.tileNetworkRequestsDelay = self.tileNetworkRequestsDelay?.double()
     }
 }

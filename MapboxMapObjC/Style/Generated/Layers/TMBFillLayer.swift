@@ -93,13 +93,69 @@ import MapboxMaps
 }
 extension TMBFillLayer {
     func unwrap() -> FillLayer {
-        FillLayer(id: self.id,
+        var result = FillLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout FillLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.fillSortKey = self.fillSortKey?.unwrap()
+        dest.fillAntialias = self.fillAntialias?.unwrap()
+        dest.fillColor = self.fillColor?.unwrap()
+        dest.fillColorTransition = self.fillColorTransition?.unwrap()
+        dest.fillEmissiveStrength = self.fillEmissiveStrength?.unwrap()
+        dest.fillEmissiveStrengthTransition = self.fillEmissiveStrengthTransition?.unwrap()
+        dest.fillOpacity = self.fillOpacity?.unwrap()
+        dest.fillOpacityTransition = self.fillOpacityTransition?.unwrap()
+        dest.fillOutlineColor = self.fillOutlineColor?.unwrap()
+        dest.fillOutlineColorTransition = self.fillOutlineColorTransition?.unwrap()
+        dest.fillPattern = self.fillPattern?.unwrap()
+        dest.fillTranslate = self.fillTranslate?.unwrap()
+        dest.fillTranslateTransition = self.fillTranslateTransition?.unwrap()
+        dest.fillTranslateAnchor = self.fillTranslateAnchor?.unwrap()
     }
 }
 extension FillLayer {
     func wrap() -> TMBFillLayer {
-        TMBFillLayer(id: self.id,
+        var result = TMBFillLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBFillLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.fillSortKey = self.fillSortKey?.wrap()
+        dest.fillAntialias = self.fillAntialias?.wrap()
+        dest.fillColor = self.fillColor?.wrap()
+        dest.fillColorTransition = self.fillColorTransition?.wrap()
+        dest.fillEmissiveStrength = self.fillEmissiveStrength?.wrap()
+        dest.fillEmissiveStrengthTransition = self.fillEmissiveStrengthTransition?.wrap()
+        dest.fillOpacity = self.fillOpacity?.wrap()
+        dest.fillOpacityTransition = self.fillOpacityTransition?.wrap()
+        dest.fillOutlineColor = self.fillOutlineColor?.wrap()
+        dest.fillOutlineColorTransition = self.fillOutlineColorTransition?.wrap()
+        dest.fillPattern = self.fillPattern?.wrap()
+        dest.fillTranslate = self.fillTranslate?.wrap()
+        dest.fillTranslateTransition = self.fillTranslateTransition?.wrap()
+        dest.fillTranslateAnchor = self.fillTranslateAnchor?.wrap()
     }
 }

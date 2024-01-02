@@ -28,11 +28,31 @@ import MapboxMaps
 }
 extension TMBImageSource {
     func unwrap() -> ImageSource {
-        ImageSource(id: self.id)
+        var result = ImageSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout ImageSource) {
+        dest.url = self.url
+        dest.coordinates = self.coordinates?.map { $0.map { $0 } }
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
     }
 }
 extension ImageSource {
     func wrap() -> TMBImageSource {
-        TMBImageSource(id: self.id)
+        var result = TMBImageSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBImageSource)  {
+        dest.url = self.url
+        dest.coordinates = self.coordinates?.map { $0.map { $0 } }
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
     }
 }

@@ -67,11 +67,51 @@ import MapboxMaps
 }
 extension TMBGeoJSONSource {
     func unwrap() -> GeoJSONSource {
-        GeoJSONSource(id: self.id)
+        var result = GeoJSONSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout GeoJSONSource) {
+        dest.data = self.data?.unwrap()
+        dest.maxzoom = self.maxzoom?.double()
+        dest.attribution = self.attribution
+        dest.buffer = self.buffer?.double()
+        dest.tolerance = self.tolerance?.double()
+        dest.cluster = self.cluster?.bool()
+        dest.clusterRadius = self.clusterRadius?.double()
+        dest.clusterMaxZoom = self.clusterMaxZoom?.double()
+        dest.clusterProperties = self.clusterProperties?.mapValues { $0.unwrap() }
+        dest.lineMetrics = self.lineMetrics?.bool()
+        dest.generateId = self.generateId?.bool()
+        dest.promoteId = self.promoteId?.unwrap()
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
     }
 }
 extension GeoJSONSource {
     func wrap() -> TMBGeoJSONSource {
-        TMBGeoJSONSource(id: self.id)
+        var result = TMBGeoJSONSource(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBGeoJSONSource)  {
+        dest.data = self.data?.wrap()
+        dest.maxzoom = self.maxzoom?.double()
+        dest.attribution = self.attribution
+        dest.buffer = self.buffer?.double()
+        dest.tolerance = self.tolerance?.double()
+        dest.cluster = self.cluster?.bool()
+        dest.clusterRadius = self.clusterRadius?.double()
+        dest.clusterMaxZoom = self.clusterMaxZoom?.double()
+        dest.clusterProperties = self.clusterProperties?.mapValues { $0.wrap() }
+        dest.lineMetrics = self.lineMetrics?.bool()
+        dest.generateId = self.generateId?.bool()
+        dest.promoteId = self.promoteId?.wrap()
+        dest.prefetchZoomDelta = self.prefetchZoomDelta?.double()
     }
 }

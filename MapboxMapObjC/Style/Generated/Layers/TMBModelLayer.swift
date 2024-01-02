@@ -127,13 +127,93 @@ import MapboxMaps
 }
 extension TMBModelLayer {
     func unwrap() -> ModelLayer {
-        ModelLayer(id: self.id,
+        var result = ModelLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout ModelLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.modelId = self.modelId?.unwrap()
+        dest.modelAmbientOcclusionIntensity = self.modelAmbientOcclusionIntensity?.unwrap()
+        dest.modelAmbientOcclusionIntensityTransition = self.modelAmbientOcclusionIntensityTransition?.unwrap()
+        dest.modelCastShadows = self.modelCastShadows?.unwrap()
+        dest.modelColor = self.modelColor?.unwrap()
+        dest.modelColorTransition = self.modelColorTransition?.unwrap()
+        dest.modelColorMixIntensity = self.modelColorMixIntensity?.unwrap()
+        dest.modelColorMixIntensityTransition = self.modelColorMixIntensityTransition?.unwrap()
+        dest.modelCutoffFadeRange = self.modelCutoffFadeRange?.unwrap()
+        dest.modelEmissiveStrength = self.modelEmissiveStrength?.unwrap()
+        dest.modelEmissiveStrengthTransition = self.modelEmissiveStrengthTransition?.unwrap()
+        dest.modelHeightBasedEmissiveStrengthMultiplier = self.modelHeightBasedEmissiveStrengthMultiplier?.unwrap()
+        dest.modelHeightBasedEmissiveStrengthMultiplierTransition = self.modelHeightBasedEmissiveStrengthMultiplierTransition?.unwrap()
+        dest.modelOpacity = self.modelOpacity?.unwrap()
+        dest.modelOpacityTransition = self.modelOpacityTransition?.unwrap()
+        dest.modelReceiveShadows = self.modelReceiveShadows?.unwrap()
+        dest.modelRotation = self.modelRotation?.unwrap()
+        dest.modelRotationTransition = self.modelRotationTransition?.unwrap()
+        dest.modelRoughness = self.modelRoughness?.unwrap()
+        dest.modelRoughnessTransition = self.modelRoughnessTransition?.unwrap()
+        dest.modelScale = self.modelScale?.unwrap()
+        dest.modelScaleTransition = self.modelScaleTransition?.unwrap()
+        dest.modelScaleMode = self.modelScaleMode?.unwrap()
+        dest.modelTranslation = self.modelTranslation?.unwrap()
+        dest.modelTranslationTransition = self.modelTranslationTransition?.unwrap()
+        dest.modelType = self.modelType?.unwrap()
     }
 }
 extension ModelLayer {
     func wrap() -> TMBModelLayer {
-        TMBModelLayer(id: self.id,
+        var result = TMBModelLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBModelLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.modelId = self.modelId?.wrap()
+        dest.modelAmbientOcclusionIntensity = self.modelAmbientOcclusionIntensity?.wrap()
+        dest.modelAmbientOcclusionIntensityTransition = self.modelAmbientOcclusionIntensityTransition?.wrap()
+        dest.modelCastShadows = self.modelCastShadows?.wrap()
+        dest.modelColor = self.modelColor?.wrap()
+        dest.modelColorTransition = self.modelColorTransition?.wrap()
+        dest.modelColorMixIntensity = self.modelColorMixIntensity?.wrap()
+        dest.modelColorMixIntensityTransition = self.modelColorMixIntensityTransition?.wrap()
+        dest.modelCutoffFadeRange = self.modelCutoffFadeRange?.wrap()
+        dest.modelEmissiveStrength = self.modelEmissiveStrength?.wrap()
+        dest.modelEmissiveStrengthTransition = self.modelEmissiveStrengthTransition?.wrap()
+        dest.modelHeightBasedEmissiveStrengthMultiplier = self.modelHeightBasedEmissiveStrengthMultiplier?.wrap()
+        dest.modelHeightBasedEmissiveStrengthMultiplierTransition = self.modelHeightBasedEmissiveStrengthMultiplierTransition?.wrap()
+        dest.modelOpacity = self.modelOpacity?.wrap()
+        dest.modelOpacityTransition = self.modelOpacityTransition?.wrap()
+        dest.modelReceiveShadows = self.modelReceiveShadows?.wrap()
+        dest.modelRotation = self.modelRotation?.wrap()
+        dest.modelRotationTransition = self.modelRotationTransition?.wrap()
+        dest.modelRoughness = self.modelRoughness?.wrap()
+        dest.modelRoughnessTransition = self.modelRoughnessTransition?.wrap()
+        dest.modelScale = self.modelScale?.wrap()
+        dest.modelScaleTransition = self.modelScaleTransition?.wrap()
+        dest.modelScaleMode = self.modelScaleMode?.wrap()
+        dest.modelTranslation = self.modelTranslation?.wrap()
+        dest.modelTranslationTransition = self.modelTranslationTransition?.wrap()
+        dest.modelType = self.modelType?.wrap()
     }
 }

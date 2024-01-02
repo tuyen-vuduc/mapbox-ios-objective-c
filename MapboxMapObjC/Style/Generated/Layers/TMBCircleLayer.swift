@@ -117,13 +117,85 @@ import MapboxMaps
 }
 extension TMBCircleLayer {
     func unwrap() -> CircleLayer {
-        CircleLayer(id: self.id,
+        var result = CircleLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout CircleLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.circleSortKey = self.circleSortKey?.unwrap()
+        dest.circleBlur = self.circleBlur?.unwrap()
+        dest.circleBlurTransition = self.circleBlurTransition?.unwrap()
+        dest.circleColor = self.circleColor?.unwrap()
+        dest.circleColorTransition = self.circleColorTransition?.unwrap()
+        dest.circleEmissiveStrength = self.circleEmissiveStrength?.unwrap()
+        dest.circleEmissiveStrengthTransition = self.circleEmissiveStrengthTransition?.unwrap()
+        dest.circleOpacity = self.circleOpacity?.unwrap()
+        dest.circleOpacityTransition = self.circleOpacityTransition?.unwrap()
+        dest.circlePitchAlignment = self.circlePitchAlignment?.unwrap()
+        dest.circlePitchScale = self.circlePitchScale?.unwrap()
+        dest.circleRadius = self.circleRadius?.unwrap()
+        dest.circleRadiusTransition = self.circleRadiusTransition?.unwrap()
+        dest.circleStrokeColor = self.circleStrokeColor?.unwrap()
+        dest.circleStrokeColorTransition = self.circleStrokeColorTransition?.unwrap()
+        dest.circleStrokeOpacity = self.circleStrokeOpacity?.unwrap()
+        dest.circleStrokeOpacityTransition = self.circleStrokeOpacityTransition?.unwrap()
+        dest.circleStrokeWidth = self.circleStrokeWidth?.unwrap()
+        dest.circleStrokeWidthTransition = self.circleStrokeWidthTransition?.unwrap()
+        dest.circleTranslate = self.circleTranslate?.unwrap()
+        dest.circleTranslateTransition = self.circleTranslateTransition?.unwrap()
+        dest.circleTranslateAnchor = self.circleTranslateAnchor?.unwrap()
     }
 }
 extension CircleLayer {
     func wrap() -> TMBCircleLayer {
-        TMBCircleLayer(id: self.id,
+        var result = TMBCircleLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBCircleLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.circleSortKey = self.circleSortKey?.wrap()
+        dest.circleBlur = self.circleBlur?.wrap()
+        dest.circleBlurTransition = self.circleBlurTransition?.wrap()
+        dest.circleColor = self.circleColor?.wrap()
+        dest.circleColorTransition = self.circleColorTransition?.wrap()
+        dest.circleEmissiveStrength = self.circleEmissiveStrength?.wrap()
+        dest.circleEmissiveStrengthTransition = self.circleEmissiveStrengthTransition?.wrap()
+        dest.circleOpacity = self.circleOpacity?.wrap()
+        dest.circleOpacityTransition = self.circleOpacityTransition?.wrap()
+        dest.circlePitchAlignment = self.circlePitchAlignment?.wrap()
+        dest.circlePitchScale = self.circlePitchScale?.wrap()
+        dest.circleRadius = self.circleRadius?.wrap()
+        dest.circleRadiusTransition = self.circleRadiusTransition?.wrap()
+        dest.circleStrokeColor = self.circleStrokeColor?.wrap()
+        dest.circleStrokeColorTransition = self.circleStrokeColorTransition?.wrap()
+        dest.circleStrokeOpacity = self.circleStrokeOpacity?.wrap()
+        dest.circleStrokeOpacityTransition = self.circleStrokeOpacityTransition?.wrap()
+        dest.circleStrokeWidth = self.circleStrokeWidth?.wrap()
+        dest.circleStrokeWidthTransition = self.circleStrokeWidthTransition?.wrap()
+        dest.circleTranslate = self.circleTranslate?.wrap()
+        dest.circleTranslateTransition = self.circleTranslateTransition?.wrap()
+        dest.circleTranslateAnchor = self.circleTranslateAnchor?.wrap()
     }
 }

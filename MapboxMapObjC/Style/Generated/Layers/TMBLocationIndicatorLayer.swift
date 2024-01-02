@@ -117,11 +117,87 @@ import MapboxMaps
 }
 extension TMBLocationIndicatorLayer {
     func unwrap() -> LocationIndicatorLayer {
-        LocationIndicatorLayer(id: self.id)
+        var result = LocationIndicatorLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout LocationIndicatorLayer) {
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.bearingImage = self.bearingImage?.unwrap()
+        dest.shadowImage = self.shadowImage?.unwrap()
+        dest.topImage = self.topImage?.unwrap()
+        dest.accuracyRadius = self.accuracyRadius?.unwrap()
+        dest.accuracyRadiusTransition = self.accuracyRadiusTransition?.unwrap()
+        dest.accuracyRadiusBorderColor = self.accuracyRadiusBorderColor?.unwrap()
+        dest.accuracyRadiusBorderColorTransition = self.accuracyRadiusBorderColorTransition?.unwrap()
+        dest.accuracyRadiusColor = self.accuracyRadiusColor?.unwrap()
+        dest.accuracyRadiusColorTransition = self.accuracyRadiusColorTransition?.unwrap()
+        dest.bearing = self.bearing?.unwrap()
+        dest.bearingTransition = self.bearingTransition?.unwrap()
+        dest.bearingImageSize = self.bearingImageSize?.unwrap()
+        dest.bearingImageSizeTransition = self.bearingImageSizeTransition?.unwrap()
+        dest.emphasisCircleColor = self.emphasisCircleColor?.unwrap()
+        dest.emphasisCircleColorTransition = self.emphasisCircleColorTransition?.unwrap()
+        dest.emphasisCircleRadius = self.emphasisCircleRadius?.unwrap()
+        dest.emphasisCircleRadiusTransition = self.emphasisCircleRadiusTransition?.unwrap()
+        dest.imagePitchDisplacement = self.imagePitchDisplacement?.unwrap()
+        dest.location = self.location?.unwrap()
+        dest.locationTransition = self.locationTransition?.unwrap()
+        dest.locationIndicatorOpacity = self.locationIndicatorOpacity?.unwrap()
+        dest.locationIndicatorOpacityTransition = self.locationIndicatorOpacityTransition?.unwrap()
+        dest.perspectiveCompensation = self.perspectiveCompensation?.unwrap()
+        dest.shadowImageSize = self.shadowImageSize?.unwrap()
+        dest.shadowImageSizeTransition = self.shadowImageSizeTransition?.unwrap()
+        dest.topImageSize = self.topImageSize?.unwrap()
+        dest.topImageSizeTransition = self.topImageSizeTransition?.unwrap()
     }
 }
 extension LocationIndicatorLayer {
     func wrap() -> TMBLocationIndicatorLayer {
-        TMBLocationIndicatorLayer(id: self.id)
+        var result = TMBLocationIndicatorLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBLocationIndicatorLayer)  {
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.bearingImage = self.bearingImage?.wrap()
+        dest.shadowImage = self.shadowImage?.wrap()
+        dest.topImage = self.topImage?.wrap()
+        dest.accuracyRadius = self.accuracyRadius?.wrap()
+        dest.accuracyRadiusTransition = self.accuracyRadiusTransition?.wrap()
+        dest.accuracyRadiusBorderColor = self.accuracyRadiusBorderColor?.wrap()
+        dest.accuracyRadiusBorderColorTransition = self.accuracyRadiusBorderColorTransition?.wrap()
+        dest.accuracyRadiusColor = self.accuracyRadiusColor?.wrap()
+        dest.accuracyRadiusColorTransition = self.accuracyRadiusColorTransition?.wrap()
+        dest.bearing = self.bearing?.wrap()
+        dest.bearingTransition = self.bearingTransition?.wrap()
+        dest.bearingImageSize = self.bearingImageSize?.wrap()
+        dest.bearingImageSizeTransition = self.bearingImageSizeTransition?.wrap()
+        dest.emphasisCircleColor = self.emphasisCircleColor?.wrap()
+        dest.emphasisCircleColorTransition = self.emphasisCircleColorTransition?.wrap()
+        dest.emphasisCircleRadius = self.emphasisCircleRadius?.wrap()
+        dest.emphasisCircleRadiusTransition = self.emphasisCircleRadiusTransition?.wrap()
+        dest.imagePitchDisplacement = self.imagePitchDisplacement?.wrap()
+        dest.location = self.location?.wrap()
+        dest.locationTransition = self.locationTransition?.wrap()
+        dest.locationIndicatorOpacity = self.locationIndicatorOpacity?.wrap()
+        dest.locationIndicatorOpacityTransition = self.locationIndicatorOpacityTransition?.wrap()
+        dest.perspectiveCompensation = self.perspectiveCompensation?.wrap()
+        dest.shadowImageSize = self.shadowImageSize?.wrap()
+        dest.shadowImageSizeTransition = self.shadowImageSizeTransition?.wrap()
+        dest.topImageSize = self.topImageSize?.wrap()
+        dest.topImageSizeTransition = self.topImageSizeTransition?.wrap()
     }
 }

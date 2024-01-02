@@ -3,19 +3,19 @@ import CoreLocation
 import CoreGraphics
 
 extension Bool {
-    func asNumber() -> NSNumber {
+    func bool() -> NSNumber {
         return NSNumber(value: self)
     }
 }
 
 extension Int {
-    func asNumber() -> NSNumber {
+    func int() -> NSNumber {
         return NSNumber(value: self)
     }
 }
 
 extension Double {
-    func asNumber() -> NSNumber {
+    func double() -> NSNumber {
         return Foundation.NSNumber(value: self)
     }
 }

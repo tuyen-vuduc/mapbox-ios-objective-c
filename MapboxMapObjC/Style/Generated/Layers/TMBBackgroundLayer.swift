@@ -57,11 +57,47 @@ import MapboxMaps
 }
 extension TMBBackgroundLayer {
     func unwrap() -> BackgroundLayer {
-        BackgroundLayer(id: self.id)
+        var result = BackgroundLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout BackgroundLayer) {
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.backgroundColor = self.backgroundColor?.unwrap()
+        dest.backgroundColorTransition = self.backgroundColorTransition?.unwrap()
+        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.unwrap()
+        dest.backgroundEmissiveStrengthTransition = self.backgroundEmissiveStrengthTransition?.unwrap()
+        dest.backgroundOpacity = self.backgroundOpacity?.unwrap()
+        dest.backgroundOpacityTransition = self.backgroundOpacityTransition?.unwrap()
+        dest.backgroundPattern = self.backgroundPattern?.unwrap()
     }
 }
 extension BackgroundLayer {
     func wrap() -> TMBBackgroundLayer {
-        TMBBackgroundLayer(id: self.id)
+        var result = TMBBackgroundLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBBackgroundLayer)  {
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.backgroundColor = self.backgroundColor?.wrap()
+        dest.backgroundColorTransition = self.backgroundColorTransition?.wrap()
+        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.wrap()
+        dest.backgroundEmissiveStrengthTransition = self.backgroundEmissiveStrengthTransition?.wrap()
+        dest.backgroundOpacity = self.backgroundOpacity?.wrap()
+        dest.backgroundOpacityTransition = self.backgroundOpacityTransition?.wrap()
+        dest.backgroundPattern = self.backgroundPattern?.wrap()
     }
 }

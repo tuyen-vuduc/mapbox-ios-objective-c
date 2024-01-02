@@ -105,13 +105,77 @@ import MapboxMaps
 }
 extension TMBFillExtrusionLayer {
     func unwrap() -> FillExtrusionLayer {
-        FillExtrusionLayer(id: self.id,
+        var result = FillExtrusionLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout FillExtrusionLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.fillExtrusionAmbientOcclusionIntensity = self.fillExtrusionAmbientOcclusionIntensity?.unwrap()
+        dest.fillExtrusionAmbientOcclusionIntensityTransition = self.fillExtrusionAmbientOcclusionIntensityTransition?.unwrap()
+        dest.fillExtrusionAmbientOcclusionRadius = self.fillExtrusionAmbientOcclusionRadius?.unwrap()
+        dest.fillExtrusionAmbientOcclusionRadiusTransition = self.fillExtrusionAmbientOcclusionRadiusTransition?.unwrap()
+        dest.fillExtrusionBase = self.fillExtrusionBase?.unwrap()
+        dest.fillExtrusionBaseTransition = self.fillExtrusionBaseTransition?.unwrap()
+        dest.fillExtrusionColor = self.fillExtrusionColor?.unwrap()
+        dest.fillExtrusionColorTransition = self.fillExtrusionColorTransition?.unwrap()
+        dest.fillExtrusionCutoffFadeRange = self.fillExtrusionCutoffFadeRange?.unwrap()
+        dest.fillExtrusionHeight = self.fillExtrusionHeight?.unwrap()
+        dest.fillExtrusionHeightTransition = self.fillExtrusionHeightTransition?.unwrap()
+        dest.fillExtrusionOpacity = self.fillExtrusionOpacity?.unwrap()
+        dest.fillExtrusionOpacityTransition = self.fillExtrusionOpacityTransition?.unwrap()
+        dest.fillExtrusionPattern = self.fillExtrusionPattern?.unwrap()
+        dest.fillExtrusionTranslate = self.fillExtrusionTranslate?.unwrap()
+        dest.fillExtrusionTranslateTransition = self.fillExtrusionTranslateTransition?.unwrap()
+        dest.fillExtrusionTranslateAnchor = self.fillExtrusionTranslateAnchor?.unwrap()
+        dest.fillExtrusionVerticalGradient = self.fillExtrusionVerticalGradient?.unwrap()
     }
 }
 extension FillExtrusionLayer {
     func wrap() -> TMBFillExtrusionLayer {
-        TMBFillExtrusionLayer(id: self.id,
+        var result = TMBFillExtrusionLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBFillExtrusionLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.fillExtrusionAmbientOcclusionIntensity = self.fillExtrusionAmbientOcclusionIntensity?.wrap()
+        dest.fillExtrusionAmbientOcclusionIntensityTransition = self.fillExtrusionAmbientOcclusionIntensityTransition?.wrap()
+        dest.fillExtrusionAmbientOcclusionRadius = self.fillExtrusionAmbientOcclusionRadius?.wrap()
+        dest.fillExtrusionAmbientOcclusionRadiusTransition = self.fillExtrusionAmbientOcclusionRadiusTransition?.wrap()
+        dest.fillExtrusionBase = self.fillExtrusionBase?.wrap()
+        dest.fillExtrusionBaseTransition = self.fillExtrusionBaseTransition?.wrap()
+        dest.fillExtrusionColor = self.fillExtrusionColor?.wrap()
+        dest.fillExtrusionColorTransition = self.fillExtrusionColorTransition?.wrap()
+        dest.fillExtrusionCutoffFadeRange = self.fillExtrusionCutoffFadeRange?.wrap()
+        dest.fillExtrusionHeight = self.fillExtrusionHeight?.wrap()
+        dest.fillExtrusionHeightTransition = self.fillExtrusionHeightTransition?.wrap()
+        dest.fillExtrusionOpacity = self.fillExtrusionOpacity?.wrap()
+        dest.fillExtrusionOpacityTransition = self.fillExtrusionOpacityTransition?.wrap()
+        dest.fillExtrusionPattern = self.fillExtrusionPattern?.wrap()
+        dest.fillExtrusionTranslate = self.fillExtrusionTranslate?.wrap()
+        dest.fillExtrusionTranslateTransition = self.fillExtrusionTranslateTransition?.wrap()
+        dest.fillExtrusionTranslateAnchor = self.fillExtrusionTranslateAnchor?.wrap()
+        dest.fillExtrusionVerticalGradient = self.fillExtrusionVerticalGradient?.wrap()
     }
 }

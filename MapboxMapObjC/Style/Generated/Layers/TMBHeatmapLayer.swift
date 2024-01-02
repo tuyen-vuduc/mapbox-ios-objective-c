@@ -75,13 +75,57 @@ import MapboxMaps
 }
 extension TMBHeatmapLayer {
     func unwrap() -> HeatmapLayer {
-        HeatmapLayer(id: self.id,
+        var result = HeatmapLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout HeatmapLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.heatmapColor = self.heatmapColor?.unwrap()
+        dest.heatmapIntensity = self.heatmapIntensity?.unwrap()
+        dest.heatmapIntensityTransition = self.heatmapIntensityTransition?.unwrap()
+        dest.heatmapOpacity = self.heatmapOpacity?.unwrap()
+        dest.heatmapOpacityTransition = self.heatmapOpacityTransition?.unwrap()
+        dest.heatmapRadius = self.heatmapRadius?.unwrap()
+        dest.heatmapRadiusTransition = self.heatmapRadiusTransition?.unwrap()
+        dest.heatmapWeight = self.heatmapWeight?.unwrap()
     }
 }
 extension HeatmapLayer {
     func wrap() -> TMBHeatmapLayer {
-        TMBHeatmapLayer(id: self.id,
+        var result = TMBHeatmapLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBHeatmapLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.heatmapColor = self.heatmapColor?.wrap()
+        dest.heatmapIntensity = self.heatmapIntensity?.wrap()
+        dest.heatmapIntensityTransition = self.heatmapIntensityTransition?.wrap()
+        dest.heatmapOpacity = self.heatmapOpacity?.wrap()
+        dest.heatmapOpacityTransition = self.heatmapOpacityTransition?.wrap()
+        dest.heatmapRadius = self.heatmapRadius?.wrap()
+        dest.heatmapRadiusTransition = self.heatmapRadiusTransition?.wrap()
+        dest.heatmapWeight = self.heatmapWeight?.wrap()
     }
 }

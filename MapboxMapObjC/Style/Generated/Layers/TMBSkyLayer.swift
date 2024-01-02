@@ -67,11 +67,53 @@ import MapboxMaps
 }
 extension TMBSkyLayer {
     func unwrap() -> SkyLayer {
-        SkyLayer(id: self.id)
+        var result = SkyLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout SkyLayer) {
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.skyAtmosphereColor = self.skyAtmosphereColor?.unwrap()
+        dest.skyAtmosphereHaloColor = self.skyAtmosphereHaloColor?.unwrap()
+        dest.skyAtmosphereSun = self.skyAtmosphereSun?.unwrap()
+        dest.skyAtmosphereSunIntensity = self.skyAtmosphereSunIntensity?.unwrap()
+        dest.skyGradient = self.skyGradient?.unwrap()
+        dest.skyGradientCenter = self.skyGradientCenter?.unwrap()
+        dest.skyGradientRadius = self.skyGradientRadius?.unwrap()
+        dest.skyOpacity = self.skyOpacity?.unwrap()
+        dest.skyOpacityTransition = self.skyOpacityTransition?.unwrap()
+        dest.skyType = self.skyType?.unwrap()
     }
 }
 extension SkyLayer {
     func wrap() -> TMBSkyLayer {
-        TMBSkyLayer(id: self.id)
+        var result = TMBSkyLayer(id: self.id)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBSkyLayer)  {
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.skyAtmosphereColor = self.skyAtmosphereColor?.wrap()
+        dest.skyAtmosphereHaloColor = self.skyAtmosphereHaloColor?.wrap()
+        dest.skyAtmosphereSun = self.skyAtmosphereSun?.wrap()
+        dest.skyAtmosphereSunIntensity = self.skyAtmosphereSunIntensity?.wrap()
+        dest.skyGradient = self.skyGradient?.wrap()
+        dest.skyGradientCenter = self.skyGradientCenter?.wrap()
+        dest.skyGradientRadius = self.skyGradientRadius?.wrap()
+        dest.skyOpacity = self.skyOpacity?.wrap()
+        dest.skyOpacityTransition = self.skyOpacityTransition?.wrap()
+        dest.skyType = self.skyType?.wrap()
     }
 }

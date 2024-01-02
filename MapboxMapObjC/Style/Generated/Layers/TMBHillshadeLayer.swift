@@ -81,13 +81,61 @@ import MapboxMaps
 }
 extension TMBHillshadeLayer {
     func unwrap() -> HillshadeLayer {
-        HillshadeLayer(id: self.id,
+        var result = HillshadeLayer(id: self.id,
             source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout HillshadeLayer) {
+        dest.filter = self.filter?.unwrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.unwrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.unwrap()
+        dest.hillshadeAccentColor = self.hillshadeAccentColor?.unwrap()
+        dest.hillshadeAccentColorTransition = self.hillshadeAccentColorTransition?.unwrap()
+        dest.hillshadeExaggeration = self.hillshadeExaggeration?.unwrap()
+        dest.hillshadeExaggerationTransition = self.hillshadeExaggerationTransition?.unwrap()
+        dest.hillshadeHighlightColor = self.hillshadeHighlightColor?.unwrap()
+        dest.hillshadeHighlightColorTransition = self.hillshadeHighlightColorTransition?.unwrap()
+        dest.hillshadeIlluminationAnchor = self.hillshadeIlluminationAnchor?.unwrap()
+        dest.hillshadeIlluminationDirection = self.hillshadeIlluminationDirection?.unwrap()
+        dest.hillshadeShadowColor = self.hillshadeShadowColor?.unwrap()
+        dest.hillshadeShadowColorTransition = self.hillshadeShadowColorTransition?.unwrap()
     }
 }
 extension HillshadeLayer {
     func wrap() -> TMBHillshadeLayer {
-        TMBHillshadeLayer(id: self.id,
+        var result = TMBHillshadeLayer(id: self.id,
           source: self.source)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBHillshadeLayer)  {
+        dest.filter = self.filter?.wrap()
+        dest.source = self.source
+        dest.sourceLayer = self.sourceLayer
+        dest.slot = self.slot?.wrap()
+        dest.minZoom = self.minZoom?.double()
+        dest.maxZoom = self.maxZoom?.double()
+        dest.visibility = self.visibility.wrap()
+        dest.hillshadeAccentColor = self.hillshadeAccentColor?.wrap()
+        dest.hillshadeAccentColorTransition = self.hillshadeAccentColorTransition?.wrap()
+        dest.hillshadeExaggeration = self.hillshadeExaggeration?.wrap()
+        dest.hillshadeExaggerationTransition = self.hillshadeExaggerationTransition?.wrap()
+        dest.hillshadeHighlightColor = self.hillshadeHighlightColor?.wrap()
+        dest.hillshadeHighlightColorTransition = self.hillshadeHighlightColorTransition?.wrap()
+        dest.hillshadeIlluminationAnchor = self.hillshadeIlluminationAnchor?.wrap()
+        dest.hillshadeIlluminationDirection = self.hillshadeIlluminationDirection?.wrap()
+        dest.hillshadeShadowColor = self.hillshadeShadowColor?.wrap()
+        dest.hillshadeShadowColorTransition = self.hillshadeShadowColorTransition?.wrap()
     }
 }
