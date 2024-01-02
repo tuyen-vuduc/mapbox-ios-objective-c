@@ -1,116 +1,112 @@
+// This file is generated.
+import Foundation
+import os
+import MapboxMaps
 
 
-@objc
-open class TMBCircleAnnotationManager : NSObject, TMBAnnotationManager, AnnotationInteractionDelegate {
-    
-    // MARK: - TMBAnnotationManager protocol conformance
-    @objc
-    public var id: String {
-        get {
-            return _self.id
-        }
+/// An instance of `CircleAnnotationManager` is responsible for a collection of `CircleAnnotation`s.
+@objc open class TMBCircleAnnotationManager: NSObject, TMBAnnotationManager {
+    @objc public var sourceId: String  {
+        origin.sourceId
     }
-    @objc
-    public var sourceId: String {
-        get {
-            return _self.sourceId
-        }
+
+    @objc public var layerId: String  {
+        origin.layerId
     }
-    @objc
-    public var layerId: String {
-        get {
-            return _self.layerId
-        }
+
+    @objc public var id: String {            
+        origin.id
     }
-    
-    public func annotationManager(
-        _ manager: MapboxMaps.AnnotationManager,
-        didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
-        if let delegate = self.delegate {
-            let items = annotations.map { annotation in
-                return TMBCircleAnnotation(swiftValue: annotation as! CircleAnnotation)
-            }
-            delegate.annotationManager(self, didDetectTappedAnnotations: items)
-        }
-    }
-    
-    @objc
-    public var annotations: [TMBCircleAnnotation] {
+
+    /// The collection of ``CircleAnnotation`` being managed.
+    @objc public var annotations: [TMBCircleAnnotation] {
         get {
-            return _self.annotations.map({
-                TMBCircleAnnotation(swiftValue: $0)
-            })
+            origin.annotations.map { $0.wrap() }
         }
         set {
-            _self.annotations = newValue.map({
-                $0.swiftValue
-            })
+            origin.annotations = newValue.map { $0.unwrap() }
         }
     }
-    
-    public let _self: CircleAnnotationManager
-    
-    /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
-    /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
-    @objc
-    public weak var delegate: TMBAnnotationInteractionDelegate? {
-        didSet {
-            guard delegate != nil else {
-                _self.delegate = nil
-                return
-            }
-            
-            _self.delegate = self
-        }
-    }
-    
-    public init(_ swiftValue: CircleAnnotationManager) {
-        self._self = swiftValue
-    }
-    
+
     // MARK: - Common layer properties
 
-    /// Orientation of circle when map is pitched.
-    @objc
-    public var circlePitchAlignment: NSNumber? {
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var circleEmissiveStrength: NSNumber? {
         get {
-            return _self.circlePitchAlignment?.asNumber()
+            origin.circleEmissiveStrength?.double()
         }
         set {
-            _self.circlePitchAlignment = newValue?.CirclePitchAlignment
+            origin.circleEmissiveStrength = newValue?.doubleValue
+        }
+    }
+
+    /// Orientation of circle when map is pitched.
+    @objc public var circlePitchAlignment: TMBCirclePitchAlignment? {            
+        get {
+            origin.circlePitchAlignment?.wrap()
+        }
+        set {
+            origin.circlePitchAlignment = newValue?.unwrap()
         }
     }
 
     /// Controls the scaling behavior of the circle when the map is pitched.
-    @objc
-    public var circlePitchScale: NSNumber? {
+    @objc public var circlePitchScale: TMBCirclePitchScale? {            
         get {
-            return _self.circlePitchScale?.asNumber()
+            origin.circlePitchScale?.wrap()
         }
         set {
-            _self.circlePitchScale = newValue?.CirclePitchScale
+            origin.circlePitchScale = newValue?.unwrap()
         }
     }
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
-    @objc
-    public var circleTranslate: [Double]? {
+    @objc public var circleTranslate: [Double]? {
         get {
-            return _self.circleTranslate
+            origin.circleTranslate
         }
         set {
-            _self.circleTranslate = newValue
+            origin.circleTranslate = newValue
         }
     }
 
     /// Controls the frame of reference for `circle-translate`.
-    @objc
-    public var circleTranslateAnchor: NSNumber? {
+    @objc public var circleTranslateAnchor: TMBCircleTranslateAnchor? {            
         get {
-            return _self.circleTranslateAnchor?.asNumber()
+            origin.circleTranslateAnchor?.wrap()
         }
         set {
-            _self.circleTranslateAnchor = newValue?.CircleTranslateAnchor
+            origin.circleTranslateAnchor = newValue?.unwrap()
         }
+    }
+
+    /// 
+    /// Slot for the underlying layer.
+    ///
+    /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
+    /// See <doc:Migrate-to-v11##21-The-Mapbox-Standard-Style> for more info.
+    @objc public var slot: String? {            
+        get {
+            origin.slot
+        }
+        set {
+            origin.slot = newValue
+        }
+    }   
+    
+    private let origin:CircleAnnotationManager
+    init(origin: CircleAnnotationManager) {
+        self.origin = origin
+    }
+}
+extension TMBCircleAnnotationManager {
+    func unwrap() -> CircleAnnotationManager {
+        self.origin
+    }
+}
+extension CircleAnnotationManager {
+    func wrap() -> TMBCircleAnnotationManager {
+        TMBCircleAnnotationManager(origin: self)
     }
 }
