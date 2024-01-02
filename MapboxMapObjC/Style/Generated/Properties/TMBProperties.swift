@@ -2,6 +2,7 @@
 import Foundation
 import MapboxMaps
 
+
 @objc public enum TMBVisibility: Int {
 
     /// The layer is shown.
@@ -56,7 +57,7 @@ extension MapboxMaps.Value where T == [Visibility] {
     }
 }
 extension TMBValue {
-    func visibility() -> Value<Visibility>? {
+    func visibility() -> Value<Visibility> {
         if let constant = self.constant as? String,
             let value = Visibility(rawValue: constant) {
             return Value.constant(value)
@@ -64,7 +65,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
-    func arrayOfVisibility() -> Value<[Visibility]>? {
+    func arrayOfVisibility() -> Value<[Visibility]> {
         if let constant = self.constant as? [String] {
             return Value.constant(constant
                 .map{ Visibility(rawValue: $0) }
@@ -80,6 +81,7 @@ extension TMBValue {
 
 /// The display of line endings.
 @objc open class TMBLineCap: NSObject {
+
     public let origin: LineCap
     @objc public var rawValue: String {
         origin.rawValue
@@ -159,6 +161,7 @@ extension TMBValue {
 
 /// The display of lines when joining.
 @objc open class TMBLineJoin: NSObject {
+
     public let origin: LineJoin
     @objc public var rawValue: String {
         origin.rawValue
@@ -238,6 +241,7 @@ extension TMBValue {
 
 /// Part of the icon placed closest to the anchor.
 @objc open class TMBIconAnchor: NSObject {
+
     public let origin: IconAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -335,6 +339,7 @@ extension TMBValue {
 
 /// Orientation of icon when map is pitched.
 @objc open class TMBIconPitchAlignment: NSObject {
+
     public let origin: IconPitchAlignment
     @objc public var rawValue: String {
         origin.rawValue
@@ -414,6 +419,7 @@ extension TMBValue {
 
 /// In combination with `symbol-placement`, determines the rotation behavior of icons.
 @objc open class TMBIconRotationAlignment: NSObject {
+
     public let origin: IconRotationAlignment
     @objc public var rawValue: String {
         origin.rawValue
@@ -493,6 +499,7 @@ extension TMBValue {
 
 /// Scales the icon to fit around the associated text.
 @objc open class TMBIconTextFit: NSObject {
+
     public let origin: IconTextFit
     @objc public var rawValue: String {
         origin.rawValue
@@ -575,6 +582,7 @@ extension TMBValue {
 
 /// Label placement relative to its geometry.
 @objc open class TMBSymbolPlacement: NSObject {
+
     public let origin: SymbolPlacement
     @objc public var rawValue: String {
         origin.rawValue
@@ -654,6 +662,7 @@ extension TMBValue {
 
 /// Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
 @objc open class TMBSymbolZOrder: NSObject {
+
     public let origin: SymbolZOrder
     @objc public var rawValue: String {
         origin.rawValue
@@ -733,6 +742,7 @@ extension TMBValue {
 
 /// Part of the text placed closest to the anchor.
 @objc open class TMBTextAnchor: NSObject {
+
     public let origin: TextAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -830,6 +840,7 @@ extension TMBValue {
 
 /// Text justification options.
 @objc open class TMBTextJustify: NSObject {
+
     public let origin: TextJustify
     @objc public var rawValue: String {
         origin.rawValue
@@ -912,6 +923,7 @@ extension TMBValue {
 
 /// Orientation of text when map is pitched.
 @objc open class TMBTextPitchAlignment: NSObject {
+
     public let origin: TextPitchAlignment
     @objc public var rawValue: String {
         origin.rawValue
@@ -991,6 +1003,7 @@ extension TMBValue {
 
 /// In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
 @objc open class TMBTextRotationAlignment: NSObject {
+
     public let origin: TextRotationAlignment
     @objc public var rawValue: String {
         origin.rawValue
@@ -1070,6 +1083,7 @@ extension TMBValue {
 
 /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
 @objc open class TMBTextTransform: NSObject {
+
     public let origin: TextTransform
     @objc public var rawValue: String {
         origin.rawValue
@@ -1149,6 +1163,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `fill-translate`.
 @objc open class TMBFillTranslateAnchor: NSObject {
+
     public let origin: FillTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1225,6 +1240,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `line-translate`.
 @objc open class TMBLineTranslateAnchor: NSObject {
+
     public let origin: LineTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1301,6 +1317,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `icon-translate`.
 @objc open class TMBIconTranslateAnchor: NSObject {
+
     public let origin: IconTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1377,6 +1394,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `text-translate`.
 @objc open class TMBTextTranslateAnchor: NSObject {
+
     public let origin: TextTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1453,6 +1471,7 @@ extension TMBValue {
 
 /// Orientation of circle when map is pitched.
 @objc open class TMBCirclePitchAlignment: NSObject {
+
     public let origin: CirclePitchAlignment
     @objc public var rawValue: String {
         origin.rawValue
@@ -1529,6 +1548,7 @@ extension TMBValue {
 
 /// Controls the scaling behavior of the circle when the map is pitched.
 @objc open class TMBCirclePitchScale: NSObject {
+
     public let origin: CirclePitchScale
     @objc public var rawValue: String {
         origin.rawValue
@@ -1605,6 +1625,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `circle-translate`.
 @objc open class TMBCircleTranslateAnchor: NSObject {
+
     public let origin: CircleTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1681,6 +1702,7 @@ extension TMBValue {
 
 /// Controls the frame of reference for `fill-extrusion-translate`.
 @objc open class TMBFillExtrusionTranslateAnchor: NSObject {
+
     public let origin: FillExtrusionTranslateAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1757,6 +1779,7 @@ extension TMBValue {
 
 /// The resampling/interpolation method to use for overscaling, also known as texture magnification filter
 @objc open class TMBRasterResampling: NSObject {
+
     public let origin: RasterResampling
     @objc public var rawValue: String {
         origin.rawValue
@@ -1833,6 +1856,7 @@ extension TMBValue {
 
 /// Direction of light source when map is rotated.
 @objc open class TMBHillshadeIlluminationAnchor: NSObject {
+
     public let origin: HillshadeIlluminationAnchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -1909,6 +1933,7 @@ extension TMBValue {
 
 /// Defines scaling mode. Only applies to location-indicator type layers.
 @objc open class TMBModelScaleMode: NSObject {
+
     public let origin: ModelScaleMode
     @objc public var rawValue: String {
         origin.rawValue
@@ -1985,6 +2010,7 @@ extension TMBValue {
 
 /// Defines rendering behavior of model in respect to other 3D scene objects.
 @objc open class TMBModelType: NSObject {
+
     public let origin: ModelType
     @objc public var rawValue: String {
         origin.rawValue
@@ -2061,6 +2087,7 @@ extension TMBValue {
 
 /// The type of the sky
 @objc open class TMBSkyType: NSObject {
+
     public let origin: SkyType
     @objc public var rawValue: String {
         origin.rawValue
@@ -2137,6 +2164,7 @@ extension TMBValue {
 
 /// Whether extruded geometries are lit relative to the map or viewport.
 @objc open class TMBAnchor: NSObject {
+
     public let origin: Anchor
     @objc public var rawValue: String {
         origin.rawValue
@@ -2213,6 +2241,7 @@ extension TMBValue {
 
 /// The name of the projection to be used for rendering the map.
 @objc open class TMBStyleProjectionName: NSObject {
+
     public let origin: StyleProjectionName
     @objc public var rawValue: String {
         origin.rawValue
@@ -2289,6 +2318,7 @@ extension TMBValue {
 
 /// The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. For symbol with point placement, the order of elements in an array define priority order for the placement of an orientation variant. For symbol with line placement, the default text writing mode is either ['horizontal', 'vertical'] or ['vertical', 'horizontal'], the order doesn't affect the placement.
 @objc open class TMBTextWritingMode: NSObject {
+
     public let origin: TextWritingMode
     @objc public var rawValue: String {
         origin.rawValue

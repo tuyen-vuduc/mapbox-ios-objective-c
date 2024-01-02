@@ -94,7 +94,7 @@ import MapboxMaps
 extension TMBFillLayer {
     func unwrap() -> FillLayer {
         var result = FillLayer(id: self.id,
-            source: self.source)
+            source: self.source!)
 
         self.mapTo(&result)
 
@@ -108,27 +108,27 @@ extension TMBFillLayer {
         dest.slot = self.slot?.unwrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.unwrap()
-        dest.fillSortKey = self.fillSortKey?.unwrap()
-        dest.fillAntialias = self.fillAntialias?.unwrap()
-        dest.fillColor = self.fillColor?.unwrap()
+        dest.visibility = self.visibility.visibility()
+        dest.fillSortKey = self.fillSortKey?.double()
+        dest.fillAntialias = self.fillAntialias?.bool()
+        dest.fillColor = self.fillColor?.styleColor()
         dest.fillColorTransition = self.fillColorTransition?.unwrap()
-        dest.fillEmissiveStrength = self.fillEmissiveStrength?.unwrap()
+        dest.fillEmissiveStrength = self.fillEmissiveStrength?.double()
         dest.fillEmissiveStrengthTransition = self.fillEmissiveStrengthTransition?.unwrap()
-        dest.fillOpacity = self.fillOpacity?.unwrap()
+        dest.fillOpacity = self.fillOpacity?.double()
         dest.fillOpacityTransition = self.fillOpacityTransition?.unwrap()
-        dest.fillOutlineColor = self.fillOutlineColor?.unwrap()
+        dest.fillOutlineColor = self.fillOutlineColor?.styleColor()
         dest.fillOutlineColorTransition = self.fillOutlineColorTransition?.unwrap()
-        dest.fillPattern = self.fillPattern?.unwrap()
-        dest.fillTranslate = self.fillTranslate?.unwrap()
+        dest.fillPattern = self.fillPattern?.resolvedImage()
+        dest.fillTranslate = self.fillTranslate?.arrayOfDouble()
         dest.fillTranslateTransition = self.fillTranslateTransition?.unwrap()
-        dest.fillTranslateAnchor = self.fillTranslateAnchor?.unwrap()
+        dest.fillTranslateAnchor = self.fillTranslateAnchor?.fillTranslateAnchor()
     }
 }
 extension FillLayer {
     func wrap() -> TMBFillLayer {
         var result = TMBFillLayer(id: self.id,
-          source: self.source)
+          source: self.source!)
 
         self.mapTo(&result)
 
@@ -142,20 +142,20 @@ extension FillLayer {
         dest.slot = self.slot?.wrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.wrap()
-        dest.fillSortKey = self.fillSortKey?.wrap()
-        dest.fillAntialias = self.fillAntialias?.wrap()
-        dest.fillColor = self.fillColor?.wrap()
+        dest.visibility = self.visibility.visibility()
+        dest.fillSortKey = self.fillSortKey?.double()
+        dest.fillAntialias = self.fillAntialias?.bool()
+        dest.fillColor = self.fillColor?.styleColor()
         dest.fillColorTransition = self.fillColorTransition?.wrap()
-        dest.fillEmissiveStrength = self.fillEmissiveStrength?.wrap()
+        dest.fillEmissiveStrength = self.fillEmissiveStrength?.double()
         dest.fillEmissiveStrengthTransition = self.fillEmissiveStrengthTransition?.wrap()
-        dest.fillOpacity = self.fillOpacity?.wrap()
+        dest.fillOpacity = self.fillOpacity?.double()
         dest.fillOpacityTransition = self.fillOpacityTransition?.wrap()
-        dest.fillOutlineColor = self.fillOutlineColor?.wrap()
+        dest.fillOutlineColor = self.fillOutlineColor?.styleColor()
         dest.fillOutlineColorTransition = self.fillOutlineColorTransition?.wrap()
-        dest.fillPattern = self.fillPattern?.wrap()
-        dest.fillTranslate = self.fillTranslate?.wrap()
+        dest.fillPattern = self.fillPattern?.resolvedImage()
+        dest.fillTranslate = self.fillTranslate?.arrayOfDouble()
         dest.fillTranslateTransition = self.fillTranslateTransition?.wrap()
-        dest.fillTranslateAnchor = self.fillTranslateAnchor?.wrap()
+        dest.fillTranslateAnchor = self.fillTranslateAnchor?.fillTranslateAnchor()
     }
 }

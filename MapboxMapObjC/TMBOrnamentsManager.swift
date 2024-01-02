@@ -142,7 +142,7 @@ open class TMBOrnamentsManager : NSObject {
     /// The default value for this property is `.topLeading`.
     @objc public var position: TMBOrnamentPosition {
         get {
-            _self.position.objcValue()
+            _self.position.wrap()
         }
         
         set {
@@ -168,7 +168,7 @@ open class TMBOrnamentsManager : NSObject {
     /// The default value for this property is `.adaptive`.
     @objc public var visibility: TMBOrnamentVisibility {
         get {
-            _self.visibility.objcValue()
+            _self.visibility.wrap()
         }
         
         set {
@@ -212,7 +212,7 @@ extension TMBOrnamentVisibility {
 }
 
 extension OrnamentVisibility: ObjcConvertible {
-    public func objcValue() -> TMBOrnamentVisibility {
+    public func wrap() -> TMBOrnamentVisibility {
         switch (self) {
         case .adaptive:
             return .adaptive
@@ -261,7 +261,7 @@ extension TMBOrnamentPosition {
 }
 
 extension OrnamentPosition: ObjcConvertible {
-    public func objcValue() -> TMBOrnamentPosition {
+    public func wrap() -> TMBOrnamentPosition {
         switch(self) {
         case .topLeft:
             return .topLeft
@@ -300,7 +300,7 @@ extension OrnamentPosition: ObjcConvertible {
     /// The default value for this property is `.topTrailing`.
     @objc public var position: TMBOrnamentPosition {
         get {
-            _self.position.objcValue()
+            _self.position.wrap()
         }
         
         set {
@@ -339,7 +339,7 @@ extension OrnamentPosition: ObjcConvertible {
     /// The default value for this property is `.adaptive`.
     @objc public var visibility: TMBOrnamentVisibility {
         get {
-            _self.visibility.objcValue()
+            _self.visibility.wrap()
         }
         
         set {
@@ -365,7 +365,7 @@ extension OrnamentPosition: ObjcConvertible {
     /// The default value for this property is `.bottomLeading`.
     @objc public var position: TMBOrnamentPosition {
         get {
-            _self.position.objcValue()
+            _self.position.wrap()
         }
         
         set {
@@ -404,7 +404,7 @@ extension OrnamentPosition: ObjcConvertible {
     /// The default value for this property is `.bottomTrailing`.
     @objc public var position: TMBOrnamentPosition {
         get {
-            _self.position.objcValue()
+            _self.position.wrap()
         }
         
         set {

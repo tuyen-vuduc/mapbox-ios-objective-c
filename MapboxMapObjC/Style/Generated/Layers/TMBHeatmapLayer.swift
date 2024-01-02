@@ -76,7 +76,7 @@ import MapboxMaps
 extension TMBHeatmapLayer {
     func unwrap() -> HeatmapLayer {
         var result = HeatmapLayer(id: self.id,
-            source: self.source)
+            source: self.source!)
 
         self.mapTo(&result)
 
@@ -90,21 +90,21 @@ extension TMBHeatmapLayer {
         dest.slot = self.slot?.unwrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.unwrap()
-        dest.heatmapColor = self.heatmapColor?.unwrap()
-        dest.heatmapIntensity = self.heatmapIntensity?.unwrap()
+        dest.visibility = self.visibility.visibility()
+        dest.heatmapColor = self.heatmapColor?.styleColor()
+        dest.heatmapIntensity = self.heatmapIntensity?.double()
         dest.heatmapIntensityTransition = self.heatmapIntensityTransition?.unwrap()
-        dest.heatmapOpacity = self.heatmapOpacity?.unwrap()
+        dest.heatmapOpacity = self.heatmapOpacity?.double()
         dest.heatmapOpacityTransition = self.heatmapOpacityTransition?.unwrap()
-        dest.heatmapRadius = self.heatmapRadius?.unwrap()
+        dest.heatmapRadius = self.heatmapRadius?.double()
         dest.heatmapRadiusTransition = self.heatmapRadiusTransition?.unwrap()
-        dest.heatmapWeight = self.heatmapWeight?.unwrap()
+        dest.heatmapWeight = self.heatmapWeight?.double()
     }
 }
 extension HeatmapLayer {
     func wrap() -> TMBHeatmapLayer {
         var result = TMBHeatmapLayer(id: self.id,
-          source: self.source)
+          source: self.source!)
 
         self.mapTo(&result)
 
@@ -118,14 +118,14 @@ extension HeatmapLayer {
         dest.slot = self.slot?.wrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.wrap()
-        dest.heatmapColor = self.heatmapColor?.wrap()
-        dest.heatmapIntensity = self.heatmapIntensity?.wrap()
+        dest.visibility = self.visibility.visibility()
+        dest.heatmapColor = self.heatmapColor?.styleColor()
+        dest.heatmapIntensity = self.heatmapIntensity?.double()
         dest.heatmapIntensityTransition = self.heatmapIntensityTransition?.wrap()
-        dest.heatmapOpacity = self.heatmapOpacity?.wrap()
+        dest.heatmapOpacity = self.heatmapOpacity?.double()
         dest.heatmapOpacityTransition = self.heatmapOpacityTransition?.wrap()
-        dest.heatmapRadius = self.heatmapRadius?.wrap()
+        dest.heatmapRadius = self.heatmapRadius?.double()
         dest.heatmapRadiusTransition = self.heatmapRadiusTransition?.wrap()
-        dest.heatmapWeight = self.heatmapWeight?.wrap()
+        dest.heatmapWeight = self.heatmapWeight?.double()
     }
 }

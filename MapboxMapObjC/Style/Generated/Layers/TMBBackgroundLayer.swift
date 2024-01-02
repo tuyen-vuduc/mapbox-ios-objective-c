@@ -68,14 +68,14 @@ extension TMBBackgroundLayer {
         dest.slot = self.slot?.unwrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.unwrap()
-        dest.backgroundColor = self.backgroundColor?.unwrap()
+        dest.visibility = self.visibility.visibility()
+        dest.backgroundColor = self.backgroundColor?.styleColor()
         dest.backgroundColorTransition = self.backgroundColorTransition?.unwrap()
-        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.unwrap()
+        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.double()
         dest.backgroundEmissiveStrengthTransition = self.backgroundEmissiveStrengthTransition?.unwrap()
-        dest.backgroundOpacity = self.backgroundOpacity?.unwrap()
+        dest.backgroundOpacity = self.backgroundOpacity?.double()
         dest.backgroundOpacityTransition = self.backgroundOpacityTransition?.unwrap()
-        dest.backgroundPattern = self.backgroundPattern?.unwrap()
+        dest.backgroundPattern = self.backgroundPattern?.resolvedImage()
     }
 }
 extension BackgroundLayer {
@@ -91,13 +91,13 @@ extension BackgroundLayer {
         dest.slot = self.slot?.wrap()
         dest.minZoom = self.minZoom?.double()
         dest.maxZoom = self.maxZoom?.double()
-        dest.visibility = self.visibility.wrap()
-        dest.backgroundColor = self.backgroundColor?.wrap()
+        dest.visibility = self.visibility.visibility()
+        dest.backgroundColor = self.backgroundColor?.styleColor()
         dest.backgroundColorTransition = self.backgroundColorTransition?.wrap()
-        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.wrap()
+        dest.backgroundEmissiveStrength = self.backgroundEmissiveStrength?.double()
         dest.backgroundEmissiveStrengthTransition = self.backgroundEmissiveStrengthTransition?.wrap()
-        dest.backgroundOpacity = self.backgroundOpacity?.wrap()
+        dest.backgroundOpacity = self.backgroundOpacity?.double()
         dest.backgroundOpacityTransition = self.backgroundOpacityTransition?.wrap()
-        dest.backgroundPattern = self.backgroundPattern?.wrap()
+        dest.backgroundPattern = self.backgroundPattern?.resolvedImage()
     }
 }

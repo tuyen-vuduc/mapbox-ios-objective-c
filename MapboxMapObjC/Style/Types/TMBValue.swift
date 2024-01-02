@@ -57,7 +57,7 @@ extension MapboxMaps.Value where T == Double {
     func double() -> TMBValue {
         switch(self) {
         case .constant(let obj):
-            return TMBValue(constant: obj.asNumber())
+            return TMBValue(constant: obj.double())
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))
         }
@@ -98,10 +98,10 @@ extension MapboxMaps.Value where T == [String] {
 }
 
 extension MapboxMaps.Value where T == Bool {
-    func boolean() -> TMBValue {
+    func bool() -> TMBValue {
         switch(self) {
         case .constant(let obj):
-            return TMBValue(constant: obj.asNumber())
+            return TMBValue(constant: obj.bool())
         case .expression(let expression):
             return TMBValue(expression: TMBExpression(expression))
         }
@@ -158,7 +158,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
-    func boolean() -> Value<Bool>? {
+    func bool() -> Value<Bool>? {
         if let constant = self.constant as? Bool {
             return Value.constant(constant)
         }
