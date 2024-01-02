@@ -22,6 +22,7 @@
 		23207ED12B44C960001E8855 /* TMBViewAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED02B44C960001E8855 /* TMBViewAnnotation.swift */; };
 		23207ED32B44C9BC001E8855 /* TMBAnnotatedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED22B44C9BC001E8855 /* TMBAnnotatedFeature.swift */; };
 		23207ED52B44CEAE001E8855 /* TMBViewAnnotationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED42B44CEAE001E8855 /* TMBViewAnnotationOptions.swift */; };
+		23207ED82B44D3C1001E8855 /* TMBLocationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */; };
 		23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */; };
 		23251E1929CEE9250088065B /* TMBLayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1829CEE9250088065B /* TMBLayerPosition.swift */; };
 		23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1D29CEF3690088065B /* TMBAnnotation.swift */; };
@@ -228,6 +229,7 @@
 		23207ED02B44C960001E8855 /* TMBViewAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBViewAnnotation.swift; sourceTree = "<group>"; };
 		23207ED22B44C9BC001E8855 /* TMBAnnotatedFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBAnnotatedFeature.swift; sourceTree = "<group>"; };
 		23207ED42B44CEAE001E8855 /* TMBViewAnnotationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBViewAnnotationOptions.swift; sourceTree = "<group>"; };
+		23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLocationOptions.swift; sourceTree = "<group>"; };
 		23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotationManager.swift; sourceTree = "<group>"; };
 		23251E1829CEE9250088065B /* TMBLayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLayerPosition.swift; sourceTree = "<group>"; };
 		23251E1D29CEF3690088065B /* TMBAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotation.swift; sourceTree = "<group>"; };
@@ -293,7 +295,7 @@
 		2396BE7B2A4F2E310085913F /* TMBViewAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewAnnotationManager.swift; sourceTree = "<group>"; };
 		2396BE7D2A4F33B90085913F /* TMBOrnamentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBOrnamentsManager.swift; sourceTree = "<group>"; };
 		2396BE7F2A4F3DE90085913F /* TMBCameraAnimationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCameraAnimationsManager.swift; sourceTree = "<group>"; };
-		2396BE812A50409C0085913F /* TMBLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLocationManager.swift; sourceTree = "<group>"; };
+		2396BE812A50409C0085913F /* TMBLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TMBLocationManager.swift; path = ../TMBLocationManager.swift; sourceTree = "<group>"; };
 		2396BE832A5106080085913F /* TMBAnnotationOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotationOrchestrator.swift; sourceTree = "<group>"; };
 		2396BE872A510F980085913F /* TMBCancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCancelable.swift; sourceTree = "<group>"; };
 		2396BE8B2A51369B0085913F /* TMBMapboxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBMapboxMap.swift; sourceTree = "<group>"; };
@@ -515,6 +517,15 @@
 				23207ECE2B44C41F001E8855 /* TMBLineString.swift */,
 			);
 			path = Turf;
+			sourceTree = "<group>";
+		};
+		23207ED62B44D3B1001E8855 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				2396BE812A50409C0085913F /* TMBLocationManager.swift */,
+				23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		23251E1C29CEF33E0088065B /* Annotations */ = {
@@ -880,6 +891,7 @@
 		236010C0282487FF00DAC76A /* MapboxMapObjC */ = {
 			isa = PBXGroup;
 			children = (
+				23207ED62B44D3B1001E8855 /* Location */,
 				23468FB02B3B8DFB00BE92EA /* Camera */,
 				23468F952B38FF6700BE92EA /* Foundation */,
 				23468FCA2B3CD5C100BE92EA /* Gestures */,
@@ -891,7 +903,6 @@
 				23BB8F0029BD651400E7C218 /* Enums */,
 				236010C1282487FF00DAC76A /* MapboxMapObjC.h */,
 				2396BE7D2A4F33B90085913F /* TMBOrnamentsManager.swift */,
-				2396BE812A50409C0085913F /* TMBLocationManager.swift */,
 				2396BE952A5198080085913F /* NSNumberExtensions.swift */,
 				232E9F122A537C1400E87D0A /* TMBError.swift */,
 				233F2F612B310BCA00B885C0 /* UIColorExtensions.swift */,
@@ -1294,6 +1305,7 @@
 				2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */,
 				23468FDE2B3E2F0D00BE92EA /* TMBDirectionalLight.swift in Sources */,
 				23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */,
+				23207ED82B44D3C1001E8855 /* TMBLocationOptions.swift in Sources */,
 				23468FAC2B3A51F600BE92EA /* TMBSourceInfo.swift in Sources */,
 				23468FD42B3CE36500BE92EA /* TMBCameraBoundsOptions.swift in Sources */,
 				23468FA82B3A4CE400BE92EA /* TMBLightInfo.swift in Sources */,
