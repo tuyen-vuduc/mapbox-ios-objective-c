@@ -21,13 +21,13 @@ open class TMBAnnotationOrchestrator : NSObject {
         return _self.annotationManagersById.mapValues { annotationManager in
             switch(annotationManager) {
             case let pointAnnotationManager as PointAnnotationManager:
-                return TMBPointAnnotationManager(pointAnnotationManager)
+                return TMBPointAnnotationManager(origin: pointAnnotationManager)
             case let polylineAnnotationManager as PolylineAnnotationManager:
-                return TMBPolylineAnnotationManager(polylineAnnotationManager)
+                return TMBPolylineAnnotationManager(origin: polylineAnnotationManager)
             case let polygonAnnotationManager as PolygonAnnotationManager:
-                return TMBPolygonAnnotationManager(polygonAnnotationManager)
+                return TMBPolygonAnnotationManager(origin: polygonAnnotationManager)
             default:
-                return TMBCircleAnnotationManager(annotationManager as! CircleAnnotationManager)
+                return TMBCircleAnnotationManager(origin: annotationManager as! CircleAnnotationManager)
             }
         }
     }
@@ -50,9 +50,9 @@ open class TMBAnnotationOrchestrator : NSObject {
         let swiftValue = _self.makePointAnnotationManager(
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition?.unwrap() ?? .default,
-            clusterOptions: clusterOptions?.swiftValue()
+            clusterOptions: clusterOptions?.unwrap()
         )
-        return TMBPointAnnotationManager(swiftValue)
+        return TMBPointAnnotationManager(origin: swiftValue)
     }
 
     /// Creates a `PolygonAnnotationManager` which is used to manage a collection of
@@ -72,7 +72,7 @@ open class TMBAnnotationOrchestrator : NSObject {
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition?.unwrap() ?? .default
         )
-        return TMBPolygonAnnotationManager(swiftValue)
+        return TMBPolygonAnnotationManager(origin: swiftValue)
     }
 
     /// Creates a `PolylineAnnotationManager` which is used to manage a collection of
@@ -92,7 +92,7 @@ open class TMBAnnotationOrchestrator : NSObject {
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition?.unwrap() ?? .default
         )
-        return TMBPolylineAnnotationManager(swiftValue)
+        return TMBPolylineAnnotationManager(origin: swiftValue)
     }
 
     /// Creates a `CircleAnnotationManager` which is used to manage a collection of
@@ -112,7 +112,7 @@ open class TMBAnnotationOrchestrator : NSObject {
             id:  id ?? String(UUID().uuidString.prefix(5)),
             layerPosition: layerPosition?.unwrap() ?? .default
         )
-        return TMBCircleAnnotationManager(swiftValue)
+        return TMBCircleAnnotationManager(origin: swiftValue)
     }
 
     /// Removes an annotation manager, this will remove the underlying layer and source from the style.

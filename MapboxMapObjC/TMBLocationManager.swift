@@ -42,17 +42,6 @@ extension MapView {
         return _self.latestLocation
     }
     
-    /// The object that acts as the delegate of the location manager.
-    @objc public weak var delegate: TMBLocationPermissionsDelegate? {
-        didSet {
-            if delegate == nil {
-                _self.delegate = nil
-            } else {
-                _self.delegate = self
-            }
-        }
-    }
-
     /// The current underlying location provider. Use `overrideLocationProvider(with:)` to substitute a different provider.
     /// Avoid manipulating the location provider directly. LocationManager assumes full responsibility for starting and stopping location
     /// and heading updates as needed.
