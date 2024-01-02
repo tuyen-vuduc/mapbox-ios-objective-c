@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2309802E29D3A403008EF30C /* MapboxMapObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 236010BF282487FF00DAC76A /* MapboxMapObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		230E1F0A2B4457B500009743 /* TMBPolygonAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E1F092B4457B500009743 /* TMBPolygonAnnotationManager.swift */; };
+		230E1F0C2B44580300009743 /* TMBPolylineAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E1F0B2B44580300009743 /* TMBPolylineAnnotationManager.swift */; };
+		230E1F0E2B44583500009743 /* TMBPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E1F0D2B44583500009743 /* TMBPointAnnotationManager.swift */; };
+		230E1F102B44584A00009743 /* TMBCircleAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230E1F0F2B44584A00009743 /* TMBCircleAnnotationManager.swift */; };
 		231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CB29BF9305002D6CFD /* TMBValue.swift */; };
 		231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */; };
 		231AF0D429BFEFE4002D6CFD /* TMBExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */; };
@@ -206,6 +210,10 @@
 /* Begin PBXFileReference section */
 		1008B44E2EF4C9A4066230E2 /* Pods-MapboxMapObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.release.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.release.xcconfig"; sourceTree = "<group>"; };
 		1C18D6659143F51DB92FF65C /* Pods-mapboxqs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.debug.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.debug.xcconfig"; sourceTree = "<group>"; };
+		230E1F092B4457B500009743 /* TMBPolygonAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolygonAnnotationManager.swift; sourceTree = "<group>"; };
+		230E1F0B2B44580300009743 /* TMBPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotationManager.swift; sourceTree = "<group>"; };
+		230E1F0D2B44583500009743 /* TMBPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPointAnnotationManager.swift; sourceTree = "<group>"; };
+		230E1F0F2B44584A00009743 /* TMBCircleAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCircleAnnotationManager.swift; sourceTree = "<group>"; };
 		231AF0CB29BF9305002D6CFD /* TMBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBValue.swift; sourceTree = "<group>"; };
 		231AF0CD29BF9319002D6CFD /* TMBTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTerrain.swift; sourceTree = "<group>"; };
 		231AF0D329BFEFE4002D6CFD /* TMBExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBExpression.swift; sourceTree = "<group>"; };
@@ -476,17 +484,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23251E1C29CEF33E0088065B /* Annotations */ = {
+		230E1F082B4456FD00009743 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				2396BE832A5106080085913F /* TMBAnnotationOrchestrator.swift */,
-				2396BE7B2A4F2E310085913F /* TMBViewAnnotationManager.swift */,
-				23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */,
-				23251E1D29CEF3690088065B /* TMBAnnotation.swift */,
 				23251E1F29CEF3870088065B /* TMBPolygonAnnotation.swift */,
 				23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */,
 				23B88A6529CFFEE800F508B5 /* TMBPointAnnotation.swift */,
 				23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */,
+				230E1F092B4457B500009743 /* TMBPolygonAnnotationManager.swift */,
+				230E1F0B2B44580300009743 /* TMBPolylineAnnotationManager.swift */,
+				230E1F0D2B44583500009743 /* TMBPointAnnotationManager.swift */,
+				230E1F0F2B44584A00009743 /* TMBCircleAnnotationManager.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		23251E1C29CEF33E0088065B /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				230E1F082B4456FD00009743 /* Generated */,
+				2396BE832A5106080085913F /* TMBAnnotationOrchestrator.swift */,
+				2396BE7B2A4F2E310085913F /* TMBViewAnnotationManager.swift */,
+				23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */,
+				23251E1D29CEF3690088065B /* TMBAnnotation.swift */,
 				23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */,
 			);
 			path = Annotations;
@@ -1226,9 +1246,11 @@
 				23468FB42B3B8F7C00BE92EA /* TMBCameraTransition.swift in Sources */,
 				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
 				2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */,
+				230E1F0E2B44583500009743 /* TMBPointAnnotationManager.swift in Sources */,
 				23C021932A548296002229B5 /* TMBRasterLayer.swift in Sources */,
 				231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */,
 				23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */,
+				230E1F0C2B44580300009743 /* TMBPolylineAnnotationManager.swift in Sources */,
 				23BA6DD72826CA5A00D2D03A /* ResourceOptionsExtensions.swift in Sources */,
 				2396BE882A510F980085913F /* TMBCancelable.swift in Sources */,
 				23251E2729CF02690088065B /* TMBStyleManager.swift in Sources */,
@@ -1240,6 +1262,7 @@
 				23468F9E2B3A497400BE92EA /* TMBProperties.swift in Sources */,
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
+				230E1F0A2B4457B500009743 /* TMBPolygonAnnotationManager.swift in Sources */,
 				23468FA52B3A4C5800BE92EA /* TMBSourceType.swift in Sources */,
 				2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */,
 				23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */,
@@ -1294,6 +1317,7 @@
 				23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */,
 				23C021952A54E6AC002229B5 /* TMBImageSource.swift in Sources */,
 				23468FC22B3BA67C00BE92EA /* TMBPromoteId.swift in Sources */,
+				230E1F102B44584A00009743 /* TMBCircleAnnotationManager.swift in Sources */,
 				23468F992B3A36AB00BE92EA /* TMBCameraState.swift in Sources */,
 				23468FA62B3A4C5800BE92EA /* TMBLightType.swift in Sources */,
 				23468FD02B3CD85E00BE92EA /* TMBFlyToCameraAnimator.swift in Sources */,
