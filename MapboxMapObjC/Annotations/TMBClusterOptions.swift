@@ -101,7 +101,7 @@ open class TMBClusterOptions : NSObject {
         self.clusterProperties = clusterProperties
     }
     
-    func swiftValue() -> ClusterOptions {
+    func unwrap() -> ClusterOptions {
         return ClusterOptions(
             circleRadius: circleRadius?.double() ?? .constant(18),
             circleColor: circleColor?.styleColor() ?? .constant(StyleColor(.black)),

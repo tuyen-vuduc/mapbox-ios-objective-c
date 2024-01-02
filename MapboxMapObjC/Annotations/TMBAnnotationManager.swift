@@ -18,6 +18,12 @@ public protocol TMBAnnotationManager: AnyObject {
 
     /// The id of the layer that this manager is responsible for.
     var layerId: String { get }
+    
+    /// Slot for the underlying layer.
+    ///
+    /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
+    /// See <doc:Migrate-to-v11##21-The-Mapbox-Standard-Style> for more info.
+    var slot: String? { get set }
 }
 
 /// A delegate that is called when a tap is detected on an annotation (or on several of them).

@@ -1,3 +1,5 @@
+import MapboxCommon
+
 @objc
 public protocol TMBAnnotation: AnyObject {
 
@@ -5,7 +7,7 @@ public protocol TMBAnnotation: AnyObject {
     var id: String { get }
 
     /// The geometry that is backing this annotation.
-    var geometryInJSON: String { get }
+    var geometry: MapboxCommon.Geometry { get }
 
     /// Properties associated with the annotation.
     var userInfo: [String: Any]? { get }

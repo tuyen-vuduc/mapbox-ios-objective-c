@@ -1,190 +1,131 @@
+// This file is generated.
+import UIKit
 import MapboxMaps
+import MapboxCommon
+import Turf
 
-@objc
-open class TMBCircleAnnotation : NSObject, TMBAnnotation {
-    @objc
-    public var id: String {
-        return swiftValue.id
-    }
-    
-    @objc
-    public var geometryInJSON: String {
-        return try! swiftValue.point.toString()
+@objc open class TMBCircleAnnotation: NSObject, TMBAnnotation {
+
+    /// Identifier for this annotation
+    @objc public var  id: String
+
+    /// The geometry backing this annotation
+    @objc public var  geometry: MapboxCommon.Geometry {
+        MapboxCommon.Geometry(point: centerCoordinate.toValue())
     }
 
-    @objc
-    public var userInfo: [String : Any]? {
-        return swiftValue.userInfo
-    }
+    /// The point backing this annotation
+    @objc public var  centerCoordinate: CLLocationCoordinate2D
+
+    /// Toggles the annotation's selection state.
+    /// If the annotation is deselected, it becomes selected.
+    /// If the annotation is selected, it becomes deselected.
+    @objc public var  isSelected: Bool 
+
+    /// Property to determine whether annotation can be manually moved around map
+    @objc public var  isDraggable: Bool 
+
+    /// Handles tap gesture on this annotation.
+    ///
+    /// Should return `true` if the gesture is handled, or `false` to propagate it to the annotations or layers below.
+    @objc public var  tapHandler: ((TMBMapContentGestureContext) -> Bool)?
+
+    /// Handles long press gesture on this annotation.
+    ///
+    /// Should return `true` if the gesture is handled, or `false` to propagate it to the annotations or layers below.
+    @objc public var  longPressHandler: ((TMBMapContentGestureContext) -> Bool)?
+
+    /// Properties associated with the annotation
+    @objc public var  userInfo: [String:Any]?
+
+    /// Create a circle annotation with a center coordinate and an optional identifier
+    /// - Parameters:
+    ///   - id: Optional identifier for this annotation
+    ///   - coordinate: Coordinate where this circle annotation should be centered
     
-    @objc
-    public var isSelected: Bool {
-        set {
-            swiftValue.isSelected = newValue
-        }
-        get {
-            return swiftValue.isSelected
-        }
-    }
-    
-    @objc
-    public var isDraggable: Bool {
-        set {
-            swiftValue.isDraggable = newValue
-        }
-        get {
-            return swiftValue.isDraggable
-        }
-    }
-    
-    public var swiftValue: CircleAnnotation
-    
-    public init(swiftValue: CircleAnnotation) {
-        self.swiftValue = swiftValue
-        super.init()
-    }
-    
-    @objc
-    public class func from(center coordinate: LocationCoordinate2D) -> TMBCircleAnnotation {
-        let swiftValue = CircleAnnotation(centerCoordinate: coordinate)
-        return TMBCircleAnnotation(swiftValue: swiftValue)
+    @objc public init(id : String , centerCoordinate : CLLocationCoordinate2D, isSelected : Bool , isDraggable : Bool ) {
+        self.id = id
+        self.centerCoordinate = centerCoordinate
+        self.isSelected = isSelected
+        self.isDraggable = isDraggable
     }
 
     // MARK: - Style Properties -
 
     /// Sorts features in ascending order based on this value. Features with a higher sort key will appear above features with a lower sort key.
-    @objc
-    public var circleSortKey: NSNumber? {
-        get {
-            // Double?
-            guard let circleSortKey = self.swiftValue.circleSortKey else {
-                return nil
-            }
-            return NSNumber(value: circleSortKey)
-        }
-        set {
-            self.swiftValue.circleSortKey = newValue?.doubleValue
-        }
-    }
+    @objc public var  circleSortKey: NSNumber?
 
     /// Amount to blur the circle. 1 blurs the circle such that only the centerpoint is full opacity.
-    @objc
-    public var circleBlur: NSNumber? {
-        get {
-            // Double?
-            guard let circleBlur = self.swiftValue.circleBlur else {
-                return nil
-            }
-            return NSNumber(value: circleBlur)
-        }
-        set {
-            self.swiftValue.circleBlur = newValue?.doubleValue
-        }
-    }
+    @objc public var  circleBlur: NSNumber?
 
     /// The fill color of the circle.
-    @objc
-    public var circleColor: UIColor? {
-        get {
-            guard let circleColor = self.swiftValue.circleColor else {
-                return nil
-            }
-            return UIColor(
-                red: circleColor.red,
-                green: circleColor.green,
-                blue: circleColor.blue,
-                alpha: circleColor.alpha)
-        }
-        set {
-            guard let circleColor = newValue else {
-                self.swiftValue.circleColor = nil
-                return
-            }
-            
-            self.swiftValue.circleColor = StyleColor(circleColor)
-        }
-    }
+    @objc public var  circleColor: UIColor?
 
     /// The opacity at which the circle will be drawn.
-    @objc
-    public var circleOpacity: NSNumber? {
-        get {
-            // Double?
-            guard let circleOpacity = self.swiftValue.circleOpacity else {
-                return nil
-            }
-            return NSNumber(value: circleOpacity)
-        }
-        set {
-            self.swiftValue.circleOpacity = newValue?.doubleValue
-        }
-    }
+    @objc public var  circleOpacity: NSNumber?
 
     /// Circle radius.
-    @objc
-    public var circleRadius: NSNumber? {
-        get {
-            // Double?
-            guard let circleRadius = self.swiftValue.circleRadius else {
-                return nil
-            }
-            return NSNumber(value: circleRadius)
-        }
-        set {
-            self.swiftValue.circleRadius = newValue?.doubleValue
-        }
-    }
+    @objc public var  circleRadius: NSNumber?
 
     /// The stroke color of the circle.
-    @objc
-    public var circleStrokeColor: UIColor? {
-        get {
-            guard let circleStrokeColor = self.swiftValue.circleStrokeColor else {
-                return nil
-            }
-            return UIColor(
-                red: circleStrokeColor.red,
-                green: circleStrokeColor.green,
-                blue: circleStrokeColor.blue,
-                alpha: circleStrokeColor.alpha)
-        }
-        set {
-            guard let circleStrokeColor = newValue else {
-                self.swiftValue.circleStrokeColor = nil
-                return
-            }
-            
-            self.swiftValue.circleStrokeColor = StyleColor(circleStrokeColor)
-        }
-    }
+    @objc public var  circleStrokeColor: UIColor?
 
     /// The opacity of the circle's stroke.
-    @objc
-    public var circleStrokeOpacity: NSNumber? {
-        get {
-            // Double?
-            guard let circleStrokeOpacity = self.swiftValue.circleStrokeOpacity else {
-                return nil
-            }
-            return NSNumber(value: circleStrokeOpacity)
-        }
-        set {
-            self.swiftValue.circleStrokeOpacity = newValue?.doubleValue
-        }
-    }
+    @objc public var  circleStrokeOpacity: NSNumber?
 
     /// The width of the circle's stroke. Strokes are placed outside of the `circle-radius`.
-    @objc
-    public var circleStrokeWidth: NSNumber? {
-        get {
-            // Double?
-            guard let circleStrokeWidth = self.swiftValue.circleStrokeWidth else {
-                return nil
-            }
-            return NSNumber(value: circleStrokeWidth)
-        }
-        set {
-            self.swiftValue.circleStrokeWidth = newValue?.doubleValue
-        }
+    @objc public var  circleStrokeWidth: NSNumber?
+
+}
+extension TMBCircleAnnotation {
+    func unwrap() -> CircleAnnotation {
+        var result = CircleAnnotation(id: self.id,
+            point: Turf.Point(self.centerCoordinate),
+            isSelected: self.isSelected,
+            isDraggable: self.isDraggable)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout CircleAnnotation) {
+        dest.point = Turf.Point(self.centerCoordinate)
+        dest.isSelected = self.isSelected
+        dest.isDraggable = self.isDraggable
+        dest.circleSortKey = self.circleSortKey?.double()
+        dest.circleBlur = self.circleBlur?.double()
+        dest.circleColor = self.circleColor?.styleColor()
+        dest.circleOpacity = self.circleOpacity?.double()
+        dest.circleRadius = self.circleRadius?.double()
+        dest.circleStrokeColor = self.circleStrokeColor?.styleColor()
+        dest.circleStrokeOpacity = self.circleStrokeOpacity?.double()
+        dest.circleStrokeWidth = self.circleStrokeWidth?.double()
+    }
+}
+extension CircleAnnotation {
+    func wrap() -> TMBCircleAnnotation {
+        var result = TMBCircleAnnotation(id: self.id,
+          centerCoordinate: self.point.coordinates,
+          isSelected: self.isSelected,
+          isDraggable: self.isDraggable)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBCircleAnnotation)  {
+        dest.centerCoordinate = self.point.coordinates
+        dest.isSelected = self.isSelected
+        dest.isDraggable = self.isDraggable
+        dest.circleSortKey = self.circleSortKey?.double()
+        dest.circleBlur = self.circleBlur?.double()
+        dest.circleColor = self.circleColor?.wrap()
+        dest.circleOpacity = self.circleOpacity?.double()
+        dest.circleRadius = self.circleRadius?.double()
+        dest.circleStrokeColor = self.circleStrokeColor?.wrap()
+        dest.circleStrokeOpacity = self.circleStrokeOpacity?.double()
+        dest.circleStrokeWidth = self.circleStrokeWidth?.double()
     }
 }

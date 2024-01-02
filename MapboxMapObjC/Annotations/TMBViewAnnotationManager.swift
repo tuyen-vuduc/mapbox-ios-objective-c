@@ -166,37 +166,34 @@ class ViewAnnotationUpdateObserverAdapter : ViewAnnotationUpdateObserver {
 @objc
 public enum TMBViewAnnotationManagerError: Int {
     case viewIsAlreadyAdded
-    case associatedFeatureIdIsAlreadyInUse
     case annotationNotFound
-    case geometryFieldMissing
+    case annotatedFeatureMissing
 }
 
 extension TMBViewAnnotationManagerError {
-    func swiftValue() -> ViewAnnotationManagerError {
+    func unwrap() -> ViewAnnotationManagerError {
         switch(self) {
         case .viewIsAlreadyAdded:
            return .viewIsAlreadyAdded
-        case .associatedFeatureIdIsAlreadyInUse:
-            return .associatedFeatureIdIsAlreadyInUse
         case .annotationNotFound:
             return .annotationNotFound
-        case .geometryFieldMissing:
-            return .geometryFieldMissing
+        case .annotatedFeatureMissing:
+            return .annotatedFeatureMissing
         }
     }
 }
 
 extension ViewAnnotationManagerError: ObjcConvertible {
-    public func objcValue() -> TMBViewAnnotationManagerError {
+    public func wrap() -> TMBViewAnnotationManagerError {
         switch(self) {
         case .viewIsAlreadyAdded:
            return .viewIsAlreadyAdded
-        case .associatedFeatureIdIsAlreadyInUse:
-            return .associatedFeatureIdIsAlreadyInUse
         case .annotationNotFound:
             return .annotationNotFound
-        case .geometryFieldMissing:
-            return .geometryFieldMissing
+        case .annotatedFeatureMissing:
+            return .annotatedFeatureMissing
+        default:
+            return .viewIsAlreadyAdded
         }
     }
 }
