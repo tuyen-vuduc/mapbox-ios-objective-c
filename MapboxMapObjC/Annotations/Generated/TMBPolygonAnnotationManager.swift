@@ -1,112 +1,100 @@
+// This file is generated.
+import Foundation
+import os
 import MapboxMaps
 
+/// An instance of `PolygonAnnotationManager` is responsible for a collection of `PolygonAnnotation`s.
+@objc open class TMBPolygonAnnotationManager: NSObject, TMBAnnotationManager {
+    @objc public var sourceId: String  {
+        origin.sourceId
+    }
 
-@objc
-open class TMBPolygonAnnotationManager : NSObject, TMBAnnotationManager, AnnotationInteractionDelegate {
-    
-    // MARK: - TMBAnnotationManager protocol conformance
-    @objc
-    public var id: String {
-        get {
-            return _self.id
-        }
+    @objc public var layerId: String  {
+        origin.layerId
     }
-    @objc
-    public var sourceId: String {
-        get {
-            return _self.sourceId
-        }
+
+    @objc public var id: String {            
+        origin.id
     }
-    @objc
-    public var layerId: String {
+
+    /// The collection of ``PolygonAnnotation`` being managed.
+    @objc public var annotations: [TMBPolygonAnnotation] {            
         get {
-            return _self.layerId
-        }
-    }
-    
-    public func annotationManager(
-        _ manager: MapboxMaps.AnnotationManager,
-        didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
-        if let delegate = self.delegate {
-            let items = annotations.map { annotation in
-                return TMBPolygonAnnotation(swiftValue: annotation as! PolygonAnnotation)
-            }
-            delegate.annotationManager(self, didDetectTappedAnnotations: items)
-        }
-    }
-    
-    @objc
-    public var annotations: [TMBPolygonAnnotation] {
-        get {
-            return _self.annotations.map({
-                TMBPolygonAnnotation(swiftValue: $0)
-                
-            })
+            origin.annotations.map { $0.wrap() }
         }
         set {
-            _self.annotations = newValue.map({
-                $0.swiftValue
-            })
+            origin.annotations = newValue.map { $0.unwrap() }
         }
     }
 
     // MARK: - Common layer properties
 
+
     /// Whether or not the fill should be antialiased.
-    @objc
-    public var fillAntialias: NSNumber? {
+    @objc public var fillAntialias: NSNumber? {
         get {
-            // Bool?
-            guard let fillAntialias = _self.fillAntialias else {
-                return nil
-            }
-            return NSNumber(value: fillAntialias)
+            origin.fillAntialias?.bool()
         }
         set {
-            // Bool?
-            _self.fillAntialias = newValue?.boolValue
+            origin.fillAntialias = newValue?.boolValue
+        }
+    }
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var fillEmissiveStrength: NSNumber? {
+        get {
+            origin.fillEmissiveStrength?.double()
+        }
+        set {
+            origin.fillEmissiveStrength = newValue?.doubleValue
         }
     }
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
-    @objc
-    public var fillTranslate: [Double]? {
+    @objc public var fillTranslate: [Double]? {
         get {
-            return _self.fillTranslate
+            origin.fillTranslate
         }
         set {
-            _self.fillTranslate = newValue
+            origin.fillTranslate = newValue
         }
     }
 
     /// Controls the frame of reference for `fill-translate`.
-    @objc
-    public var fillTranslateAnchor: NSNumber? {
+    @objc public var fillTranslateAnchor: TMBFillTranslateAnchor? {            
         get {
-            return _self.fillTranslateAnchor?.asNumber()
+            origin.fillTranslateAnchor?.wrap()
         }
         set {
-            _self.fillTranslateAnchor = newValue?.FillTranslateAnchor
+            origin.fillTranslateAnchor = newValue?.unwrap()
         }
     }
-    
-    public let _self: PolygonAnnotationManager
-    
-    /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
-    /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
-    @objc
-    public weak var delegate: TMBAnnotationInteractionDelegate? {
-        didSet {
-            guard delegate != nil else {
-                _self.delegate = nil
-                return
-            }
-            
-            _self.delegate = self
+
+    /// 
+    /// Slot for the underlying layer.
+    ///
+    /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
+    /// See <doc:Migrate-to-v11##21-The-Mapbox-Standard-Style> for more info.
+    @objc public var slot: String? {            
+        get {
+            origin.slot
         }
+        set {
+            origin.slot = newValue
+        }
+    }    
+    private let origin:PolygonAnnotationManager
+    init(origin: PolygonAnnotationManager) {
+        self.origin = origin
     }
-    
-    public init(_ swiftValue: PolygonAnnotationManager) {
-        self._self = swiftValue
+}
+extension TMBPolygonAnnotationManager {
+    func unwrap() -> PolygonAnnotationManager {
+        self.origin
+    }
+}
+extension PolygonAnnotationManager {
+    func wrap() -> TMBPolygonAnnotationManager {
+        TMBPolygonAnnotationManager(origin: self)
     }
 }

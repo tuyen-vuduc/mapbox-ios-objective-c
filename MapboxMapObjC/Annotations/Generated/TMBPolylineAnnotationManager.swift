@@ -1,158 +1,150 @@
+// This file is generated.
+import Foundation
+import os
 import MapboxMaps
 
-@objc
-open class TMBPolylineAnnotationManager : NSObject, TMBAnnotationManager, AnnotationInteractionDelegate {
-    
-    // MARK: - TMBAnnotationManager protocol conformance
-    @objc
-    public var id: String {
-        get {
-            return _self.id
-        }
+/// An instance of `PolylineAnnotationManager` is responsible for a collection of `PolylineAnnotation`s.
+@objc open class TMBPolylineAnnotationManager: NSObject, TMBAnnotationManager {
+    @objc public var sourceId: String  {
+        origin.sourceId
     }
-    @objc
-    public var sourceId: String {
-        get {
-            return _self.sourceId
-        }
+
+    @objc public var layerId: String  {
+        origin.layerId
     }
-    @objc
-    public var layerId: String {
-        get {
-            return _self.layerId
-        }
+
+    @objc public var id: String {            
+        origin.id
     }
-    
-    public func annotationManager(
-        _ manager: MapboxMaps.AnnotationManager,
-        didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
-        if let delegate = self.delegate {
-            let items = annotations.map { annotation in
-                return TMBPolylineAnnotation(swiftValue: annotation as! PolylineAnnotation)
-            }
-            delegate.annotationManager(self, didDetectTappedAnnotations: items)
-        }
-    }
-    
-    @objc
-    public var annotations: [TMBPolylineAnnotation] {
+
+    /// The collection of ``PolylineAnnotation`` being managed.
+    @objc public var annotations: [TMBPolylineAnnotation] {            
         get {
-            return _self.annotations.map({
-                TMBPolylineAnnotation(swiftValue: $0)
-                
-            })
+            origin.annotations.map { $0.wrap() }
         }
         set {
-            _self.annotations = newValue.map({
-                $0.swiftValue
-            })
+            origin.annotations = newValue.map { $0.unwrap() }
         }
     }
-    
-    public let _self: PolylineAnnotationManager
-    
-    /// Set this delegate in order to be called back if a tap occurs on an annotation being managed by this manager.
-    /// - NOTE: This annotation manager listens to tap events via the `GestureManager.singleTapGestureRecognizer`.
-    @objc
-    public weak var delegate: TMBAnnotationInteractionDelegate? {
-        didSet {
-            guard delegate != nil else {
-                _self.delegate = nil
-                return
-            }
-            
-            _self.delegate = self
-        }
-    }
-    
-    public init(_ swiftValue: PolylineAnnotationManager) {
-        self._self = swiftValue
-    }
-    
+
     // MARK: - Common layer properties
 
+
     /// The display of line endings.
-    @objc
-    public var lineCap: NSNumber? {
+    @objc public var lineCap: TMBLineCap? {            
         get {
-            return _self.lineCap?.asNumber()
+            origin.lineCap?.wrap()
         }
         set {
-            _self.lineCap = newValue?.LineCap
+            origin.lineCap = newValue?.unwrap()
         }
     }
 
     /// Used to automatically convert miter joins to bevel joins for sharp angles.
-    @objc
-    public var lineMiterLimit: NSNumber? {
+    @objc public var lineMiterLimit: NSNumber? {
         get {
-            guard let lineMiterLimit = _self.lineMiterLimit else {
-                return nil
-            }
-            return NSNumber(value: lineMiterLimit)
+            origin.lineMiterLimit?.double()
         }
         set {
-            // Double?
-            _self.lineMiterLimit = newValue?.doubleValue
+            origin.lineMiterLimit = newValue?.doubleValue
         }
     }
 
     /// Used to automatically convert round joins to miter joins for shallow angles.
-    @objc
-    public var lineRoundLimit: NSNumber? {
+    @objc public var lineRoundLimit: NSNumber? {
         get {
-            guard let lineRoundLimit = _self.lineRoundLimit else {
-                return nil
-            }
-            return NSNumber(value: lineRoundLimit)
+            origin.lineRoundLimit?.double()
         }
         set {
-            // Double?
-            _self.lineRoundLimit = newValue?.doubleValue
+            origin.lineRoundLimit = newValue?.double()
         }
     }
 
     /// Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. Note that GeoJSON sources with `lineMetrics: true` specified won't render dashed lines to the expected scale. Also note that zoom-dependent expressions will be evaluated only at integer zoom levels.
-    @objc
-    public var lineDasharray: [Double]? {
+    @objc public var lineDasharray: [Double]? {
         get {
-            return _self.lineDasharray
+            origin.lineDasharray
         }
         set {
-            _self.lineDasharray = newValue
+            origin.lineDasharray = newValue
+        }
+    }
+
+    /// Decrease line layer opacity based on occlusion from 3D objects. Value 0 disables occlusion, value 1 means fully occluded.
+    @objc public var lineDepthOcclusionFactor: NSNumber? {
+        get {
+            origin.lineDepthOcclusionFactor?.double()
+        }
+        set {
+            origin.lineDepthOcclusionFactor = newValue?.double()
+        }
+    }
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var lineEmissiveStrength: NSNumber? {
+        get {
+            origin.lineEmissiveStrength?.double()
+        }
+        set {
+            origin.lineEmissiveStrength = newValue?.double()
         }
     }
 
     /// The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.
-    @objc
-    public var lineTranslate: [Double]? {
+    @objc public var lineTranslate: [Double]? {
         get {
-            return _self.lineTranslate
+            origin.lineTranslate
         }
         set {
-            _self.lineTranslate = newValue
+            origin.lineTranslate = newValue
         }
     }
 
     /// Controls the frame of reference for `line-translate`.
-    @objc
-    public var lineTranslateAnchor: NSNumber? {
+    @objc public var lineTranslateAnchor: TMBLineTranslateAnchor? {            
         get {
-            return _self.lineTranslateAnchor?.asNumber()
+            origin.lineTranslateAnchor?.wrap()
         }
         set {
-            _self.lineTranslateAnchor = newValue?.LineTranslateAnchor
+            origin.lineTranslateAnchor = newValue?.unwrap()
         }
     }
 
     /// The line part between [trim-start, trim-end] will be marked as transparent to make a route vanishing effect. The line trim-off offset is based on the whole line range [0.0, 1.0].
-    @objc
-    public var lineTrimOffset: [Double]? {
+    @objc public var lineTrimOffset: [Double]? {
         get {
-            return _self.lineTrimOffset
+            origin.lineTrimOffset
         }
         set {
-            _self.lineTrimOffset = newValue
+            origin.lineTrimOffset = newValue
         }
+    }
+
+    /// 
+    /// Slot for the underlying layer.
+    ///
+    /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
+    /// See <doc:Migrate-to-v11##21-The-Mapbox-Standard-Style> for more info.
+    @objc public var slot: String? {            
+        get {
+            origin.slot
+        }
+        set {
+            origin.slot = newValue
+        }
+    }    
+    private let origin:PolylineAnnotationManager
+    init(origin: PolylineAnnotationManager) {
+        self.origin = origin
+    }
+}
+extension TMBPolylineAnnotationManager {
+    func unwrap() -> PolylineAnnotationManager {
+        self.origin
+    }
+}
+extension PolylineAnnotationManager {
+    func wrap() -> TMBPolylineAnnotationManager {
+        TMBPolylineAnnotationManager(origin: self)
     }
 }

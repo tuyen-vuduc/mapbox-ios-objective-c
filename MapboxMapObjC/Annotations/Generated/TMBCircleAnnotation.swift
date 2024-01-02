@@ -11,11 +11,11 @@ import Turf
 
     /// The geometry backing this annotation
     @objc public var  geometry: MapboxCommon.Geometry {
-        MapboxCommon.Geometry(point: centerCoordinate.toValue())
+        point.geometry()
     }
 
     /// The point backing this annotation
-    @objc public var  centerCoordinate: CLLocationCoordinate2D
+    @objc public var  point: TMBPoint
 
     /// Toggles the annotation's selection state.
     /// If the annotation is deselected, it becomes selected.
@@ -23,7 +23,7 @@ import Turf
     @objc public var  isSelected: Bool 
 
     /// Property to determine whether annotation can be manually moved around map
-    @objc public var  isDraggable: Bool 
+    @objc public var  isDraggable: Bool
 
     /// Handles tap gesture on this annotation.
     ///
@@ -45,7 +45,14 @@ import Turf
     
     @objc public init(id : String , centerCoordinate : CLLocationCoordinate2D, isSelected : Bool , isDraggable : Bool ) {
         self.id = id
-        self.centerCoordinate = centerCoordinate
+        self.point = TMBPoint(centerCoordinate)
+        self.isSelected = isSelected
+        self.isDraggable = isDraggable
+    }
+    
+    @objc public init(id : String , point : TMBPoint, isSelected : Bool , isDraggable : Bool ) {
+        self.id = id
+        self.point = point
         self.isSelected = isSelected
         self.isDraggable = isDraggable
     }
@@ -80,7 +87,7 @@ import Turf
 extension TMBCircleAnnotation {
     func unwrap() -> CircleAnnotation {
         var result = CircleAnnotation(id: self.id,
-            point: Turf.Point(self.centerCoordinate),
+            point: self.point.unwrap(),
             isSelected: self.isSelected,
             isDraggable: self.isDraggable)
 
@@ -90,7 +97,7 @@ extension TMBCircleAnnotation {
     }
 
     func mapTo(_ dest: inout CircleAnnotation) {
-        dest.point = Turf.Point(self.centerCoordinate)
+        dest.point = self.point.unwrap()
         dest.isSelected = self.isSelected
         dest.isDraggable = self.isDraggable
         dest.circleSortKey = self.circleSortKey?.double()
@@ -116,7 +123,7 @@ extension CircleAnnotation {
     }
 
     func mapTo(_ dest: inout TMBCircleAnnotation)  {
-        dest.centerCoordinate = self.point.coordinates
+        dest.point = self.point.wrap()
         dest.isSelected = self.isSelected
         dest.isDraggable = self.isDraggable
         dest.circleSortKey = self.circleSortKey?.double()

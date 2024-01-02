@@ -1,464 +1,261 @@
+// This file is generated.
+import UIKit
 import MapboxMaps
 
-@objc
-open class TMBPointAnnotation : NSObject, TMBAnnotation {
-    @objc
-    public var id: String {
-        return swiftValue.id
-    }
+
+@objc open class TMBPointAnnotation: NSObject, TMBAnnotation {
+
+    /// Identifier for this annotation
+    @objc public var  id: String
     
-    @objc
-    public var geometryInJSON: String {
-        return try! swiftValue.point.toString()
+
+    /// The geometry backing this annotation
+    @objc public var  geometry: MapboxCommon.Geometry {
+        point.geometry()
     }
 
-    @objc
-    public var userInfo: [String : Any]? {
-        return swiftValue.userInfo
+    /// The point backing this annotation
+    @objc public var  point: TMBPoint
+
+    /// Toggles the annotation's selection state.
+    /// If the annotation is deselected, it becomes selected.
+    /// If the annotation is selected, it becomes deselected.
+    @objc public var  isSelected: Bool
+
+    /// Property to determine whether annotation can be manually moved around map
+    @objc public var  isDraggable: Bool
+
+    /// Handles tap gesture on this annotation.
+    ///
+    /// Should return `true` if the gesture is handled, or `false` to propagate it to the annotations or layers below.
+    @objc public var  tapHandler: ((TMBMapContentGestureContext) -> Bool)?
+
+    /// Handles long press gesture on this annotation.
+    ///
+    /// Should return `true` if the gesture is handled, or `false` to propagate it to the annotations or layers below.
+    @objc public var  longPressHandler: ((TMBMapContentGestureContext) -> Bool)?
+
+    /// Properties associated with the annotation
+    @objc public var  userInfo: [String:Any]?
+
+    /// Create a point annotation with a `Point` and an optional identifier.
+    
+    @objc public init(id : String , point : TMBPoint, isSelected : Bool , isDraggable : Bool ) {
+        self.id = id
+        self.point = point
+        self.isSelected = isSelected
+        self.isDraggable = isDraggable
+
     }
+
+    /// Create a point annotation with a coordinate and an optional identifier
+    /// - Parameters:
+    ///   - id: Optional identifier for this annotation
+    ///   - coordinate: Coordinate where this annotation should be rendered
     
-    @objc
-    public var isSelected: Bool {
-        set {
-            swiftValue.isSelected = newValue
-        }
-        get {
-            swiftValue.isSelected
-        }
+    @objc public init(id : String , coordinate : CLLocationCoordinate2D, isSelected : Bool , isDraggable : Bool ) {
+        self.id = id
+        self.point = TMBPoint(coordinate)
+        self.isSelected = isSelected
+        self.isDraggable = isDraggable
+
     }
-    
-    @objc
-    public var isDraggable: Bool {
-        set {
-            swiftValue.isDraggable = newValue
-        }
-        get {
-            return swiftValue.isDraggable
-        }
-    }
-    
-    @objc
-    public func image(_ image: UIImage, name: String) {
-        swiftValue.image = PointAnnotation.Image(image: image, name: name)
-    }
-    
-    public var swiftValue: PointAnnotation
-    
-    public init(swiftValue: PointAnnotation) {
-        self.swiftValue = swiftValue
-        super.init()
-    }
-    
-    @objc
-    public class func from(coordinate: LocationCoordinate2D) -> TMBPointAnnotation {
-        let swiftValue = PointAnnotation(point: Point(coordinate))
-        return TMBPointAnnotation(swiftValue: swiftValue)
-    }
-    
+
     // MARK: - Style Properties -
 
     /// Part of the icon placed closest to the anchor.
-    @objc
-    public var iconAnchor: NSNumber? {
-        get {
-            return swiftValue.iconAnchor?.asNumber()
-        }
-        set {
-            swiftValue.iconAnchor = newValue?.IconAnchor
-        }
-    }
+    @objc public var  iconAnchor: TMBIconAnchor?
 
     /// Name of image in sprite to use for drawing an image background.
-    @objc
-    public var iconImage: String? {
-        get {
-            return self.swiftValue.iconImage
-        }
-        set {
-            self.swiftValue.iconImage = newValue
-        }
-    }
+    @objc public var  iconImage: String?
 
     /// Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of `icon-size` to obtain the final offset in pixels. When combined with `icon-rotate` the offset will be as if the rotated direction was up.
-    @objc
-    public var iconOffset: [Double]? {
-        get {
-            return self.swiftValue.iconOffset
-        }
-        set {
-            self.swiftValue.iconOffset = newValue
-        }
-    }
+    @objc public var  iconOffset: [Double]?
 
     /// Rotates the icon clockwise.
-    @objc
-    public var iconRotate: NSNumber? {
-        get {
-            // Double?
-            guard let iconRotate = self.swiftValue.iconRotate else {
-                return nil
-            }
-            return NSNumber(value: iconRotate)
-        }
-        set {
-            self.swiftValue.iconRotate = newValue?.doubleValue
-        }
-    }
+    @objc public var  iconRotate: NSNumber?
 
     /// Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by `icon-size`. 1 is the original size; 3 triples the size of the image.
-    @objc
-    public var iconSize: NSNumber? {
-        get {
-            // Double?
-            guard let iconSize = self.swiftValue.iconSize else {
-                return nil
-            }
-            return NSNumber(value: iconSize)
-        }
-        set {
-            self.swiftValue.iconSize = newValue?.doubleValue
-        }
-    }
+    @objc public var  iconSize: NSNumber?
 
-    /// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first.  When `icon-allow-overlap` or `text-allow-overlap` is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
-    @objc
-    public var symbolSortKey: NSNumber? {
-        get {
-            // Double?
-            guard let symbolSortKey = self.swiftValue.symbolSortKey else {
-                return nil
-            }
-            return NSNumber(value: symbolSortKey)
-        }
-        set {
-            self.swiftValue.symbolSortKey = newValue?.doubleValue
-        }
-    }
+    /// Scales the icon to fit around the associated text.
+    @objc public var  iconTextFit: TMBIconTextFit?
+
+    /// Size of the additional area added to dimensions determined by `icon-text-fit`, in clockwise order: top, right, bottom, left.
+    @objc public var  iconTextFitPadding: [Double]?
+
+    /// Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first. When `icon-allow-overlap` or `text-allow-overlap` is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
+    @objc public var  symbolSortKey: NSNumber?
 
     /// Part of the text placed closest to the anchor.
-    @objc
-    public var textAnchor: NSNumber? {
-        get {
-            return swiftValue.textAnchor?.asNumber()
-        }
-        set {
-            swiftValue.textAnchor = newValue?.TextAnchor
-        }
-    }
+    @objc public var  textAnchor: TMBTextAnchor?
 
     /// Value to use for a text label. If a plain `string` is provided, it will be treated as a `formatted` with default/inherited formatting options. SDF images are not supported in formatted text and will be ignored.
-    @objc
-    public var textField: String? {
-        get {
-            return self.swiftValue.textField
-        }
-        set {
-            self.swiftValue.textField = newValue
-        }
-    }
+    @objc public var  textField: String?
 
     /// Text justification options.
-    @objc
-    public var textJustify: NSNumber? {
-        get {
-            return swiftValue.textJustify?.asNumber()
-        }
-        set {
-            swiftValue.textJustify = newValue?.TextJustify
-        }
-    }
+    @objc public var  textJustify: TMBTextJustify?
 
     /// Text tracking amount.
-    @objc
-    public var textLetterSpacing: NSNumber? {
-        get {
-            // Double?
-            guard let textLetterSpacing = self.swiftValue.textLetterSpacing else {
-                return nil
-            }
-            return NSNumber(value: textLetterSpacing)
-        }
-        set {
-            self.swiftValue.textLetterSpacing = newValue?.doubleValue
-        }
-    }
+    @objc public var  textLetterSpacing: NSNumber?
 
     /// Text leading value for multi-line text.
-    @objc
-    public var textLineHeight: NSNumber? {
-        get {
-            // Double?
-            guard let textLineHeight = self.swiftValue.textLineHeight else {
-                return nil
-            }
-            return NSNumber(value: textLineHeight)
-        }
-        set {
-            self.swiftValue.textLineHeight = newValue?.doubleValue
-        }
-    }
+    @objc public var  textLineHeight: NSNumber?
 
     /// The maximum line width for text wrapping.
-    @objc
-    public var textMaxWidth: NSNumber? {
-        get {
-            // Double?
-            guard let textMaxWidth = self.swiftValue.textMaxWidth else {
-                return nil
-            }
-            return NSNumber(value: textMaxWidth)
-        }
-        set {
-            self.swiftValue.textMaxWidth = newValue?.doubleValue
-        }
-    }
+    @objc public var  textMaxWidth: NSNumber?
 
     /// Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.
-    @objc
-    public var textOffset: [Double]? {
-        get {
-            return self.swiftValue.textOffset
-        }
-        set {
-            self.swiftValue.textOffset = newValue
-        }
-    }
+    @objc public var  textOffset: [Double]?
 
     /// Radial offset of text, in the direction of the symbol's anchor. Useful in combination with `text-variable-anchor`, which defaults to using the two-dimensional `text-offset` if present.
-    @objc
-    public var textRadialOffset: NSNumber? {
-        get {
-            // Double?
-            guard let textRadialOffset = self.swiftValue.textRadialOffset else {
-                return nil
-            }
-            return NSNumber(value: textRadialOffset)
-        }
-        set {
-            self.swiftValue.textRadialOffset = newValue?.doubleValue
-        }
-    }
+    @objc public var  textRadialOffset: NSNumber?
 
     /// Rotates the text clockwise.
-    @objc
-    public var textRotate: NSNumber? {
-        get {
-            // Double?
-            guard let textRotate = self.swiftValue.textRotate else {
-                return nil
-            }
-            return NSNumber(value: textRotate)
-        }
-        set {
-            self.swiftValue.textRotate = newValue?.doubleValue
-        }
-    }
+    @objc public var  textRotate: NSNumber?
 
     /// Font size.
-    @objc
-    public var textSize: NSNumber? {
-        get {
-            // Double?
-            guard let textSize = self.swiftValue.textSize else {
-                return nil
-            }
-            return NSNumber(value: textSize)
-        }
-        set {
-            self.swiftValue.textSize = newValue?.doubleValue
-        }
-    }
+    @objc public var  textSize: NSNumber?
 
     /// Specifies how to capitalize text, similar to the CSS `text-transform` property.
-    @objc
-    public var textTransform: NSNumber? {
-        get {
-            return swiftValue.textTransform?.asNumber()
-        }
-        set {
-            swiftValue.textTransform = newValue?.TextTransform
-        }
-    }
+    @objc public var  textTransform: TMBTextTransform?
 
     /// The color of the icon. This can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
-    @objc
-    public var iconColor: UIColor? {
-        get {
-            guard let iconColor = self.swiftValue.iconColor else {
-                return nil
-            }
-            return UIColor(
-                red: iconColor.red,
-                green: iconColor.green,
-                blue: iconColor.blue,
-                alpha: iconColor.alpha)
-        }
-        set {
-            guard let iconColor = newValue else {
-                self.swiftValue.iconColor = nil
-                return
-            }
-            
-            self.swiftValue.iconColor = StyleColor(iconColor)
-        }
-    }
+    @objc public var  iconColor: UIColor?
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var  iconEmissiveStrength: NSNumber?
 
     /// Fade out the halo towards the outside.
-    @objc
-    public var iconHaloBlur: NSNumber? {
-        get {
-            // Double?
-            guard let iconHaloBlur = self.swiftValue.iconHaloBlur else {
-                return nil
-            }
-            return NSNumber(value: iconHaloBlur)
-        }
-        set {
-            self.swiftValue.iconHaloBlur = newValue?.doubleValue
-        }
-    }
+    @objc public var  iconHaloBlur: NSNumber?
 
     /// The color of the icon's halo. Icon halos can only be used with [SDF icons](/help/troubleshooting/using-recolorable-images-in-mapbox-maps/).
-    @objc
-    public var iconHaloColor: UIColor? {
-        get {
-            guard let iconHaloColor = self.swiftValue.iconHaloColor else {
-                return nil
-            }
-            return UIColor(
-                red: iconHaloColor.red,
-                green: iconHaloColor.green,
-                blue: iconHaloColor.blue,
-                alpha: iconHaloColor.alpha)
-        }
-        set {
-            guard let iconHaloColor = newValue else {
-                self.swiftValue.iconHaloColor = nil
-                return
-            }
-            
-            self.swiftValue.iconHaloColor = StyleColor(iconHaloColor)
-        }
-    }
+    @objc public var  iconHaloColor: UIColor?
 
     /// Distance of halo to the icon outline.
-    @objc
-    public var iconHaloWidth: NSNumber? {
-        get {
-            // Double?
-            guard let iconHaloWidth = self.swiftValue.iconHaloWidth else {
-                return nil
-            }
-            return NSNumber(value: iconHaloWidth)
-        }
-        set {
-            self.swiftValue.iconHaloWidth = newValue?.doubleValue
-        }
-    }
+    @objc public var  iconHaloWidth: NSNumber?
+
+    /// Controls the transition progress between the image variants of icon-image. Zero means the first variant is used, one is the second, and in between they are blended together.
+    @objc public var  iconImageCrossFade: NSNumber?
 
     /// The opacity at which the icon will be drawn.
-    @objc
-    public var iconOpacity: NSNumber? {
-        get {
-            // Double?
-            guard let iconOpacity = self.swiftValue.iconOpacity else {
-                return nil
-            }
-            return NSNumber(value: iconOpacity)
-        }
-        set {
-            self.swiftValue.iconOpacity = newValue?.doubleValue
-        }
-    }
+    @objc public var  iconOpacity: NSNumber?
 
     /// The color with which the text will be drawn.
-    @objc
-    public var textColor: UIColor? {
-        get {
-            guard let textColor = self.swiftValue.textColor else {
-                return nil
-            }
-            return UIColor(
-                red: textColor.red,
-                green: textColor.green,
-                blue: textColor.blue,
-                alpha: textColor.alpha)
-        }
-        set {
-            guard let textColor = newValue else {
-                self.swiftValue.textColor = nil
-                return
-            }
-            
-            self.swiftValue.textColor = StyleColor(textColor)
-        }
-    }
+    @objc public var  textColor: UIColor?
+
+    /// Controls the intensity of light emitted on the source features. This property works only with 3D light, i.e. when `lights` root property is defined.
+    @objc public var  textEmissiveStrength: NSNumber?
 
     /// The halo's fadeout distance towards the outside.
-    @objc
-    public var textHaloBlur: NSNumber? {
-        get {
-            // Double?
-            guard let textHaloBlur = self.swiftValue.textHaloBlur else {
-                return nil
-            }
-            return NSNumber(value: textHaloBlur)
-        }
-        set {
-            self.swiftValue.textHaloBlur = newValue?.doubleValue
-        }
-    }
+    @objc public var  textHaloBlur: NSNumber?
 
     /// The color of the text's halo, which helps it stand out from backgrounds.
-    @objc
-    public var textHaloColor: UIColor? {
-        get {
-            guard let textHaloColor = self.swiftValue.textHaloColor else {
-                return nil
-            }
-            return UIColor(
-                red: textHaloColor.red,
-                green: textHaloColor.green,
-                blue: textHaloColor.blue,
-                alpha: textHaloColor.alpha)
-        }
-        set {
-            guard let textHaloColor = newValue else {
-                self.swiftValue.textHaloColor = nil
-                return
-            }
-            
-            self.swiftValue.textHaloColor = StyleColor(textHaloColor)
-        }
-    }
+    @objc public var  textHaloColor: UIColor?
 
     /// Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.
-    @objc
-    public var textHaloWidth: NSNumber? {
-        get {
-            // Double?
-            guard let textHaloWidth = self.swiftValue.textHaloWidth else {
-                return nil
-            }
-            return NSNumber(value: textHaloWidth)
-        }
-        set {
-            self.swiftValue.textHaloWidth = newValue?.doubleValue
-        }
-    }
+    @objc public var  textHaloWidth: NSNumber?
 
     /// The opacity at which the text will be drawn.
-    @objc
-    public var textOpacity: NSNumber? {
-        get {
-            // Double?
-            guard let textOpacity = self.swiftValue.textOpacity else {
-                return nil
-            }
-            return NSNumber(value: textOpacity)
-        }
-        set {
-            self.swiftValue.textOpacity = newValue?.doubleValue
-        }
+    @objc public var  textOpacity: NSNumber?
+}
+extension TMBPointAnnotation {
+    func unwrap() -> PointAnnotation {
+        var result = PointAnnotation(id: self.id,
+            point: (self.point).unwrap(),
+            isSelected: self.isSelected,
+            isDraggable: self.isDraggable)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout PointAnnotation) {
+        dest.point = self.point.unwrap()
+        dest.isSelected = self.isSelected
+        dest.isDraggable = self.isDraggable
+        dest.iconAnchor = self.iconAnchor?.unwrap()
+        dest.iconImage = self.iconImage
+        dest.iconOffset = self.iconOffset?.map { $0 }
+        dest.iconRotate = self.iconRotate?.double()
+        dest.iconSize = self.iconSize?.double()
+        dest.iconTextFit = self.iconTextFit?.unwrap()
+        dest.iconTextFitPadding = self.iconTextFitPadding?.map { $0 }
+        dest.symbolSortKey = self.symbolSortKey?.double()
+        dest.textAnchor = self.textAnchor?.unwrap()
+        dest.textField = self.textField
+        dest.textJustify = self.textJustify?.unwrap()
+        dest.textLetterSpacing = self.textLetterSpacing?.double()
+        dest.textLineHeight = self.textLineHeight?.double()
+        dest.textMaxWidth = self.textMaxWidth?.double()
+        dest.textOffset = self.textOffset?.map { $0 }
+        dest.textRadialOffset = self.textRadialOffset?.double()
+        dest.textRotate = self.textRotate?.double()
+        dest.textSize = self.textSize?.double()
+        dest.textTransform = self.textTransform?.unwrap()
+        dest.iconColor = self.iconColor?.styleColor()
+        dest.iconEmissiveStrength = self.iconEmissiveStrength?.double()
+        dest.iconHaloBlur = self.iconHaloBlur?.double()
+        dest.iconHaloColor = self.iconHaloColor?.styleColor()
+        dest.iconHaloWidth = self.iconHaloWidth?.double()
+        dest.iconImageCrossFade = self.iconImageCrossFade?.double()
+        dest.iconOpacity = self.iconOpacity?.double()
+        dest.textColor = self.textColor?.styleColor()
+        dest.textEmissiveStrength = self.textEmissiveStrength?.double()
+        dest.textHaloBlur = self.textHaloBlur?.double()
+        dest.textHaloColor = self.textHaloColor?.styleColor()
+        dest.textHaloWidth = self.textHaloWidth?.double()
+        dest.textOpacity = self.textOpacity?.double()
+    }
+}
+extension PointAnnotation {
+    func wrap() -> TMBPointAnnotation {
+        var result = TMBPointAnnotation(id: self.id,
+          point: (self.point).wrap(),
+          isSelected: self.isSelected,
+          isDraggable: self.isDraggable)
+
+        self.mapTo(&result)
+
+        return result
+    }
+
+    func mapTo(_ dest: inout TMBPointAnnotation)  {
+        dest.point = self.point.wrap()
+        dest.isSelected = self.isSelected
+        dest.isDraggable = self.isDraggable
+        dest.iconAnchor = self.iconAnchor?.wrap()
+        dest.iconImage = self.iconImage
+        dest.iconOffset = self.iconOffset?.map { $0 }
+        dest.iconRotate = self.iconRotate?.double()
+        dest.iconSize = self.iconSize?.double()
+        dest.iconTextFit = self.iconTextFit?.wrap()
+        dest.iconTextFitPadding = self.iconTextFitPadding?.map { $0 }
+        dest.symbolSortKey = self.symbolSortKey?.double()
+        dest.textAnchor = self.textAnchor?.wrap()
+        dest.textField = self.textField
+        dest.textJustify = self.textJustify?.wrap()
+        dest.textLetterSpacing = self.textLetterSpacing?.double()
+        dest.textLineHeight = self.textLineHeight?.double()
+        dest.textMaxWidth = self.textMaxWidth?.double()
+        dest.textOffset = self.textOffset?.map { $0 }
+        dest.textRadialOffset = self.textRadialOffset?.double()
+        dest.textRotate = self.textRotate?.double()
+        dest.textSize = self.textSize?.double()
+        dest.textTransform = self.textTransform?.wrap()
+        dest.iconColor = self.iconColor?.wrap()
+        dest.iconEmissiveStrength = self.iconEmissiveStrength?.double()
+        dest.iconHaloBlur = self.iconHaloBlur?.double()
+        dest.iconHaloColor = self.iconHaloColor?.wrap()
+        dest.iconHaloWidth = self.iconHaloWidth?.double()
+        dest.iconImageCrossFade = self.iconImageCrossFade?.double()
+        dest.iconOpacity = self.iconOpacity?.double()
+        dest.textColor = self.textColor?.wrap()
+        dest.textEmissiveStrength = self.textEmissiveStrength?.double()
+        dest.textHaloBlur = self.textHaloBlur?.double()
+        dest.textHaloColor = self.textHaloColor?.wrap()
+        dest.textHaloWidth = self.textHaloWidth?.double()
+        dest.textOpacity = self.textOpacity?.double()
     }
 }
