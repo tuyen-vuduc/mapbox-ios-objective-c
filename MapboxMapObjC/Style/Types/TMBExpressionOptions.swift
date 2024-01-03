@@ -95,30 +95,20 @@ import MapboxMaps
     /// Minimum  number of fractional digits to include.
     public var minFractionDigits: NSNumber?  {
         get {
-            return _self.minFractionDigits?.asNumber()
+            return _self.minFractionDigits?.int()
         }
         set {
-            guard let value = newValue else {
-                _self.minFractionDigits = nil
-                return
-            }
-            
-            _self.minFractionDigits = value.intValue
+            _self.minFractionDigits = newValue?.int()
         }
     }
 
     /// Maximum number of fractional digits to include.
     public var maxFractionDigits: NSNumber? {
         get {
-            return _self.maxFractionDigits?.asNumber()
+            return _self.maxFractionDigits?.int()
         }
         set {
-            guard let value = newValue else {
-                _self.maxFractionDigits = nil
-                return
-            }
-            
-            _self.maxFractionDigits = value.intValue
+            _self.maxFractionDigits = newValue?.int()
         }
     }
 
@@ -142,13 +132,13 @@ import MapboxMaps
 
     /// Whether comparison option is case sensitive.
     @objc public var caseSensitive: NSNumber? {
-        get { _self.caseSensitive?.asNumber() }
+        get { _self.caseSensitive?.bool() }
         set { _self.caseSensitive = newValue?.boolValue }
     }
 
     /// Whether the comparison operation is diacritic sensitive
     @objc public var diacriticSensitive: NSNumber? {
-        get { _self.diacriticSensitive?.asNumber() }
+        get { _self.diacriticSensitive?.bool() }
         set { _self.diacriticSensitive = newValue?.boolValue }
     }
 

@@ -13,7 +13,7 @@
 @protocol ExampleProtocol
 
 @optional
-- (MBMResourceOptions *) resourceOptions;
+
 - finish;
 
 @end

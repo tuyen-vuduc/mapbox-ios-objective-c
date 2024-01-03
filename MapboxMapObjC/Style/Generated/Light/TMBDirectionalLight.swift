@@ -49,7 +49,7 @@ import MapboxMaps
 extension TMBDirectionalLight {
     func unwrap() -> DirectionalLight {
         var result = DirectionalLight(id: self.id)
-        result.castShadows = self.castShadows?.boolean()
+        result.castShadows = self.castShadows?.bool()
         result.color = self.color?.styleColor()
         result.colorTransition = self.colorTransition?.unwrap()
         result.direction = self.direction?.arrayOfDouble()
@@ -64,7 +64,7 @@ extension TMBDirectionalLight {
 extension DirectionalLight {
     func wrap() -> TMBDirectionalLight {
         var result = TMBDirectionalLight(id: self.id)
-        result.castShadows = self.castShadows?.boolean()
+        result.castShadows = self.castShadows?.bool()
         result.color = self.color?.styleColor()
         result.colorTransition = self.colorTransition?.wrap()
         result.direction = self.direction?.arrayOfDouble()

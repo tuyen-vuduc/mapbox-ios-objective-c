@@ -23,6 +23,12 @@
 		23207ED32B44C9BC001E8855 /* TMBAnnotatedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED22B44C9BC001E8855 /* TMBAnnotatedFeature.swift */; };
 		23207ED52B44CEAE001E8855 /* TMBViewAnnotationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED42B44CEAE001E8855 /* TMBViewAnnotationOptions.swift */; };
 		23207ED82B44D3C1001E8855 /* TMBLocationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */; };
+		23207EDA2B44D6A9001E8855 /* TMBLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207ED92B44D6A8001E8855 /* TMBLocationManager.swift */; };
+		23207EDE2B44D79A001E8855 /* TMBPuckType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207EDC2B44D79A001E8855 /* TMBPuckType.swift */; };
+		23207EDF2B44D79A001E8855 /* TMBPuckRenderingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207EDD2B44D79A001E8855 /* TMBPuckRenderingData.swift */; };
+		23207EE12B44DD87001E8855 /* TMBModelSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207EE02B44DD87001E8855 /* TMBModelSource.swift */; };
+		23207EE32B44E027001E8855 /* TMBHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207EE22B44E027001E8855 /* TMBHeading.swift */; };
+		23207EE52B44E12B001E8855 /* TMBHeadingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23207EE42B44E12B001E8855 /* TMBHeadingProvider.swift */; };
 		23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */; };
 		23251E1929CEE9250088065B /* TMBLayerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1829CEE9250088065B /* TMBLayerPosition.swift */; };
 		23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1D29CEF3690088065B /* TMBAnnotation.swift */; };
@@ -80,7 +86,7 @@
 		2396BE7C2A4F2E310085913F /* TMBViewAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE7B2A4F2E310085913F /* TMBViewAnnotationManager.swift */; };
 		2396BE7E2A4F33B90085913F /* TMBOrnamentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE7D2A4F33B90085913F /* TMBOrnamentsManager.swift */; };
 		2396BE802A4F3DE90085913F /* TMBCameraAnimationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE7F2A4F3DE90085913F /* TMBCameraAnimationsManager.swift */; };
-		2396BE822A50409C0085913F /* TMBLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE812A50409C0085913F /* TMBLocationManager.swift */; };
+		2396BE822A50409C0085913F /* TMBLocationManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE812A50409C0085913F /* TMBLocationManagerExtensions.swift */; };
 		2396BE842A5106080085913F /* TMBAnnotationOrchestrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE832A5106080085913F /* TMBAnnotationOrchestrator.swift */; };
 		2396BE882A510F980085913F /* TMBCancelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE872A510F980085913F /* TMBCancelable.swift */; };
 		2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE8B2A51369B0085913F /* TMBMapboxMap.swift */; };
@@ -230,6 +236,12 @@
 		23207ED22B44C9BC001E8855 /* TMBAnnotatedFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBAnnotatedFeature.swift; sourceTree = "<group>"; };
 		23207ED42B44CEAE001E8855 /* TMBViewAnnotationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBViewAnnotationOptions.swift; sourceTree = "<group>"; };
 		23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLocationOptions.swift; sourceTree = "<group>"; };
+		23207ED92B44D6A8001E8855 /* TMBLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBLocationManager.swift; sourceTree = "<group>"; };
+		23207EDC2B44D79A001E8855 /* TMBPuckType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBPuckType.swift; sourceTree = "<group>"; };
+		23207EDD2B44D79A001E8855 /* TMBPuckRenderingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBPuckRenderingData.swift; sourceTree = "<group>"; };
+		23207EE02B44DD87001E8855 /* TMBModelSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBModelSource.swift; sourceTree = "<group>"; };
+		23207EE22B44E027001E8855 /* TMBHeading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBHeading.swift; sourceTree = "<group>"; };
+		23207EE42B44E12B001E8855 /* TMBHeadingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBHeadingProvider.swift; sourceTree = "<group>"; };
 		23251E1629CEBA3A0088065B /* TMBAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotationManager.swift; sourceTree = "<group>"; };
 		23251E1829CEE9250088065B /* TMBLayerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBLayerPosition.swift; sourceTree = "<group>"; };
 		23251E1D29CEF3690088065B /* TMBAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotation.swift; sourceTree = "<group>"; };
@@ -295,7 +307,7 @@
 		2396BE7B2A4F2E310085913F /* TMBViewAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewAnnotationManager.swift; sourceTree = "<group>"; };
 		2396BE7D2A4F33B90085913F /* TMBOrnamentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBOrnamentsManager.swift; sourceTree = "<group>"; };
 		2396BE7F2A4F3DE90085913F /* TMBCameraAnimationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCameraAnimationsManager.swift; sourceTree = "<group>"; };
-		2396BE812A50409C0085913F /* TMBLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TMBLocationManager.swift; path = ../TMBLocationManager.swift; sourceTree = "<group>"; };
+		2396BE812A50409C0085913F /* TMBLocationManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TMBLocationManagerExtensions.swift; path = ../TMBLocationManagerExtensions.swift; sourceTree = "<group>"; };
 		2396BE832A5106080085913F /* TMBAnnotationOrchestrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAnnotationOrchestrator.swift; sourceTree = "<group>"; };
 		2396BE872A510F980085913F /* TMBCancelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCancelable.swift; sourceTree = "<group>"; };
 		2396BE8B2A51369B0085913F /* TMBMapboxMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBMapboxMap.swift; sourceTree = "<group>"; };
@@ -522,10 +534,23 @@
 		23207ED62B44D3B1001E8855 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				2396BE812A50409C0085913F /* TMBLocationManager.swift */,
+				23207EDB2B44D76B001E8855 /* Puck */,
+				2396BE812A50409C0085913F /* TMBLocationManagerExtensions.swift */,
+				23207EE22B44E027001E8855 /* TMBHeading.swift */,
+				23207EE42B44E12B001E8855 /* TMBHeadingProvider.swift */,
+				23207ED92B44D6A8001E8855 /* TMBLocationManager.swift */,
 				23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		23207EDB2B44D76B001E8855 /* Puck */ = {
+			isa = PBXGroup;
+			children = (
+				23207EDD2B44D79A001E8855 /* TMBPuckRenderingData.swift */,
+				23207EDC2B44D79A001E8855 /* TMBPuckType.swift */,
+			);
+			path = Puck;
 			sourceTree = "<group>";
 		};
 		23251E1C29CEF33E0088065B /* Annotations */ = {
@@ -936,6 +961,7 @@
 				23C021962A54E722002229B5 /* TMBRasterSource.swift */,
 				23C021982A54E77F002229B5 /* TMBVectorSource.swift */,
 				23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */,
+				23207EE02B44DD87001E8855 /* TMBModelSource.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1275,15 +1301,17 @@
 				23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */,
 				23207ECF2B44C41F001E8855 /* TMBLineString.swift in Sources */,
 				23468FC92B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift in Sources */,
-				2396BE822A50409C0085913F /* TMBLocationManager.swift in Sources */,
+				2396BE822A50409C0085913F /* TMBLocationManagerExtensions.swift in Sources */,
 				23468FB42B3B8F7C00BE92EA /* TMBCameraTransition.swift in Sources */,
 				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
 				2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */,
 				230E1F0E2B44583500009743 /* TMBPointAnnotationManager.swift in Sources */,
 				23207ECD2B44C1AF001E8855 /* TMBPolygon.swift in Sources */,
 				23C021932A548296002229B5 /* TMBRasterLayer.swift in Sources */,
+				23207EE32B44E027001E8855 /* TMBHeading.swift in Sources */,
 				231AF0CE29BF9319002D6CFD /* TMBTerrain.swift in Sources */,
 				23BB8EFF29BD64BE00E7C218 /* MapViewExtensions.swift in Sources */,
+				23207EE52B44E12B001E8855 /* TMBHeadingProvider.swift in Sources */,
 				230E1F0C2B44580300009743 /* TMBPolylineAnnotationManager.swift in Sources */,
 				2396BE882A510F980085913F /* TMBCancelable.swift in Sources */,
 				23251E2729CF02690088065B /* TMBStyleManager.swift in Sources */,
@@ -1295,11 +1323,13 @@
 				23BA6DD32826C9FB00D2D03A /* CameraOptionsExtensions.swift in Sources */,
 				23468F9E2B3A497400BE92EA /* TMBProperties.swift in Sources */,
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
+				23207EDF2B44D79A001E8855 /* TMBPuckRenderingData.swift in Sources */,
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
 				230E1F0A2B4457B500009743 /* TMBPolygonAnnotationManager.swift in Sources */,
 				23468FA52B3A4C5800BE92EA /* TMBSourceType.swift in Sources */,
 				2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */,
 				23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */,
+				23207EDE2B44D79A001E8855 /* TMBPuckType.swift in Sources */,
 				23468FBA2B3B9B3800BE92EA /* TMBBasicCameraAnimator.swift in Sources */,
 				23468FA22B3A4A1A00BE92EA /* TMBSlot.swift in Sources */,
 				2396BE942A5190610085913F /* TMBExpressionOptions.swift in Sources */,
@@ -1328,6 +1358,7 @@
 				23468FCE2B3CD64F00BE92EA /* TMBGestureManager.swift in Sources */,
 				23207ED12B44C960001E8855 /* TMBViewAnnotation.swift in Sources */,
 				2396BE982A5242210085913F /* TMBSource.swift in Sources */,
+				23207EE12B44DD87001E8855 /* TMBModelSource.swift in Sources */,
 				23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */,
 				2378BCA02A5F65F700DA0EBB /* TMBAllExpressions.swift in Sources */,
 				2396BE962A5198080085913F /* NSNumberExtensions.swift in Sources */,
@@ -1345,6 +1376,7 @@
 				23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */,
 				2396BE902A5180DA0085913F /* TMBLayer.swift in Sources */,
 				23468FAA2B3A4F5E00BE92EA /* TMBLayerInfo.swift in Sources */,
+				23207EDA2B44D6A9001E8855 /* TMBLocationManager.swift in Sources */,
 				23468FB22B3B8E1300BE92EA /* TMBAnimationOwner.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
 				23468FB62B3B926500BE92EA /* TMBCameraAnimator.swift in Sources */,

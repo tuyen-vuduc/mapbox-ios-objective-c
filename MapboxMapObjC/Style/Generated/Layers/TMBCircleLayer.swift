@@ -118,7 +118,7 @@ import MapboxMaps
 extension TMBCircleLayer {
     func unwrap() -> CircleLayer {
         var result = CircleLayer(id: self.id,
-            source: self.source)
+            source: self.source!)
 
         self.mapTo(&result)
 

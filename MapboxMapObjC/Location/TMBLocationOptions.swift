@@ -7,25 +7,8 @@ import MapboxMaps
 
 /// A struct to configure a `LocationManager`
 @objc open class TMBLocationOptions: NSObject {
-
-    /// Specifies the minimum distance (measured in meters) a device must move horizontally
-    /// before a location update is generated.
-    ///
-    /// The default value of this property is `kCLDistanceFilterNone`.
-    @objc public var distanceFilter: CLLocationDistance 
-
-    /// Specifies the accuracy of the location data.
-    ///
-    /// The default value is `kCLLocationAccuracyBest`.
-    @objc public var desiredAccuracy: CLLocationAccuracy 
-
-    /// Sets the type of user activity associated with the location updates.
-    ///
-    /// The default value is `CLActivityType.other`.
-    @objc public var activityType: CLActivityType 
-
     /// Sets the type of puck that should be used
-    @objc public var puckType: TMBPuckType?
+    @objc public var puckType: TMBPuckTypeConfiguration?
 
     /// Specifies if a `Puck` should use `Heading` or `Course` for the bearing.
     ///
@@ -43,8 +26,8 @@ import MapboxMaps
     ///   - puckBearing: Specifies if a `Puck` should use `Heading` or `Course` for the bearing.
     ///   - puckBearingEnabled: Whether the puck rotates to track the bearing source.
     @objc public init(
-        puckType : TMBPuckType?, 
-        puckBearing : TMBPuckBearing , 
+        puckType : TMBPuckTypeConfiguration?,
+        puckBearing : TMBPuckBearing,
         puckBearingEnabled : Bool ){
         self.puckType = puckType
         self.puckBearing = puckBearing
@@ -53,14 +36,14 @@ import MapboxMaps
 }
 extension TMBLocationOptions {
     func unwrap() -> LocationOptions {
-        LocationOptions(puckType: (self.puckType).unwrap(),
+        LocationOptions(puckType: (self.puckType)?.unwrap(),
             puckBearing: (self.puckBearing).unwrap(),
             puckBearingEnabled: self.puckBearingEnabled)
     }
 }
 extension LocationOptions {
     func wrap() -> TMBLocationOptions {
-        TMBLocationOptions(puckType: (self.puckType).wrap(),
+        TMBLocationOptions(puckType: (self.puckType)?.wrap(),
           puckBearing: (self.puckBearing).wrap(),
           puckBearingEnabled: self.puckBearingEnabled)
     }
@@ -94,50 +77,5 @@ extension TMBPuckBearing {
         case .course:
             return .course
         }
-    }
-}
-@objc extension TMBValue {
-    @objc public class func puckBearing(_ value: TMBPuckBearing) -> TMBValue {
-        return TMBValue(constant: value.rawValue)
-    }
-}
-extension MapboxMaps.Value where T == PuckBearing {
-    func puckBearing() -> TMBValue {
-        switch(self) {
-        case .constant(let obj):
-            return TMBValue(constant: obj.rawValue)
-        case .expression(let expression):
-            return TMBValue(expression: TMBExpression(expression))
-        }
-    }
-}
-extension MapboxMaps.Value where T == [PuckBearing] {
-    func arrayOfPuckBearing() -> TMBValue {
-        switch(self) {
-        case .constant(let obj):
-            return TMBValue(constant: obj.map { $0.rawValue })
-        case .expression(let expression):
-            return TMBValue(expression: TMBExpression(expression))
-        }
-    }
-}
-extension TMBValue {
-    func puckBearing() -> Value<PuckBearing> {
-        if let constant = self.constant as? String,
-            let value = PuckBearing(rawValue: constant) {
-            return Value.constant(value)
-        }
-        
-        return Value.expression(expression!.rawValue)
-    }
-    func arrayOfPuckBearing() -> Value<[PuckBearing]> {
-        if let constant = self.constant as? [String] {
-            return Value.constant(constant
-                .map{ PuckBearing(rawValue: $0) }
-                .filter { $0 != nil }
-                .map{ $0! })
-        }
-        
-        return Value.expression(expression!.rawValue)
     }
 }

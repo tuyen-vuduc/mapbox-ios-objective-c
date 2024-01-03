@@ -109,7 +109,7 @@ import MapboxMaps
 extension TMBRasterLayer {
     func unwrap() -> RasterLayer {
         var result = RasterLayer(id: self.id,
-            source: self.source)
+            source: self.source!)
 
         self.mapTo(&result)
 
@@ -148,7 +148,7 @@ extension TMBRasterLayer {
 extension RasterLayer {
     func wrap() -> TMBRasterLayer {
         var result = TMBRasterLayer(id: self.id,
-          source: self.source)
+          source: self.source!)
 
         self.mapTo(&result)
 
