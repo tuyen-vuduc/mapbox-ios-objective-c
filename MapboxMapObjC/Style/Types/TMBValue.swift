@@ -2,8 +2,8 @@ import MapboxMaps
 
 @objc
 open class TMBValue : NSObject {
-    let constant: Any?
-    let expression: TMBExpression?
+    @objc public let constant: Any?
+    @objc public let expression: TMBExpression?
     
     @objc public init(constant: Any?) {
         self.constant = constant

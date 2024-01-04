@@ -42,7 +42,7 @@ import Turf
     ///   - completion: Closure called when the style has been fully loaded. The
     ///     `Result` type encapsulates the `Style` or error that occurred. See
     ///     `MapLoadingError`
-    @objc public func loadStyle(uri: String, transition: TransitionOptions, completion: ((Error?) -> Void)?) {
+    @objc public func loadStyle(uri: String, transition: TransitionOptions?, completion: ((Error?) -> Void)?) {
         let uri = StyleURI(url: URL(string: uri)!)!
         origin.loadStyle(uri, transition: transition, completion: completion)
     }
@@ -55,7 +55,7 @@ import Turf
     ///   - completion: Closure called when the style has been fully loaded. The
     ///     `Result` type encapsulates the `Style` or error that occurred. See
     ///     `MapLoadingError`
-    @objc public func loadStyle(json: String, transition: TransitionOptions, completion: ((Error?) -> Void)?) {
+    @objc public func loadStyle(json: String, transition: TransitionOptions?, completion: ((Error?) -> Void)?) {
         origin.loadStyle(json, transition: transition, completion: completion)
     }
 

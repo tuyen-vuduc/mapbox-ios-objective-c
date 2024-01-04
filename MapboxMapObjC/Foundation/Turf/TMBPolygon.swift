@@ -26,7 +26,7 @@ import MapboxCommon
      - parameter outerRing: The outer linear ring.
      - parameter innerRings: The inner linear rings that define “holes” in the polygon.
      */
-    public init(outerRing: Ring, innerRings: [Ring] = []) {
+    @objc public init(outerRing: TMBPolygonRing, innerRings: [TMBPolygonRing] = []) {
         self.coordinates = ([outerRing] + innerRings).map { $0.coordinates }
     }
 

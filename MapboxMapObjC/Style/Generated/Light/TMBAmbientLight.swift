@@ -26,7 +26,7 @@ import MapboxMaps
     /// Transition property for `intensity`
     @objc public var intensityTransition: TMBStyleTransition?
     
-    init(id: String) {
+    @objc public init(id: String) {
         self.id = id
     }
 }
@@ -44,7 +44,7 @@ extension TMBAmbientLight {
 
 extension AmbientLight {
     func wrap() -> TMBAmbientLight {
-        var result = TMBAmbientLight(id: self.id)
+        let result = TMBAmbientLight(id: self.id)
         result.color = self.color?.styleColor()
         result.colorTransition = self.colorTransition?.wrap()
         result.intensity = self.intensity?.double()

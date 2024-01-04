@@ -1,6 +1,12 @@
 import MapboxMaps
 @objc
 open class BuiltInStyles : NSObject {
+    /// Mapbox Standard is a general-purpose style with 3D visualization.
+    @objc
+     public class var standard: String {
+        StyleURI.standard.rawValue
+    }
+    
     /// Mapbox Streets is a general-purpose style with detailed road and transit networks.
     @objc
      public class var streets: String {

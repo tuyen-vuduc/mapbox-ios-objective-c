@@ -21,7 +21,8 @@
 @property UIButton* lightColorButton;
 @property MapView* mapView;
 
-@property TMBLight* light;
+@property TMBAmbientLight* ambientLight;
+@property TMBDirectionalLight* directionalLight;
 
 @end
 
@@ -75,7 +76,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.light = [[TMBLight alloc] init];
+    self.ambientLight = [[TMBAmbientLight alloc] initWithId:@"ambient"];
+    self.ambientLight.color = [TMBValue constant:UIColor.blueColor];
+    self.ambientLight.intensity = [TMBValue constant:@0.9];
+    
+    self.directionalLight = [[TMBDirectionalLight alloc] initWithId:@"directional"];
+    self.directionalLight.color = [TMBValue constant:UIColor.whiteColor];
+    self.directionalLight.intensity = [TMBValue constant:@0.9];
+    self.directionalLight.castShadows = [TMBValue constant:@true];
+    self.directionalLight.direction = [TMBValue constant: @[@0.0, @15.0]];
     
     firstPosition = @[@1.5, @90, @80];
     secondPosition = @[@1.15, @210, @30];
@@ -83,7 +92,7 @@
     [self initLightColorButton];
     [self initLightPositionButton];
     
-    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:nil styleURI:BuiltInStyles.light styleJSON:nil];
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:nil styleURI:BuiltInStyles.light styleJSON:nil antialiasingSampleCount:1];
     
     self.mapView =[MapViewFactory createWithFrame:self.view.bounds
                                           options:options];
@@ -110,15 +119,10 @@
 - (void) setupExample {
     [self addBuildingExtrusions];
     
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:40.7135
-                                                      longitude:-74.0066];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(40.7135, -74.0060);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:location
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@15.5
-                                                                       bearing:@-17.6
-                                                                         pitch:@45];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:10 bearing:0 pitch:0];
+    
     [[self.mapView mapboxMap] setCameraTo: cameraOptions];
     
     __weak BuildingExtrusionsExample *weakSelf = self;
@@ -130,9 +134,8 @@
 }
 
 - (TMBFillExtrusionLayer*) create3dBuildingsFillExtrusionLayer {
-    TMBFillExtrusionLayer* layer = [[TMBFillExtrusionLayer alloc] initWithId:@"3d-buildings"];
+    TMBFillExtrusionLayer* layer = [[TMBFillExtrusionLayer alloc] initWithId:@"3d-buildings" source:@"composite"];
     
-    layer.source = @"composite";
     layer.minZoom = @15;
     layer.sourceLayer = @"building";
     layer.fillExtrusionColor = [TMBValue constant:[UIColor lightGrayColor]];
@@ -174,7 +177,7 @@
 
 // See https://docs.mapbox.com/mapbox-gl-js/example/3d-buildings/ for equivalent gl-js example
 - (void) addBuildingExtrusions {
-    [[[self.mapView mapboxMap] style]
+    [[self.mapView mapboxMap]
      addLayer:[self create3dBuildingsFillExtrusionLayer]
      layerPosition:nil
      completion:^(NSError * _Nullable error) {
@@ -187,15 +190,15 @@
 // MARK: - Actions
 
 - (void) lightColorButtonTapped: (UIButton*) sender {
-    if ([self.light.color isEqual:[UIColor redColor]]) {
-        self.light.color = [UIColor blueColor];
+    if ([self.ambientLight.color.constant isEqual:[UIColor redColor]]) {
+        self.ambientLight.color = [TMBValue constant:[UIColor blueColor]];
         sender.tintColor = [UIColor blueColor];
     } else {
-        self.light.color = [UIColor redColor];
+        self.ambientLight.color = [TMBValue constant:[UIColor redColor]];
         sender.tintColor = [UIColor redColor];
     }
     
-    [[[self.mapView mapboxMap] style] setLight:self.light completion:^(NSError * _Nullable error) {
+    [[self.mapView mapboxMap] setLightsWithAmbient:self.ambientLight directional:self.directionalLight completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -203,15 +206,15 @@
 }
 
 - (void) lightPositionButtonTapped: (UIButton*) sender {
-    if ([self.light.position isEqual:firstPosition]) {
-        self.light.position = secondPosition;
+    if ([self.directionalLight.direction.constant isEqual:firstPosition]) {
+        self.directionalLight.direction = [TMBValue constant:secondPosition];
         sender.imageView.transform = CGAffineTransformIdentity;
     } else {
-        self.light.position = firstPosition;
+        self.directionalLight.direction = [TMBValue constant:firstPosition];
         sender.imageView.transform = CGAffineTransformMakeRotation(2.0*M_PI/3.0);
     }
     
-    [[[self.mapView mapboxMap] style] setLight:self.light completion:^(NSError * _Nullable error) {
+    [[self.mapView mapboxMap] setLightsWithAmbient:self.ambientLight directional:self.directionalLight completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }

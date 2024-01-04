@@ -33,17 +33,11 @@
     
     skyLayerId = @"sky-layer";
     
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 35.67283
-                                                            longitude: 127.60597];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(35.67283, 127.60597);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@12.5
-                                                                       bearing:nil
-                                                                         pitch:@83];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:12.5 bearing:0 pitch:83];
     
-    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y" styleJSON:nil];
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y" styleJSON:nil antialiasingSampleCount:1];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -72,7 +66,7 @@
 - (void) addSkyLayer {
     // Initialize a sky layer with a sky type of `gradient`, which applies a gradient effect to the sky.
     // Read more about sky layer types on the Mapbox blog: https://www.mapbox.com/blog/sky-api-atmospheric-scattering-algorithm-for-3d-maps
-    [[[mapView mapboxMap] style] addLayer:[self createSkyLayer] layerPosition:nil completion:^(NSError * _Nullable error) {
+    [[mapView mapboxMap] addLayer:[self createSkyLayer] layerPosition:nil completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -81,7 +75,7 @@
 
 - (TMBSkyLayer * ) createSkyLayer {
     TMBSkyLayer * builder = [[TMBSkyLayer alloc]  initWithId:skyLayerId];
-    builder.skyType = [TMBValue skyType:TMBSkyTypeGradient];
+    builder.skyType = [TMBValue skyType:TMBSkyType.gradient];
     
     // Define the position of the sun.
     // The azimuthal angle indicates the sun's position relative to 0 degrees north. When the map's bearing
@@ -113,23 +107,23 @@
     TMBValue* skyType;
     
     if (segmentedControl.selectedSegmentIndex == 0) {
-        skyType = [TMBValue skyType:TMBSkyTypeGradient];
+        skyType = [TMBValue skyType:TMBSkyType.gradient];
     } else {
-        skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
+        skyType = [TMBValue skyType:TMBSkyType.atmosphere];
     }
-    
-    [[[mapView mapboxMap] style]
-     updateLayerWithId:skyLayerId
-     type:TMBLayerTypeSky
-     update:^id<TMBLayer> _Nonnull(id<TMBLayer> _Nonnull layer) {
-        TMBSkyLayer* skyLayer = (TMBSkyLayer*) layer;
-        skyLayer.skyType = skyType;
-        return skyLayer;
-    } completion:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"%@", error);
-        }
-    }];
+    // TODO Check update method
+//    [[mapView mapboxMap]
+//     updateLayerWithId:skyLayerId
+//     type:TMBLayerTypeSky
+//     update:^id<TMBLayer> _Nonnull(id<TMBLayer> _Nonnull layer) {
+//        TMBSkyLayer* skyLayer = (TMBSkyLayer*) layer;
+//        skyLayer.skyType = skyType;
+//        return skyLayer;
+//    } completion:^(NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@", error);
+//        }
+//    }];
 }
 
 - (void) addTerrainLayer {
@@ -139,8 +133,8 @@
     rasterDemSource.tileSize = @514;
     rasterDemSource.maxzoom = @14.0;
     
-        // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
-    [[[mapView mapboxMap] style] addSource:rasterDemSource id:sourceId completion:^(NSError * _Nullable error) {
+    // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
+    [[mapView mapboxMap] addSource:rasterDemSource dataId:nil completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -149,7 +143,7 @@
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
-    [[[mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nullable error) {
+    [[mapView mapboxMap] setTerrain:terrain completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
             

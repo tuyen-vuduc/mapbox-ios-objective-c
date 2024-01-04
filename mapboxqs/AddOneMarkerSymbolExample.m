@@ -23,16 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 55.665957
-                                                            longitude: 12.550343];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(55.665957, 12.550343);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@8
-                                                                       bearing:nil
-                                                                         pitch:nil];
-    MapInitOptions* options= [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:8 bearing:0 pitch:0];
+    
+    MapInitOptions* options= [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil antialiasingSampleCount:1];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -44,13 +39,13 @@
     __weak AddOneMarkerSymbolExample *weakSelf = self;
     // Allows the delegate to receive information about map events.
     
-    [[mapView mapboxMap] loadStyleURI:BuiltInStyles.streets completion:^(TMBStyle * _Nullable style, NSError * _Nullable error) {
+    [[mapView mapboxMap] loadStyleWithUri:BuiltInStyles.standard transition:nil completion: ^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
             return;
         }
         
-        [self addMarkerAnnotation: style];
+        [self addMarkerAnnotation];
         
         if ([weakSelf respondsToSelector:@selector(finish)]) {
             [weakSelf finish];
@@ -58,23 +53,24 @@
     }];
 }
 
-- (void) addMarkerAnnotation: (TMBStyle *) style {
+- (void) addMarkerAnnotation {
     NSString* imageId = @"BLUE_ICON_ID";
     UIImage* image = [UIImage imageNamed:@"blue_marker_view"];
     
-    [style addImage:image id:imageId sdf:false contentInsets:UIEdgeInsetsZero completion:nil];
+    [[mapView mapboxMap] addImage:image id:imageId sdf:false contentInsets:UIEdgeInsetsZero completion:nil];
     
     NSString* sourceId = @"SOURCE_ID";
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake(55.665957, 12.550343);
     MBXGeometry* point = [GeometryHelper createPoint: [NSValue valueWithMKCoordinate:coordinates]];
-    [[[mapView mapboxMap] style] addSourceWithId:sourceId geometry:point completion: ^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"%@", error);
-            return;
-        }
-    }];
+    // TODO
+//    [[mapView mapboxMap] addS addSourceWithId:sourceId geometry:point completion: ^(NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@", error);
+//            return;
+//        }
+//    }];
     
-    [[[mapView mapboxMap] style]
+    [[mapView mapboxMap]
      addLayer:[self createSymbolLayer:sourceId
                                  icon:imageId]
      layerPosition:nil
@@ -87,11 +83,10 @@
 
 - (TMBSymbolLayer*) createSymbolLayer: (NSString*) sourceId
                                             icon: (NSString *) icon {
-    TMBSymbolLayer* layer = [[TMBSymbolLayer alloc] initWithId: @"LAYER_ID"];
+    TMBSymbolLayer* layer = [[TMBSymbolLayer alloc] initWithId: @"LAYER_ID" source:sourceId];
         
-    layer.source = sourceId;
     layer.iconImage = [TMBValue constant:[TMBResolvedImage fromName:icon]];
-    layer.iconAnchor =[TMBValue iconAnchor:TMBIconAnchorBottom];
+    layer.iconAnchor =[TMBValue iconAnchor:TMBIconAnchor.bottom];
     
     return layer;
 }

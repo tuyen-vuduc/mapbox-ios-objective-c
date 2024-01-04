@@ -158,6 +158,14 @@ import MapboxMaps
 
     /// The opacity at which the text will be drawn.
     @objc public var  textOpacity: NSNumber?
+    
+    // MARK: - Image Convenience -
+
+    @objc public var image: TMBPointAnnotationImage? {
+        didSet {
+            self.iconImage = image?.name
+        }
+    }
 }
 extension TMBPointAnnotation {
     func unwrap() -> PointAnnotation {
@@ -207,6 +215,10 @@ extension TMBPointAnnotation {
         dest.textHaloColor = self.textHaloColor?.styleColor()
         dest.textHaloWidth = self.textHaloWidth?.double()
         dest.textOpacity = self.textOpacity?.double()
+        
+        if let image = self.image {
+            dest.image = image.unwrap()
+        }
     }
 }
 extension PointAnnotation {
@@ -257,5 +269,9 @@ extension PointAnnotation {
         dest.textHaloColor = self.textHaloColor?.wrap()
         dest.textHaloWidth = self.textHaloWidth?.double()
         dest.textOpacity = self.textOpacity?.double()
+        
+        if let image = self.image {
+            dest.image = image.wrap()
+        }
     }
 }

@@ -23,21 +23,11 @@
     [super viewDidLoad];
     
     // Center the map over Washington, D.C.
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 38.889215
-                                                            longitude: -77.039354];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(38.889215, -77.039354);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@11
-                                                                       bearing:nil
-                                                                         pitch:nil];
-    MapInitOptions* options = [MapInitOptionsFactory
-                               createWithResourceOptions:nil
-                               mapOptions:nil
-                               cameraOptions:cameraOptions
-                               styleURI:BuiltInStyles.light
-                               styleJSON:nil];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:11 bearing:0 pitch:0];
+    
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:BuiltInStyles.light styleJSON:nil antialiasingSampleCount:1];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];

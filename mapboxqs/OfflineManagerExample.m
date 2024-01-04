@@ -71,18 +71,13 @@ typedef enum State : int {
     float tokyoZoom = 12;
     tileRegionId = @"myTileRegion";
     
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:tokyoCoord.latitude
-                                                            longitude:tokyoCoord.longitude];
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:[NSNumber numberWithFloat:tokyoZoom]
-                                                                       bearing:nil
-                                                                         pitch:nil];
     
-    mapInitOptions = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:BuiltInStyles.outdoors styleJSON:nil];
+    CLLocationCoordinate2D centerLocation = tokyoCoord;
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:tokyoZoom bearing:0 pitch:0];
     
-    offlineManager = [[MBMOfflineManager alloc] initWithResourceOptions:[mapInitOptions getResourceOptions]];
+    mapInitOptions = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:BuiltInStyles.outdoors styleJSON:nil antialiasingSampleCount:1];
+    
+    offlineManager = [[MBMOfflineManager alloc] init];
     
     downloads = [[NSMutableArray alloc] init];
     
@@ -114,8 +109,10 @@ typedef enum State : int {
 
     // 1. Create style package with loadStylePack() call.
     NSNumber *mode = [NSNumber numberWithLong:MBMGlyphsRasterizationModeIdeographsRasterizedLocally];
-    MBMStylePackLoadOptions* stylePackLoadOptions = [[MBMStylePackLoadOptions alloc] initWithGlyphsRasterizationMode: mode
-                                                                                                            metadata:@{ @"tag": @"my-outdoors-style-pack" }];
+    MBMStylePackLoadOptions* stylePackLoadOptions = [[MBMStylePackLoadOptions alloc] 
+                                                     initWithGlyphsRasterizationMode: mode
+                                                     metadata:@{ @"tag": @"my-outdoors-style-pack" }
+                                                     extraOptions:nil];
 
     dispatch_group_enter(dispatchGroup);
     
@@ -158,10 +155,11 @@ typedef enum State : int {
     // - - - - - - - -
 
     // 2. Create an offline region with tiles for the outdoors style
-    MBMTilesetDescriptorOptions* outdoorsOptions = [[MBMTilesetDescriptorOptions alloc] initWithStyleURI:BuiltInStyles.outdoors
-                                                                                                 minZoom:0
-                                                                                                 maxZoom:16
-                                                                                        stylePackOptions:nil];;
+    MBMTilesetDescriptorOptions* outdoorsOptions = [[MBMTilesetDescriptorOptions alloc]
+        initWithStyleURI:BuiltInStyles.outdoors
+        minZoom:0
+        maxZoom:16
+        tilesets:nil stylePackOptions:nil extraOptions:nil];
     MBXTilesetDescriptor* outdoorsDescriptor = [offlineManager createTilesetDescriptorForTilesetDescriptorOptions:outdoorsOptions];
         
     // Load the tile region
@@ -352,9 +350,6 @@ typedef enum State : int {
             [self resetUI];
 
             MBXTileStore* tileStore = [MBXTileStore getDefault];
-            NSString *accessToken = TMBResourceOptionsManager.default_.resourceOptions.accessToken;
-            [tileStore setOptionForKey:MBXTileStoreOptions.MapboxAccessToken value:accessToken];
-            
             self->tileStore = tileStore;
 
             [logger logWithMessage:@"Enabling HTTP stack network connection" category:@"Example" color:[UIColor orangeColor]];
@@ -441,8 +436,9 @@ typedef enum State : int {
             return;
         }
         
-        TMBPointAnnotation* pointAnnotation = [TMBPointAnnotation fromCoordinate:self->tokyoCoord];
-        [pointAnnotation image:[UIImage imageNamed:@"custom_marker"] name:@"custom-marker"];
+        TMBPointAnnotation* pointAnnotation = [[TMBPointAnnotation alloc] initWithId:@"customer-marker-point-annotation" coordinate:self->tokyoCoord isSelected:false isDraggable:false];
+        TMBPointAnnotationImage* image = [[TMBPointAnnotationImage alloc] initWithImage:[UIImage imageNamed:@"custom_marker"] name:@"custom-marker"];
+        pointAnnotation.image = image;
         
         TMBPointAnnotationManager* pointAnnotationManager = [[mapView annotations] makePointAnnotationManagerWithId:nil
                                                                                     layerPosition:nil

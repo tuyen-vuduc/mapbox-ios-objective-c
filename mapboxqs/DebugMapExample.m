@@ -142,10 +142,12 @@
         [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsDepthBuffer displayTitle: @"Show depth buffer"],
         [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsOverdraw displayTitle: @"Debug overdraw"],
         [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsParseStatus displayTitle: @"Show tile coordinate"],
-        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsRenderCache displayTitle: @"Render Cache"],
         [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsStencilClip displayTitle: @"Show stencil buffer"],
         [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsTileBorders displayTitle: @"Debug tile clipping"],
-        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsTimestamps displayTitle: @"Show tile loaded time"]
+        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsTimestamps displayTitle: @"Show tile loaded time"],
+        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsModelBounds displayTitle: @"Show 3D model bounding boxes"],
+        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsLight displayTitle: @"Show light conditions"],
+//        [MapDebugOptionSetting newWithDebugOptions: MBMMapDebugOptionsC displayTitle: @"Show tile loaded time"]
     ];
 }
 
