@@ -9,24 +9,14 @@ This repo is built as an input for the libaray [Xamarin.iOS for Mapbox.iOS](http
 # Usage
 
 ```objective-c
-MBMResourceOptions* myResourceOptions = [[MBMResourceOptions alloc]
-                                            initWithAccessToken: @"your_public_access_token"
-                                                        baseURL: nil
-                                                       dataPath: nil
-                                                      assetPath: nil
-                                                      tileStore: nil];
+CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(55.665957, 12.550343);
     
-MapInitOptions* mapInitOptions = [MapInitOptionsFactory 
-                                    createWithResourceOptions: myResourceOptions 
-                                                   mapOptions: nil 
-                                                cameraOptions: nil 
-                                                     styleURI: nil
-                                                    styleJSON: nil];
+TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:8 bearing:0 pitch:0];
 
-self.mapView = [MapViewFactory 
-                    createWithFrame: self.view.bounds 
-                            options: mapInitOptions];
+MapInitOptions* options= [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil antialiasingSampleCount:1];
 
+self.mapView = [MapViewFactory createWithFrame:self.view.bounds
+                                options:options];
 self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                                     UIViewAutoresizingFlexibleHeight);
 
@@ -36,7 +26,7 @@ self.mapView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
 # Installation
 
 ```
-pod 'MapboxMapObjC', '10.11.1'
+pod 'MapboxMapObjC', '11.0.0'
 ```
 
 # Ported Examples

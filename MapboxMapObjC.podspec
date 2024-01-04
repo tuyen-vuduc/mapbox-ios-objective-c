@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|  
     maps_version = '11.0.0'
 
-    s.name              = 'MapboxMapObjC' # Name for your pod
+    s.name              = 'MapboxMapObjC'
     s.version           = maps_version
     s.summary           = 'Utility extensions to use Mapbox in Objective-C'
     s.homepage          = 'https://github.com/tuyen-vuduc/mapbox-ios-objective-c'
