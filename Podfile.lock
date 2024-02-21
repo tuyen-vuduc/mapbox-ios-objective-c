@@ -1,15 +1,15 @@
 PODS:
-  - MapboxCommon (24.0.0)
-  - MapboxCoreMaps (11.0.0):
-    - MapboxCommon (~> 24.0)
-  - MapboxMaps (11.0.0):
-    - MapboxCommon (= 24.0.0)
-    - MapboxCoreMaps (= 11.0.0)
+  - MapboxCommon (24.1.0)
+  - MapboxCoreMaps (11.1.0):
+    - MapboxCommon (~> 24.1)
+  - MapboxMaps (11.1.0):
+    - MapboxCommon (= 24.1.0)
+    - MapboxCoreMaps (= 11.1.0)
     - Turf (= 2.7.0)
   - Turf (2.7.0)
 
 DEPENDENCIES:
-  - MapboxMaps (= 11.0.0)
+  - MapboxMaps (= 11.1.0)
 
 SPEC REPOS:
   trunk:
@@ -19,11 +19,11 @@ SPEC REPOS:
     - Turf
 
 SPEC CHECKSUMS:
-  MapboxCommon: 0cca816960ad2d21c86e1d32435fcb412cfdcf4f
-  MapboxCoreMaps: 633f5ecd7580a6d1342ff20cc8732170b2cd7ba3
-  MapboxMaps: 1c219108691a2000cb842b02e64d82158d74e6cd
+  MapboxCommon: b84c1cf2d76899e598e2495639e52ebbe2088eac
+  MapboxCoreMaps: eebe37ab62f99bf09436099850646c6b6450615d
+  MapboxMaps: a1ce80599606b43d136814cdb8a869acb776e4a9
   Turf: 13d1a92d969ca0311bbc26e8356cca178ce95da2
 
-PODFILE CHECKSUM: 00b5bca130f7fecb4cc47b6e1bb97f556c0af95d
+PODFILE CHECKSUM: d4d7cc7ec4a91c8cb563ef77236b11749aac8e8e
 
 COCOAPODS: 1.13.0
