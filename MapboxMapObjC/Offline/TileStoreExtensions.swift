@@ -2,7 +2,11 @@ import MapboxCoreMaps
 import MapboxMaps
 
 @objc
-extension TileStore {
+open class TileStoreFactory: NSObject {
+    internal override init() {
+        
+    }
+    
     /// Returns a shared `TileStore` instance at the default location. Creates a
     /// new one if one doesn't yet exist.
     ///
@@ -27,6 +31,10 @@ extension TileStore {
     public static func shared(for filePathURL: URL) -> TileStore {
         TileStore.shared(for: filePathURL)
     }
+}
+
+@objc
+extension TileStore {
 
     /// Loads a new tile region or updates the existing one.
     ///
