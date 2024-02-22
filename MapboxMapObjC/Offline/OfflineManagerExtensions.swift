@@ -2,43 +2,6 @@ import MapboxCoreMaps
 import MapboxMaps
 
 @objc
-extension TileStore {
-    @objc
-    public class func getDefault() -> TileStore {
-        TileStore.default;
-    }
-    
-    @discardableResult
-    @objc
-    public func loadTileRegion(forId id: String,
-                               loadOptions: TileRegionLoadOptions,
-                               progress: TileRegionLoadProgressCallback? = nil,
-                               completion: @escaping (TileRegion?, Error?) -> Void) -> TMBCancelable {
-        let cancelable = loadTileRegion(forId: id, loadOptions: loadOptions, progress: progress) { result in
-            switch(result) {
-            case .success(let tileRegion):
-                completion(tileRegion, nil)
-            case .failure(let error):
-                completion(nil, error)
-            }
-        }
-        
-        return TMBCancelable(cancelable: cancelable)
-    }
-    
-    @objc
-    public func allTileRegions(_ completion: @escaping ([TileRegion]?, Error?) -> Void) {
-        self.allTileRegions { result in
-            switch(result) {
-            case .success(let data):
-                completion(data, nil)
-            case .failure(let error):
-                completion(nil, error)
-            }
-        }
-    }
-}
-
 extension OfflineManager {
 
     /// Loads a new style package or updates the existing one.

@@ -42,6 +42,8 @@
 		23251E2029CEF3870088065B /* TMBPolygonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E1F29CEF3870088065B /* TMBPolygonAnnotation.swift */; };
 		23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2229CEFF720088065B /* BuiltInStyles.swift */; };
 		23251E2729CF02690088065B /* TMBStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23251E2629CF02690088065B /* TMBStyleManager.swift */; };
+		232CF34F2B880A470078ECFF /* TileStoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CF34E2B880A470078ECFF /* TileStoreExtensions.swift */; };
+		232CF3512B880D440078ECFF /* TMBTileStoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232CF3502B880D440078ECFF /* TMBTileStoreObserver.swift */; };
 		232E9F132A537C1400E87D0A /* TMBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F122A537C1400E87D0A /* TMBError.swift */; };
 		232E9F172A537F8C00E87D0A /* TMBAtmosphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F162A537F8C00E87D0A /* TMBAtmosphere.swift */; };
 		232E9F192A53827C00E87D0A /* TMBStyleProjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E9F182A53827C00E87D0A /* TMBStyleProjection.swift */; };
@@ -261,6 +263,8 @@
 		23251E1F29CEF3870088065B /* TMBPolygonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolygonAnnotation.swift; sourceTree = "<group>"; };
 		23251E2229CEFF720088065B /* BuiltInStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltInStyles.swift; sourceTree = "<group>"; };
 		23251E2629CF02690088065B /* TMBStyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBStyleManager.swift; sourceTree = "<group>"; };
+		232CF34E2B880A470078ECFF /* TileStoreExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileStoreExtensions.swift; sourceTree = "<group>"; };
+		232CF3502B880D440078ECFF /* TMBTileStoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTileStoreObserver.swift; sourceTree = "<group>"; };
 		232E9F122A537C1400E87D0A /* TMBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBError.swift; sourceTree = "<group>"; };
 		232E9F162A537F8C00E87D0A /* TMBAtmosphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAtmosphere.swift; sourceTree = "<group>"; };
 		232E9F182A53827C00E87D0A /* TMBStyleProjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBStyleProjection.swift; sourceTree = "<group>"; };
@@ -1004,6 +1008,8 @@
 			isa = PBXGroup;
 			children = (
 				23B8326C29CFC8C100FA94B2 /* OfflineManagerExtensions.swift */,
+				232CF34E2B880A470078ECFF /* TileStoreExtensions.swift */,
+				232CF3502B880D440078ECFF /* TMBTileStoreObserver.swift */,
 			);
 			path = Offline;
 			sourceTree = "<group>";
@@ -1389,6 +1395,7 @@
 				23C0218B2A5481BB002229B5 /* TMBHeatmapLayer.swift in Sources */,
 				232E9F1B2A538BFB00E87D0A /* MapInitOptionsExtensions.swift in Sources */,
 				23207EC82B44B8D4001E8855 /* TMBMapContentGestureContext.swift in Sources */,
+				232CF34F2B880A470078ECFF /* TileStoreExtensions.swift in Sources */,
 				23207EF52B4769C5001E8855 /* TMBOrnamentsManagerExtensions.swift in Sources */,
 				2396BE7C2A4F2E310085913F /* TMBViewAnnotationManager.swift in Sources */,
 				239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */,
@@ -1410,6 +1417,7 @@
 				23C0219B2A54E94C002229B5 /* TMBGeoJSONSource.swift in Sources */,
 				231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */,
 				23468FD22B3CE1EC00BE92EA /* TMBCameraBounds.swift in Sources */,
+				232CF3512B880D440078ECFF /* TMBTileStoreObserver.swift in Sources */,
 				23207EF32B47671B001E8855 /* TMBOrnamentOptions.swift in Sources */,
 				23468FC02B3BA5DC00BE92EA /* TMBGeoJSONSourceData.swift in Sources */,
 				23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */,
@@ -1598,7 +1606,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 11.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.tuyen-vuduc.mapboxobjcqs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1635,7 +1643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 11.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.tuyen-vuduc.mapboxobjcqs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
