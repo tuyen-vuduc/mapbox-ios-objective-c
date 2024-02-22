@@ -116,8 +116,8 @@ typedef enum State : int {
 
     dispatch_group_enter(dispatchGroup);
     
-    TMBCancelable* stylePackDownload = [offlineManager loadStyleWithStyleUriString:BuiltInStyles.outdoors
-                                                                  styleLoadOptions:stylePackLoadOptions
+    TMBCancelable* stylePackDownload = [offlineManager loadStylePackFor:BuiltInStyles.outdoors
+                                                                  loadOptions:stylePackLoadOptions
                                                                           progress:^(MBMStylePackLoadProgress * _Nonnull progress) {
         // These closures do not get called from the main thread. In this case
         // we're updating the UI, so it's important to dispatch to the main
