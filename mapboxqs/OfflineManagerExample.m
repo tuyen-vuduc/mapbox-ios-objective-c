@@ -349,7 +349,7 @@ typedef enum State : int {
         case state_initial: {
             [self resetUI];
 
-            MBXTileStore* tileStore = [MBXTileStore getDefault];
+            MBXTileStore* tileStore = [TileStoreFactory getDefault];
             self->tileStore = tileStore;
 
             [logger logWithMessage:@"Enabling HTTP stack network connection" category:@"Example" color:[UIColor orangeColor]];

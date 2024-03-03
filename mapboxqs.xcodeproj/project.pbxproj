@@ -195,6 +195,7 @@
 		23C021992A54E77F002229B5 /* TMBVectorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C021982A54E77F002229B5 /* TMBVectorSource.swift */; };
 		23C0219B2A54E94C002229B5 /* TMBGeoJSONSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */; };
 		23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */; };
+		23D9DDF62B909747009FDE66 /* TMBAppleLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D9DDF52B909747009FDE66 /* TMBAppleLocationProvider.swift */; };
 		23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */; };
 		23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */; };
 		23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC867B29F206C800C07BF6 /* NamedString.swift */; };
@@ -493,6 +494,7 @@
 		23C021982A54E77F002229B5 /* TMBVectorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBVectorSource.swift; sourceTree = "<group>"; };
 		23C0219A2A54E94C002229B5 /* TMBGeoJSONSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBGeoJSONSource.swift; sourceTree = "<group>"; };
 		23C6FAE129F4A40F00045E60 /* TMBPolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBPolylineAnnotation.swift; sourceTree = "<group>"; };
+		23D9DDF52B909747009FDE66 /* TMBAppleLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAppleLocationProvider.swift; sourceTree = "<group>"; };
 		23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fire_Hydrants.geojson; sourceTree = "<group>"; };
 		23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBClusterOptions.swift; sourceTree = "<group>"; };
 		23FC867B29F206C800C07BF6 /* NamedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedString.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				23207EE42B44E12B001E8855 /* TMBHeadingProvider.swift */,
 				23207ED92B44D6A8001E8855 /* TMBLocationManager.swift */,
 				23207ED72B44D3C0001E8855 /* TMBLocationOptions.swift */,
+				23D9DDF52B909747009FDE66 /* TMBAppleLocationProvider.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				23207EF22B47671B001E8855 /* TMBOrnamentsManager.swift in Sources */,
 				23207ED32B44C9BC001E8855 /* TMBAnnotatedFeature.swift in Sources */,
 				23C021892A548183002229B5 /* TMBFillLayer.swift in Sources */,
+				23D9DDF62B909747009FDE66 /* TMBAppleLocationProvider.swift in Sources */,
 				233F2F622B310BCA00B885C0 /* UIColorExtensions.swift in Sources */,
 				23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */,
 				23207ECF2B44C41F001E8855 /* TMBLineString.swift in Sources */,
