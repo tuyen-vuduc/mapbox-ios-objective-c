@@ -115,8 +115,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBLocationIndicatorLayer {
-    func unwrap() -> LocationIndicatorLayer {
+extension TMBLocationIndicatorLayer: SwiftValueConvertible {
+    public func unwrap() -> LocationIndicatorLayer {
         var result = LocationIndicatorLayer(id: self.id)
 
         self.mapTo(&result)

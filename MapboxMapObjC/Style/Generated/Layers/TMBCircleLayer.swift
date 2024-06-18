@@ -115,8 +115,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBCircleLayer {
-    func unwrap() -> CircleLayer {
+extension TMBCircleLayer: SwiftValueConvertible {
+    public func unwrap() -> CircleLayer {
         var result = CircleLayer(id: self.id,
             source: self.source!)
 

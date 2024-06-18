@@ -91,8 +91,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBFillLayer {
-    func unwrap() -> FillLayer {
+extension TMBFillLayer: SwiftValueConvertible {
+    public func unwrap() -> FillLayer {
         var result = FillLayer(id: self.id,
             source: self.source!)
 

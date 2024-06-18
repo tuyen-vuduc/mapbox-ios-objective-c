@@ -103,8 +103,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBFillExtrusionLayer {
-    func unwrap() -> FillExtrusionLayer {
+extension TMBFillExtrusionLayer: SwiftValueConvertible {
+    public func unwrap() -> FillExtrusionLayer {
         var result = FillExtrusionLayer(id: self.id,
             source: self.source!)
 

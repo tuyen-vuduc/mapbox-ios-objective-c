@@ -145,8 +145,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBLineLayer {
-    func unwrap() -> LineLayer {
+extension TMBLineLayer: SwiftValueConvertible {
+    public func unwrap() -> LineLayer {
         var result = LineLayer(id: self.id,
             source: self.source!)
 

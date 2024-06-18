@@ -18,8 +18,8 @@ import MapboxMaps
         self.orientation = orientation
     }
 }
-extension TMBModel {
-    func unwrap() -> Model {
+extension TMBModel: SwiftValueConvertible {
+    public func unwrap() -> Model {
         Model(uri: self.uri, position: self.position, orientation: self.orientation)
     }
 }

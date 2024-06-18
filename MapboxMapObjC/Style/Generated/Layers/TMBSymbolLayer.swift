@@ -271,8 +271,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBSymbolLayer {
-    func unwrap() -> SymbolLayer {
+extension TMBSymbolLayer: SwiftValueConvertible {
+    public func unwrap() -> SymbolLayer {
         var result = SymbolLayer(id: self.id,
             source: self.source!)
 

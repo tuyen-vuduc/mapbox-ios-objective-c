@@ -31,8 +31,8 @@ extension Scheme {
         TMBScheme(origin: self)
     }
 }
-extension TMBScheme {
-    func unwrap() -> Scheme {
+extension TMBScheme: SwiftValueConvertible {
+    public func unwrap() -> Scheme {
         self.origin
     }
 }
@@ -106,8 +106,8 @@ extension Encoding {
         TMBEncoding(origin: self)
     }
 }
-extension TMBEncoding {
-    func unwrap() -> Encoding {
+extension TMBEncoding: SwiftValueConvertible {
+    public func unwrap() -> Encoding {
         self.origin
     }
 }

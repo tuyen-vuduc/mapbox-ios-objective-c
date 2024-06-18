@@ -106,8 +106,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBRasterLayer {
-    func unwrap() -> RasterLayer {
+extension TMBRasterLayer: SwiftValueConvertible {
+    public func unwrap() -> RasterLayer {
         var result = RasterLayer(id: self.id,
             source: self.source!)
 

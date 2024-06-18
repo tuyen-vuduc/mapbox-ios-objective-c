@@ -65,8 +65,8 @@ import MapboxMaps
         self.type = TMBSourceType.geoJson
     }
 }
-extension TMBGeoJSONSource {
-    func unwrap() -> GeoJSONSource {
+extension TMBGeoJSONSource: SwiftValueConvertible {
+    public func unwrap() -> GeoJSONSource {
         var result = GeoJSONSource(id: self.id)
 
         self.mapTo(&result)

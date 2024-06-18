@@ -65,8 +65,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBSkyLayer {
-    func unwrap() -> SkyLayer {
+extension TMBSkyLayer: SwiftValueConvertible {
+    public func unwrap() -> SkyLayer {
         var result = SkyLayer(id: self.id)
 
         self.mapTo(&result)

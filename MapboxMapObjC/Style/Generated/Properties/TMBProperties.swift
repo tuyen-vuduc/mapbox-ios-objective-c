@@ -3,32 +3,35 @@ import Foundation
 import MapboxMaps
 
 
-@objc public enum TMBVisibility: Int {
+@objc open class TMBVisibility: NSObject {
+
+    public let origin: Visibility
+    @objc public var rawValue: String {
+        origin.rawValue
+    }
+
+    @objc public convenience init(rawValue: String) {
+        self.init(origin: Visibility(rawValue: rawValue)!)
+    }
+
+    public init(origin: Visibility) {
+       self.origin = origin
+    }
 
     /// The layer is shown.
-    case visible
+    @objc public static let visible = TMBVisibility(origin: Visibility.visible)
 
-    /// The layer is not shown.
-    case none
+    /// The layer is hidden.
+    @objc public static let none = TMBVisibility(origin: Visibility.none)
 }
 extension Visibility {
     func wrap() -> TMBVisibility {
-        switch self {
-        case .visible:
-            return .visible
-        case .none:
-            return .none
-        }
+        TMBVisibility(origin: self)
     }
 }
 extension TMBVisibility {
     func unwrap() -> Visibility {
-        switch self {
-        case .visible:
-            return .visible
-        case .none:
-            return .none
-        }
+        self.origin
     }
 }
 @objc extension TMBValue {

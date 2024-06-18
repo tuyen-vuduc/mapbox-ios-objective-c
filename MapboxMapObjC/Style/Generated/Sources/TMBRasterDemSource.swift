@@ -59,8 +59,8 @@ import MapboxMaps
         self.type = TMBSourceType.rasterDem
     }
 }
-extension TMBRasterDemSource {
-    func unwrap() -> RasterDemSource {
+extension TMBRasterDemSource: SwiftValueConvertible  {
+    public func unwrap() -> RasterDemSource {
         var result = RasterDemSource(id: self.id)
 
         self.mapTo(&result)

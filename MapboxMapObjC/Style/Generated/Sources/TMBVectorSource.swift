@@ -59,8 +59,8 @@ import MapboxMaps
         self.type = TMBSourceType.vector
     }
 }
-extension TMBVectorSource {
-    func unwrap() -> VectorSource {
+extension TMBVectorSource: SwiftValueConvertible {
+    public func unwrap() -> VectorSource {
         var result = VectorSource(id: self.id)
 
         self.mapTo(&result)

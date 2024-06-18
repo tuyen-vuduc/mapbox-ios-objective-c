@@ -26,8 +26,8 @@ import MapboxMaps
         self.type = TMBSourceType.image
     }
 }
-extension TMBImageSource {
-    func unwrap() -> ImageSource {
+extension TMBImageSource: SwiftValueConvertible {
+    public func unwrap() -> ImageSource {
         var result = ImageSource(id: self.id)
 
         self.mapTo(&result)

@@ -32,7 +32,7 @@ import MapboxMaps
     case `default`
 }
 
-extension TMBLayerPosition {
+extension TMBLayerPosition: SwiftValueConvertible {
     public func unwrap() -> LayerPosition {
         switch self.type {
         case .at:

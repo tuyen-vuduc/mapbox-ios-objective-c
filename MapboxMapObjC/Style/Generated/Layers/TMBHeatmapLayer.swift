@@ -73,8 +73,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBHeatmapLayer {
-    func unwrap() -> HeatmapLayer {
+extension TMBHeatmapLayer: SwiftValueConvertible {
+    public func unwrap() -> HeatmapLayer {
         var result = HeatmapLayer(id: self.id,
             source: self.source!)
 

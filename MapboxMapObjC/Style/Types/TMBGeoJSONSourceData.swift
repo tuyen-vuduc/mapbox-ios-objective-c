@@ -43,24 +43,24 @@ import MapboxMaps
         }
     }
     
-    @objc public class func url(url: URL) -> TMBGeoJSONSourceData {
+    @objc public class func url(_ url: URL) -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(.url(url))
     }
     
-    @objc public class func string(string: String) -> TMBGeoJSONSourceData {
+    @objc public class func string(_ string: String) -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(.string(string))
     }
     
-    @objc public class func feature(feature: MapboxCommon.Feature) -> TMBGeoJSONSourceData {
+    @objc public class func feature(_ feature: MapboxCommon.Feature) -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(.feature(Turf.Feature(feature)))
     }
     
-    @objc public class func featureCollection(features: [MapboxCommon.Feature]) -> TMBGeoJSONSourceData {
+    @objc public class func featureCollection(_ features: [MapboxCommon.Feature]) -> TMBGeoJSONSourceData {
         let xfeatures = features.map { Turf.Feature($0) }
         return TMBGeoJSONSourceData(.featureCollection(FeatureCollection(features: xfeatures)))
     }
     
-    @objc public class func geometry(geometry: MapboxCommon.Geometry) -> TMBGeoJSONSourceData {
+    @objc public class func geometry(_ geometry: MapboxCommon.Geometry) -> TMBGeoJSONSourceData {
         return TMBGeoJSONSourceData(.geometry(Turf.Geometry(geometry)!))
     }
 }

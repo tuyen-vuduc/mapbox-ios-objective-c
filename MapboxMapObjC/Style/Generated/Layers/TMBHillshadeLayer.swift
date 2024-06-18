@@ -79,8 +79,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBHillshadeLayer {
-    func unwrap() -> HillshadeLayer {
+extension TMBHillshadeLayer: SwiftValueConvertible {
+    public func unwrap() -> HillshadeLayer {
         var result = HillshadeLayer(id: self.id,
             source: self.source!)
 

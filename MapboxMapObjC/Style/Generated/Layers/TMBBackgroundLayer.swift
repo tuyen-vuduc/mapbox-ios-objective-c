@@ -55,8 +55,8 @@ import MapboxMaps
         self.visibility = .visibility(.visible)
     }
 }
-extension TMBBackgroundLayer {
-    func unwrap() -> BackgroundLayer {
+extension TMBBackgroundLayer: SwiftValueConvertible {
+    public func unwrap() -> BackgroundLayer {
         var result = BackgroundLayer(id: self.id)
 
         self.mapTo(&result)
