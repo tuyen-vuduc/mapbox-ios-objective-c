@@ -42,9 +42,12 @@ import Turf
     ///   - completion: Closure called when the style has been fully loaded. The
     ///     `Result` type encapsulates the `Style` or error that occurred. See
     ///     `MapLoadingError`
-    @objc public func loadStyle(uri: String, transition: TransitionOptions?, completion: ((Error?) -> Void)?) {
+    @objc public func loadStyle(uri: String, transition: MapboxCoreMaps.TransitionOptions?, completion: ((Error?) -> Void)?) {
         let uri = StyleURI(url: URL(string: uri)!)!
-        origin.loadStyle(uri, transition: transition, completion: completion)
+        let xtransition = transition != nil
+            ? TransitionOptions(transition!)
+            : nil
+        origin.loadStyle(uri, transition: xtransition, completion: completion)
     }
 
     /// Loads a `style` from a JSON string, calling a completion closure when the
@@ -55,8 +58,11 @@ import Turf
     ///   - completion: Closure called when the style has been fully loaded. The
     ///     `Result` type encapsulates the `Style` or error that occurred. See
     ///     `MapLoadingError`
-    @objc public func loadStyle(json: String, transition: TransitionOptions?, completion: ((Error?) -> Void)?) {
-        origin.loadStyle(json, transition: transition, completion: completion)
+    @objc public func loadStyle(json: String, transition: MapboxCoreMaps.TransitionOptions?, completion: ((Error?) -> Void)?) {
+        let xtransition = transition != nil
+            ? TransitionOptions(transition!)
+            : nil
+        origin.loadStyle(json, transition: xtransition, completion: completion)
     }
 
     // MARK: - Prefetching

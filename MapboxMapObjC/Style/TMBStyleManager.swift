@@ -300,12 +300,12 @@ import MapboxMaps
     /// `MapEvents.Event.styleDataLoaded` where `payload type == "sprite"`
     /// and where `payload type == "sources"`.
     /// - SeeAlso: ``MapboxMap/onNext(event:handler:)``
-    @objc public var styleTransition: TransitionOptions {
+    @objc public var styleTransition: MapboxCoreMaps.TransitionOptions {
         get {
-            origin.styleTransition
+            MapboxCoreMaps.TransitionOptions(origin.styleTransition)
         }
         set {
-            origin.styleTransition = newValue
+            origin.styleTransition = TransitionOptions(newValue)
         }
     }
 

@@ -46,10 +46,23 @@ extension MapView {
     @discardableResult
     @objc public func fly(to: TMBCameraOptions,
                     duration: NSNumber?,
+                    curve: UIView.AnimationCurve = .easeOut,
                     completion: AnimationCompletion? = nil) -> TMBCancelable {
+        var xcurve: TimingCurve
+        switch curve {
+        case .easeIn:
+            xcurve = .easeIn
+        case .easeOut:
+            xcurve = .easeOut
+        case .easeInOut:
+            xcurve = .easeInOut
+        default:
+            xcurve = .linear
+        }
         let cancelable = _self.fly(
             to: to.unwrap(),
             duration: duration?.doubleValue,
+            curve: xcurve,
             completion: completion)
         
         return TMBCancelable(cancelable: cancelable)

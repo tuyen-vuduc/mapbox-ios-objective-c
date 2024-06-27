@@ -105,6 +105,7 @@
 		2396BE982A5242210085913F /* TMBSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE972A5242210085913F /* TMBSource.swift */; };
 		2399EB912A60BBF900C76D5C /* TMBExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */; };
 		239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */; };
+		23A9F66A2C2DC12900D3FE77 /* TMBTransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A9F6692C2DC12900D3FE77 /* TMBTransitionOptions.swift */; };
 		23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */; };
 		23B8326829CF61D700FA94B2 /* OfflineManagerExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */; };
 		23B8326D29CFC8C100FA94B2 /* OfflineManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326C29CFC8C100FA94B2 /* OfflineManagerExtensions.swift */; };
@@ -335,6 +336,7 @@
 		2396BE972A5242210085913F /* TMBSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSource.swift; sourceTree = "<group>"; };
 		2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBExpressionExtensions.swift; sourceTree = "<group>"; };
 		239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.Extensions.swift; sourceTree = "<group>"; };
+		23A9F6692C2DC12900D3FE77 /* TMBTransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTransitionOptions.swift; sourceTree = "<group>"; };
 		23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCircleAnnotation.swift; sourceTree = "<group>"; };
 		23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineManagerExample.storyboard; sourceTree = "<group>"; };
 		23B8326C29CFC8C100FA94B2 /* OfflineManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineManagerExtensions.swift; sourceTree = "<group>"; };
@@ -712,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				23468FA12B3A4A1A00BE92EA /* TMBSlot.swift */,
+				23A9F6692C2DC12900D3FE77 /* TMBTransitionOptions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1386,6 +1389,7 @@
 				23207EE92B463078001E8855 /* TMBPolygonRing.swift in Sources */,
 				23468FD42B3CE36500BE92EA /* TMBCameraBoundsOptions.swift in Sources */,
 				23468FA82B3A4CE400BE92EA /* TMBLightInfo.swift in Sources */,
+				23A9F66A2C2DC12900D3FE77 /* TMBTransitionOptions.swift in Sources */,
 				2396BE802A4F3DE90085913F /* TMBCameraAnimationsManager.swift in Sources */,
 				23B88A6629CFFEE800F508B5 /* TMBPointAnnotation.swift in Sources */,
 				23251E1929CEE9250088065B /* TMBLayerPosition.swift in Sources */,
@@ -1508,6 +1512,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 11.4.0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1566,6 +1571,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 11.4.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
