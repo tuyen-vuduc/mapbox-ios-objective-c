@@ -42,180 +42,149 @@ extension TMBPanMode {
 
 /// Configuration options for the built-in gestures
 @objc open class TMBGestureOptions: NSObject {
-    private var origin: GestureOptions;
 
     /// Whether the single-touch pan gesture is enabled.
     ///
     /// Defaults to `true`.
-    @objc public var panEnabled: Bool {
-        get {
-            self.origin.panEnabled
-        }
-        set {
-            self.origin.panEnabled = newValue
-        }
-    }
+    @objc public var panEnabled: Bool
 
     /// Whether the pinch gesture is enabled.
     ///
     /// Defaults to `true`.
-    @objc public var pinchEnabled: Bool {
-        get {
-            self.origin.pinchEnabled
-        }
-        set {
-            self.origin.pinchEnabled = newValue
-        }
-    }
+    @objc public var pinchEnabled: Bool
 
     /// Whether rotation gesture is enabled.
     ///
     /// Defaults to `true`.
-    @objc public var rotateEnabled: Bool {
-        get {
-            self.origin.rotateEnabled
-        }
-        set {
-            self.origin.rotateEnabled = newValue
-        }
-    }
+    @objc public var rotateEnabled: Bool
 
     /// Whether rotation is enabled during the pinch gesture.
     ///
     /// Defaults to `true`.
-    @objc public var simultaneousRotateAndPinchZoomEnabled: Bool {
-        get {
-            self.origin.simultaneousRotateAndPinchZoomEnabled
-        }
-        set {
-            self.origin.simultaneousRotateAndPinchZoomEnabled = newValue
-        }
-    }
+    @objc public var simultaneousRotateAndPinchZoomEnabled: Bool
 
     /// Whether zoom is enabled for the pinch gesture.
     ///
     /// Defaults to `true`.
-    @objc public var pinchZoomEnabled: Bool {
-        get {
-            self.origin.pinchZoomEnabled
-        }
-        set {
-            self.origin.pinchZoomEnabled = newValue
-        }
-    }
+    @objc public var pinchZoomEnabled: Bool
 
     /// Whether pan is enabled for the pinch gesture.
     ///
     /// Defaults to `true`.
-    @objc public var pinchPanEnabled: Bool {
-        get {
-            self.origin.pinchPanEnabled
-        }
-        set {
-            self.origin.pinchPanEnabled = newValue
-        }
-    }
+    @objc public var pinchPanEnabled: Bool
 
     /// Whether the pitch gesture is enabled.
     ///
     /// Defaults to `true`.
-    @objc public var pitchEnabled: Bool {
-        get {
-            self.origin.pitchEnabled
-        }
-        set {
-            self.origin.pitchEnabled = newValue
-        }
-    }
+    @objc public var pitchEnabled: Bool
 
     /// Whether double tapping the map with one touch results in a zoom-in animation.
     ///
     /// Defaults to `true`.
-    @objc public var doubleTapToZoomInEnabled: Bool {
-        get {
-            self.origin.doubleTapToZoomInEnabled
-        }
-        set {
-            self.origin.doubleTapToZoomInEnabled = newValue
-        }
-    }
+    @objc public var doubleTapToZoomInEnabled: Bool
 
     /// Whether single tapping the map with two touches results in a zoom-out animation.
     ///
     /// Defaults to `true`.
-    @objc public var doubleTouchToZoomOutEnabled: Bool {
-        get {
-            self.origin.doubleTouchToZoomOutEnabled
-        }
-        set {
-            self.origin.doubleTouchToZoomOutEnabled = newValue
-        }
-    }
+    @objc public var doubleTouchToZoomOutEnabled: Bool
 
     /// Whether the quick zoom gesture is enabled.
     ///
     /// Defaults to `true`.
-    @objc public var quickZoomEnabled: Bool {
-        get {
-            self.origin.quickZoomEnabled
-        }
-        set {
-            self.origin.quickZoomEnabled = newValue
-        }
-    }
+    @objc public var quickZoomEnabled: Bool
 
     /// Configures the directions in which the map is allowed to move during a pan gesture.
     ///
     /// Defaults to `PanMode.horizontalAndVertical`. Called `scrollMode` in
     /// the Android SDK for consistency with platform conventions.
-    @objc public var panMode: TMBPanMode {
-        get {
-            self.origin.panMode.wrap()
-        }
-        set {
-            self.origin.panMode = newValue.unwrap()
-        }
-    }
+    @objc public var panMode: TMBPanMode
 
     /// A constant factor that determines how quickly pan deceleration animations happen.
     /// Multiplied with the velocity vector once per millisecond during deceleration animations.
     /// 
     /// Defaults to `UIScrollView.DecelerationRate.normal.rawValue`
-    @objc public var panDecelerationFactor: CGFloat {
-        get {
-            self.origin.panDecelerationFactor
-        }
-        set {
-            self.origin.panDecelerationFactor = newValue
-        }
-    }
+    @objc public var panDecelerationFactor: CGFloat
 
     /// By default, gestures rotate and zoom around the center of the gesture. Set this property to rotate and zoom around a fixed point instead.
     ///
     /// This property will be ignored by the pinch gesture if ``GestureOptions/pinchPanEnabled`` is set to `true`.
-    @objc public var focalPoint: NSValue? {
-        get {
-            if let focalPoint = self.origin.focalPoint {
-                return NSValue(cgPoint: focalPoint)
-            }
-            return nil
-        }
-        set {
-            self.origin.focalPoint = newValue?.cgPointValue
-        }
-    }
+    @objc public var focalPoint: NSValue?
 
-    public init(_ origin: GestureOptions){
-        self.origin = origin
+    /// Initializes a `GestureOptions`.
+    /// - Parameters:
+    ///   - panEnabled: Whether the single-touch pan gesture is enabled.
+    ///   - pinchEnabled: Whether the pinch gesture is enabled.
+    ///   - rotateEnabled: Whether rotation gesture is enabled.
+    ///   - simultaneousRotateAndPinchZoomEnabled: Whether rotation is enabled during the pinch gesture.
+    ///   - pinchZoomEnabled: Whether zoom is enabled for the pinch gesture.
+    ///   - pinchPanEnabled: Whether pan is enabled during the pinch gesture.
+    ///   - pitchEnabled: Whether the pitch gesture is enabled.
+    ///   - doubleTapToZoomInEnabled: Whether double tapping the map with one touch results in a zoom-in animation.
+    ///   - doubleTouchToZoomOutEnabled: Whether single tapping the map with two touches results in a zoom-out animation.
+    ///   - quickZoomEnabled: Whether the quick zoom gesture is enabled.
+    ///   - panMode: The directions in which the map is allowed to move during a pan gesture.
+    ///   - panDecelerationFactor: The constant factor that determines how quickly pan deceleration animations happen.
+    ///   - focalPoint: The centerpoint for rotating and zooming the map.
+    @objc public init(
+        panEnabled : Bool, 
+        pinchEnabled : Bool, 
+        rotateEnabled : Bool, 
+        simultaneousRotateAndPinchZoomEnabled : Bool, 
+        pinchZoomEnabled : Bool, 
+        pinchPanEnabled : Bool, 
+        pitchEnabled : Bool, 
+        doubleTapToZoomInEnabled : Bool, 
+        doubleTouchToZoomOutEnabled : Bool, 
+        quickZoomEnabled : Bool, 
+        panMode : TMBPanMode, 
+        panDecelerationFactor : CGFloat, 
+        focalPoint : NSValue?){
+        self.panEnabled = panEnabled
+        self.pinchEnabled = pinchEnabled
+        self.rotateEnabled = rotateEnabled
+        self.simultaneousRotateAndPinchZoomEnabled = simultaneousRotateAndPinchZoomEnabled
+        self.pinchZoomEnabled = pinchZoomEnabled
+        self.pinchPanEnabled = pinchPanEnabled
+        self.pitchEnabled = pitchEnabled
+        self.doubleTapToZoomInEnabled = doubleTapToZoomInEnabled
+        self.doubleTouchToZoomOutEnabled = doubleTouchToZoomOutEnabled
+        self.quickZoomEnabled = quickZoomEnabled
+        self.panMode = panMode
+        self.panDecelerationFactor = panDecelerationFactor
+        self.focalPoint = focalPoint
     }
 }
 extension TMBGestureOptions {
     func unwrap() -> GestureOptions {
-        self.origin
+        GestureOptions(panEnabled: self.panEnabled,
+            pinchEnabled: self.pinchEnabled,
+            rotateEnabled: self.rotateEnabled,
+            simultaneousRotateAndPinchZoomEnabled: self.simultaneousRotateAndPinchZoomEnabled,
+            pinchZoomEnabled: self.pinchZoomEnabled,
+            pinchPanEnabled: self.pinchPanEnabled,
+            pitchEnabled: self.pitchEnabled,
+            doubleTapToZoomInEnabled: self.doubleTapToZoomInEnabled,
+            doubleTouchToZoomOutEnabled: self.doubleTouchToZoomOutEnabled,
+            quickZoomEnabled: self.quickZoomEnabled,
+            panMode: (self.panMode).unwrap(),
+            panDecelerationFactor: self.panDecelerationFactor,
+            focalPoint: self.focalPoint?.cgPointValue)
     }
 }
 extension GestureOptions {
     func wrap() -> TMBGestureOptions {
-        TMBGestureOptions(self)
+        TMBGestureOptions(panEnabled: self.panEnabled,
+          pinchEnabled: self.pinchEnabled,
+          rotateEnabled: self.rotateEnabled,
+          simultaneousRotateAndPinchZoomEnabled: self.simultaneousRotateAndPinchZoomEnabled,
+          pinchZoomEnabled: self.pinchZoomEnabled,
+          pinchPanEnabled: self.pinchPanEnabled,
+          pitchEnabled: self.pitchEnabled,
+          doubleTapToZoomInEnabled: self.doubleTapToZoomInEnabled,
+          doubleTouchToZoomOutEnabled: self.doubleTouchToZoomOutEnabled,
+          quickZoomEnabled: self.quickZoomEnabled,
+          panMode: (self.panMode).wrap(),
+          panDecelerationFactor: self.panDecelerationFactor,
+          focalPoint: self.focalPoint != nil ? NSValue(cgPoint: self.focalPoint!) : nil)
     }
 }

@@ -27,8 +27,13 @@ public protocol TMBGestureManagerDelegate {
 @objc open class TMBGestureManager : NSObject, GestureManagerDelegate {
     @objc public weak var delegate: TMBGestureManagerDelegate?
     
-    @objc public func gestureOptions() -> TMBGestureOptions {
-        self.swiftValue.options.wrap()
+    @objc public var gestureOptions: TMBGestureOptions {
+        get {
+            self.swiftValue.options.wrap()
+        }
+        set {
+            self.swiftValue.options = newValue.unwrap()
+        }
     }
     
     /// The gesture recognizer for the pan gesture
