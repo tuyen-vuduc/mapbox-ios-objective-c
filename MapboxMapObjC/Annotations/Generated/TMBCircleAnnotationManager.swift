@@ -105,6 +105,29 @@ extension TMBCircleAnnotationManager {
         self.origin
     }
 }
+
+@objc
+extension TMBCircleAnnotationManager {
+    @objc public func addAnnotations(_ annotations: [TMBCircleAnnotation]) {
+        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    }
+    @objc public func addAnnotation(_ annotation: TMBCircleAnnotation) {
+        self.origin.annotations.append(annotation.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBCircleAnnotation) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotation.id
+        })
+    }
+    @objc public func removeAnnotationById(_ annotationId: String) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotationId
+        })
+    }
+    @objc public func removeAllAnnotations() {
+        self.origin.annotations.removeAll()
+    }
+}
 extension CircleAnnotationManager {
     func wrap() -> TMBCircleAnnotationManager {
         TMBCircleAnnotationManager(origin: self)

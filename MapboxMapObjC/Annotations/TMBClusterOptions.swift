@@ -42,6 +42,10 @@ open class TMBClusterOptions : NSObject {
     /// levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
     @objc
     public var clusterMaxZoom: Double
+    
+    /// Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to `2`.
+    @objc
+    public var clusterMinPoints: Double
 
     /// An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from
     /// clustered points. Has the form `{"property_name": [operator, map_expression]}`.
@@ -90,6 +94,7 @@ open class TMBClusterOptions : NSObject {
                 textField: TMBValue?,
                 clusterRadius: Double = 50,
                 clusterMaxZoom: Double = 14,
+                clusterMinPoints: Double = 2,
                 clusterProperties: [String: TMBExpression]? = nil) {
         self.circleRadius = circleRadius
         self.circleColor = circleColor
@@ -98,6 +103,7 @@ open class TMBClusterOptions : NSObject {
         self.textField = textField
         self.clusterRadius = clusterRadius
         self.clusterMaxZoom = clusterMaxZoom
+        self.clusterMinPoints = clusterMinPoints
         self.clusterProperties = clusterProperties
     }
     
@@ -110,6 +116,7 @@ open class TMBClusterOptions : NSObject {
             textField: textField?.string() ?? .expression(Exp(.get) { "point_count" }),
             clusterRadius: clusterRadius,
             clusterMaxZoom: clusterMaxZoom,
+            clusterMinPoints: clusterMinPoints,
             clusterProperties: clusterProperties?.mapValues({ item in
                 return item.rawValue
             })

@@ -331,6 +331,29 @@ extension TMBPointAnnotationManager {
         self.origin
     }
 }
+
+@objc
+extension TMBPointAnnotationManager {
+    @objc public func addAnnotations(_ annotations: [TMBPointAnnotation]) {
+        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    }
+    @objc public func addAnnotation(_ annotation: TMBPointAnnotation) {
+        self.origin.annotations.append(annotation.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBPointAnnotation) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotation.id
+        })
+    }
+    @objc public func removeAnnotationById(_ annotationId: String) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotationId
+        })
+    }
+    @objc public func removeAllAnnotations() {
+        self.origin.annotations.removeAll()
+    }
+}
 extension PointAnnotationManager {
     func wrap() -> TMBPointAnnotationManager {
         TMBPointAnnotationManager(origin: self)

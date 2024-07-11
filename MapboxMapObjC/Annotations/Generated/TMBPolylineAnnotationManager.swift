@@ -143,6 +143,29 @@ extension TMBPolylineAnnotationManager {
         self.origin
     }
 }
+
+@objc
+extension TMBPolylineAnnotationManager {
+    @objc public func addAnnotations(_ annotations: [TMBPolylineAnnotation]) {
+        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    }
+    @objc public func addAnnotation(_ annotation: TMBPolylineAnnotation) {
+        self.origin.annotations.append(annotation.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBPolylineAnnotation) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotation.id
+        })
+    }
+    @objc public func removeAnnotationById(_ annotationId: String) {
+        self.origin.annotations.removeAll(where: { item in
+            item.id == annotationId
+        })
+    }
+    @objc public func removeAllAnnotations() {
+        self.origin.annotations.removeAll()
+    }
+}
 extension PolylineAnnotationManager {
     func wrap() -> TMBPolylineAnnotationManager {
         TMBPolylineAnnotationManager(origin: self)
