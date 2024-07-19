@@ -30,6 +30,12 @@ extension MapboxCommon.Cancelable {
         return CommonCancelableWrapper(self)
     }
 }
+extension TMBCancelable {
+    func unwrap() -> Cancelable {
+        self.cancelable
+    }
+}
+
 extension Cancelable {
     func wrap() -> TMBCancelable {
         TMBCancelable(cancelable: self)

@@ -105,6 +105,19 @@
 		2396BE982A5242210085913F /* TMBSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2396BE972A5242210085913F /* TMBSource.swift */; };
 		2399EB912A60BBF900C76D5C /* TMBExpressionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */; };
 		239D7EFF2A4880F6004CAE2B /* Geometry.Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */; };
+		23A4A3252C49700200D76ADD /* TMBFollowPuckViewportStateOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3242C49700200D76ADD /* TMBFollowPuckViewportStateOptions.swift */; };
+		23A4A3272C49704000D76ADD /* TMBFollowPuckViewportStateBearing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3262C49704000D76ADD /* TMBFollowPuckViewportStateBearing.swift */; };
+		23A4A3292C49741A00D76ADD /* TMBFollowPuckViewportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3282C49741A00D76ADD /* TMBFollowPuckViewportState.swift */; };
+		23A4A32B2C49755700D76ADD /* TMBViewportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A32A2C49755700D76ADD /* TMBViewportState.swift */; };
+		23A4A32E2C49765D00D76ADD /* TMBOverviewViewportStateOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A32D2C49765D00D76ADD /* TMBOverviewViewportStateOptions.swift */; };
+		23A4A3302C4979A000D76ADD /* TMBOverviewViewportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A32F2C4979A000D76ADD /* TMBOverviewViewportState.swift */; };
+		23A4A3322C497A9A00D76ADD /* TMBViewportOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3312C497A9A00D76ADD /* TMBViewportOptions.swift */; };
+		23A4A3342C497B1000D76ADD /* TMBViewportStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3332C497B1000D76ADD /* TMBViewportStatus.swift */; };
+		23A4A3362C497B4800D76ADD /* TMBViewportTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3352C497B4800D76ADD /* TMBViewportTransition.swift */; };
+		23A4A3382C497F0100D76ADD /* TMBViewportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3372C497F0100D76ADD /* TMBViewportManager.swift */; };
+		23A4A33A2C49D36A00D76ADD /* TMBViewportStatusObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A3392C49D36A00D76ADD /* TMBViewportStatusObserver.swift */; };
+		23A4A33E2C49DC6100D76ADD /* TMBDefaultViewportTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A33D2C49DC6100D76ADD /* TMBDefaultViewportTransition.swift */; };
+		23A4A3402C49DC8A00D76ADD /* TMBDefaultViewportTransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4A33F2C49DC8A00D76ADD /* TMBDefaultViewportTransitionOptions.swift */; };
 		23A9F66A2C2DC12900D3FE77 /* TMBTransitionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A9F6692C2DC12900D3FE77 /* TMBTransitionOptions.swift */; };
 		23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */; };
 		23B8326829CF61D700FA94B2 /* OfflineManagerExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */; };
@@ -199,6 +212,7 @@
 		23D9DDF62B909747009FDE66 /* TMBAppleLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D9DDF52B909747009FDE66 /* TMBAppleLocationProvider.swift */; };
 		23DCB9E52A1A1B48006467BD /* Fire_Hydrants.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */; };
 		23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */; };
+		23E120402C4883520094C989 /* TMBCameraChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E1203F2C4883520094C989 /* TMBCameraChanged.swift */; };
 		23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC867B29F206C800C07BF6 /* NamedString.swift */; };
 		4B615D0F47808FBA7942ED75 /* Pods_MapboxMapObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5427CF6A345589A43B370A /* Pods_MapboxMapObjC.framework */; };
 		69AA66476376EBA91D585B06 /* Pods_mapboxqs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8111397F8E70B22D1D4E79C6 /* Pods_mapboxqs.framework */; };
@@ -336,6 +350,19 @@
 		2396BE972A5242210085913F /* TMBSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBSource.swift; sourceTree = "<group>"; };
 		2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBExpressionExtensions.swift; sourceTree = "<group>"; };
 		239D7EFE2A4880F6004CAE2B /* Geometry.Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.Extensions.swift; sourceTree = "<group>"; };
+		23A4A3242C49700200D76ADD /* TMBFollowPuckViewportStateOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBFollowPuckViewportStateOptions.swift; sourceTree = "<group>"; };
+		23A4A3262C49704000D76ADD /* TMBFollowPuckViewportStateBearing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBFollowPuckViewportStateBearing.swift; sourceTree = "<group>"; };
+		23A4A3282C49741A00D76ADD /* TMBFollowPuckViewportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBFollowPuckViewportState.swift; sourceTree = "<group>"; };
+		23A4A32A2C49755700D76ADD /* TMBViewportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportState.swift; sourceTree = "<group>"; };
+		23A4A32D2C49765D00D76ADD /* TMBOverviewViewportStateOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBOverviewViewportStateOptions.swift; sourceTree = "<group>"; };
+		23A4A32F2C4979A000D76ADD /* TMBOverviewViewportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBOverviewViewportState.swift; sourceTree = "<group>"; };
+		23A4A3312C497A9A00D76ADD /* TMBViewportOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportOptions.swift; sourceTree = "<group>"; };
+		23A4A3332C497B1000D76ADD /* TMBViewportStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportStatus.swift; sourceTree = "<group>"; };
+		23A4A3352C497B4800D76ADD /* TMBViewportTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportTransition.swift; sourceTree = "<group>"; };
+		23A4A3372C497F0100D76ADD /* TMBViewportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportManager.swift; sourceTree = "<group>"; };
+		23A4A3392C49D36A00D76ADD /* TMBViewportStatusObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBViewportStatusObserver.swift; sourceTree = "<group>"; };
+		23A4A33D2C49DC6100D76ADD /* TMBDefaultViewportTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDefaultViewportTransition.swift; sourceTree = "<group>"; };
+		23A4A33F2C49DC8A00D76ADD /* TMBDefaultViewportTransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDefaultViewportTransitionOptions.swift; sourceTree = "<group>"; };
 		23A9F6692C2DC12900D3FE77 /* TMBTransitionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBTransitionOptions.swift; sourceTree = "<group>"; };
 		23B8326529CF5AC000FA94B2 /* TMBCircleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCircleAnnotation.swift; sourceTree = "<group>"; };
 		23B8326729CF61D700FA94B2 /* OfflineManagerExample.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineManagerExample.storyboard; sourceTree = "<group>"; };
@@ -499,6 +526,7 @@
 		23D9DDF52B909747009FDE66 /* TMBAppleLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBAppleLocationProvider.swift; sourceTree = "<group>"; };
 		23DCB9E42A1A1B48006467BD /* Fire_Hydrants.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fire_Hydrants.geojson; sourceTree = "<group>"; };
 		23DCB9E62A1AD9FF006467BD /* TMBClusterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBClusterOptions.swift; sourceTree = "<group>"; };
+		23E1203F2C4883520094C989 /* TMBCameraChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBCameraChanged.swift; sourceTree = "<group>"; };
 		23FC867B29F206C800C07BF6 /* NamedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedString.swift; sourceTree = "<group>"; };
 		3EC76BAC30E5BCE447797093 /* Pods-MapboxMapObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapboxMapObjC.debug.xcconfig"; path = "Target Support Files/Pods-MapboxMapObjC/Pods-MapboxMapObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		6A7F4E86289B72CFADEC81AE /* Pods-mapboxqs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapboxqs.release.xcconfig"; path = "Target Support Files/Pods-mapboxqs/Pods-mapboxqs.release.xcconfig"; sourceTree = "<group>"; };
@@ -678,6 +706,7 @@
 				23BB8EFE29BD64BE00E7C218 /* MapViewExtensions.swift */,
 				232E9F1A2A538BFB00E87D0A /* MapInitOptionsExtensions.swift */,
 				23207EEA2B4757E5001E8855 /* TMBProjection.swift */,
+				23E1203F2C4883520094C989 /* TMBCameraChanged.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -960,6 +989,7 @@
 		236010C0282487FF00DAC76A /* MapboxMapObjC */ = {
 			isa = PBXGroup;
 			children = (
+				23A4A3202C496F5F00D76ADD /* Viewport */,
 				23207EEC2B4762A2001E8855 /* Ornaments */,
 				23207ED62B44D3B1001E8855 /* Location */,
 				23468FB02B3B8DFB00BE92EA /* Camera */,
@@ -985,6 +1015,66 @@
 				2399EB902A60BBF900C76D5C /* TMBExpressionExtensions.swift */,
 			);
 			path = Expressions;
+			sourceTree = "<group>";
+		};
+		23A4A3202C496F5F00D76ADD /* Viewport */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A33B2C49DC3400D76ADD /* Transitions */,
+				23A4A3212C496FD000D76ADD /* States */,
+				23A4A32A2C49755700D76ADD /* TMBViewportState.swift */,
+				23A4A3312C497A9A00D76ADD /* TMBViewportOptions.swift */,
+				23A4A3332C497B1000D76ADD /* TMBViewportStatus.swift */,
+				23A4A3352C497B4800D76ADD /* TMBViewportTransition.swift */,
+				23A4A3372C497F0100D76ADD /* TMBViewportManager.swift */,
+				23A4A3392C49D36A00D76ADD /* TMBViewportStatusObserver.swift */,
+			);
+			path = Viewport;
+			sourceTree = "<group>";
+		};
+		23A4A3212C496FD000D76ADD /* States */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A32C2C49764F00D76ADD /* Overview */,
+				23A4A3232C496FEA00D76ADD /* FollowPuck */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		23A4A3232C496FEA00D76ADD /* FollowPuck */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A3242C49700200D76ADD /* TMBFollowPuckViewportStateOptions.swift */,
+				23A4A3262C49704000D76ADD /* TMBFollowPuckViewportStateBearing.swift */,
+				23A4A3282C49741A00D76ADD /* TMBFollowPuckViewportState.swift */,
+			);
+			path = FollowPuck;
+			sourceTree = "<group>";
+		};
+		23A4A32C2C49764F00D76ADD /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A32D2C49765D00D76ADD /* TMBOverviewViewportStateOptions.swift */,
+				23A4A32F2C4979A000D76ADD /* TMBOverviewViewportState.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		23A4A33B2C49DC3400D76ADD /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A33C2C49DC3D00D76ADD /* Default */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		23A4A33C2C49DC3D00D76ADD /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				23A4A33D2C49DC6100D76ADD /* TMBDefaultViewportTransition.swift */,
+				23A4A33F2C49DC8A00D76ADD /* TMBDefaultViewportTransitionOptions.swift */,
+			);
+			path = Default;
 			sourceTree = "<group>";
 		};
 		23B8325C29CF4CA600FA94B2 /* Geojson */ = {
@@ -1340,6 +1430,7 @@
 				23468FDD2B3E2F0D00BE92EA /* TMBAmbientLight.swift in Sources */,
 				232E9F172A537F8C00E87D0A /* TMBAtmosphere.swift in Sources */,
 				23468FAE2B3A529800BE92EA /* TMBStyleURI.swift in Sources */,
+				23A4A3362C497B4800D76ADD /* TMBViewportTransition.swift in Sources */,
 				23251E1E29CEF3690088065B /* TMBAnnotation.swift in Sources */,
 				23207EF22B47671B001E8855 /* TMBOrnamentsManager.swift in Sources */,
 				23207ED32B44C9BC001E8855 /* TMBAnnotatedFeature.swift in Sources */,
@@ -1351,6 +1442,7 @@
 				23468FC92B3CCE3300BE92EA /* TMBMapViewDebugOptions.swift in Sources */,
 				2396BE822A50409C0085913F /* TMBLocationManagerExtensions.swift in Sources */,
 				23468FB42B3B8F7C00BE92EA /* TMBCameraTransition.swift in Sources */,
+				23A4A32E2C49765D00D76ADD /* TMBOverviewViewportStateOptions.swift in Sources */,
 				23207EE72B462C5C001E8855 /* TMBPointAnnotationImage.swift in Sources */,
 				23FC867C29F206C800C07BF6 /* NamedString.swift in Sources */,
 				2382019D2A4BA5D400D3D1FF /* TMBGestureOptions.swift in Sources */,
@@ -1373,8 +1465,12 @@
 				23468F9E2B3A497400BE92EA /* TMBProperties.swift in Sources */,
 				23DCB9E72A1ADA00006467BD /* TMBClusterOptions.swift in Sources */,
 				23207EDF2B44D79A001E8855 /* TMBPuckRenderingData.swift in Sources */,
+				23A4A3272C49704000D76ADD /* TMBFollowPuckViewportStateBearing.swift in Sources */,
+				23E120402C4883520094C989 /* TMBCameraChanged.swift in Sources */,
 				23251E1729CEBA3A0088065B /* TMBAnnotationManager.swift in Sources */,
 				230E1F0A2B4457B500009743 /* TMBPolygonAnnotationManager.swift in Sources */,
+				23A4A3402C49DC8A00D76ADD /* TMBDefaultViewportTransitionOptions.swift in Sources */,
+				23A4A3252C49700200D76ADD /* TMBFollowPuckViewportStateOptions.swift in Sources */,
 				23468FA52B3A4C5800BE92EA /* TMBSourceType.swift in Sources */,
 				2396BE8C2A51369B0085913F /* TMBMapboxMap.swift in Sources */,
 				23C021852A54810A002229B5 /* TMBCircleLayer.swift in Sources */,
@@ -1386,8 +1482,10 @@
 				23B8326629CF5AC000FA94B2 /* TMBCircleAnnotation.swift in Sources */,
 				23207ED82B44D3C1001E8855 /* TMBLocationOptions.swift in Sources */,
 				23468FAC2B3A51F600BE92EA /* TMBSourceInfo.swift in Sources */,
+				23A4A32B2C49755700D76ADD /* TMBViewportState.swift in Sources */,
 				23207EE92B463078001E8855 /* TMBPolygonRing.swift in Sources */,
 				23468FD42B3CE36500BE92EA /* TMBCameraBoundsOptions.swift in Sources */,
+				23A4A3382C497F0100D76ADD /* TMBViewportManager.swift in Sources */,
 				23468FA82B3A4CE400BE92EA /* TMBLightInfo.swift in Sources */,
 				23A9F66A2C2DC12900D3FE77 /* TMBTransitionOptions.swift in Sources */,
 				2396BE802A4F3DE90085913F /* TMBCameraAnimationsManager.swift in Sources */,
@@ -1397,8 +1495,10 @@
 				2386379029C6D71F002282FF /* TMBResolvedImage.swift in Sources */,
 				23251E2029CEF3870088065B /* TMBPolygonAnnotation.swift in Sources */,
 				2379C78729FCB19800D0936D /* GeometryHelper.swift in Sources */,
+				23A4A3322C497A9A00D76ADD /* TMBViewportOptions.swift in Sources */,
 				2396BE842A5106080085913F /* TMBAnnotationOrchestrator.swift in Sources */,
 				23468FBE2B3BA38B00BE92EA /* TMBSourceProperties.swift in Sources */,
+				23A4A3292C49741A00D76ADD /* TMBFollowPuckViewportState.swift in Sources */,
 				23C021872A548141002229B5 /* TMBFillExtrusionLayer.swift in Sources */,
 				23C0218B2A5481BB002229B5 /* TMBHeatmapLayer.swift in Sources */,
 				232E9F1B2A538BFB00E87D0A /* MapInitOptionsExtensions.swift in Sources */,
@@ -1412,6 +1512,7 @@
 				23207EEB2B4757E5001E8855 /* TMBProjection.swift in Sources */,
 				23207ED12B44C960001E8855 /* TMBViewAnnotation.swift in Sources */,
 				2396BE982A5242210085913F /* TMBSource.swift in Sources */,
+				23A4A33A2C49D36A00D76ADD /* TMBViewportStatusObserver.swift in Sources */,
 				23207EE12B44DD87001E8855 /* TMBModelSource.swift in Sources */,
 				23C0218D2A5481ED002229B5 /* TMBHillshadeLayer.swift in Sources */,
 				2378BCA02A5F65F700DA0EBB /* TMBAllExpressions.swift in Sources */,
@@ -1422,6 +1523,7 @@
 				23C021912A548261002229B5 /* TMBLocationIndicatorLayer.swift in Sources */,
 				23C021812A547EDB002229B5 /* TMBRasterDemSource.swift in Sources */,
 				23C6FAE229F4A40F00045E60 /* TMBPolylineAnnotation.swift in Sources */,
+				23A4A3302C4979A000D76ADD /* TMBOverviewViewportState.swift in Sources */,
 				23C0219B2A54E94C002229B5 /* TMBGeoJSONSource.swift in Sources */,
 				231AF0CC29BF9305002D6CFD /* TMBValue.swift in Sources */,
 				23468FD22B3CE1EC00BE92EA /* TMBCameraBounds.swift in Sources */,
@@ -1429,12 +1531,14 @@
 				23207EF32B47671B001E8855 /* TMBOrnamentOptions.swift in Sources */,
 				23468FC02B3BA5DC00BE92EA /* TMBGeoJSONSourceData.swift in Sources */,
 				23251E2329CEFF720088065B /* BuiltInStyles.swift in Sources */,
+				23A4A33E2C49DC6100D76ADD /* TMBDefaultViewportTransition.swift in Sources */,
 				2396BE902A5180DA0085913F /* TMBLayer.swift in Sources */,
 				23468FAA2B3A4F5E00BE92EA /* TMBLayerInfo.swift in Sources */,
 				23207EDA2B44D6A9001E8855 /* TMBLocationManager.swift in Sources */,
 				23468FB22B3B8E1300BE92EA /* TMBAnimationOwner.swift in Sources */,
 				232E9F132A537C1400E87D0A /* TMBError.swift in Sources */,
 				23468FB62B3B926500BE92EA /* TMBCameraAnimator.swift in Sources */,
+				23A4A3342C497B1000D76ADD /* TMBViewportStatus.swift in Sources */,
 				2399EB912A60BBF900C76D5C /* TMBExpressionExtensions.swift in Sources */,
 				23C021972A54E722002229B5 /* TMBRasterSource.swift in Sources */,
 				23207EEF2B476712001E8855 /* TMBCompassDirectionFormatter.swift in Sources */,
@@ -1512,7 +1616,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11.5.1;
+				CURRENT_PROJECT_VERSION = 11.5.1.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1571,7 +1675,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 11.5.1;
+				CURRENT_PROJECT_VERSION = 11.5.1.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

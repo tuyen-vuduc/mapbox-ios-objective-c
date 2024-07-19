@@ -29,6 +29,10 @@ extension MapboxCommon.Geometry {
         #endif
         }
     }
+    
+    func unwrap() -> Turf.Geometry {
+        Turf.Geometry(self)!
+    }
 }
 
 extension CLLocationCoordinate2D {
@@ -81,6 +85,10 @@ extension Turf.Geometry {
             return nil
         }
         self = result
+    }
+    
+    func wrap() -> MapboxCommon.Geometry {
+        MapboxCommon.Geometry(self)
     }
 }
 

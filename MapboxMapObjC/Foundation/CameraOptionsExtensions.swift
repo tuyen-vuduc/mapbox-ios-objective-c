@@ -125,3 +125,22 @@ extension CGFloat {
         Foundation.NSNumber(value: Double(self))
     }
 }
+
+// MARK: - CGPoint
+extension CGPoint {
+
+    /// Converts a `CGFloat` to a `NSValue` which wraps a `Double`.
+    internal var NSValue: NSValue {
+        Foundation.NSValue(cgPoint: self)
+    }
+}
+
+// MARK: - CGPoint
+extension UIEdgeInsets {
+
+    /// Converts a `CGFloat` to a `NSValue` which wraps a `Double`.
+    internal var NSValue: NSValue {
+        Foundation.NSValue(uiEdgeInsets: self)
+    }
+}
+

@@ -95,7 +95,13 @@ import Turf
     /// the current viewport size.
     /// - Parameter tileCacheBudget: The tile cache budget hint to be used by the Map.
     @objc public func setTileCacheBudget(_ tileCacheBudget: TileCacheBudget?) {
-        origin.setTileCacheBudget(tileCacheBudget)
+        var tileCacheBudgetSize: TileCacheBudgetSize? = nil
+        if let tileCacheBudget {
+            tileCacheBudgetSize = tileCacheBudget.isTileCacheBudgetInMegabytes()
+            ? TileCacheBudgetSize.megabytes(Int(tileCacheBudget.getInMegabytes().size))
+            : TileCacheBudgetSize.tiles(Int(tileCacheBudget.getInTiles().size))
+        }
+        origin.setTileCacheBudget(size: tileCacheBudgetSize)
     }
 
     /// Defines whether multiple copies of the world will be rendered side by side beyond -180 and 180 degrees longitude.
@@ -147,45 +153,6 @@ import Turf
         return origin.options
     }
 
-    /// Calculates a `CameraOptions` to fit a `CoordinateBounds`
-    ///
-    /// This API isn't supported by Globe projection.
-    ///
-    /// - Parameters:
-    ///   - coordinateBounds: The coordinate bounds that will be displayed within the viewport.
-    ///   - padding: The new padding to be used by the camera.
-    ///   - bearing: The new bearing to be used by the camera.
-    ///   - pitch: The new pitch to be used by the camera.
-    /// - Returns: A `CameraOptions` that fits the provided constraints
-    @objc public func camera(forCoordinateBounds coordinateBounds: CoordinateBounds,
-                       padding: UIEdgeInsets,
-                       bearing: NSNumber?,
-                     pitch: NSNumber?,
-                     maxZoom: NSNumber?,
-                     offset: NSNumber?) -> TMBCameraOptions {
-        origin.camera(for: coordinateBounds, padding: padding, bearing: bearing?.doubleValue, pitch: pitch?.doubleValue, maxZoom: maxZoom?.doubleValue, offset: offset?.cgPointValue).wrap()
-    }
-
-    /// Calculates a `CameraOptions` to fit a list of coordinates.
-    ///
-    /// This API isn't supported by Globe projection.
-    ///
-    /// - Parameters:
-    ///   - coordinates: Array of coordinates that should fit within the new viewport.
-    ///   - padding: The new padding to be used by the camera.
-    ///   - bearing: The new bearing to be used by the camera.
-    ///   - pitch: The new pitch to be used by the camera.
-    /// - Returns: A `CameraOptions` that fits the provided constraints
-    @objc public func camera(forCoordinates coordinates: [NSValue],
-                       padding: UIEdgeInsets,
-                       bearing: NSNumber?,
-                       pitch: NSNumber?) -> TMBCameraOptions {
-        origin.camera(
-            for: coordinates.map { $0.coordinateValue() },
-            padding: padding,
-            bearing: bearing?.doubleValue,
-            pitch: pitch?.doubleValue).wrap()
-    }
 
     /// Calculates a `CameraOptions` to fit a list of coordinates into a sub-rect of the map.
     ///
@@ -241,27 +208,6 @@ import Turf
         } catch {
             completion(nil, error)
         }
-    }
-
-    /// Calculates a `CameraOptions` to fit a geometry
-    ///
-    /// This API isn't supported by Globe projection.
-    ///
-    /// - Parameters:
-    ///   - geometry: The geoemtry that will be displayed within the viewport.
-    ///   - padding: The new padding to be used by the camera.
-    ///   - bearing: The new bearing to be used by the camera.
-    ///   - pitch: The new pitch to be used by the camera.
-    /// - Returns: A `CameraOptions` that fits the provided constraints
-    @objc public func camera(for geometry: MapboxCommon.Geometry,
-                       padding: UIEdgeInsets,
-                       bearing: NSNumber?,
-                       pitch: NSNumber?) -> TMBCameraOptions {
-        origin.camera(
-            for: Geometry(geometry)!,
-            padding: padding,
-            bearing: bearing?.CGFloat,
-            pitch: pitch?.CGFloat).wrap()
     }
 
     // MARK: - CameraOptions to CoordinateBounds
@@ -630,7 +576,7 @@ extension TMBMapboxMap {
     /// not be loaded and the `message` property will contain a descriptive error message.
     /// In case of `source` or `tile` loading errors, `sourceID` or `tileID` will contain the identifier of the source failing.
     @discardableResult
-    @objc public func onMapLoadingError(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
+    @objc public func onMapLoadingError(_ handler: @escaping (MapLoadingError) -> Void) -> TMBCancelable {
         let cancelable = origin.onMapLoadingError.observe(handler)
         
         return TMBCancelable(cancelable: cancelable)
@@ -667,8 +613,10 @@ extension TMBMapboxMap {
     /// is modified by calling camera methods. The event is emitted synchronously,
     /// so that an updated camera state can be fetched immediately.
     @discardableResult
-    @objc public func onCameraChanged(_ handler: @escaping (Any) -> Void) -> TMBCancelable {
-        let cancelable = origin.onCameraChanged.observe(handler)
+    @objc public func onCameraChanged(_ handler: @escaping (TMBCameraChanged) -> Void) -> TMBCancelable {
+        let cancelable = origin.onCameraChanged.observe { event in
+            handler(event.wrap())
+        }
         
         return TMBCancelable(cancelable: cancelable)
     }
