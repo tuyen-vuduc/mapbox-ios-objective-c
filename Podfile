@@ -2,7 +2,7 @@ platform :ios, '14.0'
 
 use_frameworks!
 def shared_pods
-    pod 'MapboxMaps', '11.5.1'
+    pod 'MapboxMaps', '11.5.2'
 end
 
 target 'mapboxqs' do

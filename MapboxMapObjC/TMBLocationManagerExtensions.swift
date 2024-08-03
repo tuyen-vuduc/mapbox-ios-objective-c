@@ -2,7 +2,7 @@ import MapboxMaps
 
 @objc
 extension MapView {
-    @objc func location() -> TMBLocationManager {
+    @objc public func location() -> TMBLocationManager {
         return TMBLocationManager(origin: self.location)
     }
 }
