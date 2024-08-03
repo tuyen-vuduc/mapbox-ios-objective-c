@@ -46,19 +46,26 @@ extension ViewportStatus {
         case .idle:
             return TMBViewportStatus.idleInstance
         case .state(let state):
-            return TMBViewportStatus.fromState(state.wrap())
+            return TMBViewportStatus.fromState(try! state.wrap())
         case .transition(let transition, let toState):
-            return TMBViewportStatus.fromTransition(transition.wrap(), toState: toState.wrap())
+            return TMBViewportStatus.fromTransition(transition.wrap(), toState: try! toState.wrap())
         }
     }
 }
 
 extension ViewportState {
-    func wrap() -> TMBViewportState {
+    func wrap() throws -> TMBViewportState {
         if let overview = self as? OverviewViewportState {
             return overview.wrap()
         }
+        if let follow = self as? FollowPuckViewportState {
+            return follow.wrap()
+        }
         
-        return (self as! FollowPuckViewportState).wrap()
+        throw ViewportStateError.notSupported(String(describing: type(of: self)))
     }
+}
+
+enum ViewportStateError: Error {
+    case notSupported(String)
 }

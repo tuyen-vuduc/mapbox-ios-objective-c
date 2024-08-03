@@ -59,7 +59,7 @@ private class TMBViewportTransitionWrapper: ViewportTransition {
     }
     
     func run(to toState: any ViewportState, completion: @escaping (Bool) -> Void) -> Cancelable {
-        self.origin.run(to: toState.wrap(), completion: completion).unwrap()
+        self.origin.run(to: try! toState.wrap(), completion: completion).unwrap()
     }
 }
 
