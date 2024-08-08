@@ -55,6 +55,8 @@ extension ViewportStatus {
 
 extension ViewportState {
     func wrap() throws -> TMBViewportState {
+        print("ViewportState::\(String(describing: type(of: self)))")
+        
         if let overview = self as? OverviewViewportState {
             return overview.wrap()
         }

@@ -10,6 +10,13 @@ import MapboxMaps
 
 /// An object responsible for managing user location Puck.
 @objc open class TMBLocationManager: NSObject {
+    
+    /// Configuration options for the location manager.
+    @objc public var options: TMBLocationOptions {
+        get { self.origin.options.wrap() }
+        set { self.origin.options = newValue.unwrap() }
+    }
+    
     /// A stream of location change events that drive the puck.
     @objc public func onLocationChange(handler: @escaping ([Location]) -> Void) -> TMBCancelable  {
         origin.onLocationChange.observeNext(handler).wrap()

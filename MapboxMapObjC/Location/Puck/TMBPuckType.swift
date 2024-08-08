@@ -122,7 +122,7 @@ extension PuckType{
     }
 
     /// Create a Puck2DConfiguration instance with or without an arrow bearing image. Default without the arrow bearing image.
-    public static func makeDefault(showBearing: Bool = false) -> TMBPuck2DConfiguration {
+    @objc public static func makeDefault(showBearing: Bool = false) -> TMBPuck2DConfiguration {
         return Puck2DConfiguration.makeDefault(showBearing: showBearing).wrap()
     }
 }
