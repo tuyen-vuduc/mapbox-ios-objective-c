@@ -35,23 +35,16 @@
 */
 
 - (MapInitOptions * _Nonnull)mapInitOptions {
-    NSString* defaultAccessToken = [TMBResourceOptionsManager.default_ resourceOptions].accessToken;
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:40.728 longitude:-74.0060];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(40.728, -74.0060);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                 padding:nil
-                                                                  anchor:nil
-                                                                    zoom:@10
-                                                                 bearing:nil
-                                                                pitch:nil];
-    MBMResourceOptions* resourceOptions = [[MBMResourceOptions alloc] initWithAccessToken:defaultAccessToken baseURL:nil dataPath:nil assetPath:nil tileStore:nil];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:10 bearing:0 pitch:0];
     
     return [MapInitOptionsFactory
-            createWithResourceOptions:resourceOptions
-            mapOptions:nil
+            createWithMapOptions:nil
             cameraOptions:cameraOptions
             styleURI:BuiltInStyles.light
-            styleJSON:nil];
+            styleJSON:nil
+            antialiasingSampleCount:1];
 }
 
 @end

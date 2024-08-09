@@ -25,22 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude:32.6141
-                                                            longitude:-114.34411];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(32.6141, -114.34411);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@13.1
-                                                                       bearing:@80
-                                                                         pitch:@85];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:13.1 bearing:80 pitch:85];
     
     MapInitOptions* options = [MapInitOptionsFactory
-                               createWithResourceOptions:nil
-                               mapOptions:nil
+                               createWithMapOptions:nil
                                cameraOptions:cameraOptions
                                styleURI:@"mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y"
-                               styleJSON:nil];
+                               styleJSON:nil
+                               antialiasingSampleCount:1];
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:options];
@@ -62,7 +56,7 @@
 - (TMBSkyLayer*) createSkyLayer {
     TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    layer.skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
+    layer.skyType = [TMBValue skyType:TMBSkyType.atmosphere];
     layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     
@@ -79,8 +73,7 @@
     //                                [builder maxzoom:14.0];
     //                            }
     //                             onError:nil];
-    [[[self.mapView mapboxMap] style]
-     addSourceWithId:sourceId
+    [[self.mapView mapboxMap] addSourceWithId:sourceId
      properties:@{
         @"type": @"raster-dem",
         @"url": @"mapbox://mapbox.mapbox-terrain-dem-v1",
@@ -97,13 +90,13 @@
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
     
-    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nonnull error) {
+    [[self.mapView mapboxMap] setTerrain:terrain completion:^(NSError * _Nonnull error) {
         if (error) {
             NSLog(@"%@", error);
         }
     }];
     
-    [[[self.mapView mapboxMap] style]
+    [[self.mapView mapboxMap]
      addLayer:[self createSkyLayer]
      layerPosition:nil
      completion:^(NSError * _Nullable error) {

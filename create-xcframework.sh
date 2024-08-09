@@ -1,4 +1,5 @@
 # https://stackoverflow.com/questions/64645642/xcframework-with-pods-dependencies
+rm -rf .build
 
 xcodebuild archive \
     -workspace "mapboxqs.xcworkspace" \

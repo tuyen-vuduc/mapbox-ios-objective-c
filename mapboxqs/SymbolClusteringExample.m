@@ -23,22 +23,16 @@
     [super viewDidLoad];
     
     // Create a `MapView` centered over Washington, DC.
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 38.889215
-                                                            longitude: -77.039354];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(38.889215, -77.039354);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@11
-                                                                       bearing:nil
-                                                                         pitch:nil];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:11 bearing:0 pitch:0];
     
     MapInitOptions* options = [MapInitOptionsFactory
-                               createWithResourceOptions:nil
-                               mapOptions:nil
+                               createWithMapOptions:nil
                                cameraOptions:cameraOptions
                                styleURI:BuiltInStyles.dark
-                               styleJSON:nil];
+                               styleJSON:nil
+                               antialiasingSampleCount:1];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -66,7 +60,7 @@
     // Add the image tp the map's style. Set `sdf` to `true`. This allows the icon images to be recolored.
     // For more information about `SDF`, or Signed Distance Fields, see
     // https://docs.mapbox.com/help/troubleshooting/using-recolorable-images-in-mapbox-maps/#what-are-signed-distance-fields-sdf
-    [[[mapView mapboxMap] style] addImage:image id:@"fire-station-icon" sdf:true contentInsets:UIEdgeInsetsZero completion:nil];
+    [[mapView mapboxMap] addImage:image id:@"fire-station-icon" sdf:true contentInsets:UIEdgeInsetsZero completion:nil];
     
     // Fire_Hydrants.geojson contains information about fire hydrants in the District of Columbia.
     // It was downloaded on 6/10/21 from https://opendata.dc.gov/datasets/DCGIS::fire-hydrants/about
@@ -114,9 +108,10 @@
         @"clusterProperties": clusterProperties
     };
     
-    [[[mapView mapboxMap] style] addGeoJSONSourceWithId:@"fire-hydrant-source" properties:source geojson:fileContents onComplete:^(NSError * _Nullable error) {
-        
-    }];
+    // TODO addGeoJSONSourceWithId
+//    [[mapView mapboxMap] addGeoJSONSourceWithId:@"fire-hydrant-source" properties:source geojson:fileContents onComplete:^(NSError * _Nullable error) {
+//
+//    }];
     
 //    // Enable clustering for this source.
 //    source.cluster = true

@@ -40,17 +40,9 @@ typedef void (^RenderingWillEndHandler)(void);
     [super viewDidLoad];
     _modelOrigin = CLLocationCoordinate2DMake(-35.39847, 148.9819);
     
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: self.modelOrigin.latitude
-                                                            longitude: self.modelOrigin.longitude];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:_modelOrigin padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:18 bearing:180 pitch:60];
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@18
-                                                                       bearing:@180
-                                                                         pitch:@60];
-    
-    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil antialiasingSampleCount:1];
     
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:options];
@@ -72,7 +64,7 @@ typedef void (^RenderingWillEndHandler)(void);
 - (TMBSkyLayer *) createSkyLayer {
     TMBSkyLayer* layer = [[TMBSkyLayer alloc] initWithId:@"sky-layer"];
     
-    layer.skyType = [TMBValue skyType:TMBSkyTypeAtmosphere];
+    layer.skyType = [TMBValue skyType:TMBSkyType.atmosphere];
     layer.skyAtmosphereSun = [TMBValue constant: @[@0.0, @0.0]];
     layer.skyAtmosphereSunIntensity = [TMBValue constant: @15.0];
     
@@ -88,7 +80,7 @@ typedef void (^RenderingWillEndHandler)(void);
         }
     }];
     
-    [[[self.mapView mapboxMap] style]
+    [[self.mapView mapboxMap]
     addCustomLayerWithId:@"Custom"
     layerHost:layerHost
     layerPosition:[TMBLayerPosition belowLayerId:@"waterway-label"]
@@ -104,8 +96,8 @@ typedef void (^RenderingWillEndHandler)(void);
     rasterDemSource.tileSize = @514;
     rasterDemSource.maxzoom = @14.0;
     
-        // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
-    [[[self.mapView mapboxMap] style] addSource:rasterDemSource id:sourceId completion:^(NSError * _Nullable error) {
+    // Add a `RasterDEMSource`. This will be used to create and add a terrain layer.
+    [[self.mapView mapboxMap] addSource:rasterDemSource dataId:sourceId completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -114,7 +106,7 @@ typedef void (^RenderingWillEndHandler)(void);
     TMBTerrain* terrain = [[TMBTerrain alloc] initWithSourceId:sourceId];
     TMBValue* value = [[TMBValue alloc] initWithConstant:@1.5];
     terrain.exaggeration = value;
-    [[[self.mapView mapboxMap] style] setTerrain:terrain completion:^(NSError * _Nullable error) {
+    [[self.mapView mapboxMap] setTerrain:terrain completion:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error);
             
@@ -130,14 +122,15 @@ typedef void (^RenderingWillEndHandler)(void);
         @"hillshade-illumination-anchor": @"map"
     };
     
-    [[[self.mapView mapboxMap] style]
-     addLayerWithProperties: properties
-     layerPosition: [TMBLayerPosition belowLayerId: @"water"]
-     completion:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"%@", error);
-        }
-    }];
+    // TODO addLayerWithProperties
+//    [[self.mapView mapboxMap]
+//     addLayerWithProperties: properties
+//     layerPosition: [TMBLayerPosition belowLayerId: @"water"]
+//     completion:^(NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@", error);
+//        }
+//    }];
 }
 
 /*
@@ -283,15 +276,13 @@ typedef void (^RenderingWillEndHandler)(void);
     transformSimd.columns[3][3] = m[15].doubleValue;
     
     // Model is using metric unit system: scale x and y from meters to mercator and keep z is in meters.
-    double metersPerPoint = [MBMProjection getMetersPerPixelAtLatitudeForLatitude:self.modelOrigin.latitude
-                                                                             zoom:parameters.zoom];
+    double metersPerPoint = [TMBProjection metersPerPointFor:self.modelOrigin.latitude zoom:parameters.zoom];
     double meterInMercatorCoordinateUnits = 1.0 / metersPerPoint;
     simd_double4x4 modelScale = [self makeScaleMatrixWithX:meterInMercatorCoordinateUnits
                                                          y:-meterInMercatorCoordinateUnits
                                                          z:1];
     
-    MBMMercatorCoordinate* origin = [MBMProjection projectForCoordinate:self.modelOrigin
-                                                              zoomScale:pow(2, parameters.zoom)];
+    MBMMercatorCoordinate* origin = [TMBProjection project:self.modelOrigin zoomScale:pow(2, parameters.zoom)];
     
     double elevation = 0.0;
     

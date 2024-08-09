@@ -23,17 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    CLLocation* centerLocation = [[CLLocation alloc] initWithLatitude: 25.04579
-                                                            longitude: -88.90136];
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(25.04579, -88.90136);
     
-    MBMCameraOptions* cameraOptions = [[MBMCameraOptions alloc] initWithCenter:centerLocation
-                                                                       padding:nil
-                                                                        anchor:nil
-                                                                          zoom:@5
-                                                                       bearing:nil
-                                                                         pitch:nil];
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation padding:UIEdgeInsetsMake(0, 0, 0, 0) anchor:CGPointMake(0, 0) zoom:5 bearing:0 pitch:0];
     
-    MapInitOptions* options = [MapInitOptionsFactory createWithResourceOptions:nil mapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil];
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil cameraOptions:cameraOptions styleURI:nil styleJSON:nil antialiasingSampleCount:1];
     
     mapView = [MapViewFactory createWithFrame:self.view.bounds
                                       options:options];
@@ -62,12 +56,12 @@
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
     TMBPolygonAnnotationManager* polygonAnnotationManager = [[mapView annotations] makePolygonAnnotationManagerWithId:nil
                                                                                       layerPosition:nil];
-    
-    // Set the delegate to receive callback if annotation is tapped or dragged
-    polygonAnnotationManager.delegate = self;
+    // TODO Add event handler
+//    // Set the delegate to receive callback if annotation is tapped or dragged
+//    polygonAnnotationManager.delegate = self;
 
     // Create the polygon annotation
-    TMBPolygonAnnotation* polygonAnnotation = [TMBPolygonAnnotation polygon: [self makePolygon]];
+    TMBPolygonAnnotation* polygonAnnotation = [[TMBPolygonAnnotation alloc] initWithId:@"xxx-sample" polygon:[self makePolygon] isSelected:false isDraggable:false];
 
     // Style the polygon annotation
     polygonAnnotation.fillColor = [UIColor redColor];
@@ -110,8 +104,10 @@
         [NSValue valueWithMKCoordinate: icoord5]
     ];
     
-    return [TMBPolygon createWithOuterRingCoordinates:outerRingCoords
-                                 innerRingCoordinates:@[innerRingCoords]];
+    TMBPolygonRing* outerRing = [[TMBPolygonRing alloc] initWithCoordinates:outerRingCoords];
+    TMBPolygonRing* innerRing = [[TMBPolygonRing alloc] initWithCoordinates:innerRingCoords];
+    
+    return [[TMBPolygon alloc] initWithOuterRing:outerRing innerRings:@[innerRing]];
 }
 
 - (void)annotationManager:(id<TMBAnnotationManager> _Nonnull)manager didDetectTappedAnnotations:(NSArray<id<TMBAnnotation>> * _Nonnull)annotations {

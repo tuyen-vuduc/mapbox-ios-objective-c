@@ -25,11 +25,11 @@
     // Do any additional setup after loading the view.
     
     MapInitOptions* mapInitOptions = [MapInitOptionsFactory
-                                      createWithResourceOptions:nil
-                                      mapOptions:nil
+                                      createWithMapOptions:nil
                                       cameraOptions:nil
                                       styleURI:@"mapbox://styles/examples/cke97f49z5rlg19l310b7uu7j"
-                                      styleJSON:nil];
+                                      styleJSON:nil
+                                      antialiasingSampleCount:1];
     MapView* mapView = [MapViewFactory createWithFrame:self.view.bounds
                                                options:mapInitOptions];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

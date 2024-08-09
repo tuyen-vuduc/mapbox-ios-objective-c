@@ -34,14 +34,12 @@
     // by calling `mapView.annotations.removeAnnotationManager(withId:)`
     TMBCircleAnnotationManager* circleAnnotationManager = [[mapView annotations] makeCircleAnnotationManagerWithId:nil
                                                                                    layerPosition:nil];
-    circleAnnotationManager.delegate = self;
 
     NSMutableArray* annotations = [[NSMutableArray alloc] initWithCapacity:2000];
     for (int i=0; i< 2000; i++) {
-        TMBCircleAnnotation* annotation = [TMBCircleAnnotation fromCenter:[self randomCoordinate]];
+        TMBCircleAnnotation* annotation = [[TMBCircleAnnotation alloc] initWithId: [[NSNumber numberWithInt:i+1] stringValue] centerCoordinate:[self randomCoordinate] isSelected:false isDraggable:true];
         annotation.circleColor = [self randomColor];
         annotation.circleRadius = @12;
-        annotation.isDraggable = true;
         
         [annotations addObject:annotation];
     }
