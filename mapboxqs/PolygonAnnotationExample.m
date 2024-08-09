@@ -18,10 +18,12 @@
 
 @implementation PolygonAnnotationExample {
     MapView* mapView;
+    NSMutableSet<TMBCancelable*>* cancelables;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    cancelables = [NSMutableSet new];
     // Do any additional setup after loading the view.
     CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(25.04579, -88.90136);
     
@@ -38,13 +40,20 @@
     
     __weak PolygonAnnotationExample *weakSelf = self;
     // Allows the delegate to receive information about map events.
-    [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
-        [self setupExample];
+    [cancelables addObject:[[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
+        [weakSelf setupExample];
         
         if ([weakSelf respondsToSelector:@selector(finish)]) {
             [weakSelf finish];
         }
-    }];
+        
+        [self->cancelables addObject:[[self->mapView location] onLocationChangeWithHandler:^(NSArray<MBXLocation *> * _Nonnull _) {
+                    
+        }]];
+        [self->cancelables addObject:[[self->mapView location] onHeadingChangeWithHandler:^(TMBHeading * _Nonnull _) {
+            
+        }]];
+    }]];
 }
 
 // Wait for the map to load before adding an annotation.

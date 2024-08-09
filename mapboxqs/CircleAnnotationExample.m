@@ -22,8 +22,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(0, 0);
+    
+    TMBCameraOptions* cameraOptions = [[TMBCameraOptions alloc] initWithCenter:centerLocation
+                                                                       padding:UIEdgeInsetsZero
+                                                                        anchor:CGPointMake(0, 0)
+                                                                          zoom:2
+                                                                       bearing:0
+                                                                         pitch:0];
+    
+    MapInitOptions* options = [MapInitOptionsFactory createWithMapOptions:nil 
+                                                            cameraOptions:cameraOptions
+                                                                 styleURI:nil
+                                                                styleJSON:nil
+                                                  antialiasingSampleCount:1];
+    
     mapView = [MapViewFactory createWithFrame:self.view.bounds
-                                      options:nil];
+                                      options:options];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.view addSubview:mapView];
@@ -39,7 +55,11 @@
     for (int i=0; i< 2000; i++) {
         TMBCircleAnnotation* annotation = [[TMBCircleAnnotation alloc] initWithId: [[NSNumber numberWithInt:i+1] stringValue] centerCoordinate:[self randomCoordinate] isSelected:false isDraggable:true];
         annotation.circleColor = [self randomColor];
+        annotation.circleStrokeColor = UIColor.blackColor;
         annotation.circleRadius = @12;
+        annotation.isDraggable = true;
+        annotation.circleStrokeWidth = 0;
+        
         
         [annotations addObject:annotation];
     }
@@ -52,16 +72,18 @@
 }
 
 - (CLLocationCoordinate2D) randomCoordinate {
+    double lat = arc4random() % 181 - 90.0;
+    double lng = arc4random() % 361 - 180.0;
     return CLLocationCoordinate2DMake(
-                                      arc4random_uniform(180) - 90,
-                                      arc4random_uniform(360) - 180
+                                      lat,
+                                      lng
                                   );
 }
 
 - (UIColor *) randomColor {
-    return  [[UIColor alloc] initWithRed: arc4random_uniform(255)/255.0
-                                   green: arc4random_uniform(255)/255.0
-                                    blue: arc4random_uniform(255)/255.0
+    return  [[UIColor alloc] initWithRed: arc4random_uniform(256)/255.0
+                                   green: arc4random_uniform(256)/255.0
+                                    blue: arc4random_uniform(256)/255.0
                                    alpha: 1];
 }
 

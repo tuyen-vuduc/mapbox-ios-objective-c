@@ -17,10 +17,12 @@
 
 @implementation PointAnnotationClusteringExample {
     MapView* mapView;
+    NSMutableSet<TMBCancelable*>* cancelables;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    cancelables = [NSMutableSet new];
     
     // Center the map over Washington, D.C.
     CLLocationCoordinate2D centerLocation = CLLocationCoordinate2DMake(38.889215, -77.039354);
@@ -41,9 +43,9 @@
 //    mapView.gestures.singleTapGestureRecognizer.addTarget(self, action: #selector(handleTap(gestureRecognizer:)))
 
     // Add the source and style layers once the map has loaded.
-    [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
+    [cancelables addObject: [[mapView mapboxMap] onMapLoaded:^(id _Nonnull _) {
         [weakSelf addPointAnnotations];
-    }];
+    }]];
 }
 
 - (void) addPointAnnotations {

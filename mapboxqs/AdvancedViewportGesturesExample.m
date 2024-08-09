@@ -212,8 +212,7 @@ typedef enum {
 #pragma mark - TMBViewportStatusObserver
 */
 - (void)viewportStatusDidChangeFrom:(TMBViewportStatus * _Nonnull)fromStatus to:(TMBViewportStatus * _Nonnull)toStatus reason:(TMBViewportStatusChangeReason * _Nonnull)reason {
-    id<TMBViewportState> fromState = fromStatus.state;
-//    NSLog(@"Viewport.status changed\n    from: %@\n    to: %@\n    with reason: %@", fromStatus, toStatus, reason);
+    NSLog(@"Viewport.status changed\n    from: %@\n    to: %@\n    with reason: %@", fromStatus, toStatus, reason);
 }
 
 @end
