@@ -24,6 +24,14 @@ public protocol TMBAnnotationManager: AnyObject {
     /// Use this property to position the annotations relative to other map features if you use Mapbox Standard Style.
     /// See <doc:Migrate-to-v11##21-The-Mapbox-Standard-Style> for more info.
     var slot: String? { get set }
+    
+    func addAnnotations(_ annotations: [TMBAnnotation]);
+    func addAnnotation(_ annotation: TMBAnnotation);
+    func updateAnnotations(_ annotations: [TMBAnnotation]);
+    func updateAnnotation(_ annotation: TMBAnnotation);
+    func removeAnnotation(_ annotation: TMBAnnotation);
+    func removeAnnotationById(_ annotationId: String);
+    func removeAllAnnotations();
 }
 
 /// A delegate that is called when a tap is detected on an annotation (or on several of them).

@@ -96,13 +96,45 @@ extension TMBPolygonAnnotationManager {
 
 @objc
 extension TMBPolygonAnnotationManager {
-    @objc public func addAnnotations(_ annotations: [TMBPolygonAnnotation]) {
-        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    @objc public func addAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPolygon($0)
+        }.map {
+            $0 as! TMBPolygonAnnotation
+        }
+        self.origin.annotations.append(contentsOf: impls.map{ $0.unwrap() })
     }
-    @objc public func addAnnotation(_ annotation: TMBPolygonAnnotation) {
-        self.origin.annotations.append(annotation.unwrap())
+    @objc public func addAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPolygonAnnotation else {
+            return
+        }
+        self.origin.annotations.append(impl.unwrap())
     }
-    @objc public func removeAnnotation(_ annotation: TMBPolygonAnnotation) {
+    @objc public func updateAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPolygon($0)
+        }.map {
+            $0 as! TMBPolygonAnnotation
+        }
+        
+        for item in impls {
+            self.removeAnnotation(item)
+        }
+        
+        self.addAnnotations(annotations)
+        
+    }
+    @objc public func updateAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPolygonAnnotation else {
+            return
+        }
+        self.removeAnnotation(annotation)
+        self.origin.annotations.append(impl.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBAnnotation) {
+        if !isPolygon(annotation) {
+            return
+        }
         self.origin.annotations.removeAll(where: { item in
             item.id == annotation.id
         })
@@ -114,6 +146,12 @@ extension TMBPolygonAnnotationManager {
     }
     @objc public func removeAllAnnotations() {
         self.origin.annotations.removeAll()
+    }
+    func isPolygon(_ annotation: TMBAnnotation) -> Bool {
+        if let _ = annotation as? TMBPolygonAnnotation {
+            return true
+        }
+        return false
     }
 }
 extension PolygonAnnotationManager {

@@ -12,3 +12,10 @@ public protocol TMBAnnotation: AnyObject {
     /// Properties associated with the annotation.
     var userInfo: [String: Any]? { get }
 }
+
+
+extension TMBAnnotation {
+    public static func typeOf<T>(value: T) -> Bool where T : TMBAnnotation {
+        return type(of: value) == T.Type.self
+    }
+}

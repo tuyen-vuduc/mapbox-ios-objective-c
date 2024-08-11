@@ -146,13 +146,45 @@ extension TMBPolylineAnnotationManager {
 
 @objc
 extension TMBPolylineAnnotationManager {
-    @objc public func addAnnotations(_ annotations: [TMBPolylineAnnotation]) {
-        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    @objc public func addAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPolyline($0)
+        }.map {
+            $0 as! TMBPolylineAnnotation
+        }
+        self.origin.annotations.append(contentsOf: impls.map{ $0.unwrap() })
     }
-    @objc public func addAnnotation(_ annotation: TMBPolylineAnnotation) {
-        self.origin.annotations.append(annotation.unwrap())
+    @objc public func addAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPolylineAnnotation else {
+            return
+        }
+        self.origin.annotations.append(impl.unwrap())
     }
-    @objc public func removeAnnotation(_ annotation: TMBPolylineAnnotation) {
+    @objc public func updateAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPolyline($0)
+        }.map {
+            $0 as! TMBPolylineAnnotation
+        }
+        
+        for item in impls {
+            self.removeAnnotation(item)
+        }
+        
+        self.addAnnotations(annotations)
+        
+    }
+    @objc public func updateAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPolylineAnnotation else {
+            return
+        }
+        self.removeAnnotation(annotation)
+        self.origin.annotations.append(impl.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBAnnotation) {
+        if !isPolyline(annotation) {
+            return
+        }
         self.origin.annotations.removeAll(where: { item in
             item.id == annotation.id
         })
@@ -164,6 +196,13 @@ extension TMBPolylineAnnotationManager {
     }
     @objc public func removeAllAnnotations() {
         self.origin.annotations.removeAll()
+    }
+    
+    func isPolyline(_ annotation: TMBAnnotation) -> Bool {
+        if let _ = annotation as? TMBPolylineAnnotation {
+            return true
+        }
+        return false
     }
 }
 extension PolylineAnnotationManager {

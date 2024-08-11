@@ -334,13 +334,45 @@ extension TMBPointAnnotationManager {
 
 @objc
 extension TMBPointAnnotationManager {
-    @objc public func addAnnotations(_ annotations: [TMBPointAnnotation]) {
-        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    @objc public func addAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPoint($0)
+        }.map {
+            $0 as! TMBPointAnnotation
+        }
+        self.origin.annotations.append(contentsOf: impls.map{ $0.unwrap() })
     }
-    @objc public func addAnnotation(_ annotation: TMBPointAnnotation) {
-        self.origin.annotations.append(annotation.unwrap())
+    @objc public func addAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPointAnnotation else {
+            return
+        }
+        self.origin.annotations.append(impl.unwrap())
     }
-    @objc public func removeAnnotation(_ annotation: TMBPointAnnotation) {
+    @objc public func updateAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isPoint($0)
+        }.map {
+            $0 as! TMBPointAnnotation
+        }
+        
+        for item in impls {
+            self.removeAnnotation(item)
+        }
+        
+        self.addAnnotations(annotations)
+        
+    }
+    @objc public func updateAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBPointAnnotation else {
+            return
+        }
+        self.removeAnnotation(annotation)
+        self.origin.annotations.append(impl.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBAnnotation) {
+        if !isPoint(annotation) {
+            return
+        }
         self.origin.annotations.removeAll(where: { item in
             item.id == annotation.id
         })
@@ -352,6 +384,13 @@ extension TMBPointAnnotationManager {
     }
     @objc public func removeAllAnnotations() {
         self.origin.annotations.removeAll()
+    }
+    
+    func isPoint(_ annotation: TMBAnnotation) -> Bool {
+        if let _ = annotation as? TMBPointAnnotation {
+            return true
+        }
+        return false
     }
 }
 extension PointAnnotationManager {

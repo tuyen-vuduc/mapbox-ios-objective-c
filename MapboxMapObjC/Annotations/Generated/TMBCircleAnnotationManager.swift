@@ -108,13 +108,45 @@ extension TMBCircleAnnotationManager {
 
 @objc
 extension TMBCircleAnnotationManager {
-    @objc public func addAnnotations(_ annotations: [TMBCircleAnnotation]) {
-        self.origin.annotations.append(contentsOf: annotations.map{ $0.unwrap() })
+    @objc public func addAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isCircle($0)
+        }.map { 
+            $0 as! TMBCircleAnnotation
+        }
+        self.origin.annotations.append(contentsOf: impls.map{ $0.unwrap() })
     }
-    @objc public func addAnnotation(_ annotation: TMBCircleAnnotation) {
-        self.origin.annotations.append(annotation.unwrap())
+    @objc public func addAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBCircleAnnotation else {
+            return
+        }
+        self.origin.annotations.append(impl.unwrap())
     }
-    @objc public func removeAnnotation(_ annotation: TMBCircleAnnotation) {
+    @objc public func updateAnnotations(_ annotations: [TMBAnnotation]) {
+        let impls = annotations.filter {
+            isCircle($0)
+        }.map {
+            $0 as! TMBCircleAnnotation
+        }
+        
+        for item in impls {
+            self.removeAnnotation(item)
+        }
+        
+        self.addAnnotations(annotations)
+        
+    }
+    @objc public func updateAnnotation(_ annotation: TMBAnnotation) {
+        guard let impl = annotation as? TMBCircleAnnotation else {
+            return
+        }
+        self.removeAnnotation(annotation)
+        self.origin.annotations.append(impl.unwrap())
+    }
+    @objc public func removeAnnotation(_ annotation: TMBAnnotation) {
+        if !isCircle(annotation) {
+            return
+        }
         self.origin.annotations.removeAll(where: { item in
             item.id == annotation.id
         })
@@ -126,6 +158,12 @@ extension TMBCircleAnnotationManager {
     }
     @objc public func removeAllAnnotations() {
         self.origin.annotations.removeAll()
+    }
+    func isCircle(_ annotation: TMBAnnotation) -> Bool {
+        if let _ = annotation as? TMBCircleAnnotation {
+            return true
+        }
+        return false
     }
 }
 extension CircleAnnotationManager {
