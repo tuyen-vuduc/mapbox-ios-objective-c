@@ -182,9 +182,9 @@ extension Puck2DConfiguration.Pulsing.Radius {
     func wrap() -> TMBPuck2DConfigurationPulsingRadius {
         switch (self) {
         case .accuracy:
-            return TMBPuck2DConfigurationPulsingRadius(constant: nil)
+            return TMBPuck2DConfigurationPulsingRadius.accuracy
         case .constant(let constant):
-            return TMBPuck2DConfigurationPulsingRadius(constant: constant)
+            return TMBPuck2DConfigurationPulsingRadius.fromConstant(constant)
         }
     }
 }
@@ -210,7 +210,7 @@ extension Puck2DConfiguration.Pulsing.Radius {
     ///   - color: The color of the pulsing circle.
     ///   - radius: The radius of the pulsing circle.
     @objc public init(color: UIColor = UIColor(red: 0.29, green: 0.565, blue: 0.886, alpha: 1),
-                radius: TMBPuck2DConfigurationPulsingRadius = TMBPuck2DConfigurationPulsingRadius(constant: 30)) {
+                      radius: TMBPuck2DConfigurationPulsingRadius = TMBPuck2DConfigurationPulsingRadius.fromConstant(30)) {
         self.color = color
         self.radius = radius
         self.isEnabled = true
