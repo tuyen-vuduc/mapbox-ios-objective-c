@@ -160,8 +160,13 @@ extension Puck2DConfiguration {
 @objc open class TMBPuck2DConfigurationPulsingRadius: NSObject {
     @objc public let constant: NSNumber?
     
-    public init(constant: Double?) {
+    init(constant: Double?) {
         self.constant = constant?.double()
+    }
+    
+    @objc public static let accuracy = TMBPuck2DConfigurationPulsingRadius(constant: nil)
+    @objc public static func fromConstant(_ constant: Double) -> TMBPuck2DConfigurationPulsingRadius {
+        TMBPuck2DConfigurationPulsingRadius(constant: constant)
     }
 }
 
@@ -186,19 +191,19 @@ extension Puck2DConfiguration.Pulsing.Radius {
 
 /// The configuration parameters for sonar-like pulsing circle animation shown around the 2D puck.
 @objc open class TMBPuck2DConfigurationPulsing: NSObject {
-    public static var `default`: TMBPuck2DConfigurationPulsing {
+    @objc public static var `default`: TMBPuck2DConfigurationPulsing {
         Puck2DConfiguration.Pulsing.default.wrap()
     }
     // swiftlint:enable nesting
 
     /// Flag determining whether the pulsing circle animation. `true` by default.
-    public var isEnabled: Bool
+    @objc public var isEnabled: Bool
 
     /// The color of the pulsing circle.
-    public var color: UIColor
+    @objc public var color: UIColor
 
     /// The radius of the pulsing circle.
-    public var radius: TMBPuck2DConfigurationPulsingRadius
+    @objc public var radius: TMBPuck2DConfigurationPulsingRadius
 
     /// Create a pulsing animation config with a color and radius.
     /// - Parameters:
