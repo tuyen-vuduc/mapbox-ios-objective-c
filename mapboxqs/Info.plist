@@ -4,6 +4,10 @@
 <dict>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoidHV5ZW52ZCIsImEiOiJjbGxzOW02djYxMWI2M2dwczFwZjVlZnQ4In0.0Ok83GyRQIWDHTwq9RBx8Q</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The app needs your locations for pulsing</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app needs your locations for pulsing</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

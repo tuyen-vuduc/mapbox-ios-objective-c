@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExampleProtocol.h"
+#import <MapboxMaps/MapboxMaps.h>
+#import <MapboxMapObjC/MapboxMapObjC.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BasicLocationPulsingExample : UIViewController
+@interface BasicLocationPulsingExample : UIViewController<ExampleProtocol>
 
 @end
 

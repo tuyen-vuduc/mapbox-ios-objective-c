@@ -197,9 +197,9 @@ import Turf
     /// - Returns: A `CameraOptions` object representing the provided parameters.
     @objc public func camera(for coordinates: [NSValue],
                        camera: TMBCameraOptions,
-                       coordinatesPadding: NSNumber?,
+                       coordinatesPadding: NSValue?,
                        maxZoom: NSNumber?,
-                       offset: NSNumber?,
+                       offset: NSValue?,
                        completion: (TMBCameraOptions?, Error?)->Void) {
         do {
             let result = try origin.camera(for: coordinates.map({ $0.mkCoordinateValue }), camera: camera.unwrap(), coordinatesPadding: coordinatesPadding?.uiEdgeInsetsValue, maxZoom: maxZoom?.doubleValue, offset: offset?.cgPointValue)
