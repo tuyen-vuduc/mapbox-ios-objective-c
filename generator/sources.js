@@ -1,5 +1,9 @@
 import fs from 'fs';
-import { getEnums, commonTypeToConversionNameMapping, sourceTypeMapping } from './helpers/helpers.js';
+import { 
+    getEnums,
+    commonTypeToConversionNameMapping,
+    sourceTypeMapping,
+    lowerFirst } from './helpers/helpers.js';
 
 var enums = getEnums();
 
@@ -11,7 +15,6 @@ async function generateSources() {
         fs.mkdirSync(info.output)
     }
 
-    
     await fs.readdirSync(info.input)
         .filter(x => !info.ignored.some(y => x.endsWith(y + '.swift')))
         .map(x => /(\w+)\.swift/.exec(x)[1])
@@ -40,21 +43,15 @@ async function generateSource(dir, output, sourceName) {
             }
 
             if (/^public struct/.test(x.trim())) {
-                var sourceType = sourceName.substring(0,1).toLowerCase() + sourceName.replace(/Source$/, '').substring(1);
+                var sourceType = lowerFirst(sourceName).replace(/Source$/, '');
                 if (sourceTypeMapping[sourceType]) {
                     sourceType = sourceTypeMapping[sourceType];
                 }
                 return `@objc open class TMB${sourceName}: NSObject, TMBSource {
-    @objc public convenience init(id: String) {
-        self.init(id, type: TMBSourceType.${sourceType})
-    }
-    
-    private init(_ id: String, type: TMBSourceType) {
+    @objc public init(id: String) {
         self.id = id
-        self.type = type
-    }
-    
-    let id: String`;
+        self.type = TMBSourceType.${sourceType}
+    }`;
             }
 
             if (/^public init/.test(x.trim())) {
@@ -74,7 +71,7 @@ async function generateSource(dir, output, sourceName) {
             
             if (!matches) {
                 isValueObject = false;
-                matches = /(var|let) (\w+): ([\[]{0,3}\w+[\]]{0,3})(\??)/.exec(x);
+                matches = /(var|let) (\w+): ([\[]{0,3}[^\]\?]+[\]]{0,3})(\??)/.exec(x);
             }
 
             var readonly = matches[1];
@@ -111,39 +108,52 @@ async function generateSource(dir, output, sourceName) {
     
         var mapToSwiftPropertyLines = [`
 extension TMB${sourceName} {
-    public func mapTo(_ source: inout ${sourceName}) {`].concat(propertyLines.map(x => {
+    func mapTo(_ source: inout ${sourceName}) {`].concat(propertyLines.map(x => {
             var isValueObject = true;
             var matches = /(var|let) (\w+): Value<(\[?\w+\]?)>(\??)/.exec(x);
             
             if (!matches) {
                 isValueObject = false;
-                matches = /(var|let) (\w+): ([\[]{0,3}\w+[\]]{0,3})(\??)/.exec(x);
+                matches = /(var|let) (\w+): ([\[]{0,3}[^\]\?]+[\]]{0,3})(\??)/.exec(x);
             }
 
-            var readonly = matches[1];
-            var propName = matches[2];        
-            var propType = matches[3];  
-            var nullable = matches[4];
-            var array = /\[/.test(propType);
-            var dict = /\[\w+\s*\:/.test(propType);
+            const readonly = matches[1];
+            const propName = matches[2];        
+            const propType = matches[3];  
+            const nullable = matches[4];
+            const array = /\[/.test(propType);
+            const dict = /\[\w+\s*\:/.test(propType);
 
             if (readonly == 'let') {
                 return;
             }
 
+            if (dict) {
+                // TODO Check types of key and value
+                // const dmatches = /\[(\w+):\s*(\w+)\]/.exec(propType);
+                // const keyType = dmatches[1];
+                // const valueType = dmatches[2];
+
+                return `        source.${propName} = self.${propName}${nullable}.mapValues{ $0.unwrap() }`;
+            }
+
+            if (array) {
+
+            }
+
+            var conversionName = lowerFirst(propType);
             if (!isValueObject && (propType == 'String' || !nullable || array || dict)){
                 return `        source.${propName} = self.${propName}`;
             }
 
             if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return `        source.${propName} = self.${propName}${nullable}.${propType.substring(0,1).toLowerCase() + propType.substring(1)}()`;
+                return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
             }
 
             if (!isValueObject && enums.some(x => x == propType)) {
-                return `        source.${propName} = self.${propName}${nullable}.${propType.substring(0,1).toLowerCase() + propType.substring(1)}().swiftValue()`;
+                return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
             }
 
-            var conversionName = propType.substring(0,1).toLowerCase() + propType.substring(1);
             if (commonTypeToConversionNameMapping[conversionName]) {
                 conversionName = commonTypeToConversionNameMapping[conversionName];
             } else if (/^\[/.test(propType)) {
@@ -151,22 +161,17 @@ extension TMB${sourceName} {
             }
 
             return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
-        })).concat(['    }\n}']);
+        }).filter(x => !!x)).concat(['    }\n}']);
     
         var mapToObjcPropertyLines = [`
 extension ${sourceName} {
-    public func mapTo(_ source:inout TMB${sourceName}) {`].concat(propertyLines.map(x => {
+    func mapTo(_ source:inout TMB${sourceName}) {`].concat(propertyLines.map(x => {
             var isValueObject = true;
             var matches = /(var|let) (\w+): Value<(\[?\w+\]?)>(\??)/.exec(x);
             
             if (!matches) {
                 isValueObject = false;
-                matches = /(var|let) (\w+): (\[\w+\s*:\s*\w+\])(\??)/.exec(x);
-            }
-
-            if (!matches) {
-                isValueObject = false;
-                matches = /(var|let) (\w+): ([\[]{0,3}\w+[\]]{0,3})(\??)/.exec(x);
+                matches = /(var|let) (\w+): ([\[]{0,3}[^\]\?]+[\]]{0,3})(\??)/.exec(x);
             }
 
             var readonly = matches[1];
@@ -180,24 +185,33 @@ extension ${sourceName} {
                 return;
             }
 
+            if (dict) {
+                // TODO Check types of key and value
+                // const dmatches = /\[(\w+):\s*(\w+)\]/.exec(propType);
+                // const keyType = dmatches[1];
+                // const valueType = dmatches[2];
+
+                return `        source.${propName} = self.${propName}${nullable}.mapValues{ $0.wrap() }`;
+            }
+
+            var conversionName = lowerFirst(propType);
             if (!isValueObject && (propType == 'String' || !nullable || array || dict)){
                 return `        source.${propName} = self.${propName}`;
             }
 
             if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return `        source.${propName} = self.${propName}${nullable}.asNumber()`;
+                return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
             }
 
             if (!isValueObject && enums.some(x => x == propType)) {
-                return `        source.${propName} = self.${propName}${nullable}.objcValue().asNumber()`;
+                return `        source.${propName} = self.${propName}${nullable}.wrap()`;
             }
 
             if (propType == 'StyleTransition') {
-                return  `        source.${propName} = self.${propName}${nullable}.objcValue()`;
+                return  `        source.${propName} = self.${propName}${nullable}.wrap()`;
             }
 
             if (isValueObject) {
-                var conversionName = propType[0].toLowerCase() + propType.substring(1);
                 if (commonTypeToConversionNameMapping[conversionName]) {
                     conversionName = commonTypeToConversionNameMapping[conversionName];
                 } else if (/^\[/.test(propType)) {
@@ -206,8 +220,8 @@ extension ${sourceName} {
                 return `        source.${propName} = self.${propName}${nullable}.${conversionName}()`;
             }
 
-            return  `        source.${propName} = self.${propName}${nullable}.objcValue()`;
-        })).concat(['    }\n}']);
+            return  `        source.${propName} = self.${propName}${nullable}.wrap()`;
+        }).filter(x => !!x)).concat(['    }\n}']);
 
     fs.writeFileSync(
         `${output}/TMB${sourceName}.swift`, 
@@ -216,22 +230,18 @@ extension ${sourceName} {
         .concat(mapToObjcPropertyLines)
         .concat([`
 extension TMB${sourceName}: SwiftValueConvertible {
-    public func swiftValue() -> ${sourceName} {
-        var source = ${sourceName}()
-        
-        self.mapTo(&source)
-        
-        return source
+    public func unwrap() -> ${sourceName} {
+        var result = ${sourceName}(id: self.id)
+        self.mapTo(&result)
+        return result
     }
 }
 
 extension ${sourceName} {
-    public func objcValue(_ id: String) ->  TMB${sourceName} {
-        var source = TMB${sourceName}(id: id)
-        
-        self.mapTo(&source)
-        
-        return source
+    func wrap() ->  TMB${sourceName} {
+        var result = TMB${sourceName}(id: self.id)
+        self.mapTo(&result)
+        return result
     }
 }`])
         .join('\n'));

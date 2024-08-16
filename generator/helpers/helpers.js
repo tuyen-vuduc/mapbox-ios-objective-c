@@ -28,3 +28,7 @@ function getEnumNames(repoInfo, enumInfo) {
         .filter(x => /^public enum/.test(x.trim()) || /^enum/.test(x.trim()))
         .map(x => /enum (\w+)/.exec(x.trim())[1])
 }
+
+export function lowerFirst(input) {
+    return input[0].toLowerCase() + input.substring(1)
+}

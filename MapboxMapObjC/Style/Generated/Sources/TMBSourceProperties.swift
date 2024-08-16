@@ -30,11 +30,13 @@ extension Scheme {
     func wrap() -> TMBScheme {
         TMBScheme(origin: self)
     }
+    func scheme() -> TMBScheme { wrap() }
 }
 extension TMBScheme: SwiftValueConvertible {
     public func unwrap() -> Scheme {
         self.origin
     }
+    func scheme() -> Scheme { unwrap() }
 }
 @objc extension TMBValue {
     @objc public class func scheme(_ value: TMBScheme) -> TMBValue {
@@ -105,11 +107,13 @@ extension Encoding {
     func wrap() -> TMBEncoding {
         TMBEncoding(origin: self)
     }
+    func encoding() -> TMBEncoding { wrap() }
 }
 extension TMBEncoding: SwiftValueConvertible {
     public func unwrap() -> Encoding {
         self.origin
     }
+    func encoding() -> Encoding { unwrap() }
 }
 @objc extension TMBValue {
     @objc public class func encoding(_ value: TMBEncoding) -> TMBValue {

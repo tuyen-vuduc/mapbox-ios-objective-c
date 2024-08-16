@@ -2,5 +2,7 @@
     "input": "/Volumes/ws/oss/mapbox-maps-ios/Sources/MapboxMaps/Style/Generated/Sources",
     "output": "/Volumes/ws/qs/mapbox-ios-objective-c/MapboxMapObjC/sources",
     "ignored": [
+        "RasterArraySource",
+        "SourceProperties"
     ]
 }
