@@ -1252,10 +1252,12 @@ extension TMBStyleTransition {
         StyleTransition(duration: self.duration,
             delay: self.delay)
     }
+    func styleTransition() -> StyleTransition { unwrap() }
 }
 extension StyleTransition {
     func wrap() -> TMBStyleTransition {
         TMBStyleTransition(duration: self.duration,
           delay: self.delay)
     }
+    func styleTransition() -> TMBStyleTransition { wrap() }
 }

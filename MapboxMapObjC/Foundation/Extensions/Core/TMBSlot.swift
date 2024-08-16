@@ -29,9 +29,11 @@ extension Slot {
     func wrap() -> TMBSlot {
         TMBSlot(origin: self)
     }
+    func slot() -> TMBSlot { wrap() }
 }
 extension TMBSlot {
     func unwrap() -> Slot {
         self.origin
     }
+    func slot() -> Slot { unwrap() }
 }

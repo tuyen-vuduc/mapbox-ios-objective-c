@@ -1,7 +1,8 @@
 {
     "input": "PATH_TO_YOUR_LOCAL_MAPBOX_IOS_REPO/Sources/MapboxMaps/Style/Generated/Layers",
-    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/MapboxMapObjC/layers",
+    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/MapboxMapObjC/Style/Generated/Layers",
     "ignored": [
-        "ModelLayer"
+        "ModelLayer",
+        "RasterParticleLayer"
     ]
 }

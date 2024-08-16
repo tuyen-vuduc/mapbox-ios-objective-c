@@ -1,6 +1,6 @@
 {
-    "input": "/Volumes/ws/oss/mapbox-maps-ios/Sources/MapboxMaps/Style/Generated/Sources",
-    "output": "/Volumes/ws/qs/mapbox-ios-objective-c/MapboxMapObjC/sources",
+    "input": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO/Sources/MapboxMaps/Style/Generated/Sources",
+    "output": "PATH_TO_YOUR_LOCAL_MAPBOX_OBJC_REPO//MapboxMapObjC/Style/Generated/Sources",
     "ignored": [
         "RasterArraySource",
         "SourceProperties"

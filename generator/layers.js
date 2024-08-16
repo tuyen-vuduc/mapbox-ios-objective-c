@@ -1,5 +1,18 @@
 import fs from 'fs';
-import { commonTypeToConversionNameMapping } from './helpers/helpers.js';
+import { 
+    lowerFirst,
+    generateSource } from './helpers/helpers.js';
+
+export var layersHavingSource = [
+    'FillExtrusionLayer',
+    'HeatmapLayer',
+    'HillshadeLayer',
+    'LineLayer',
+    'CircleLayer',
+    'SymbolLayer',
+    'FillLayer',
+    'RasterLayer',
+];
 
 generateLayers() ;
 
@@ -13,193 +26,37 @@ async function generateLayers() {
     await fs.readdirSync(info.input)
         .filter(x => !info.ignored.some(y => x.endsWith(y + '.swift')))
         .map(x => /(\w+)\.swift/.exec(x)[1])
-        .forEach(x => generateLayer(info.input, info.output, x));    
-}
-
-async function generateLayer(dir, output, layerName) {
-    var content = fs.readFileSync(`${dir}/${layerName}.swift`, 'utf8');
-    var processingStatement = false;
-    var initReached = false;
-    var propertyLines = []
-    var lines = content.split('\n')
-        .map(x => {
-            if (initReached) {
-                return '__NONE__';
-            }
-
-            if (/^import/.test(x)) {
-                processingStatement = true;
-                return x;
-            }
-
-            if (processingStatement) {
-                processingStatement = false;
-                return 'import MapboxMaps\n';
-            }
-
-            if (/^public struct/.test(x.trim())) {
-                return `@objc open class TMB${layerName}: NSObject, TMBLayer {
-    @objc public convenience init(id: String = UUID().uuidString) {
-        self.init(id, type: TMBLayerType.${layerName.substring(0,1).toLowerCase() + layerName.replace(/Layer$/, '').substring(1)})
-        
-        self.visibility = TMBValue.visibility(.visible)
-    }
-    
-    private init(_ id: String = UUID().uuidString, type: TMBLayerType) {
+        .forEach(x => generateSource(
+            info.input, info.output, x,
+            (structName) => {
+                let layerType = lowerFirst(structName).replace(/Layer$/, '')
+                if (layersHavingSource.indexOf(structName) > -1) {
+                    return `@objc open class TMB${structName}: NSObject, TMBLayer {
+    @objc public init(id: String, source: String) {
         self.id = id
-        self.type = type
+        self.source = source
+        self.type = TMBLayerType.${layerType}
+        self.visibility = .visibility(.visible)
     }`;
-            }
-
-            if (/^public init/.test(x.trim())) {
-                initReached = true;
-                return '}';
-            }
-
-            let isPropertyLine = /^\s+public (var|let)/.test(x);
-            if (!isPropertyLine) {
-                return x;
-            }
-
-            propertyLines.push(x);
-                
-            var isValueObject = true;
-            var matches = /(var|let) (\w+): Value<(\[?\w+\]?)>(\??)/.exec(x);
-            
-            if (!matches) {
-                isValueObject = false;
-                matches = /(var|let) (\w+): (\[?\w+\]?)(\??)/.exec(x);
-            }
-
-            var readonly = matches[1];
-            var propName = matches[2];        
-            var propType = matches[3];  
-            var nullable = matches[4];
-
-            if (isValueObject) {            
-                return `    @objc public ${readonly} ${propName}: TMBValue${nullable}`;
-            }
-
-            if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return nullable 
-                    ? `    @objc public ${readonly} ${propName}: NSNumber?`
-                    : `    @objc public ${readonly} ${propName}: ${propType}`;
-            }
-
-            if (!isValueObject && /^(String)$/.test(propType)) {
-                return `    @objc public ${readonly} ${propName}: String${nullable}`;
-            }
-
-            return `    @objc public ${readonly} ${propName}: TMB${propType}${nullable}`;
-        }).filter(x => x != '__NONE__');
-    
-        var mapToSwiftPropertyLines = [`
-extension TMB${layerName} {
-    public func mapTo(_ layer: inout ${layerName}) {`].concat(propertyLines.map(x => {
-            var isValueObject = true;
-            var matches = /(var|let) (\w+): Value<(\[?\w+\]?)>(\??)/.exec(x);
-            
-            if (!matches) {
-                isValueObject = false;
-                matches = /(var|let) (\w+): (\[?\w+\]?)(\??)/.exec(x);
-            }
-
-            var readonly = matches[1];
-            var propName = matches[2];        
-            var propType = matches[3];  
-            var nullable = matches[4];
-
-            if (readonly == 'let') {
-                return;
-            }
-
-            if (!isValueObject && propType == 'String' || !nullable){
-                return `        layer.${propName} = self.${propName}`;
-            }
-
-            if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return `        layer.${propName} = self.${propName}${nullable}.${propType[0].toLowerCase() + propType.substring(1)}()`;
-            }
-
-            var conversionName = propType[0].toLowerCase() + propType.substring(1);
-            if (commonTypeToConversionNameMapping[conversionName]) {
-                conversionName = commonTypeToConversionNameMapping[conversionName];
-            } else if (/^\[/.test(propType)) {
-                conversionName = 'arrayOf' + propType.replace(/\[|\]/img, '');
-            }
-
-            return `        layer.${propName} = self.${propName}${nullable}.${conversionName}()`;
-        })).concat(['    }\n}']);
-    
-        var mapToObjcPropertyLines = [`
-extension ${layerName} {
-    public func mapTo(_ layer:inout TMB${layerName}) {`].concat(propertyLines.map(x => {
-            var isValueObject = true;
-            var matches = /(var|let) (\w+): Value<(\[?\w+\]?)>(\??)/.exec(x);
-            
-            if (!matches) {
-                isValueObject = false;
-                matches = /(var|let) (\w+): (\[?\w+\]?)(\??)/.exec(x);
-            }
-
-            var readonly = matches[1];
-            var propName = matches[2];        
-            var propType = matches[3];  
-            var nullable = matches[4];
-
-            if (readonly == 'let') {
-                return;
-            }
-
-            if (!isValueObject && (propType == 'String' || !nullable)){
-                return `        layer.${propName} = self.${propName}`;
-            }
-
-            if (!isValueObject && /^(Bool|Double|Int)$/.test(propType)) {
-                return `        layer.${propName} = self.${propName}${nullable}.asNumber()`;
-            }
-
-            if (propType == 'StyleTransition') {
-                return  `        layer.${propName} = self.${propName}${nullable}.objcValue()`;
-            }
-
-            if (isValueObject) {
-                var conversionName = propType[0].toLowerCase() + propType.substring(1);
-                if (commonTypeToConversionNameMapping[conversionName]) {
-                    conversionName = commonTypeToConversionNameMapping[conversionName];
-                } else if (/^\[/.test(propType)) {
-                    conversionName = 'arrayOf' + propType.replace(/\[|\]/img, '');
                 }
-                return `        layer.${propName} = self.${propName}${nullable}.${conversionName}()`;
-            }
 
-            return  `        layer.${propName} = self.${propName}${nullable}.objcValue()`;
-        })).concat(['    }\n}']);
-
-    fs.writeFileSync(
-        `${output}/TMB${layerName}.swift`, 
-        lines
-        .concat(mapToSwiftPropertyLines)
-        .concat(mapToObjcPropertyLines)
-        .concat([`
-extension TMB${layerName}: SwiftValueConvertible {
-    public func swiftValue() -> ${layerName} {
-        var layer = ${layerName}(id: id)
-        
-        self.mapTo(&layer)
-        
-        return layer
-    }
-}
-
-extension ${layerName}: ObjcConvertible {
-    public func objcValue() ->  TMB${layerName} {
-        var layer = TMB${layerName}(id: id)
-        
-        self.mapTo(&layer)
-        
-        return layer
-    }
-}`])
-        .join('\n'));
+                return `@objc open class TMB${structName}: NSObject, TMBLayer {
+    @objc public init(id: String) {
+        self.id = id
+        self.type = TMBLayerType.${layerType}
+        self.visibility = .visibility(.visible)
+    }`;
+            },
+            (layerName) => {
+                if (layersHavingSource.indexOf(layerName) > -1) {
+                    return `${layerName}(id: self.id, source: self.source!)`
+                }
+                return `${layerName}(id: self.id)`
+            },
+            (layerName) => {
+                if (layersHavingSource.indexOf(layerName) > -1) {
+                    return `TMB${layerName}(id: self.id, source: self.source!)`
+                }
+                return `TMB${layerName}(id: self.id)`
+            }));    
 }
