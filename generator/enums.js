@@ -176,6 +176,6 @@ extension TMBValue {
         }).filter(x => x != '__NA__');
     
     fs.writeFileSync(
-        path.join(output, enumInfo.name), 
+        path.join(output, `TMB${enumInfo.name}`), 
         lines.join('\n'));
 }
