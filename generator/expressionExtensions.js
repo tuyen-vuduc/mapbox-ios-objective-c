@@ -14,9 +14,9 @@ function generateExpressionExtensions() {
     var input = path.join(info.mapboxRepo, info.input, info.name);
     var content = fs.readFileSync(input, 'utf8');
     var lines = content.split('\n')
-        .filter(x => /^case (\w+)/.test(x.trim()))
+        .filter(x => /^public static let (\w+)/.test(x.trim()))
         .map(x => {
-            var matches = /case (\w+)/.exec(x.trim());
+            var matches = /public static let (\w+)/.exec(x.trim());
             return `    public class func ${matches[1]}() -> TMBExpression {
         return TMBExpression.create(withOperator: .${matches[1]})
     }
