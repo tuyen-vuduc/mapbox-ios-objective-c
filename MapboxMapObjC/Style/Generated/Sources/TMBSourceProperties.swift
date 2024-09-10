@@ -2,10 +2,8 @@
 import Foundation
 import MapboxMaps
 
-
 /// Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
 @objc open class TMBScheme: NSObject {
-
     public let origin: Scheme
     @objc public var rawValue: String {
         origin.rawValue
@@ -19,6 +17,8 @@ import MapboxMaps
        self.origin = origin
     }
 
+
+
     /// Slippy map tilenames scheme.
     @objc public static let xyz = TMBScheme(origin: Scheme.xyz)
 
@@ -26,19 +26,21 @@ import MapboxMaps
     @objc public static let tms = TMBScheme(origin: Scheme.tms)
 
 }
-extension Scheme {
-    func wrap() -> TMBScheme {
+extension Scheme: ObjcConvertible {
+    public func wrap() -> TMBScheme {
         TMBScheme(origin: self)
     }
+    func scheme() -> TMBScheme { wrap() }
 }
 extension TMBScheme: SwiftValueConvertible {
     public func unwrap() -> Scheme {
         self.origin
     }
+    func scheme() -> Scheme { unwrap() }
 }
 @objc extension TMBValue {
-    @objc public class func scheme(_ value: TMBScheme) -> TMBValue {
-        return TMBValue(constant: value.rawValue)
+    @objc public class func scheme(_ scheme: TMBScheme) -> TMBValue {
+        return TMBValue(constant: scheme.rawValue)
     }
 }
 extension MapboxMaps.Value where T == Scheme {
@@ -51,6 +53,7 @@ extension MapboxMaps.Value where T == Scheme {
         }
     }
 }
+
 extension MapboxMaps.Value where T == [Scheme] {
     func arrayOfScheme() -> TMBValue {
         switch(self) {
@@ -61,6 +64,7 @@ extension MapboxMaps.Value where T == [Scheme] {
         }
     }
 }
+
 extension TMBValue {
     func scheme() -> Value<Scheme>? {
         if let constant = self.constant as? String {
@@ -69,6 +73,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
+    
     func arrayOfScheme() -> Value<[Scheme]>? {
         if let constant = self.constant as? [String] {
             return Value.constant(constant.map{ Scheme(rawValue: $0) })
@@ -80,7 +85,6 @@ extension TMBValue {
 
 /// The encoding used by this source. Mapbox Terrain RGB is used by default
 @objc open class TMBEncoding: NSObject {
-
     public let origin: Encoding
     @objc public var rawValue: String {
         origin.rawValue
@@ -94,6 +98,8 @@ extension TMBValue {
        self.origin = origin
     }
 
+
+
     /// Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
     @objc public static let terrarium = TMBEncoding(origin: Encoding.terrarium)
 
@@ -101,19 +107,21 @@ extension TMBValue {
     @objc public static let mapbox = TMBEncoding(origin: Encoding.mapbox)
 
 }
-extension Encoding {
-    func wrap() -> TMBEncoding {
+extension Encoding: ObjcConvertible {
+    public func wrap() -> TMBEncoding {
         TMBEncoding(origin: self)
     }
+    func encoding() -> TMBEncoding { wrap() }
 }
 extension TMBEncoding: SwiftValueConvertible {
     public func unwrap() -> Encoding {
         self.origin
     }
+    func encoding() -> Encoding { unwrap() }
 }
 @objc extension TMBValue {
-    @objc public class func encoding(_ value: TMBEncoding) -> TMBValue {
-        return TMBValue(constant: value.rawValue)
+    @objc public class func encoding(_ encoding: TMBEncoding) -> TMBValue {
+        return TMBValue(constant: encoding.rawValue)
     }
 }
 extension MapboxMaps.Value where T == Encoding {
@@ -126,6 +134,7 @@ extension MapboxMaps.Value where T == Encoding {
         }
     }
 }
+
 extension MapboxMaps.Value where T == [Encoding] {
     func arrayOfEncoding() -> TMBValue {
         switch(self) {
@@ -136,6 +145,7 @@ extension MapboxMaps.Value where T == [Encoding] {
         }
     }
 }
+
 extension TMBValue {
     func encoding() -> Value<Encoding>? {
         if let constant = self.constant as? String {
@@ -144,6 +154,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
+    
     func arrayOfEncoding() -> Value<[Encoding]>? {
         if let constant = self.constant as? [String] {
             return Value.constant(constant.map{ Encoding(rawValue: $0) })
@@ -152,3 +163,5 @@ extension TMBValue {
         return Value.expression(expression!.rawValue)
     }
 }
+
+// End of generated file.

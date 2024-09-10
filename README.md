@@ -79,7 +79,7 @@ pod 'MapboxMapObjC', '11.0.0'
 | 44 | [PointAnnotationClusteringExample](./mapboxqs/PointAnnotationClusteringExample.m) |  |
 | 45 | [PointClusteringExample](./mapboxqs/PointClusteringExample.m) |  |
 | 46 | [PolygonAnnotationExample](./mapboxqs/PolygonAnnotationExample.m) | OK |
-| 47 | [RasterTileSourceExample](./mapboxqs/RasterTileSourceExample.m) |  |
+| 47 | [RasterTileSourceExample](./mapboxqs/RasterTileSourceExample.m) | OK |
 | 48 | [ResizableImageExample](./mapboxqs/ResizableImageExample.m) |  |
 | 49 | [RestrictCoordinateBoundsExample](./mapboxqs/RestrictCoordinateBoundsExample.m) |  |
 | 50 | [SceneKitExample](./mapboxqs/SceneKitExample.m) | OK |

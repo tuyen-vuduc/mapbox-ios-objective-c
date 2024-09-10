@@ -1,10 +1,23 @@
 import Foundation
 import MapboxMaps
-import MapboxCoreMaps
-import MapboxMaps
+
 
 /// Struct of supported Layer rendering types
 @objc open class TMBLayerType: NSObject {
+    public let origin: LayerType
+    @objc public var rawValue: String {
+        origin.rawValue
+    }
+
+    @objc public convenience init(rawValue: String) {
+        self.init(origin: LayerType(rawValue: rawValue))
+    }
+
+    public init(origin: LayerType) {
+       self.origin = origin
+    }
+
+    /// The raw value of the layer type.
 
     /// A filled polygon with an optional stroked border.
     @objc public static let fill = TMBLayerType(origin: LayerType.fill)
@@ -21,11 +34,17 @@ import MapboxMaps
     /// A heatmap.
     @objc public static let heatmap = TMBLayerType(origin: LayerType.heatmap)
 
+    /// A clip layer.
+    @objc public static let clip = TMBLayerType(origin: LayerType.clip)
+
     /// An extruded (3D) polygon.
     @objc public static let fillExtrusion = TMBLayerType(origin: LayerType.fillExtrusion)
 
     /// Raster map textures such as satellite imagery.
     @objc public static let raster = TMBLayerType(origin: LayerType.raster)
+
+    /// Layer repsenting particles on the map.
+    @objc public static let rasterParticle = TMBLayerType(origin: LayerType.rasterParticle)
 
     /// Client-side hillshading visualization based on DEM data.
     /// Currently, the implementation only supports Mapbox Terrain RGB and Mapzen Terrarium tiles.
@@ -40,36 +59,26 @@ import MapboxMaps
     /// Layer representing the sky
     @objc public static let sky = TMBLayerType(origin: LayerType.sky)
 
-    /// Layer with custom rendering implementation (``CustomLayerHost``)
-    ///
-    /// - SeeAlso: ``CustomLayer``
-    @objc public static let custom = TMBLayerType(origin: LayerType.custom)
-    public let origin: LayerType
-    @objc public var rawValue: String {
-        origin.rawValue
-    }
+    /// Layer representing a place for other layers.
+    @objc public static let slot = TMBLayerType(origin: LayerType.slot)
 
-    @objc public convenience init(rawValue: String) {
-        self.init(origin: LayerType(rawValue: rawValue))
-    }
-
-    public init(origin: LayerType) {
-       self.origin = origin
-    }
+    /// Layer used for a 3D model
 }
-extension LayerType {
-    func wrap() -> TMBLayerType {
+extension LayerType: ObjcConvertible {
+    public func wrap() -> TMBLayerType {
         TMBLayerType(origin: self)
     }
+    func layerType() -> TMBLayerType { wrap() }
 }
-extension TMBLayerType {
-    func unwrap() -> LayerType {
+extension TMBLayerType: SwiftValueConvertible {
+    public func unwrap() -> LayerType {
         self.origin
     }
+    func layerType() -> LayerType { unwrap() }
 }
 @objc extension TMBValue {
-    @objc public class func layerType(_ value: TMBLayerType) -> TMBValue {
-        return TMBValue(constant: value.rawValue)
+    @objc public class func layerType(_ layerType: TMBLayerType) -> TMBValue {
+        return TMBValue(constant: layerType.rawValue)
     }
 }
 extension MapboxMaps.Value where T == LayerType {
@@ -82,6 +91,7 @@ extension MapboxMaps.Value where T == LayerType {
         }
     }
 }
+
 extension MapboxMaps.Value where T == [LayerType] {
     func arrayOfLayerType() -> TMBValue {
         switch(self) {
@@ -92,6 +102,7 @@ extension MapboxMaps.Value where T == [LayerType] {
         }
     }
 }
+
 extension TMBValue {
     func layerType() -> Value<LayerType>? {
         if let constant = self.constant as? String {
@@ -100,6 +111,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
+    
     func arrayOfLayerType() -> Value<[LayerType]>? {
         if let constant = self.constant as? [String] {
             return Value.constant(constant.map{ LayerType(rawValue: $0) })
@@ -108,3 +120,11 @@ extension TMBValue {
         return Value.expression(expression!.rawValue)
     }
 }
+
+    /// Layer with custom rendering implementation (``CustomLayerHost``)
+    ///
+    /// - SeeAlso: ``CustomLayer``
+
+
+
+    /// The associated Swift struct type

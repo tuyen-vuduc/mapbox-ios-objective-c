@@ -168,6 +168,12 @@
     public class func concat(_ arguments: [Any]) -> TMBExpression {
         return TMBExpression.create(withOperator: .concat, arguments: arguments)
     }
+    public class func config() -> TMBExpression {
+        return TMBExpression.create(withOperator: .config)
+    }
+    public class func config(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .config, arguments: arguments)
+    }
     public class func cos() -> TMBExpression {
         return TMBExpression.create(withOperator: .cos)
     }
@@ -239,6 +245,18 @@
     }
     public class func heatmapDensity(_ arguments: [Any]) -> TMBExpression {
         return TMBExpression.create(withOperator: .heatmapDensity, arguments: arguments)
+    }
+    public class func hsl() -> TMBExpression {
+        return TMBExpression.create(withOperator: .hsl)
+    }
+    public class func hsl(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .hsl, arguments: arguments)
+    }
+    public class func hsla() -> TMBExpression {
+        return TMBExpression.create(withOperator: .hsla)
+    }
+    public class func hsla(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .hsla, arguments: arguments)
     }
     public class func id() -> TMBExpression {
         return TMBExpression.create(withOperator: .id)
@@ -336,6 +354,12 @@
     public class func max(_ arguments: [Any]) -> TMBExpression {
         return TMBExpression.create(withOperator: .max, arguments: arguments)
     }
+    public class func measureLight() -> TMBExpression {
+        return TMBExpression.create(withOperator: .measureLight)
+    }
+    public class func measureLight(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .measureLight, arguments: arguments)
+    }
     public class func min() -> TMBExpression {
         return TMBExpression.create(withOperator: .min)
     }
@@ -377,6 +401,24 @@
     }
     public class func properties(_ arguments: [Any]) -> TMBExpression {
         return TMBExpression.create(withOperator: .properties, arguments: arguments)
+    }
+    public class func random() -> TMBExpression {
+        return TMBExpression.create(withOperator: .random)
+    }
+    public class func random(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .random, arguments: arguments)
+    }
+    public class func rasterParticleSpeed() -> TMBExpression {
+        return TMBExpression.create(withOperator: .rasterParticleSpeed)
+    }
+    public class func rasterParticleSpeed(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .rasterParticleSpeed, arguments: arguments)
+    }
+    public class func rasterValue() -> TMBExpression {
+        return TMBExpression.create(withOperator: .rasterValue)
+    }
+    public class func rasterValue(_ arguments: [Any]) -> TMBExpression {
+        return TMBExpression.create(withOperator: .rasterValue, arguments: arguments)
     }
     public class func resolvedLocale() -> TMBExpression {
         return TMBExpression.create(withOperator: .resolvedLocale)

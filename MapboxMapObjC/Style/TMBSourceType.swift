@@ -4,6 +4,20 @@ import MapboxMaps
 /// Struct of supported Source Types
 /// Docs : https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/
 @objc open class TMBSourceType: NSObject {
+    public let origin: SourceType
+    @objc public var rawValue: String {
+        origin.rawValue
+    }
+
+    @objc public convenience init(rawValue: String) {
+        self.init(origin: SourceType(rawValue: rawValue))
+    }
+
+    public init(origin: SourceType) {
+       self.origin = origin
+    }
+
+    /// The raw value of the source type.
 
     /// A vector tile source.
     @objc public static let vector = TMBSourceType(origin: SourceType.vector)
@@ -22,32 +36,34 @@ import MapboxMaps
 
     /// A model source.
     @objc public static let model = TMBSourceType(origin: SourceType.model)
-    public let origin: SourceType
-    @objc public var rawValue: String {
-        origin.rawValue
-    }
 
-    @objc public convenience init(rawValue: String) {
-        self.init(origin: SourceType(rawValue: rawValue))
-    }
+    /// A raster array tile source.
+        //@_spi(Experimental)
+//    @objc public static let rasterArray = TMBSourceType(origin: SourceType.rasterArray)
 
-    public init(origin: SourceType) {
-       self.origin = origin
-    }
+    /// A custom geometry source.
+    @objc public static let customGeometry = TMBSourceType(origin: SourceType.customGeometry)
+
+    /// A custom raster source.
+        //@_spi(Experimental)
+//    @objc public static let customRaster = TMBSourceType(origin: SourceType.customRaster)
+
 }
-extension SourceType {
-    func wrap() -> TMBSourceType {
+extension SourceType: ObjcConvertible {
+    public func wrap() -> TMBSourceType {
         TMBSourceType(origin: self)
     }
+    func sourceType() -> TMBSourceType { wrap() }
 }
-extension TMBSourceType {
-    func unwrap() -> SourceType {
+extension TMBSourceType: SwiftValueConvertible {
+    public func unwrap() -> SourceType {
         self.origin
     }
+    func sourceType() -> SourceType { unwrap() }
 }
 @objc extension TMBValue {
-    @objc public class func sourceType(_ value: TMBSourceType) -> TMBValue {
-        return TMBValue(constant: value.rawValue)
+    @objc public class func sourceType(_ sourceType: TMBSourceType) -> TMBValue {
+        return TMBValue(constant: sourceType.rawValue)
     }
 }
 extension MapboxMaps.Value where T == SourceType {
@@ -60,6 +76,7 @@ extension MapboxMaps.Value where T == SourceType {
         }
     }
 }
+
 extension MapboxMaps.Value where T == [SourceType] {
     func arrayOfSourceType() -> TMBValue {
         switch(self) {
@@ -70,6 +87,7 @@ extension MapboxMaps.Value where T == [SourceType] {
         }
     }
 }
+
 extension TMBValue {
     func sourceType() -> Value<SourceType>? {
         if let constant = self.constant as? String {
@@ -78,6 +96,7 @@ extension TMBValue {
         
         return Value.expression(expression!.rawValue)
     }
+    
     func arrayOfSourceType() -> Value<[SourceType]>? {
         if let constant = self.constant as? [String] {
             return Value.constant(constant.map{ SourceType(rawValue: $0) })
@@ -86,3 +105,6 @@ extension TMBValue {
         return Value.expression(expression!.rawValue)
     }
 }
+
+
+    /// The associated Swift struct type
