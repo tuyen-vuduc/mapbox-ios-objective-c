@@ -119,7 +119,7 @@ extension TMBVectorSource: SwiftValueConvertible {
 }
 
 extension VectorSource {
-    func wrap() ->  TMBVectorSource {
+    func wrap() -> TMBVectorSource {
         var result = TMBVectorSource(id: self.id)
         self.mapTo(&result)
         return result

@@ -120,7 +120,7 @@ extension TMBRasterDemSource: SwiftValueConvertible {
 }
 
 extension RasterDemSource {
-    func wrap() ->  TMBRasterDemSource {
+    func wrap() -> TMBRasterDemSource {
         var result = TMBRasterDemSource(id: self.id)
         self.mapTo(&result)
         return result

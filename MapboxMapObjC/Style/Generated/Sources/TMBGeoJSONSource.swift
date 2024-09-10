@@ -127,7 +127,7 @@ extension TMBGeoJSONSource: SwiftValueConvertible {
 }
 
 extension GeoJSONSource {
-    func wrap() ->  TMBGeoJSONSource {
+    func wrap() -> TMBGeoJSONSource {
         var result = TMBGeoJSONSource(id: self.id)
         self.mapTo(&result)
         return result

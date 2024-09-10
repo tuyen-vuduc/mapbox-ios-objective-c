@@ -51,7 +51,7 @@ extension TMBImageSource: SwiftValueConvertible {
 }
 
 extension ImageSource {
-    func wrap() ->  TMBImageSource {
+    func wrap() -> TMBImageSource {
         var result = TMBImageSource(id: self.id)
         self.mapTo(&result)
         return result
