@@ -3,9 +3,11 @@ import MapboxMaps
 @objc open class TMBExpressionOptions: NSObject {
     @objc public let type: TMBExpressionOptionsType
     @objc public let options: Any
-    public let arguments: [Expression.Argument]
+    public let arguments: [MapboxMaps.Expression.Argument]
     
-    private init(_ type: TMBExpressionOptionsType, options: Any, arguments: [Expression.Argument]) {
+    private init(
+        _ type: TMBExpressionOptionsType, options: Any,
+        arguments: [MapboxMaps.Expression.Argument]) {
         self.type = type
         self.options = options
         self.arguments = arguments
@@ -59,7 +61,7 @@ import MapboxMaps
         }
     }
     
-    public var expressionArguments: [Expression.Argument] {
+    public var expressionArguments: [MapboxMaps.Expression.Argument] {
         return [.option(.format(_self))]
     }
 
@@ -112,7 +114,7 @@ import MapboxMaps
         }
     }
 
-    public var expressionArguments: [Expression.Argument] {
+    public var expressionArguments: [MapboxMaps.Expression.Argument] {
         return [.option(.numberFormat(_self))]
     }
     
@@ -149,7 +151,7 @@ import MapboxMaps
         set { _self.locale = newValue }
     }
 
-    public var expressionArguments: [Expression.Argument] {
+    public var expressionArguments: [MapboxMaps.Expression.Argument] {
         return [.option(.collator(_self))]
     }
 

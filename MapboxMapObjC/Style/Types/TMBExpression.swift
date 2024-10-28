@@ -1,11 +1,11 @@
 import MapboxMaps
 
 @objc open class TMBExpression: NSObject {
-    private var _self: Expression
-    init(_ _self: Expression) {
+    private var _self: MapboxMaps.Expression
+    init(_ _self: MapboxMaps.Expression) {
         self._self = _self
     }
-    public var rawValue: Expression {
+    public var rawValue: MapboxMaps.Expression {
         return _self
     }
     
@@ -20,14 +20,14 @@ import MapboxMaps
     }
     
     @objc class public func create(withOperator `operator`: TMBExpressionOperator) -> TMBExpression{
-        return TMBExpression(Expression(`operator`.unwrap()))
+        return TMBExpression(MapboxMaps.Expression(`operator`.unwrap()))
     }
     
     @objc class public func create(withOperator `operator`: TMBExpressionOperator, arguments: [Any]) -> TMBExpression{
         return TMBExpression(Expression(operator: `operator`.unwrap(), arguments: getSwiftArguments(arguments)))
     }
     
-    class func getSwiftArguments(_ arguments: [Any]) -> [Expression.Argument] {
+    class func getSwiftArguments(_ arguments: [Any]) -> [MapboxMaps.Expression.Argument] {
         return arguments.map({
             switch $0 {
             case let value as TMBExpression:
@@ -68,7 +68,7 @@ import MapboxMaps
         })
     }
     
-    class func getObjcArguments(_ arguments: [Expression.Argument]) -> [Any] {
+    class func getObjcArguments(_ arguments: [MapboxMaps.Expression.Argument]) -> [Any] {
         return arguments.map({
             switch $0 {
             case .number(let value):
@@ -112,7 +112,7 @@ import MapboxMaps
     }
 }
 
-extension Expression: ObjcConvertible {
+extension MapboxMaps.Expression: ObjcConvertible {
     public func wrap() -> TMBExpression {
         return TMBExpression(self)
     }
@@ -122,10 +122,10 @@ extension Expression: ObjcConvertible {
 }
 
 extension TMBExpression : SwiftValueConvertible {
-    public func unwrap() -> Expression {
+    public func unwrap() -> MapboxMaps.Expression {
         return rawValue
     }
-    public func expression() -> Expression {
+    public func expression() -> MapboxMaps.Expression {
         return rawValue
     }
 }

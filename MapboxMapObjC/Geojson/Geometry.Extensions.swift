@@ -117,10 +117,11 @@ extension MapboxCommon.Feature {
         // The closest thing would be an empty GeometryCollection.
         let nonNullGeometry = feature.geometry ?? .geometryCollection(.init(geometries: []))
         let geometry = MapboxCommon.Geometry(nonNullGeometry)
+        let properties = feature.properties?.compactMapValues(\.?.rawValue) as? [String: NSObject]
 
         self.init(identifier: identifier,
                   geometry: geometry,
-                  properties: (feature.properties?.rawValue as? [String: NSObject]) ?? [:])
+                  properties: properties ?? [:])
     }
 }
 
@@ -129,7 +130,7 @@ extension Turf.Feature {
     /// Initialize a `Feature` with a `MapboxCommon.Feature` object.
     /// - Parameter feature: The `MapboxCommon.Feature` to use to create the `Feature`.
     internal init(_ feature: MapboxCommon.Feature) {
-        self.init(geometry: Turf.Geometry(feature.geometry))
+        self.init(geometry: Geometry(feature.geometry))
 
         /**
          Features may or may not have an identifier. If they have one,
@@ -144,7 +145,7 @@ extension Turf.Feature {
             break
         }
 
-        properties = JSONObject(rawValue: feature.properties)
+        properties = JSONObject(turfRawValue: feature.properties)
     }
 }
 
